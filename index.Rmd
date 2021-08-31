@@ -1,6 +1,12 @@
 ---
 title: "index"
-output: html_document
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    theme: yeti
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r include=FALSE}
@@ -18,88 +24,137 @@ library("tidyverse")
 library("raster")
 library("sp")
 library("lubridate")
-
-library(sf)
-library(leafpop)
-library(exactextractr)
+library("leafpop")
 ```
 
 ```{r read.spatial, echo=FALSE}
 pastos <- st_read(dsn = here::here("data/spatial/02_PASTOS_ADYACENTES/Pastos_adyacentes.shp"),
                quiet = TRUE)
+pastos <- st_transform(pastos, crs = 4326)
+
 ep <- st_read(dsn = here::here("data/spatial/01_EP_ANDALUCIA/EP_Andalucía.shp"),
                quiet = TRUE)
+ep <- st_transform(ep, crs = 4326)
+
+ep <- ep %>%
+  mutate(
+    name =
+      case_when(
+        ABREVIA == "NP" ~ "Autumn Burning / No Browsing",
+        ABREVIA == "P" ~ "Autumn Burning / Browsing",
+        ABREVIA == "PR" ~ "Spring Burning / Browsing"
+      ),
+    fire_date = case_when(
+      ABREVIA == "PR" ~ "2019-05-07",
+      TRUE ~"2018-12-18"
+    )
+  )
 
 parcelas <- st_read(dsn = here::here("data/spatial/parcelas/GEO_PARCELAS.shp"),
-               quiet = TRUE)
+               quiet = TRUE) 
+parcelas <- st_transform(parcelas, crs = 4326)
+parcelas <- parcelas %>% filter(TIPO == "QUEMA")
 ```
 
-
-
-
-- Cobertura espacial:
-
-  - Se han creado unas parcelas control virtuales (*n*=8) en el entorno de la Experiencia Piloto (*EP*). 
-  - Se ha creado un *area of interest* (aoi) para extraer la información de satélite y posteriormente realizar los análisis.  
-  
-
-```{r schema-aoi, echo=FALSE}
-# http://magjac.com/graphviz-visual-editor/
-DiagrammeR::grViz("
-digraph {
-node [shape = box, fontname = Helvetica]
-  EP; parcelas; AOI[label='Area of Interest']
-
-node [shape = oval, color = green];
-
-node [shape=parallelogram]
-union[label='Spatial Union']; 
-bb [label='Bounding box']; 
-buffer[label = 'buffer 50 m'];
-
-EP -> union;
-parcelas -> union;
-union -> bb -> buffer -> AOI
-}
-")
-```
-
-```{r read.spatial, echo=FALSE}
-pastos <- st_read(dsn = here::here("data/spatial/02_PASTOS_ADYACENTES/Pastos_adyacentes.shp"),
-               quiet = TRUE)
-ep <- st_read(dsn = here::here("data/spatial/01_EP_ANDALUCIA/EP_Andalucía.shp"),
-               quiet = TRUE)
-
-parcelas <- st_read(dsn = here::here("data/spatial/parcelas/GEO_PARCELAS.shp"),
-               quiet = TRUE)
-```
 
 ```{r aoi, echo=FALSE}
-aoi <- st_buffer(st_as_sfc(st_bbox(st_union(parcelas, ep))), dist = 50, endCapStyle = 'FLAT', joinStyle = 'MITRE', mitreLimit = 3)
+aoi <- st_buffer(st_as_sfc(st_bbox(st_union(parcelas, ep))), dist = 50, endCapStyle = 'FLAT', joinStyle = 'MITRE', mitreLimit = 3) 
 ```
 
-**Study Area**
-
-```{r plot.parcelas, out.width='100%', echo=FALSE, out.height='500px'}
-mapviewOptions(default = TRUE)
-# mapviewGetOption("basemaps")
-mapviewOptions(basemaps = c(
-  "Esri.WorldImagery", "CartoDB.Positron",
-  "OpenStreetMap", "OpenTopoMap"
-))
-
-mapview(aoi, color = "yellow", col.regions = 'transparent', lwd = 1.5) +
-mapview(ep,
-        zcol = "ABREVIA", col.regions = c("#8dd3c7","#ff7f00","#bebada"), 
-          layer.name = "EP",
-  popup = popupTable(ep, zcol = c("ABREVIA", "Nombre_zon", "SUPERFICIE"))
-) +
-  mapview(parcelas,
-    layer.name = "Parcelas", zcol="TIPO", col.regions = c("blue","red"),
-    popup = popupTable(parcelas,
-      zcol = c("NOMBRE", "TRATAMIENT", "TIPO")
-    ), 
-    label = parcelas$NOMBRE
+```{r baseMap}
+map_base <- leaflet() %>%
+  addWMSTiles(
+    baseUrl = "http://www.ideandalucia.es/wms/mdt_2005?",
+    layers = "Sombreado_10",
+    group = "Hillshade",
+    options = WMSTileOptions(
+      format = "image/png", 
+      transparent = TRUE),
+    attribution = '<a href="http://www.juntadeandalucia.es/institutodeestadisticaycartografia" target="_blank">Instituto de Estadística y Cartografía de Andalucía</a>'
+  ) %>%
+  addWMSTiles(
+    baseUrl = "http://www.ign.es/wms-inspire/ign-base?",
+    layers = "IGNBaseTodo",
+    group = "Basemap",
+    attribution = '© <a href="http://www.ign.es/ign/main/index.do" target="_blank">Instituto Geográfico Nacional de España</a>'
+  ) %>%  
+  addWMSTiles("http://www.ideandalucia.es/services/toporaster10/wms?",
+    layers = "toporaster10",
+    group = "Topographical",
+    options = WMSTileOptions(
+      format = "image/png", 
+      transparent = FALSE),
+    attribution = '<a href="http://www.juntadeandalucia.es/institutodeestadisticaycartografia" target="_blank">Instituto de Estadística y Cartografía de Andalucía</a>'
+  ) %>%
+  addWMSTiles("http://www.ideandalucia.es/wms/mta10r_2001-2013?",
+    layers = "mta10r_2001-2013",
+    group = "topo2013",
+    options = WMSTileOptions(
+      format = "image/png", 
+      transparent = FALSE),
+    attribution = '<a href="http://www.juntadeandalucia.es/institutodeestadisticaycartografia" target="_blank">Instituto de Estadística y Cartografía de Andalucía</a>'
+  ) %>% 
+  addProviderTiles("Esri.WorldImagery", group = "Satellite") %>% 
+  addWMSTiles("http://www.ign.es/wms-inspire/pnoa-ma",
+    layers = "OI.OrthoimageCoverage",
+    group = "PNOA Máxima Actualidad",
+    options = WMSTileOptions(
+      format = "image/png", 
+      transparent = FALSE),
+    attribution = 'PNOA cedido por © <a href="http://www.ign.es/ign/main/index.do" target="_blank">Instituto Geográfico Nacional de España</a>'
+  ) %>% 
+    addLayersControl(
+    position = "bottomright",
+    baseGroups = c("Basemap", "PNOA Máxima Actualidad", "Satellite", "Hillshade", "Topographical", "topo2013"),
+    overlayGroups = c("Treatment"), 
+    options = layersControlOptions(collapsed = TRUE)
   ) 
 ```
+
+
+Alcóntar (Andalusia EP)
+=============================================================================
+
+Column {.tabset}
+--------------------------------------------------------------------
+
+### General View
+
+```{r}
+# prepare data
+factpal <- colorFactor(c("#8dd3c7","#ff7f00","#bebada"), ep$ABREVIA)
+
+popup_ep <- paste0(
+  "<strong>Treatment:</strong> ", ep$name,
+  "<br><strong>Fire Date:</strong> ", ep$fire_date)
+
+
+```
+
+
+```{r}
+# Set spatial extension 
+myext <- st_bbox(aoi) %>% as.vector()
+
+map_base %>%
+  fitBounds(myext[1], myext[2], myext[3], myext[4]) %>% 
+  addPolygons(
+    data = ep,
+    group = "Treatment",
+    color = ~factpal(ABREVIA),
+    stroke = TRUE,
+    popup = popup_ep,
+    label = ~name,
+        labelOptions = labelOptions(
+      noHide = FALSE,
+      offset = c(0, 0),
+      textOnly = F,
+      style = list("color" = "black")
+    )
+  ) 
+
+```
+
+
+
 
