@@ -5,8 +5,6 @@ editor_options:
   chunk_output_type: console
 ---
 
-
-
 ```{r setup, include=FALSE}
 library(knitr)
 library(rmdformats)
@@ -57,7 +55,11 @@ raw_soil <- readxl::read_excel(
         str_detect(geo_parcela_nombre, "PR_") ~ "PR",
         str_detect(geo_parcela_nombre, "P_") ~ "P"
       ),
-    fecha = lubridate::ymd(fecha)
+    fecha = lubridate::ymd(fecha),
+    pre_post_quema = case_when(
+      pre_post_quema == "Prequema" ~ "0 Pre",
+      pre_post_quema == "Postquema" ~ "1 Post"
+    )
   ) 
 
 ```
@@ -72,22 +74,29 @@ soil <- raw_soil %>%
   )
 ```
 
-- Design structure of the data
+- Structure of the data
 
 ```{r}
 xtabs(~pre_post_quema+zona, data = soil)
 ```
 
-# Models
-- Analysis 
+# Modellize 
 
-- mira esto https://doi.org/10.1186/s42408-018-0022-8 
+- For each response variable, the approach modelling is 
 
+$Y \sim zona (P|NP|PR) + Fecha(pre|post) + zona \times Fecha$ 
 
-- Explore distribution of the data fore each variable 
-- Modelize 
-- Post hocs 
-- Plots 
+- using the "(1|zona:geo_parcela_nombre)" as nested random effects
+
+```{r}
+# mira esto 
+# https://doi.org/10.1186/s42408-018-0022-8 
+```
+- Then explore error distribution of the variable response and model diagnostics 
+- Select the appropiate error distribution and use LMM or GLMM 
+- Explore Post-hoc  
+- Plot interactions 
+
 ```{r}
 plot_interaction <- function(df, yvar){
   pos <- position_dodge(0.15)
@@ -145,12 +154,13 @@ m <- lme4::lmer(form, data = df_model)
 anova(as_lmerModLmerTest(m))
 ```
 
+
 ```{r}
 # Ojo para lo de la anova en lmer ver esto:  https://stat.ethz.ch/pipermail/r-sig-mixed-models/2018q1/026596.html
 ```
 
 
-### *Post-hocs*
+### *Post-hoc*
 
 ```{r}
 emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
@@ -203,7 +213,7 @@ anova(as_lmerModLmerTest(m))
 ```
 
 
-### *Post-hocs*
+### *Post-hoc*
 
 ```{r}
 emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
@@ -252,7 +262,7 @@ anova(as_lmerModLmerTest(m))
 ```
 
 
-### *Post-hocs*
+### *Post-hoc*
 
 ```{r}
 emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
@@ -306,7 +316,7 @@ m <- lme4::glmer(form, data = df_model, family= Gamma)
 afex::mixed(form, data=df_model)
 ```
 
-### *Post-hocs*
+### *Post-hoc*
 
 ```{r}
 emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
@@ -356,7 +366,7 @@ m <- lme4::glmer(form, data = df_model, family= Gamma)
 afex::mixed(form, data=df_model)
 ```
 
-### *Post-hocs*
+### *Post-hoc*
 
 ```{r}
 emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
@@ -406,7 +416,7 @@ m <- lme4::glmer(form, data = df_model, family= Gamma)
 afex::mixed(form, data=df_model)
 ```
 
-### *Post-hocs*
+### *Post-hoc*
 
 ```{r}
 emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
@@ -456,7 +466,7 @@ m <- lme4::glmer(form, data = df_model, family= Gamma)
 afex::mixed(form, data=df_model)
 ```
 
-### *Post-hocs*
+### *Post-hoc*
 
 ```{r}
 emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
@@ -514,7 +524,7 @@ m <- lme4::glmer.nb(form, data = df_model)
 afex::mixed(form, data=df_model)
 ```
 
-### *Post-hocs*
+### *Post-hoc*
 
 ```{r}
 emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
@@ -564,7 +574,7 @@ m <- lme4::glmer(form, data = df_model, family= Gamma)
 afex::mixed(form, data=df_model)
 ```
 
-### *Post-hocs*
+### *Post-hoc*
 
 ```{r}
 emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
@@ -644,7 +654,7 @@ mtbm <- glmmTMB::glmmTMB(formula = form,
 ```
 
 
-### *Post-hocs*
+### *Post-hoc*
 
 ```{r}
 # ojo 
@@ -715,7 +725,7 @@ car::Anova(mtbm)
 ```
 
 
-### *Post-hocs*
+### *Post-hoc*
 
 ```{r}
 # ojo 
@@ -728,20 +738,6 @@ emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
 ```{r}
 plot_interaction(df=soil, yvar="na_percent")
 ```
-
-
-
-
-soil <- raw_soil %>% 
-  filter(fecha %in% lubridate::ymd(c("2018-12-11", "2018-12-20", "2019-04-24", "2019-05-09"))) %>% 
-  mutate(zona = as.factor(zona), 
-         pre_post_quema = as.factor(pre_post_quema)
-  )
-
-
-
-
-
 
 
 
@@ -803,7 +799,7 @@ m <- lme4::glmer(form, data = df_model, family= Gamma)
 afex::mixed(form, data=df_model)
 ```
 
-### *Post-hocs*
+### *Post-hoc*
 
 ```{r}
 emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
@@ -853,7 +849,7 @@ m <- lme4::glmer(form, data = df_model, family= Gamma)
 afex::mixed(form, data=df_model)
 ```
 
-### *Post-hocs*
+### *Post-hoc*
 
 ```{r}
 emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
@@ -866,6 +862,56 @@ plot_interaction(df=soilN, yvar="n_no3")
 ```
 
 # Resumen general 
+```{r, eval=FALSE}
+library(plotrix)
+library(gtsummary)
+soil %>% 
+  dplyr::select(zona, pre_post_quema, humedad:p_h_k_cl) %>% 
+  tbl_strata(
+    strata = pre_post_quema, 
+    .tbl_fun = 
+      ~.x %>% 
+      tbl_summary(
+        by = zona,
+        missing = "no",
+       # label = list(ab ~ "Juvenile abundance"),
+        statistic = all_continuous() ~ "{mean} ({std.error})",
+        digits = everything() ~ 2
+      ))
+
+```
+
+
+```{r}
+pos <- position_dodge(0.15)
+
+medias <- soil %>% dplyr::select(
+  pre_post_quema, zona, humedad:p_h_k_cl) %>% 
+  group_by(zona, pre_post_quema) %>% 
+  summarise_at(vars(humedad:p_h_k_cl), ~mean(., na.rm=TRUE)) %>% 
+  pivot_longer(humedad:p_h_k_cl, names_to = "var", values_to = "mean")
+
+errores <- soil %>% dplyr::select(
+  pre_post_quema, zona, humedad:p_h_k_cl) %>% 
+  group_by(zona, pre_post_quema) %>% 
+  summarise_at(vars(humedad:p_h_k_cl), ~plotrix::std.error(., na.rm=TRUE)) %>% 
+  pivot_longer(humedad:p_h_k_cl, names_to = "var", values_to = "se")
+
+medias <- medias %>% dplyr::inner_join(errores)
+
+
+medias %>% 
+    ggplot(aes(x=pre_post_quema, y = mean, 
+               color = zona, shape = zona, group=zona)) + 
+    geom_point(position = pos, size = 2) + 
+    geom_errorbar(aes(ymin=mean-se, ymax=mean+se), 
+                  position = pos, witdh = .01) +
+    geom_line(position = pos) +
+    theme_bw() + 
+    ylab("") + xlab("") +
+  facet_wrap(~var, scales = "free_y")
+
+```
 
 
 
