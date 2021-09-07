@@ -1,0 +1,2451 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Pre- and post-fire anaylisis of soils</title>
+
+<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">soil_alcontar</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Pre- and post-fire anaylisis of soils</h1>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2021-09-07
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
+</p>
+<p>
+<strong>Knit directory:</strong> <code>soil_alcontar/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20210907code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20210907)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20210907code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20210907)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongdetected"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>Cache:</strong> detected </a>
+</p>
+</div>
+<div id="strongCachestrongdetected" class="panel-collapse collapse">
+<div class="panel-body">
+The following chunks had caches available:
+<ul>
+<li>
+pkgs
+</li>
+<li>
+prepare-data
+</li>
+<li>
+session-info-chunk-inserted-by-workflowr
+</li>
+<li>
+unnamed-chunk-1
+</li>
+<li>
+unnamed-chunk-10
+</li>
+<li>
+unnamed-chunk-11
+</li>
+<li>
+unnamed-chunk-12
+</li>
+<li>
+unnamed-chunk-13
+</li>
+<li>
+unnamed-chunk-14
+</li>
+<li>
+unnamed-chunk-15
+</li>
+<li>
+unnamed-chunk-16
+</li>
+<li>
+unnamed-chunk-17
+</li>
+<li>
+unnamed-chunk-18
+</li>
+<li>
+unnamed-chunk-19
+</li>
+<li>
+unnamed-chunk-2
+</li>
+<li>
+unnamed-chunk-20
+</li>
+<li>
+unnamed-chunk-21
+</li>
+<li>
+unnamed-chunk-22
+</li>
+<li>
+unnamed-chunk-23
+</li>
+<li>
+unnamed-chunk-24
+</li>
+<li>
+unnamed-chunk-25
+</li>
+<li>
+unnamed-chunk-26
+</li>
+<li>
+unnamed-chunk-27
+</li>
+<li>
+unnamed-chunk-28
+</li>
+<li>
+unnamed-chunk-29
+</li>
+<li>
+unnamed-chunk-3
+</li>
+<li>
+unnamed-chunk-30
+</li>
+<li>
+unnamed-chunk-31
+</li>
+<li>
+unnamed-chunk-32
+</li>
+<li>
+unnamed-chunk-33
+</li>
+<li>
+unnamed-chunk-34
+</li>
+<li>
+unnamed-chunk-35
+</li>
+<li>
+unnamed-chunk-36
+</li>
+<li>
+unnamed-chunk-37
+</li>
+<li>
+unnamed-chunk-38
+</li>
+<li>
+unnamed-chunk-39
+</li>
+<li>
+unnamed-chunk-4
+</li>
+<li>
+unnamed-chunk-40
+</li>
+<li>
+unnamed-chunk-41
+</li>
+<li>
+unnamed-chunk-42
+</li>
+<li>
+unnamed-chunk-43
+</li>
+<li>
+unnamed-chunk-44
+</li>
+<li>
+unnamed-chunk-45
+</li>
+<li>
+unnamed-chunk-46
+</li>
+<li>
+unnamed-chunk-47
+</li>
+<li>
+unnamed-chunk-48
+</li>
+<li>
+unnamed-chunk-49
+</li>
+<li>
+unnamed-chunk-5
+</li>
+<li>
+unnamed-chunk-50
+</li>
+<li>
+unnamed-chunk-51
+</li>
+<li>
+unnamed-chunk-52
+</li>
+<li>
+unnamed-chunk-53
+</li>
+<li>
+unnamed-chunk-54
+</li>
+<li>
+unnamed-chunk-55
+</li>
+<li>
+unnamed-chunk-56
+</li>
+<li>
+unnamed-chunk-57
+</li>
+<li>
+unnamed-chunk-58
+</li>
+<li>
+unnamed-chunk-59
+</li>
+<li>
+unnamed-chunk-6
+</li>
+<li>
+unnamed-chunk-60
+</li>
+<li>
+unnamed-chunk-61
+</li>
+<li>
+unnamed-chunk-62
+</li>
+<li>
+unnamed-chunk-63
+</li>
+<li>
+unnamed-chunk-64
+</li>
+<li>
+unnamed-chunk-65
+</li>
+<li>
+unnamed-chunk-66
+</li>
+<li>
+unnamed-chunk-67
+</li>
+<li>
+unnamed-chunk-68
+</li>
+<li>
+unnamed-chunk-69
+</li>
+<li>
+unnamed-chunk-7
+</li>
+<li>
+unnamed-chunk-70
+</li>
+<li>
+unnamed-chunk-71
+</li>
+<li>
+unnamed-chunk-72
+</li>
+<li>
+unnamed-chunk-73
+</li>
+<li>
+unnamed-chunk-8
+</li>
+<li>
+unnamed-chunk-9
+</li>
+</ul>
+<p>To ensure reproducibility of the results, delete the cache directory <code>analysis_pre_post_cache</code> and re-run the analysis. To have workflowr automatically delete the cache directory prior to building the file, set <code>delete_cache = TRUE</code> when running <code>wflow_build()</code> or <code>wflow_publish()</code>.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartreedc879115fb384fd8c251896a1e164ae5dc3f1b7ftargetblankdc87911a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/serpam/soil_alcontar/tree/dc879115fb384fd8c251896a1e164ae5dc3f1b7f" target="_blank">dc87911</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartreedc879115fb384fd8c251896a1e164ae5dc3f1b7ftargetblankdc87911a" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/serpam/soil_alcontar/tree/dc879115fb384fd8c251896a1e164ae5dc3f1b7f" target="_blank">dc87911</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .RData
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/C369E4F4/
+    Ignored:    .Rproj.user/shared/notebooks/3F603CAC-map/
+    Ignored:    .Rproj.user/shared/notebooks/4E13660A-temporal_comparison/
+    Ignored:    .Rproj.user/shared/notebooks/7ADB7089-Untitled/
+    Ignored:    .Rproj.user/shared/notebooks/827D0727-analysis_pre_post/
+    Ignored:    .Rproj.user/shared/notebooks/8A21BEE6-analysis_pre_post/
+    Ignored:    .Rproj.user/shared/notebooks/F2779D03-index/
+
+Untracked files:
+    Untracked:  analysis/analysis_pre_post_cache/
+    Untracked:  analysis/test.Rmd
+    Untracked:  data/spatial/lucdeme/
+    Untracked:  map.Rmd
+
+Unstaged changes:
+    Modified:   data/Resultados_Suelos_2018_2021_v2.xlsx
+    Modified:   data/spatial/.DS_Store
+    Deleted:    index.Rmd
+    Modified:   scripts/00_prepare_data.R
+    Modified:   temporal_comparison.Rmd
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/analysis_pre_post.Rmd</code>) and HTML (<code>docs/analysis_pre_post.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/dc879115fb384fd8c251896a1e164ae5dc3f1b7f/analysis/analysis_pre_post.Rmd" target="_blank">dc87911</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-07
+</td>
+<td>
+include pre post analysis
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="prepare-data" class="section level1">
+<h1>Prepare data</h1>
+<pre class="r"><code>raw_soil &lt;- readxl::read_excel(here::here(&quot;data/Resultados_Suelos_2018_2021_v2.xlsx&quot;), 
+    sheet = &quot;SEGUIMIENTO_MUESTRAS_SUELOS&quot;) %&gt;% janitor::clean_names() %&gt;% mutate(treatment_name = case_when(str_detect(geo_parcela_nombre, 
+    &quot;NP_&quot;) ~ &quot;Autumn Burning / No Browsing&quot;, str_detect(geo_parcela_nombre, &quot;PR_&quot;) ~ 
+    &quot;Spring Burning / Browsing&quot;, str_detect(geo_parcela_nombre, &quot;P_&quot;) ~ &quot;Autumn Burning / Browsing&quot;), 
+    zona = case_when(str_detect(geo_parcela_nombre, &quot;NP_&quot;) ~ &quot;NP&quot;, str_detect(geo_parcela_nombre, 
+        &quot;PR_&quot;) ~ &quot;PR&quot;, str_detect(geo_parcela_nombre, &quot;P_&quot;) ~ &quot;P&quot;), fecha = lubridate::ymd(fecha))</code></pre>
+<ul>
+<li>Select data pre- and intermediately post-fire (first post-fire sampling: “2018-12-20” and “2019-05-09” for autumn and spring fires respectively)</li>
+</ul>
+<pre class="r"><code>soil &lt;- raw_soil %&gt;% filter(fecha %in% lubridate::ymd(c(&quot;2018-12-11&quot;, &quot;2018-12-20&quot;, 
+    &quot;2019-04-24&quot;, &quot;2019-05-09&quot;))) %&gt;% mutate(zona = as.factor(zona), pre_post_quema = as.factor(pre_post_quema))</code></pre>
+<ul>
+<li>Design structure of the data</li>
+</ul>
+<pre><code>              zona
+pre_post_quema NP  P PR
+     Postquema 24 24 24
+     Prequema  24 24 24</code></pre>
+</div>
+<div id="models" class="section level1">
+<h1>Models</h1>
+<ul>
+<li><p>Analysis</p></li>
+<li><p>mira esto <a href="https://doi.org/10.1186/s42408-018-0022-8" class="uri">https://doi.org/10.1186/s42408-018-0022-8</a></p></li>
+<li><p>Explore distribution of the data fore each variable</p></li>
+<li><p>Modelize</p></li>
+<li><p>Post hocs</p></li>
+<li><p>Plots</p></li>
+</ul>
+</div>
+<div id="humedad" class="section level1">
+<h1>Humedad</h1>
+<div id="check-distribution" class="section level3">
+<h3>Check distribution</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>summary statistics
+------
+min:  2.961538   max:  23.90476 
+median:  11.90231 
+mean:  12.0709 
+estimated sd:  4.08543 
+estimated skewness:  0.1696677 
+estimated kurtosis:  2.93929 </code></pre>
+</div>
+<div id="normality-homocedasticity" class="section level3">
+<h3>Normality &amp; Homocedasticity</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>[1] &quot;Variances homogeneity?&quot;</code></pre>
+<pre><code>OK: Variances in each of the groups are the same (Bartlett Test, p = 0.257).</code></pre>
+<pre><code>[1] &quot;Normality?&quot;</code></pre>
+<pre><code>OK: residuals appear as normally distributed (p = 0.096).</code></pre>
+<pre><code>[1] &quot;Normality, Random effects&quot;</code></pre>
+<pre><code>Group: zona:geo_parcela_nombre
+(Intercept) OK: random effects appear as normally distributed (p = 0.958).</code></pre>
+</div>
+<div id="model" class="section level3">
+<h3>Model</h3>
+<pre><code>Type III Analysis of Variance Table with Satterthwaite&#39;s method
+                    Sum Sq Mean Sq NumDF DenDF F value    Pr(&gt;F)    
+pre_post_quema      236.42 236.416     1   129 26.1050 1.136e-06 ***
+zona                  1.46   0.728     2     9  0.0803    0.9235    
+pre_post_quema:zona 462.22 231.109     2   129 25.5190 4.593e-10 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hocs" class="section level3">
+<h3><em>Post-hocs</em></h3>
+<pre><code>$`emmeans of pre_post_quema`
+ pre_post_quema emmean    SE   df lower.CL upper.CL
+ Postquema        10.8 0.676 12.1     9.32     12.3
+ Prequema         13.4 0.676 12.1    11.88     14.8
+
+Results are averaged over the levels of: zona 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema`
+ 1                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema    -2.56 0.502 129 -5.109  &lt;.0001 
+
+Results are averaged over the levels of: zona 
+Degrees-of-freedom method: kenward-roger </code></pre>
+<pre><code>$`emmeans of zona`
+ zona emmean   SE df lower.CL upper.CL
+ NP     12.4 1.09  9     9.97     14.9
+ P      11.9 1.09  9     9.46     14.4
+ PR     11.9 1.09  9     9.41     14.3
+
+Results are averaged over the levels of: pre_post_quema 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of zona`
+ 1       estimate   SE df t.ratio p.value
+ NP - P    0.5060 1.54  9 0.329   0.9424 
+ NP - PR   0.5579 1.54  9 0.363   0.9306 
+ P - PR    0.0518 1.54  9 0.034   0.9994 
+
+Results are averaged over the levels of: pre_post_quema 
+Degrees-of-freedom method: kenward-roger 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of pre_post_quema | zona`
+zona = NP:
+ pre_post_quema emmean   SE   df lower.CL upper.CL
+ Postquema       12.86 1.17 12.1    10.31     15.4
+ Prequema        11.99 1.17 12.1     9.44     14.5
+
+zona = P:
+ pre_post_quema emmean   SE   df lower.CL upper.CL
+ Postquema       11.39 1.17 12.1     8.84     13.9
+ Prequema        12.45 1.17 12.1     9.90     15.0
+
+zona = PR:
+ pre_post_quema emmean   SE   df lower.CL upper.CL
+ Postquema        8.11 1.17 12.1     5.57     10.7
+ Prequema        15.62 1.17 12.1    13.07     18.2
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema | zona`
+zona = NP:
+ 2                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema    0.872 0.869 129  1.004  0.3171 
+
+zona = P:
+ 2                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema   -1.054 0.869 129 -1.213  0.2273 
+
+zona = PR:
+ 2                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema   -7.507 0.869 129 -8.641  &lt;.0001 
+
+Degrees-of-freedom method: kenward-roger </code></pre>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="cic" class="section level1">
+<h1>CIC</h1>
+<div id="check-distribution-1" class="section level3">
+<h3>Check distribution</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>summary statistics
+------
+min:  8   max:  24 
+median:  15 
+mean:  14.99306 
+estimated sd:  2.726448 
+estimated skewness:  -0.08707462 
+estimated kurtosis:  3.374256 </code></pre>
+</div>
+<div id="normality-homocedasticity-1" class="section level3">
+<h3>Normality &amp; Homocedasticity</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>[1] &quot;Variances homogeneity?&quot;</code></pre>
+<pre><code>OK: Variances in each of the groups are the same (Bartlett Test, p = 0.313).</code></pre>
+<pre><code>[1] &quot;Normality?&quot;</code></pre>
+<pre><code>OK: residuals appear as normally distributed (p = 0.745).</code></pre>
+<pre><code>[1] &quot;Normality, Random effects&quot;</code></pre>
+<pre><code>Group: zona:geo_parcela_nombre
+(Intercept) OK: random effects appear as normally distributed (p = 0.397).</code></pre>
+</div>
+<div id="model-1" class="section level3">
+<h3>Model</h3>
+<pre><code>Type III Analysis of Variance Table with Satterthwaite&#39;s method
+                    Sum Sq Mean Sq NumDF DenDF F value   Pr(&gt;F)   
+pre_post_quema      31.174 31.1736     1   129  8.7568 0.003671 **
+zona                40.297 20.1484     2     9  5.6598 0.025614 * 
+pre_post_quema:zona 19.681  9.8403     2   129  2.7642 0.066764 . 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hocs-1" class="section level3">
+<h3><em>Post-hocs</em></h3>
+<pre><code>$`emmeans of pre_post_quema`
+ pre_post_quema emmean    SE   df lower.CL upper.CL
+ Postquema        14.5 0.462 11.5     13.5     15.5
+ Prequema         15.5 0.462 11.5     14.4     16.5
+
+Results are averaged over the levels of: zona 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema`
+ 1                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema   -0.931 0.314 129 -2.959  0.0037 
+
+Results are averaged over the levels of: zona 
+Degrees-of-freedom method: kenward-roger </code></pre>
+<pre><code>$`emmeans of zona`
+ zona emmean    SE df lower.CL upper.CL
+ NP     15.4 0.753  9     13.7     17.1
+ P      16.6 0.753  9     14.9     18.3
+ PR     13.0 0.753  9     11.3     14.7
+
+Results are averaged over the levels of: pre_post_quema 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of zona`
+ 1       estimate   SE df t.ratio p.value
+ NP - P     -1.19 1.06  9 -1.115  0.5291 
+ NP - PR     2.33 1.06  9  2.191  0.1262 
+ P - PR      3.52 1.06  9  3.307  0.0225 
+
+Results are averaged over the levels of: pre_post_quema 
+Degrees-of-freedom method: kenward-roger 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of pre_post_quema | zona`
+zona = NP:
+ pre_post_quema emmean    SE   df lower.CL upper.CL
+ Postquema        15.1 0.801 11.5     13.3     16.8
+ Prequema         15.7 0.801 11.5     13.9     17.4
+
+zona = P:
+ pre_post_quema emmean    SE   df lower.CL upper.CL
+ Postquema        15.6 0.801 11.5     13.8     17.3
+ Prequema         17.5 0.801 11.5     15.8     19.3
+
+zona = PR:
+ pre_post_quema emmean    SE   df lower.CL upper.CL
+ Postquema        12.9 0.801 11.5     11.2     14.7
+ Prequema         13.2 0.801 11.5     11.4     14.9
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema | zona`
+zona = NP:
+ 2                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema   -0.583 0.545 129 -1.071  0.2862 
+
+zona = P:
+ 2                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema   -1.958 0.545 129 -3.595  0.0005 
+
+zona = PR:
+ 2                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema   -0.250 0.545 129 -0.459  0.6470 
+
+Degrees-of-freedom method: kenward-roger </code></pre>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="c" class="section level1">
+<h1>% C</h1>
+<div id="check-distribution-2" class="section level3">
+<h3>Check distribution</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>summary statistics
+------
+min:  3.35   max:  12.5 
+median:  7.57 
+mean:  7.509167 
+estimated sd:  1.9505 
+estimated skewness:  0.03328586 
+estimated kurtosis:  2.503996 </code></pre>
+</div>
+<div id="normality-homocedasticity-2" class="section level3">
+<h3>Normality &amp; Homocedasticity</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>[1] &quot;Variances homogeneity?&quot;</code></pre>
+<pre><code>OK: Variances in each of the groups are the same (Bartlett Test, p = 0.434).</code></pre>
+<pre><code>[1] &quot;Normality?&quot;</code></pre>
+<pre><code>OK: residuals appear as normally distributed (p = 0.373).</code></pre>
+<pre><code>[1] &quot;Normality, Random effects&quot;</code></pre>
+<pre><code>Group: zona:geo_parcela_nombre
+(Intercept) OK: random effects appear as normally distributed (p = 0.623).</code></pre>
+</div>
+<div id="model-2" class="section level3">
+<h3>Model</h3>
+<pre><code>Type III Analysis of Variance Table with Satterthwaite&#39;s method
+                     Sum Sq Mean Sq NumDF DenDF F value   Pr(&gt;F)   
+pre_post_quema      17.1120 17.1120     1   129  7.8770 0.005784 **
+zona                 5.3708  2.6854     2     9  1.2361 0.335481   
+pre_post_quema:zona  0.5673  0.2837     2   129  0.1306 0.877707   
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hocs-2" class="section level3">
+<h3><em>Post-hocs</em></h3>
+<pre><code>$`emmeans of pre_post_quema`
+ pre_post_quema emmean    SE   df lower.CL upper.CL
+ Postquema        7.85 0.405 10.9     6.96     8.75
+ Prequema         7.16 0.405 10.9     6.27     8.06
+
+Results are averaged over the levels of: zona 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema`
+ 1                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema    0.689 0.246 129 2.807   0.0058 
+
+Results are averaged over the levels of: zona 
+Degrees-of-freedom method: kenward-roger </code></pre>
+<pre><code>$`emmeans of zona`
+ zona emmean    SE df lower.CL upper.CL
+ NP     6.89 0.669  9     5.37     8.40
+ P      8.33 0.669  9     6.82     9.84
+ PR     7.31 0.669  9     5.80     8.82
+
+Results are averaged over the levels of: pre_post_quema 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of zona`
+ 1       estimate    SE df t.ratio p.value
+ NP - P    -1.446 0.945  9 -1.529  0.3233 
+ NP - PR   -0.424 0.945  9 -0.448  0.8965 
+ P - PR     1.022 0.945  9  1.081  0.5483 
+
+Results are averaged over the levels of: pre_post_quema 
+Degrees-of-freedom method: kenward-roger 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of pre_post_quema | zona`
+zona = NP:
+ pre_post_quema emmean    SE   df lower.CL upper.CL
+ Postquema        7.27 0.702 10.9     5.72     8.81
+ Prequema         6.50 0.702 10.9     4.96     8.05
+
+zona = P:
+ pre_post_quema emmean    SE   df lower.CL upper.CL
+ Postquema        8.73 0.702 10.9     7.18    10.27
+ Prequema         7.94 0.702 10.9     6.39     9.48
+
+zona = PR:
+ pre_post_quema emmean    SE   df lower.CL upper.CL
+ Postquema        7.57 0.702 10.9     6.02     9.11
+ Prequema         7.05 0.702 10.9     5.51     8.60
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema | zona`
+zona = NP:
+ 2                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema    0.765 0.425 129 1.799   0.0744 
+
+zona = P:
+ 2                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema    0.790 0.425 129 1.858   0.0655 
+
+zona = PR:
+ 2                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema    0.512 0.425 129 1.205   0.2306 
+
+Degrees-of-freedom method: kenward-roger </code></pre>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="fe" class="section level1">
+<h1>% Fe</h1>
+<div id="check-distribution-3" class="section level3">
+<h3>Check distribution</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>summary statistics
+------
+min:  0.341   max:  3.35 
+median:  1.858 
+mean:  1.87166 
+estimated sd:  0.4077216 
+estimated skewness:  0.6162434 
+estimated kurtosis:  6.394979 </code></pre>
+</div>
+<div id="normality-homocedasticity-3" class="section level3">
+<h3>Normality &amp; Homocedasticity</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>[1] &quot;Variances homogeneity?&quot;</code></pre>
+<pre><code>Warning: Variances differ between groups (Bartlett Test, p = 0.000).</code></pre>
+<pre><code>[1] &quot;Normality?&quot;</code></pre>
+<pre><code>Warning: Non-normality of residuals detected (p &lt; .001).</code></pre>
+<pre><code>[1] &quot;Normality, Random effects&quot;</code></pre>
+<pre><code>Group: zona:geo_parcela_nombre
+(Intercept) OK: random effects appear as normally distributed (p = 0.918).</code></pre>
+</div>
+<div id="model-3" class="section level3">
+<h3>Model</h3>
+<ul>
+<li>Gamma</li>
+</ul>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: fe_percent ~ pre_post_quema * zona + (1 | zona:geo_parcela_nombre)
+Data: df_model
+               Effect     df    F p.value
+1      pre_post_quema 1, 129 0.52    .473
+2                zona   2, 9 0.69    .526
+3 pre_post_quema:zona 2, 129 0.17    .845
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hocs-3" class="section level3">
+<h3><em>Post-hocs</em></h3>
+<pre><code>$`emmeans of pre_post_quema`
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema       0.560 0.0317 Inf     0.498     0.622
+ Prequema        0.548 0.0316 Inf     0.486     0.610
+
+Results are averaged over the levels of: zona 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema`
+ 1                    estimate     SE  df z.ratio p.value
+ Postquema - Prequema   0.0113 0.0161 Inf 0.701   0.4831 
+
+Results are averaged over the levels of: zona 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of zona`
+ zona emmean     SE  df asymp.LCL asymp.UCL
+ NP    0.526 0.0532 Inf     0.422     0.630
+ P     0.606 0.0516 Inf     0.505     0.707
+ PR    0.531 0.0534 Inf     0.426     0.635
+
+Results are averaged over the levels of: pre_post_quema 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of zona`
+ 1       estimate     SE  df z.ratio p.value
+ NP - P  -0.07983 0.0739 Inf -1.081  0.5260 
+ NP - PR -0.00489 0.0753 Inf -0.065  0.9977 
+ P - PR   0.07494 0.0738 Inf  1.015  0.5674 
+
+Results are averaged over the levels of: pre_post_quema 
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of pre_post_quema | zona`
+zona = NP:
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema       0.537 0.0550 Inf     0.429     0.645
+ Prequema        0.515 0.0547 Inf     0.408     0.622
+
+zona = P:
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema       0.611 0.0537 Inf     0.506     0.716
+ Prequema        0.600 0.0536 Inf     0.495     0.705
+
+zona = PR:
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema       0.531 0.0550 Inf     0.423     0.639
+ Prequema        0.530 0.0550 Inf     0.422     0.638
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema | zona`
+zona = NP:
+ 2                    estimate     SE  df z.ratio p.value
+ Postquema - Prequema  0.02200 0.0271 Inf 0.812   0.4166 
+
+zona = P:
+ 2                    estimate     SE  df z.ratio p.value
+ Postquema - Prequema  0.01071 0.0297 Inf 0.361   0.7180 
+
+zona = PR:
+ 2                    estimate     SE  df z.ratio p.value
+ Postquema - Prequema  0.00108 0.0266 Inf 0.041   0.9675 
+
+Note: contrasts are still on the inverse scale </code></pre>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="k" class="section level1">
+<h1>% K</h1>
+<div id="check-distribution-4" class="section level3">
+<h3>Check distribution</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>summary statistics
+------
+min:  0.056   max:  1.74 
+median:  0.4965 
+mean:  0.5435972 
+estimated sd:  0.2791576 
+estimated skewness:  1.262402 
+estimated kurtosis:  5.88111 </code></pre>
+</div>
+<div id="normality-homocedasticity-4" class="section level3">
+<h3>Normality &amp; Homocedasticity</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>[1] &quot;Variances homogeneity?&quot;</code></pre>
+<pre><code>Warning: Variances differ between groups (Bartlett Test, p = 0.000).</code></pre>
+<pre><code>[1] &quot;Normality?&quot;</code></pre>
+<pre><code>Warning: Non-normality of residuals detected (p &lt; .001).</code></pre>
+<pre><code>[1] &quot;Normality, Random effects&quot;</code></pre>
+<pre><code>Group: zona:geo_parcela_nombre
+(Intercept) OK: random effects appear as normally distributed (p = 0.339).</code></pre>
+</div>
+<div id="model-4" class="section level3">
+<h3>Model</h3>
+<ul>
+<li>Gamma</li>
+</ul>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: k_percent ~ pre_post_quema * zona + (1 | zona:geo_parcela_nombre)
+Data: df_model
+               Effect     df      F p.value
+1      pre_post_quema 1, 129   2.19    .141
+2                zona   2, 9 6.73 *    .016
+3 pre_post_quema:zona 2, 129   0.43    .651
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hocs-4" class="section level3">
+<h3><em>Post-hocs</em></h3>
+<pre><code>$`emmeans of pre_post_quema`
+ pre_post_quema emmean    SE  df asymp.LCL asymp.UCL
+ Postquema        2.37 0.173 Inf      2.03      2.71
+ Prequema         2.13 0.168 Inf      1.80      2.46
+
+Results are averaged over the levels of: zona 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema`
+ 1                    estimate    SE  df z.ratio p.value
+ Postquema - Prequema    0.243 0.107 Inf 2.275   0.0229 
+
+Results are averaged over the levels of: zona 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of zona`
+ zona emmean    SE  df asymp.LCL asymp.UCL
+ NP     2.01 0.273 Inf     1.472      2.54
+ P      3.25 0.257 Inf     2.746      3.75
+ PR     1.49 0.303 Inf     0.896      2.08
+
+Results are averaged over the levels of: pre_post_quema 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of zona`
+ 1       estimate    SE  df z.ratio p.value
+ NP - P    -1.242 0.372 Inf -3.339  0.0024 
+ NP - PR    0.517 0.406 Inf  1.273  0.4105 
+ P - PR     1.759 0.396 Inf  4.445  &lt;.0001 
+
+Results are averaged over the levels of: pre_post_quema 
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of pre_post_quema | zona`
+zona = NP:
+ pre_post_quema emmean    SE  df asymp.LCL asymp.UCL
+ Postquema        2.02 0.283 Inf     1.466      2.58
+ Prequema         1.99 0.283 Inf     1.438      2.55
+
+zona = P:
+ pre_post_quema emmean    SE  df asymp.LCL asymp.UCL
+ Postquema        3.57 0.301 Inf     2.982      4.16
+ Prequema         2.93 0.276 Inf     2.386      3.47
+
+zona = PR:
+ pre_post_quema emmean    SE  df asymp.LCL asymp.UCL
+ Postquema        1.52 0.308 Inf     0.914      2.12
+ Prequema         1.46 0.307 Inf     0.860      2.06
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema | zona`
+zona = NP:
+ 2                    estimate    SE  df z.ratio p.value
+ Postquema - Prequema   0.0297 0.150 Inf 0.198   0.8433 
+
+zona = P:
+ 2                    estimate    SE  df z.ratio p.value
+ Postquema - Prequema   0.6437 0.263 Inf 2.444   0.0145 
+
+zona = PR:
+ 2                    estimate    SE  df z.ratio p.value
+ Postquema - Prequema   0.0556 0.104 Inf 0.536   0.5920 
+
+Note: contrasts are still on the inverse scale </code></pre>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="mg" class="section level1">
+<h1>% Mg</h1>
+<div id="check-distribution-5" class="section level3">
+<h3>Check distribution</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>summary statistics
+------
+min:  0.252   max:  4.59 
+median:  1.4 
+mean:  1.579299 
+estimated sd:  0.8084862 
+estimated skewness:  1.064159 
+estimated kurtosis:  4.167461 </code></pre>
+</div>
+<div id="normality-homocedasticity-5" class="section level3">
+<h3>Normality &amp; Homocedasticity</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>[1] &quot;Variances homogeneity?&quot;</code></pre>
+<pre><code>Warning: Variances differ between groups (Bartlett Test, p = 0.000).</code></pre>
+<pre><code>[1] &quot;Normality?&quot;</code></pre>
+<pre><code>Warning: Non-normality of residuals detected (p &lt; .001).</code></pre>
+<pre><code>[1] &quot;Normality, Random effects&quot;</code></pre>
+<pre><code>Group: zona:geo_parcela_nombre
+(Intercept) OK: random effects appear as normally distributed (p = 0.525).</code></pre>
+</div>
+<div id="model-5" class="section level3">
+<h3>Model</h3>
+<ul>
+<li>Gamma</li>
+</ul>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: mg_percent ~ pre_post_quema * zona + (1 | zona:geo_parcela_nombre)
+Data: df_model
+               Effect     df      F p.value
+1      pre_post_quema 1, 129   1.37    .245
+2                zona   2, 9 3.05 +    .097
+3 pre_post_quema:zona 2, 129   0.84    .434
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hocs-5" class="section level3">
+<h3><em>Post-hocs</em></h3>
+<pre><code>$`emmeans of pre_post_quema`
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema       0.749 0.0803 Inf     0.592     0.907
+ Prequema        0.784 0.0807 Inf     0.625     0.942
+
+Results are averaged over the levels of: zona 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema`
+ 1                    estimate     SE  df z.ratio p.value
+ Postquema - Prequema  -0.0345 0.0371 Inf -0.929  0.3527 
+
+Results are averaged over the levels of: zona 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of zona`
+ zona emmean    SE  df asymp.LCL asymp.UCL
+ NP    0.759 0.133 Inf     0.498      1.02
+ P     0.992 0.125 Inf     0.747      1.24
+ PR    0.548 0.144 Inf     0.265      0.83
+
+Results are averaged over the levels of: pre_post_quema 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of zona`
+ 1       estimate    SE  df z.ratio p.value
+ NP - P    -0.233 0.181 Inf -1.286  0.4031 
+ NP - PR    0.212 0.196 Inf  1.080  0.5266 
+ P - PR     0.445 0.190 Inf  2.340  0.0504 
+
+Results are averaged over the levels of: pre_post_quema 
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of pre_post_quema | zona`
+zona = NP:
+ pre_post_quema emmean    SE  df asymp.LCL asymp.UCL
+ Postquema       0.711 0.135 Inf     0.445     0.977
+ Prequema        0.807 0.137 Inf     0.538     1.076
+
+zona = P:
+ pre_post_quema emmean    SE  df asymp.LCL asymp.UCL
+ Postquema       0.996 0.132 Inf     0.737     1.255
+ Prequema        0.988 0.132 Inf     0.730     1.247
+
+zona = PR:
+ pre_post_quema emmean    SE  df asymp.LCL asymp.UCL
+ Postquema       0.540 0.146 Inf     0.255     0.826
+ Prequema        0.555 0.146 Inf     0.269     0.841
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema | zona`
+zona = NP:
+ 2                    estimate     SE  df z.ratio p.value
+ Postquema - Prequema -0.09632 0.0566 Inf -1.702  0.0887 
+
+zona = P:
+ 2                    estimate     SE  df z.ratio p.value
+ Postquema - Prequema  0.00742 0.0841 Inf  0.088  0.9297 
+
+zona = PR:
+ 2                    estimate     SE  df z.ratio p.value
+ Postquema - Prequema -0.01457 0.0461 Inf -0.316  0.7521 
+
+Note: contrasts are still on the inverse scale </code></pre>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-35-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="cn" class="section level1">
+<h1>C/N</h1>
+<div id="check-distribution-6" class="section level3">
+<h3>Check distribution</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-36-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>summary statistics
+------
+min:  14.20907   max:  116.0373 
+median:  34.20672 
+mean:  39.50944 
+estimated sd:  19.74075 
+estimated skewness:  1.645355 
+estimated kurtosis:  6.246139 </code></pre>
+</div>
+<div id="normality-homocedasticity-6" class="section level3">
+<h3>Normality &amp; Homocedasticity</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>[1] &quot;Variances homogeneity?&quot;</code></pre>
+<pre><code>OK: Variances in each of the groups are the same (Bartlett Test, p = 0.136).</code></pre>
+<pre><code>[1] &quot;Normality?&quot;</code></pre>
+<pre><code>Warning: Non-normality of residuals detected (p &lt; .001).</code></pre>
+<pre><code>[1] &quot;Normality, Random effects&quot;</code></pre>
+<pre><code>Group: zona:geo_parcela_nombre
+(Intercept) OK: random effects appear as normally distributed (p = 0.614).</code></pre>
+</div>
+<div id="model-6" class="section level3">
+<h3>Model</h3>
+<ul>
+<li>Gamma</li>
+</ul>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: c_n ~ pre_post_quema * zona + (1 | zona:geo_parcela_nombre)
+Data: df_model
+               Effect     df    F p.value
+1      pre_post_quema 1, 129 0.32    .574
+2                zona   2, 9 0.43    .663
+3 pre_post_quema:zona 2, 129 0.42    .659
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hocs-6" class="section level3">
+<h3><em>Post-hocs</em></h3>
+<pre><code>$`emmeans of pre_post_quema`
+ pre_post_quema emmean      SE  df asymp.LCL asymp.UCL
+ Postquema      0.0281 0.00250 Inf    0.0232    0.0330
+ Prequema       0.0269 0.00248 Inf    0.0221    0.0318
+
+Results are averaged over the levels of: zona 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema`
+ 1                    estimate     SE  df z.ratio p.value
+ Postquema - Prequema  0.00119 0.0016 Inf 0.743   0.4573 
+
+Results are averaged over the levels of: zona 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of zona`
+ zona emmean      SE  df asymp.LCL asymp.UCL
+ NP   0.0301 0.00398 Inf    0.0223    0.0379
+ P    0.0275 0.00403 Inf    0.0196    0.0354
+ PR   0.0249 0.00402 Inf    0.0171    0.0328
+
+Results are averaged over the levels of: pre_post_quema 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of zona`
+ 1       estimate      SE  df z.ratio p.value
+ NP - P   0.00257 0.00559 Inf 0.459   0.8903 
+ NP - PR  0.00514 0.00562 Inf 0.915   0.6310 
+ P - PR   0.00257 0.00566 Inf 0.455   0.8924 
+
+Results are averaged over the levels of: pre_post_quema 
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of pre_post_quema | zona`
+zona = NP:
+ pre_post_quema emmean      SE  df asymp.LCL asymp.UCL
+ Postquema      0.0312 0.00431 Inf    0.0227    0.0396
+ Prequema       0.0290 0.00422 Inf    0.0207    0.0373
+
+zona = P:
+ pre_post_quema emmean      SE  df asymp.LCL asymp.UCL
+ Postquema      0.0288 0.00429 Inf    0.0204    0.0372
+ Prequema       0.0263 0.00421 Inf    0.0180    0.0345
+
+zona = PR:
+ pre_post_quema emmean      SE  df asymp.LCL asymp.UCL
+ Postquema      0.0244 0.00420 Inf    0.0162    0.0326
+ Prequema       0.0255 0.00424 Inf    0.0172    0.0338
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema | zona`
+zona = NP:
+ 2                    estimate      SE  df z.ratio p.value
+ Postquema - Prequema  0.00215 0.00305 Inf  0.706  0.4802 
+
+zona = P:
+ 2                    estimate      SE  df z.ratio p.value
+ Postquema - Prequema  0.00252 0.00269 Inf  0.939  0.3479 
+
+zona = PR:
+ 2                    estimate      SE  df z.ratio p.value
+ Postquema - Prequema -0.00111 0.00255 Inf -0.435  0.6637 
+
+Note: contrasts are still on the inverse scale </code></pre>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-40-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="p" class="section level1">
+<h1>P</h1>
+<div id="check-distribution-7" class="section level3">
+<h3>Check distribution</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-41-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>summary statistics
+------
+min:  1   max:  17 
+median:  4.5 
+mean:  5.116667 
+estimated sd:  2.43368 
+estimated skewness:  1.886353 
+estimated kurtosis:  8.270509 </code></pre>
+</div>
+<div id="normality-homocedasticity-7" class="section level3">
+<h3>Normality &amp; Homocedasticity</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-42-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>[1] &quot;Variances homogeneity?&quot;</code></pre>
+<pre><code>Warning: Variances differ between groups (Bartlett Test, p = 0.000).</code></pre>
+<pre><code>[1] &quot;Normality?&quot;</code></pre>
+<pre><code>Warning: Non-normality of residuals detected (p &lt; .001).</code></pre>
+<pre><code>[1] &quot;Normality, Random effects&quot;</code></pre>
+<pre><code>Group: zona:geo_parcela_nombre
+(Intercept) Warning: Non-normality of random effects detected (p = 0.007).</code></pre>
+</div>
+<div id="model-7" class="section level3">
+<h3>Model</h3>
+<ul>
+<li>Negative Binomial</li>
+</ul>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: p ~ pre_post_quema * zona + (1 | zona:geo_parcela_nombre)
+Data: df_model
+               Effect     df       F p.value
+1      pre_post_quema 1, 129  3.20 +    .076
+2                zona   2, 9  3.81 +    .063
+3 pre_post_quema:zona 2, 129 4.88 **    .009
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hocs-7" class="section level3">
+<h3><em>Post-hocs</em></h3>
+<pre><code>$`emmeans of pre_post_quema`
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema        1.68 0.0586 Inf      1.57      1.80
+ Prequema         1.53 0.0631 Inf      1.40      1.65
+
+Results are averaged over the levels of: zona 
+Results are given on the log (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema`
+ 1                    estimate     SE  df z.ratio p.value
+ Postquema - Prequema    0.156 0.0745 Inf 2.100   0.0357 
+
+Results are averaged over the levels of: zona 
+Results are given on the log (not the response) scale. </code></pre>
+<pre><code>$`emmeans of zona`
+ zona emmean     SE  df asymp.LCL asymp.UCL
+ NP     1.52 0.0844 Inf      1.35      1.69
+ P      1.46 0.0865 Inf      1.30      1.63
+ PR     1.83 0.0777 Inf      1.68      1.98
+
+Results are averaged over the levels of: pre_post_quema 
+Results are given on the log (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of zona`
+ 1       estimate    SE  df z.ratio p.value
+ NP - P    0.0548 0.121 Inf  0.455  0.8923 
+ NP - PR  -0.3116 0.114 Inf -2.726  0.0176 
+ P - PR   -0.3664 0.116 Inf -3.155  0.0046 
+
+Results are averaged over the levels of: pre_post_quema 
+Results are given on the log (not the response) scale. 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of pre_post_quema | zona`
+zona = NP:
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema        1.70 0.0984 Inf      1.51      1.89
+ Prequema         1.34 0.1146 Inf      1.11      1.56
+
+zona = P:
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema        1.59 0.1048 Inf      1.38      1.79
+ Prequema         1.34 0.1159 Inf      1.11      1.57
+
+zona = PR:
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema        1.76 0.0984 Inf      1.57      1.95
+ Prequema         1.90 0.0943 Inf      1.72      2.09
+
+Results are given on the log (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema | zona`
+zona = NP:
+ 2                    estimate    SE  df z.ratio p.value
+ Postquema - Prequema    0.361 0.131 Inf  2.761  0.0058 
+
+zona = P:
+ 2                    estimate    SE  df z.ratio p.value
+ Postquema - Prequema    0.247 0.137 Inf  1.797  0.0724 
+
+zona = PR:
+ 2                    estimate    SE  df z.ratio p.value
+ Postquema - Prequema   -0.139 0.114 Inf -1.218  0.2232 
+
+Results are given on the log (not the response) scale. </code></pre>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-45-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="mo" class="section level1">
+<h1>MO</h1>
+<div id="check-distribution-8" class="section level3">
+<h3>Check distribution</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-46-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>summary statistics
+------
+min:  0.44   max:  12.91 
+median:  4.4 
+mean:  4.737431 
+estimated sd:  2.507076 
+estimated skewness:  0.6914957 
+estimated kurtosis:  2.846614 </code></pre>
+</div>
+<div id="normality-homocedasticity-8" class="section level3">
+<h3>Normality &amp; Homocedasticity</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-47-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>[1] &quot;Variances homogeneity?&quot;</code></pre>
+<pre><code>Warning: Variances differ between groups (Bartlett Test, p = 0.000).</code></pre>
+<pre><code>[1] &quot;Normality?&quot;</code></pre>
+<pre><code>Warning: Non-normality of residuals detected (p = 0.036).</code></pre>
+<pre><code>[1] &quot;Normality, Random effects&quot;</code></pre>
+<pre><code>Group: zona:geo_parcela_nombre
+(Intercept) OK: random effects appear as normally distributed (p = 0.837).</code></pre>
+</div>
+<div id="model-8" class="section level3">
+<h3>Model</h3>
+<ul>
+<li>Gamma</li>
+</ul>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: mo ~ pre_post_quema * zona + (1 | zona:geo_parcela_nombre)
+Data: df_model
+               Effect     df         F p.value
+1      pre_post_quema 1, 129      1.35    .247
+2                zona   2, 9 20.37 ***   &lt;.001
+3 pre_post_quema:zona 2, 129      1.04    .357
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hocs-8" class="section level3">
+<h3><em>Post-hocs</em></h3>
+<pre><code>$`emmeans of pre_post_quema`
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema       0.233 0.0149 Inf     0.203     0.262
+ Prequema        0.244 0.0152 Inf     0.215     0.274
+
+Results are averaged over the levels of: zona 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema`
+ 1                    estimate     SE  df z.ratio p.value
+ Postquema - Prequema  -0.0117 0.0177 Inf -0.660  0.5094 
+
+Results are averaged over the levels of: zona 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of zona`
+ zona emmean     SE  df asymp.LCL asymp.UCL
+ NP    0.194 0.0186 Inf     0.157     0.230
+ P     0.168 0.0176 Inf     0.133     0.202
+ PR    0.354 0.0254 Inf     0.305     0.404
+
+Results are averaged over the levels of: pre_post_quema 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of zona`
+ 1       estimate     SE  df z.ratio p.value
+ NP - P    0.0261 0.0253 Inf  1.033  0.5557 
+ NP - PR  -0.1608 0.0312 Inf -5.156  &lt;.0001 
+ P - PR   -0.1869 0.0307 Inf -6.084  &lt;.0001 
+
+Results are averaged over the levels of: pre_post_quema 
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of pre_post_quema | zona`
+zona = NP:
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema       0.174 0.0206 Inf     0.134     0.215
+ Prequema        0.213 0.0231 Inf     0.168     0.258
+
+zona = P:
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema       0.165 0.0201 Inf     0.126     0.205
+ Prequema        0.170 0.0204 Inf     0.130     0.210
+
+zona = PR:
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema       0.359 0.0337 Inf     0.293     0.425
+ Prequema        0.350 0.0330 Inf     0.286     0.415
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema | zona`
+zona = NP:
+ 2                    estimate     SE  df z.ratio p.value
+ Postquema - Prequema -0.03836 0.0233 Inf -1.648  0.0993 
+
+zona = P:
+ 2                    estimate     SE  df z.ratio p.value
+ Postquema - Prequema -0.00480 0.0201 Inf -0.239  0.8112 
+
+zona = PR:
+ 2                    estimate     SE  df z.ratio p.value
+ Postquema - Prequema  0.00816 0.0432 Inf  0.189  0.8502 
+
+Note: contrasts are still on the inverse scale </code></pre>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-50-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="n" class="section level1">
+<h1>% N</h1>
+<div id="check-distribution-9" class="section level3">
+<h3>Check distribution</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-51-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>summary statistics
+------
+min:  0.0427   max:  0.634455 
+median:  0.2104425 
+mean:  0.2299281 
+estimated sd:  0.1176054 
+estimated skewness:  1.283039 
+estimated kurtosis:  4.846892 </code></pre>
+</div>
+<div id="normality-homocedasticity-9" class="section level3">
+<h3>Normality &amp; Homocedasticity</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-52-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>[1] &quot;Variances homogeneity?&quot;</code></pre>
+<pre><code>Warning: Variances differ between groups (Bartlett Test, p = 0.000).</code></pre>
+<pre><code>[1] &quot;Normality?&quot;</code></pre>
+<pre><code>Warning: Non-normality of residuals detected (p &lt; .001).</code></pre>
+</div>
+<div id="model-9" class="section level3">
+<h3>Model</h3>
+<ul>
+<li><p>Beta (glmmADBM)</p></li>
+<li><p>Beta glmmTMB</p></li>
+</ul>
+</div>
+<div id="post-hocs-9" class="section level3">
+<h3><em>Post-hocs</em></h3>
+<pre><code>$`emmeans of pre_post_quema`
+ pre_post_quema emmean     SE  df lower.CL upper.CL
+ Postquema       -1.10 0.0678 136    -1.24   -0.968
+ Prequema        -1.31 0.0710 136    -1.45   -1.171
+
+Results are averaged over the levels of: zona 
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema`
+ 1                    estimate     SE  df t.ratio p.value
+ Postquema - Prequema     0.21 0.0968 136 2.170   0.0318 
+
+Results are averaged over the levels of: zona 
+Results are given on the log odds ratio (not the response) scale. </code></pre>
+<pre><code>$`emmeans of zona`
+ zona emmean     SE  df lower.CL upper.CL
+ NP    -1.11 0.0827 136    -1.27   -0.947
+ P     -1.12 0.0828 136    -1.28   -0.953
+ PR    -1.39 0.0882 136    -1.57   -1.219
+
+Results are averaged over the levels of: pre_post_quema 
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of zona`
+ 1       estimate    SE  df t.ratio p.value
+ NP - P   0.00552 0.116 136 0.048   0.9988 
+ NP - PR  0.28266 0.120 136 2.362   0.0510 
+ P - PR   0.27714 0.120 136 2.315   0.0571 
+
+Results are averaged over the levels of: pre_post_quema 
+Results are given on the log odds ratio (not the response) scale. 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of pre_post_quema | zona`
+zona = NP:
+ pre_post_quema emmean    SE  df lower.CL upper.CL
+ Postquema      -0.940 0.112 136    -1.16   -0.718
+ Prequema       -1.282 0.121 136    -1.52   -1.043
+
+zona = P:
+ pre_post_quema emmean    SE  df lower.CL upper.CL
+ Postquema      -0.964 0.113 136    -1.19   -0.741
+ Prequema       -1.269 0.120 136    -1.51   -1.031
+
+zona = PR:
+ pre_post_quema emmean    SE  df lower.CL upper.CL
+ Postquema      -1.403 0.124 136    -1.65   -1.157
+ Prequema       -1.384 0.124 136    -1.63   -1.140
+
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema | zona`
+zona = NP:
+ 2                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema   0.3425 0.164 136  2.086  0.0388 
+
+zona = P:
+ 2                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema   0.3055 0.164 136  1.860  0.0650 
+
+zona = PR:
+ 2                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema  -0.0182 0.174 136 -0.104  0.9171 
+
+Results are given on the log odds ratio (not the response) scale. </code></pre>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-56-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="na" class="section level1">
+<h1>% Na</h1>
+<div id="check-distribution-10" class="section level3">
+<h3>Check distribution</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-57-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>summary statistics
+------
+min:  0.005   max:  0.25 
+median:  0.0355 
+mean:  0.04798611 
+estimated sd:  0.0382072 
+estimated skewness:  2.52624 
+estimated kurtosis:  10.93139 </code></pre>
+</div>
+<div id="normality-homocedasticity-10" class="section level3">
+<h3>Normality &amp; Homocedasticity</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-58-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>[1] &quot;Variances homogeneity?&quot;</code></pre>
+<pre><code>Warning: Variances differ between groups (Bartlett Test, p = 0.000).</code></pre>
+<pre><code>[1] &quot;Normality?&quot;</code></pre>
+<pre><code>Warning: Non-normality of residuals detected (p &lt; .001).</code></pre>
+<pre><code>[1] &quot;Normality, Random effects&quot;</code></pre>
+<pre><code>Group: zona:geo_parcela_nombre
+(Intercept) OK: random effects appear as normally distributed (p = 0.952).</code></pre>
+</div>
+<div id="model-10" class="section level3">
+<h3>Model</h3>
+<ul>
+<li>Beta (glmmADBM)</li>
+</ul>
+<pre><code>Analysis of Deviance Table (Type II tests)
+
+Response: na_percent
+                    Df  Chisq Pr(&gt;Chisq)  
+pre_post_quema       1 0.0675    0.79498  
+zona                 2 6.9677    0.03069 *
+pre_post_quema:zona  2 0.1864    0.91101  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: na_percent ~ pre_post_quema * zona + (1 | zona:geo_parcela_nombre)
+Data: df_model
+               Effect     df    F p.value
+1      pre_post_quema 1, 129 0.42    .518
+2                zona   2, 9 2.82    .112
+3 pre_post_quema:zona 2, 129 0.18    .836
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+<ul>
+<li>Beta glmmTMB</li>
+</ul>
+<pre><code>Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: na_percent
+                      Chisq Df Pr(&gt;Chisq)   
+pre_post_quema       0.6972  1   0.403742   
+zona                11.9557  2   0.002534 **
+pre_post_quema:zona  0.2409  2   0.886524   
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hocs-10" class="section level3">
+<h3><em>Post-hocs</em></h3>
+<pre><code>$`emmeans of pre_post_quema`
+ pre_post_quema emmean     SE  df lower.CL upper.CL
+ Postquema       -3.08 0.0934 136    -3.26    -2.90
+ Prequema        -3.00 0.0916 136    -3.18    -2.82
+
+Results are averaged over the levels of: zona 
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema`
+ 1                    estimate     SE  df t.ratio p.value
+ Postquema - Prequema   -0.082 0.0891 136 -0.920  0.3593 
+
+Results are averaged over the levels of: zona 
+Results are given on the log odds ratio (not the response) scale. </code></pre>
+<pre><code>$`emmeans of zona`
+ zona emmean    SE  df lower.CL upper.CL
+ NP    -2.88 0.134 136    -3.15    -2.61
+ P     -3.43 0.146 136    -3.72    -3.15
+ PR    -2.80 0.133 136    -3.07    -2.54
+
+Results are averaged over the levels of: pre_post_quema 
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of zona`
+ 1       estimate    SE  df t.ratio p.value
+ NP - P    0.5523 0.196 136  2.816  0.0153 
+ NP - PR  -0.0772 0.188 136 -0.411  0.9113 
+ P - PR   -0.6295 0.195 136 -3.224  0.0045 
+
+Results are averaged over the levels of: pre_post_quema 
+Results are given on the log odds ratio (not the response) scale. 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of pre_post_quema | zona`
+zona = NP:
+ pre_post_quema emmean    SE  df lower.CL upper.CL
+ Postquema       -2.91 0.154 136    -3.21    -2.60
+ Prequema        -2.86 0.152 136    -3.16    -2.56
+
+zona = P:
+ pre_post_quema emmean    SE  df lower.CL upper.CL
+ Postquema       -3.51 0.173 136    -3.85    -3.17
+ Prequema        -3.36 0.168 136    -3.69    -3.03
+
+zona = PR:
+ pre_post_quema emmean    SE  df lower.CL upper.CL
+ Postquema       -2.83 0.151 136    -3.13    -2.53
+ Prequema        -2.78 0.150 136    -3.08    -2.48
+
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema | zona`
+zona = NP:
+ 2                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema  -0.0499 0.144 136 -0.345  0.7303 
+
+zona = P:
+ 2                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema  -0.1486 0.177 136 -0.837  0.4039 
+
+zona = PR:
+ 2                    estimate    SE  df t.ratio p.value
+ Postquema - Prequema  -0.0475 0.139 136 -0.343  0.7321 
+
+Results are given on the log odds ratio (not the response) scale. </code></pre>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-62-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>soil &lt;- raw_soil %&gt;% filter(fecha %in% lubridate::ymd(c(“2018-12-11”, “2018-12-20”, “2019-04-24”, “2019-05-09”))) %&gt;% mutate(zona = as.factor(zona), pre_post_quema = as.factor(pre_post_quema) )</p>
+</div>
+</div>
+<div id="nh4" class="section level1">
+<h1>NH4</h1>
+<ul>
+<li>prepara datos</li>
+</ul>
+<pre><code>              zona
+pre_post_quema NP  P
+     Postquema 24 23
+     Prequema  24 24</code></pre>
+<pre><code># A tibble: 4 x 4
+# Groups:   zona [2]
+  zona  pre_post_quema N.nh4 N.no3
+  &lt;fct&gt; &lt;fct&gt;          &lt;int&gt; &lt;int&gt;
+1 NP    Postquema         24    24
+2 NP    Prequema          24    24
+3 P     Postquema         23    23
+4 P     Prequema          24    24</code></pre>
+<div id="check-distribution-11" class="section level3">
+<h3>Check distribution</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-64-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>summary statistics
+------
+min:  0.258   max:  21.312 
+median:  0.712 
+mean:  2.315116 
+estimated sd:  3.686985 
+estimated skewness:  3.16529 
+estimated kurtosis:  14.49165 </code></pre>
+</div>
+<div id="normality-homocedasticity-11" class="section level3">
+<h3>Normality &amp; Homocedasticity</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-65-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>[1] &quot;Variances homogeneity?&quot;</code></pre>
+<pre><code>Warning: Variances differ between groups (Bartlett Test, p = 0.000).</code></pre>
+<pre><code>[1] &quot;Normality?&quot;</code></pre>
+<pre><code>Warning: Non-normality of residuals detected (p &lt; .001).</code></pre>
+</div>
+<div id="model-11" class="section level3">
+<h3>Model</h3>
+<ul>
+<li>Gamma</li>
+</ul>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: n_nh4 ~ pre_post_quema * zona + (1 | zona:geo_parcela_nombre)
+Data: df_model
+               Effect       df         F p.value
+1      pre_post_quema 1, 85.12 26.17 ***   &lt;.001
+2                zona  1, 5.99      1.58    .256
+3 pre_post_quema:zona 1, 85.12      1.72    .193
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hocs-11" class="section level3">
+<h3><em>Post-hocs</em></h3>
+<pre><code>$`emmeans of pre_post_quema`
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema       0.275 0.0439 Inf     0.189     0.361
+ Prequema        1.630 0.1753 Inf     1.286     1.973
+
+Results are averaged over the levels of: zona 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema`
+ 1                    estimate    SE  df z.ratio p.value
+ Postquema - Prequema    -1.35 0.176 Inf -7.692  &lt;.0001 
+
+Results are averaged over the levels of: zona 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of zona`
+ zona emmean    SE  df asymp.LCL asymp.UCL
+ NP    0.950 0.133 Inf     0.689      1.21
+ P     0.955 0.127 Inf     0.706      1.21
+
+Results are averaged over the levels of: pre_post_quema 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of zona`
+ 1      estimate    SE  df z.ratio p.value
+ NP - P -0.00561 0.183 Inf -0.031  0.9755 
+
+Results are averaged over the levels of: pre_post_quema 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of pre_post_quema | zona`
+zona = NP:
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema       0.221 0.0517 Inf     0.120     0.322
+ Prequema        1.678 0.2550 Inf     1.179     2.178
+
+zona = P:
+ pre_post_quema emmean     SE  df asymp.LCL asymp.UCL
+ Postquema       0.330 0.0643 Inf     0.204     0.456
+ Prequema        1.581 0.2404 Inf     1.110     2.052
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema | zona`
+zona = NP:
+ 2                    estimate    SE  df z.ratio p.value
+ Postquema - Prequema    -1.46 0.254 Inf -5.729  &lt;.0001 
+
+zona = P:
+ 2                    estimate    SE  df z.ratio p.value
+ Postquema - Prequema    -1.25 0.243 Inf -5.155  &lt;.0001 
+
+Note: contrasts are still on the inverse scale </code></pre>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-68-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="no3" class="section level1">
+<h1>NO3</h1>
+<div id="check-distribution-12" class="section level3">
+<h3>Check distribution</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-69-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>summary statistics
+------
+min:  0.197   max:  2.657 
+median:  0.787 
+mean:  0.8658526 
+estimated sd:  0.4865887 
+estimated skewness:  1.354862 
+estimated kurtosis:  4.914124 </code></pre>
+</div>
+<div id="normality-homocedasticity-12" class="section level3">
+<h3>Normality &amp; Homocedasticity</h3>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-70-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>[1] &quot;Variances homogeneity?&quot;</code></pre>
+<pre><code>OK: Variances in each of the groups are the same (Bartlett Test, p = 0.066).</code></pre>
+<pre><code>[1] &quot;Normality?&quot;</code></pre>
+<pre><code>Warning: Non-normality of residuals detected (p &lt; .001).</code></pre>
+</div>
+<div id="model-12" class="section level3">
+<h3>Model</h3>
+<ul>
+<li>Gamma</li>
+</ul>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: n_no3 ~ pre_post_quema * zona + (1 | zona:geo_parcela_nombre)
+Data: df_model
+               Effect       df    F p.value
+1      pre_post_quema 1, 85.07 1.02    .314
+2                zona  1, 6.00 0.27    .620
+3 pre_post_quema:zona 1, 85.07 0.28    .601
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hocs-12" class="section level3">
+<h3><em>Post-hocs</em></h3>
+<pre><code>$`emmeans of pre_post_quema`
+ pre_post_quema emmean    SE  df asymp.LCL asymp.UCL
+ Postquema        1.26 0.124 Inf     1.019      1.50
+ Prequema         1.14 0.118 Inf     0.908      1.37
+
+Results are averaged over the levels of: zona 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema`
+ 1                    estimate    SE  df z.ratio p.value
+ Postquema - Prequema    0.124 0.116 Inf 1.062   0.2883 
+
+Results are averaged over the levels of: zona 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of zona`
+ zona emmean    SE  df asymp.LCL asymp.UCL
+ NP     1.25 0.149 Inf     0.957      1.54
+ P      1.15 0.145 Inf     0.867      1.44
+
+Results are averaged over the levels of: pre_post_quema 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of zona`
+ 1      estimate    SE  df z.ratio p.value
+ NP - P   0.0979 0.204 Inf 0.479   0.6318 
+
+Results are averaged over the levels of: pre_post_quema 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of pre_post_quema | zona`
+zona = NP:
+ pre_post_quema emmean    SE  df asymp.LCL asymp.UCL
+ Postquema        1.28 0.174 Inf     0.942      1.62
+ Prequema         1.22 0.169 Inf     0.884      1.55
+
+zona = P:
+ pre_post_quema emmean    SE  df asymp.LCL asymp.UCL
+ Postquema        1.24 0.173 Inf     0.903      1.58
+ Prequema         1.06 0.158 Inf     0.750      1.37
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pre_post_quema | zona`
+zona = NP:
+ 2                    estimate    SE  df z.ratio p.value
+ Postquema - Prequema   0.0671 0.169 Inf 0.397   0.6915 
+
+zona = P:
+ 2                    estimate    SE  df z.ratio p.value
+ Postquema - Prequema   0.1801 0.160 Inf 1.125   0.2605 
+
+Note: contrasts are still on the inverse scale </code></pre>
+<p><img src="figure/analysis_pre_post.Rmd/unnamed-chunk-73-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="resumen-general" class="section level1">
+<h1>Resumen general</h1>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre><code>R version 4.0.2 (2020-06-22)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Catalina 10.15.3
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] glmmTMB_1.0.2.1    afex_0.28-1        performance_0.7.2  multcomp_1.4-16   
+ [5] TH.data_1.0-10     mvtnorm_1.1-1      emmeans_1.5.4      lmerTest_3.1-3    
+ [9] lme4_1.1-27.1      Matrix_1.3-2       fitdistrplus_1.1-3 survival_3.2-7    
+[13] MASS_7.3-53        ggpubr_0.4.0       janitor_2.1.0      here_1.0.1        
+[17] forcats_0.5.1      stringr_1.4.0      dplyr_1.0.6        purrr_0.3.4       
+[21] readr_1.4.0        tidyr_1.1.3        tibble_3.1.2       ggplot2_3.3.5     
+[25] tidyverse_1.3.1    rmdformats_1.0.1   knitr_1.31         workflowr_1.6.2   
+
+loaded via a namespace (and not attached):
+  [1] minqa_1.2.4         colorspace_2.0-0    glmmADMB_0.8.3.3   
+  [4] ggsignif_0.6.0      ggridges_0.5.3      ellipsis_0.3.2     
+  [7] rio_0.5.16          rprojroot_2.0.2     estimability_1.3   
+ [10] snakecase_0.11.0    parameters_0.14.0   fs_1.5.0           
+ [13] rstudioapi_0.13     farver_2.0.3        fansi_0.4.2        
+ [16] lubridate_1.7.10    xml2_1.3.2          codetools_0.2-18   
+ [19] splines_4.0.2       jsonlite_1.7.2      nloptr_1.2.2.2     
+ [22] pbkrtest_0.5-0.1    broom_0.7.9         dbplyr_2.1.1       
+ [25] effectsize_0.4.5    compiler_4.0.2      httr_1.4.2         
+ [28] backports_1.2.1     assertthat_0.2.1    fastmap_1.1.0      
+ [31] cli_2.5.0           formatR_1.8         later_1.1.0.1      
+ [34] htmltools_0.5.2     tools_4.0.2         coda_0.19-4        
+ [37] gtable_0.3.0        glue_1.4.2          reshape2_1.4.4     
+ [40] Rcpp_1.0.7          carData_3.0-4       cellranger_1.1.0   
+ [43] jquerylib_0.1.3     vctrs_0.3.8         nlme_3.1-152       
+ [46] insight_0.14.4      xfun_0.23           openxlsx_4.2.3     
+ [49] rvest_1.0.0         lifecycle_1.0.0     rstatix_0.6.0      
+ [52] zoo_1.8-8           scales_1.1.1        hms_1.0.0          
+ [55] promises_1.2.0.1    parallel_4.0.2      sandwich_3.0-0     
+ [58] TMB_1.7.19          yaml_2.2.1          curl_4.3           
+ [61] gridExtra_2.3       see_0.6.4           sass_0.3.1         
+ [64] stringi_1.7.4       bayestestR_0.9.0    highr_0.8          
+ [67] plotrix_3.8-1       randomForest_4.6-14 boot_1.3-26        
+ [70] zip_2.1.1           R2admb_0.7.16.2     rlang_0.4.10       
+ [73] pkgconfig_2.0.3     evaluate_0.14       lattice_0.20-41    
+ [76] labeling_0.4.2      tidyselect_1.1.1    plyr_1.8.6         
+ [79] magrittr_2.0.1      bookdown_0.21.6     R6_2.5.0           
+ [82] generics_0.1.0      DBI_1.1.1           pillar_1.6.1       
+ [85] haven_2.3.1         foreign_0.8-81      withr_2.4.1        
+ [88] abind_1.4-5         modelr_0.1.8        crayon_1.4.1       
+ [91] car_3.0-10          utf8_1.1.4          rmarkdown_2.8      
+ [94] grid_4.0.2          readxl_1.3.1        data.table_1.14.0  
+ [97] git2r_0.28.0        reprex_2.0.0        digest_0.6.27      
+[100] xtable_1.8-4       
+ [ reached getOption(&quot;max.print&quot;) -- omitted 4 entries ]</code></pre>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
