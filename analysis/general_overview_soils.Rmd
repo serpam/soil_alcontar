@@ -1,0 +1,66 @@
+---
+title: "General overview of soils"
+author: "ajpelu"
+date: "2021-09-08"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(rmdformats)
+
+opts_chunk$set(echo=TRUE,
+	             cache=FALSE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE,
+               autodep = TRUE)
+```
+
+
+# Prepare data
+
+```{r}
+library("tidyverse")
+library("here")
+library("ggtern")
+```
+
+```{r}
+# Soil General Data 
+soil_general <- readxl::read_excel(
+  here::here("data/Resultados_Suelos_2018_2021_v2.xlsx"),
+  sheet = "CARACT_SUELOS_MUESTRAS") %>% 
+  janitor::clean_names() %>% 
+  mutate(zona =
+      as.factor(case_when(
+        str_detect(geo_parcela_nombre, "NP_") ~ "NP",
+        str_detect(geo_parcela_nombre, "PR_") ~ "PR",
+        str_detect(geo_parcela_nombre, "P_") ~ "P"
+      ))
+  )
+```
+
+## Ternary plot 
+
+```{r}
+theme_set(theme_bw()) #simple ggplot theme / tema de ggplot simple 
+tern.plot <- ggtern(data=soil_general,
+       aes(x=arena,y=arcilla,z=limo)) + 
+  geom_point(size=3, aes(colour=zona, shape=zona)) + # tamaño de los puntos / point size
+  labs(yarrow="Arcilla (%)", # etiqueta de las fechas / arrow label
+       zarrow="Limo (%)",
+       xarrow="Arena (%)") +
+  xlab("") + ylab("") + zlab("") + 
+  theme_showarrows() + # mostrar flechas / display arrows
+  theme_clockwise()
+```
+
+```{r, plot-tern, dev=c('png', 'pdf','tiff')}
+print(tern.plot)
+```
+
