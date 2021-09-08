@@ -297,7 +297,7 @@ $(document).ready(function () {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-09-07
+<strong>Last updated:</strong> 2021-09-08
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -328,16 +328,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree50cffebe6d36ada2a847bc4a4429042cb309fcd7targetblank50cffeba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/serpam/soil_alcontar/tree/50cffebe6d36ada2a847bc4a4429042cb309fcd7" target="_blank">50cffeb</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree665c3f02e62b81e42980b533495c7ab9bea6875dtargetblank665c3f0a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/serpam/soil_alcontar/tree/665c3f02e62b81e42980b533495c7ab9bea6875d" target="_blank">665c3f0</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree50cffebe6d36ada2a847bc4a4429042cb309fcd7targetblank50cffeba" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree665c3f02e62b81e42980b533495c7ab9bea6875dtargetblank665c3f0a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/serpam/soil_alcontar/tree/50cffebe6d36ada2a847bc4a4429042cb309fcd7" target="_blank">50cffeb</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/serpam/soil_alcontar/tree/665c3f02e62b81e42980b533495c7ab9bea6875d" target="_blank">665c3f0</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -348,17 +348,22 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/C369E4F4/
     Ignored:    .Rproj.user/shared/notebooks/3F603CAC-map/
+    Ignored:    .Rproj.user/shared/notebooks/4A68381F-general_overview_soils/
     Ignored:    .Rproj.user/shared/notebooks/4E13660A-temporal_comparison/
     Ignored:    .Rproj.user/shared/notebooks/7ADB7089-Untitled/
     Ignored:    .Rproj.user/shared/notebooks/827D0727-analysis_pre_post/
     Ignored:    .Rproj.user/shared/notebooks/8A21BEE6-analysis_pre_post/
     Ignored:    .Rproj.user/shared/notebooks/A3F813C2-index/
+    Ignored:    .Rproj.user/shared/notebooks/D4E3AA10-analysis_zona_time/
     Ignored:    .Rproj.user/shared/notebooks/F2779D03-index/
 
 Untracked files:
     Untracked:  analysis/analysis_pre_post_cache/
+    Untracked:  analysis/analysis_zona_time.Rmd
     Untracked:  analysis/test.Rmd
+    Untracked:  data/spatial/01_EP_ANDALUCIA/EP_Andalucía.shp.DESKTOP-CKNNEUJ.5492.5304.sr.lock
     Untracked:  data/spatial/lucdeme/
+    Untracked:  data/spatial/parcelas/GEO_PARCELAS.shp.DESKTOP-CKNNEUJ.5492.5304.sr.lock
     Untracked:  map.Rmd
 
 Unstaged changes:
@@ -405,6 +410,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/665c3f02e62b81e42980b533495c7ab9bea6875d/analysis/index.Rmd" target="_blank">665c3f0</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-08
+</td>
+<td>
+add ternary plots
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/serpam/soil_alcontar/bbcb004c600e2f65b2c9ae1f61c93af72dc91e5b/docs/index.html" target="_blank">bbcb004</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-07
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -483,6 +522,7 @@ Start workflowr project.
 <div id="soil-data-analysis-of-andalusia-ep-alcontar" class="section level1">
 <h1>Soil Data analysis of Andalusia EP (Alcontar)</h1>
 <ul>
+<li><a href="general_overview_soils.html">General overview of soils</a></li>
 <li><a href="analysis_pre_post.html">Analysis of soil variables, pre and post-burning</a></li>
 </ul>
 </div>
