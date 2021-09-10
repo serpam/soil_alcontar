@@ -37,11 +37,11 @@ soil_general <- readxl::read_excel(
   sheet = "CARACT_SUELOS_MUESTRAS") %>% 
   janitor::clean_names() %>% 
   mutate(zona =
-      as.factor(case_when(
-        str_detect(geo_parcela_nombre, "NP_") ~ "NP",
-        str_detect(geo_parcela_nombre, "PR_") ~ "PR",
-        str_detect(geo_parcela_nombre, "P_") ~ "P"
-      ))
+      case_when(
+        str_detect(geo_parcela_nombre, "NP_") ~ "QOt_NP",
+        str_detect(geo_parcela_nombre, "PR_") ~ "QPr_P",
+        str_detect(geo_parcela_nombre, "P_") ~ "QOt_P"
+      )
   )
 ```
 
