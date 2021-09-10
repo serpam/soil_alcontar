@@ -11,4 +11,4 @@ editor_options:
 # Soil Data analysis of Andalusia EP (Alcontar)
 - [General overview of soils](general_overview_soils.html)
 - [Analysis of soil variables, pre and post-burning](analysis_pre_post.html)
-- [Browsings effects on Soil propierties after fire](analysis_zona_time.Rmd)
+- [Browsings effects on Soil propierties after fire](analysis_zona_time.html)
