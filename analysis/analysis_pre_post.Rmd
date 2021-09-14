@@ -305,7 +305,7 @@ emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
 
 
 
-# Fe
+# MO
 ### Model 
 ```{r}
 # Gamma
@@ -334,23 +334,6 @@ emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
 emmeans(m, list(pairwise ~zona), adjust = "tukey")
 emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # K
@@ -382,23 +365,6 @@ emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
 emmeans(m, list(pairwise ~zona), adjust = "tukey")
 emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # Mg
@@ -524,11 +490,6 @@ emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
 
 
 
-
-
-
-
-
 # Na
 ### Model 
 ```{r}
@@ -559,12 +520,6 @@ emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
 emmeans(m, list(pairwise ~zona), adjust = "tukey")
 emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
 ```
-
-
-
-
-
-
 
 
 # pH agua 
@@ -636,7 +591,7 @@ emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
 ```{r}
 soilN <- raw_soil %>% 
   dplyr::select(zona, fecha, pre_post_quema, geo_parcela_nombre, 
-                n_nh4, n_no3) %>% 
+                n_nh4,n_no3) %>% 
   drop_na() %>% 
   mutate(zona = as.factor(zona), 
          pre_post_quema = as.factor(pre_post_quema)
@@ -644,11 +599,6 @@ soilN <- raw_soil %>%
   
 xtabs(~pre_post_quema+zona, data = soilN)
 
-
-soilN %>% 
-  group_by(zona, pre_post_quema) %>% 
-  summarise(N.nh4 = length(n_nh4),
-            N.no3 = length(n_no3))
 ```
 ### Model 
 ```{r}
