@@ -463,16 +463,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree9ba7a9d477eccee3c93d7cb767a46ff8fc69b97ctargetblank9ba7a9da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/serpam/soil_alcontar/tree/9ba7a9d477eccee3c93d7cb767a46ff8fc69b97c" target="_blank">9ba7a9d</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree56e0949977deba6af4aa6690d1daa36e285697cctargetblank56e0949a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/serpam/soil_alcontar/tree/56e0949977deba6af4aa6690d1daa36e285697cc" target="_blank">56e0949</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree9ba7a9d477eccee3c93d7cb767a46ff8fc69b97ctargetblank9ba7a9da" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree56e0949977deba6af4aa6690d1daa36e285697cctargetblank56e0949a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/serpam/soil_alcontar/tree/9ba7a9d477eccee3c93d7cb767a46ff8fc69b97c" target="_blank">9ba7a9d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/serpam/soil_alcontar/tree/56e0949977deba6af4aa6690d1daa36e285697cc" target="_blank">56e0949</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -489,6 +489,7 @@ Ignored files:
     Ignored:    .Rproj.user/shared/notebooks/4672E36C-study_area/
     Ignored:    .Rproj.user/shared/notebooks/4A68381F-general_overview_soils/
     Ignored:    .Rproj.user/shared/notebooks/4E13660A-temporal_comparison/
+    Ignored:    .Rproj.user/shared/notebooks/5D919DFD-analysis_zona_time_postFire/
     Ignored:    .Rproj.user/shared/notebooks/827D0727-analysis_pre_post/
     Ignored:    .Rproj.user/shared/notebooks/A3F813C2-index/
     Ignored:    .Rproj.user/shared/notebooks/D4E3AA10-analysis_zona_time/
@@ -496,7 +497,6 @@ Ignored files:
 Untracked files:
     Untracked:  analysis/NOBORRAR.Rmd
     Untracked:  analysis/analysis_pre_post_cache/
-    Untracked:  analysis/study_area.Rmd
     Untracked:  analysis/test.Rmd
     Untracked:  data/spatial/01_EP_ANDALUCIA/EP_Andalucía.shp.DESKTOP-CKNNEUJ.5492.5304.sr.lock
     Untracked:  data/spatial/lucdeme/
@@ -505,10 +505,12 @@ Untracked files:
     Untracked:  map.Rmd
     Untracked:  output/anovas_pre_post_epoca.csv
     Untracked:  output/anovas_zona_time.csv
+    Untracked:  output/anovas_zona_time_postFire.csv
     Untracked:  scripts/generate_3dview.R
 
 Unstaged changes:
     Modified:   analysis/_site.yml
+    Modified:   analysis/analysis_zona_time_postFire.Rmd
     Modified:   data/spatial/.DS_Store
     Modified:   data/spatial/01_EP_ANDALUCIA/EP_Andalucía.dbf
     Deleted:    index.Rmd
@@ -557,6 +559,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/serpam/soil_alcontar/blob/56e0949977deba6af4aa6690d1daa36e285697cc/analysis/analysis_pre_post_epoca.Rmd" target="_blank">56e0949</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+<td>
+change fechaQuema por estacion; momento por
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/serpam/soil_alcontar/389b963200df0dd175c56dfbf435075dd9b8060b/docs/analysis_pre_post_epoca.html" target="_blank">389b963</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/serpam/soil_alcontar/blob/9ba7a9d477eccee3c93d7cb767a46ff8fc69b97c/analysis/analysis_pre_post_epoca.Rmd" target="_blank">9ba7a9d</a>
 </td>
 <td>
@@ -583,20 +619,20 @@ add analysis by date Fire
     &quot;NP_&quot;) ~ &quot;Autumn Burning / No Browsing&quot;, str_detect(geo_parcela_nombre, &quot;PR_&quot;) ~ 
     &quot;Spring Burning / Browsing&quot;, str_detect(geo_parcela_nombre, &quot;P_&quot;) ~ &quot;Autumn Burning / Browsing&quot;), 
     zona = case_when(str_detect(geo_parcela_nombre, &quot;NP_&quot;) ~ &quot;QOt_NP&quot;, str_detect(geo_parcela_nombre, 
-        &quot;PR_&quot;) ~ &quot;QPr_P&quot;, str_detect(geo_parcela_nombre, &quot;P_&quot;) ~ &quot;QOt_P&quot;), fechaQuema = case_when(str_detect(geo_parcela_nombre, 
+        &quot;PR_&quot;) ~ &quot;QPr_P&quot;, str_detect(geo_parcela_nombre, &quot;P_&quot;) ~ &quot;QOt_P&quot;), estacion = case_when(str_detect(geo_parcela_nombre, 
         &quot;NP_&quot;) ~ &quot;Ot&quot;, str_detect(geo_parcela_nombre, &quot;PR_&quot;) ~ &quot;Pr&quot;, str_detect(geo_parcela_nombre, 
-        &quot;P_&quot;) ~ &quot;Ot&quot;), fecha = lubridate::ymd(fecha), momento = case_when(pre_post_quema == 
+        &quot;P_&quot;) ~ &quot;Ot&quot;), date = lubridate::ymd(fecha), fecha = case_when(pre_post_quema == 
         &quot;Prequema&quot; ~ &quot;0 preQuema&quot;, pre_post_quema == &quot;Postquema&quot; ~ &quot;1 postQuema&quot;))</code></pre>
 <ul>
 <li>Select data pre- and intermediately post-fire (first post-fire sampling: “2018-12-20” and “2019-05-09” for autumn and spring fires respectively)</li>
 </ul>
-<pre class="r"><code>soil &lt;- raw_soil %&gt;% filter(fecha %in% lubridate::ymd(c(&quot;2018-12-11&quot;, &quot;2018-12-20&quot;, 
-    &quot;2019-04-24&quot;, &quot;2019-05-09&quot;))) %&gt;% mutate(zona = as.factor(zona), momento = as.factor(momento))</code></pre>
+<pre class="r"><code>soil &lt;- raw_soil %&gt;% filter(date %in% lubridate::ymd(c(&quot;2018-12-11&quot;, &quot;2018-12-20&quot;, 
+    &quot;2019-04-24&quot;, &quot;2019-05-09&quot;))) %&gt;% mutate(zona = as.factor(zona), fecha = as.factor(fecha))</code></pre>
 <ul>
 <li>Structure of the data</li>
 </ul>
-<pre><code>             fechaQuema
-momento       Ot Pr
+<pre><code>             estacion
+fecha         Ot Pr
   0 preQuema  48 24
   1 postQuema 48 24</code></pre>
 </div>
@@ -605,9 +641,9 @@ momento       Ot Pr
 <ul>
 <li>For each response variable, the approach modelling is</li>
 </ul>
-<p><span class="math inline">\(Y \sim fechaQuema (Ot|Pr) + momento(pre|post) + fechaQuema \times momento\)</span></p>
+<p><span class="math inline">\(Y \sim estacion (Ot|Pr) + fecha(pre|post) + estacion \times fecha\)</span></p>
 <ul>
-<li><p>using the “(1|fechaQuema:geo_parcela_nombre)” as nested random effects</p></li>
+<li><p>using the “(1|estacion:geo_parcela_nombre)” as nested random effects</p></li>
 <li><p>Then explore error distribution of the variable response and model diagnostics</p></li>
 <li><p>Select the appropiate error distribution and use LMM or GLMM</p></li>
 <li><p>Explore Post-hoc<br />
@@ -620,73 +656,73 @@ momento       Ot Pr
 <div id="model" class="section level3">
 <h3>Model</h3>
 <pre><code>Type III Analysis of Variance Table with Satterthwaite&#39;s method
-                   Sum Sq Mean Sq NumDF DenDF F value    Pr(&gt;F)    
-momento            461.74  461.74     1   130 50.4197 7.257e-11 ***
-fechaQuema           0.53    0.53     1    10  0.0575    0.8153    
-momento:fechaQuema 439.95  439.95     1   130 48.0407 1.748e-10 ***
+               Sum Sq Mean Sq NumDF DenDF F value    Pr(&gt;F)    
+fecha          461.74  461.74     1   130 50.4197 7.257e-11 ***
+estacion         0.53    0.53     1    10  0.0575    0.8153    
+fecha:estacion 439.95  439.95     1   130 48.0407 1.748e-10 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<pre><code>                        Sum Sq     Mean Sq NumDF DenDF     F value       Pr(&gt;F)
-momento            461.7404592 461.7404592     1   130 50.41969020 7.256505e-11
-fechaQuema           0.5268064   0.5268064     1    10  0.05752456 8.152969e-01
-momento:fechaQuema 439.9539281 439.9539281     1   130 48.04071273 1.748462e-10
-                   variable             factor
-momento             humedad            momento
-fechaQuema          humedad         fechaQuema
-momento:fechaQuema  humedad momento:fechaQuema</code></pre>
+<pre><code>                    Sum Sq     Mean Sq NumDF DenDF     F value       Pr(&gt;F)
+fecha          461.7404592 461.7404592     1   130 50.41969020 7.256505e-11
+estacion         0.5268064   0.5268064     1    10  0.05752456 8.152969e-01
+fecha:estacion 439.9539281 439.9539281     1   130 48.04071273 1.748462e-10
+               variable         factor
+fecha           humedad          fecha
+estacion        humedad       estacion
+fecha:estacion  humedad fecha:estacion</code></pre>
 </div>
 <div id="post-hoc" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of momento`
- momento     emmean    SE   df lower.CL upper.CL
+<pre><code>$`emmeans of fecha`
+ fecha       emmean    SE   df lower.CL upper.CL
  0 preQuema    13.9 0.689 13.8    12.44     15.4
  1 postQuema   10.1 0.689 13.8     8.64     11.6
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Degrees-of-freedom method: kenward-roger 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento`
+$`pairwise differences of fecha`
  1                        estimate    SE  df t.ratio p.value
  0 preQuema - 1 postQuema      3.8 0.535 130 7.101   &lt;.0001 
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Degrees-of-freedom method: kenward-roger </code></pre>
-<pre><code>$`emmeans of fechaQuema`
- fechaQuema emmean    SE df lower.CL upper.CL
- Ot           12.2 0.734 10    10.54     13.8
- Pr           11.9 1.038 10     9.56     14.2
+<pre><code>$`emmeans of estacion`
+ estacion emmean    SE df lower.CL upper.CL
+ Ot         12.2 0.734 10    10.54     13.8
+ Pr         11.9 1.038 10     9.56     14.2
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Degrees-of-freedom method: kenward-roger 
 Confidence level used: 0.95 
 
-$`pairwise differences of fechaQuema`
+$`pairwise differences of estacion`
  1       estimate   SE df t.ratio p.value
  Ot - Pr    0.305 1.27 10 0.240   0.8153 
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Degrees-of-freedom method: kenward-roger </code></pre>
-<pre><code>$`emmeans of momento | fechaQuema`
-fechaQuema = Ot:
- momento     emmean    SE   df lower.CL upper.CL
+<pre><code>$`emmeans of fecha | estacion`
+estacion = Ot:
+ fecha       emmean    SE   df lower.CL upper.CL
  0 preQuema   12.22 0.796 13.8     10.5     13.9
  1 postQuema  12.13 0.796 13.8     10.4     13.8
 
-fechaQuema = Pr:
- momento     emmean    SE   df lower.CL upper.CL
+estacion = Pr:
+ fecha       emmean    SE   df lower.CL upper.CL
  0 preQuema   15.62 1.126 13.8     13.2     18.0
  1 postQuema   8.11 1.126 13.8      5.7     10.5
 
 Degrees-of-freedom method: kenward-roger 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento | fechaQuema`
-fechaQuema = Ot:
+$`pairwise differences of fecha | estacion`
+estacion = Ot:
  2                        estimate    SE  df t.ratio p.value
  0 preQuema - 1 postQuema   0.0907 0.618 130 0.147   0.8835 
 
-fechaQuema = Pr:
+estacion = Pr:
  2                        estimate    SE  df t.ratio p.value
  0 preQuema - 1 postQuema   7.5065 0.874 130 8.593   &lt;.0001 
 
@@ -698,73 +734,73 @@ Degrees-of-freedom method: kenward-roger </code></pre>
 <div id="model-1" class="section level3">
 <h3>Model</h3>
 <pre><code>Type III Analysis of Variance Table with Satterthwaite&#39;s method
-                   Sum Sq Mean Sq NumDF DenDF F value  Pr(&gt;F)  
-momento            18.503  18.503     1   130  5.1118 0.02543 *
-fechaQuema         35.605  35.605     1    10  9.8361 0.01058 *
-momento:fechaQuema  8.337   8.337     1   130  2.3031 0.13154  
+               Sum Sq Mean Sq NumDF DenDF F value  Pr(&gt;F)  
+fecha          18.503  18.503     1   130  5.1118 0.02543 *
+estacion       35.605  35.605     1    10  9.8361 0.01058 *
+fecha:estacion  8.337   8.337     1   130  2.3031 0.13154  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<pre><code>                      Sum Sq   Mean Sq NumDF      DenDF  F value     Pr(&gt;F)
-momento            18.503472 18.503472     1 130.000001 5.111751 0.02542616
-fechaQuema         35.604511 35.604511     1   9.999998 9.836067 0.01057742
-momento:fechaQuema  8.336806  8.336806     1 130.000001 2.303118 0.13154272
-                   variable             factor
-momento                 cic            momento
-fechaQuema              cic         fechaQuema
-momento:fechaQuema      cic momento:fechaQuema</code></pre>
+<pre><code>                  Sum Sq   Mean Sq NumDF      DenDF  F value     Pr(&gt;F)
+fecha          18.503472 18.503472     1 130.000001 5.111751 0.02542616
+estacion       35.604511 35.604511     1   9.999998 9.836067 0.01057742
+fecha:estacion  8.336806  8.336806     1 130.000001 2.303118 0.13154272
+               variable         factor
+fecha               cic          fecha
+estacion            cic       estacion
+fecha:estacion      cic fecha:estacion</code></pre>
 </div>
 <div id="post-hoc-1" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of momento`
- momento     emmean    SE   df lower.CL upper.CL
+<pre><code>$`emmeans of fecha`
+ fecha       emmean    SE   df lower.CL upper.CL
  0 preQuema    14.9 0.496 12.8     13.8     16.0
  1 postQuema   14.1 0.496 12.8     13.1     15.2
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Degrees-of-freedom method: kenward-roger 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento`
+$`pairwise differences of fecha`
  1                        estimate    SE  df t.ratio p.value
  0 preQuema - 1 postQuema     0.76 0.336 130 2.261   0.0254 
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Degrees-of-freedom method: kenward-roger </code></pre>
-<pre><code>$`emmeans of fechaQuema`
- fechaQuema emmean    SE df lower.CL upper.CL
- Ot             16 0.539 10     14.8     17.2
- Pr             13 0.762 10     11.3     14.7
+<pre><code>$`emmeans of estacion`
+ estacion emmean    SE df lower.CL upper.CL
+ Ot           16 0.539 10     14.8     17.2
+ Pr           13 0.762 10     11.3     14.7
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Degrees-of-freedom method: kenward-roger 
 Confidence level used: 0.95 
 
-$`pairwise differences of fechaQuema`
+$`pairwise differences of estacion`
  1       estimate    SE df t.ratio p.value
  Ot - Pr     2.93 0.933 10 3.136   0.0106 
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Degrees-of-freedom method: kenward-roger </code></pre>
-<pre><code>$`emmeans of momento | fechaQuema`
-fechaQuema = Ot:
- momento     emmean    SE   df lower.CL upper.CL
+<pre><code>$`emmeans of fecha | estacion`
+estacion = Ot:
+ fecha       emmean    SE   df lower.CL upper.CL
  0 preQuema    16.6 0.573 12.8     15.4     17.8
  1 postQuema   15.3 0.573 12.8     14.1     16.6
 
-fechaQuema = Pr:
- momento     emmean    SE   df lower.CL upper.CL
+estacion = Pr:
+ fecha       emmean    SE   df lower.CL upper.CL
  0 preQuema    13.2 0.810 12.8     11.4     14.9
  1 postQuema   12.9 0.810 12.8     11.2     14.7
 
 Degrees-of-freedom method: kenward-roger 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento | fechaQuema`
-fechaQuema = Ot:
+$`pairwise differences of fecha | estacion`
+estacion = Ot:
  2                        estimate    SE  df t.ratio p.value
  0 preQuema - 1 postQuema     1.27 0.388 130 3.272   0.0014 
 
-fechaQuema = Pr:
+estacion = Pr:
  2                        estimate    SE  df t.ratio p.value
  0 preQuema - 1 postQuema     0.25 0.549 130 0.455   0.6497 
 
@@ -776,73 +812,73 @@ Degrees-of-freedom method: kenward-roger </code></pre>
 <div id="model-2" class="section level3">
 <h3>Model</h3>
 <pre><code>Type III Analysis of Variance Table with Satterthwaite&#39;s method
-                    Sum Sq Mean Sq NumDF DenDF F value  Pr(&gt;F)  
-momento            13.3214 13.3214     1   130  6.1796 0.01419 *
-fechaQuema          0.2542  0.2542     1    10  0.1179 0.73843  
-momento:fechaQuema  0.5636  0.5636     1   130  0.2614 0.61001  
+                Sum Sq Mean Sq NumDF DenDF F value  Pr(&gt;F)  
+fecha          13.3214 13.3214     1   130  6.1796 0.01419 *
+estacion        0.2542  0.2542     1    10  0.1179 0.73843  
+fecha:estacion  0.5636  0.5636     1   130  0.2614 0.61001  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<pre><code>                       Sum Sq    Mean Sq NumDF      DenDF   F value     Pr(&gt;F)
-momento            13.3214014 13.3214014     1 130.000000 6.1795805 0.01419189
-fechaQuema          0.2541669  0.2541669     1   9.999999 0.1179039 0.73842869
-momento:fechaQuema  0.5635681  0.5635681     1 130.000000 0.2614300 0.61000674
-                    variable             factor
-momento            c_percent            momento
-fechaQuema         c_percent         fechaQuema
-momento:fechaQuema c_percent momento:fechaQuema</code></pre>
+<pre><code>                   Sum Sq    Mean Sq NumDF      DenDF   F value     Pr(&gt;F)
+fecha          13.3214014 13.3214014     1 130.000000 6.1795805 0.01419189
+estacion        0.2541669  0.2541669     1   9.999999 0.1179039 0.73842869
+fecha:estacion  0.5635681  0.5635681     1 130.000000 0.2614300 0.61000674
+                variable         factor
+fecha          c_percent          fecha
+estacion       c_percent       estacion
+fecha:estacion c_percent fecha:estacion</code></pre>
 </div>
 <div id="post-hoc-2" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of momento`
- momento     emmean    SE   df lower.CL upper.CL
+<pre><code>$`emmeans of fecha`
+ fecha       emmean    SE   df lower.CL upper.CL
  0 preQuema    7.14 0.455 11.8     6.14     8.13
  1 postQuema   7.78 0.455 11.8     6.79     8.77
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Degrees-of-freedom method: kenward-roger 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento`
+$`pairwise differences of fecha`
  1                        estimate   SE  df t.ratio p.value
  0 preQuema - 1 postQuema   -0.645 0.26 130 -2.486  0.0142 
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Degrees-of-freedom method: kenward-roger </code></pre>
-<pre><code>$`emmeans of fechaQuema`
- fechaQuema emmean    SE df lower.CL upper.CL
- Ot           7.61 0.503 10     6.49     8.73
- Pr           7.31 0.712 10     5.72     8.90
+<pre><code>$`emmeans of estacion`
+ estacion emmean    SE df lower.CL upper.CL
+ Ot         7.61 0.503 10     6.49     8.73
+ Pr         7.31 0.712 10     5.72     8.90
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Degrees-of-freedom method: kenward-roger 
 Confidence level used: 0.95 
 
-$`pairwise differences of fechaQuema`
+$`pairwise differences of estacion`
  1       estimate    SE df t.ratio p.value
  Ot - Pr    0.299 0.872 10 0.343   0.7384 
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Degrees-of-freedom method: kenward-roger </code></pre>
-<pre><code>$`emmeans of momento | fechaQuema`
-fechaQuema = Ot:
- momento     emmean    SE   df lower.CL upper.CL
+<pre><code>$`emmeans of fecha | estacion`
+estacion = Ot:
+ fecha       emmean    SE   df lower.CL upper.CL
  0 preQuema    7.22 0.525 11.8     6.07     8.37
  1 postQuema   8.00 0.525 11.8     6.85     9.14
 
-fechaQuema = Pr:
- momento     emmean    SE   df lower.CL upper.CL
+estacion = Pr:
+ fecha       emmean    SE   df lower.CL upper.CL
  0 preQuema    7.05 0.743 11.8     5.43     8.67
  1 postQuema   7.57 0.743 11.8     5.95     9.19
 
 Degrees-of-freedom method: kenward-roger 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento | fechaQuema`
-fechaQuema = Ot:
+$`pairwise differences of fecha | estacion`
+estacion = Ot:
  2                        estimate    SE  df t.ratio p.value
  0 preQuema - 1 postQuema   -0.778 0.300 130 -2.596  0.0105 
 
-fechaQuema = Pr:
+estacion = Pr:
  2                        estimate    SE  df t.ratio p.value
  0 preQuema - 1 postQuema   -0.512 0.424 130 -1.209  0.2288 
 
@@ -857,77 +893,77 @@ Degrees-of-freedom method: kenward-roger </code></pre>
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: fe_percent ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: fe_percent ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-              Effect     df    F p.value
-1            momento 1, 130 0.28    .598
-2         fechaQuema  1, 10 0.46    .512
-3 momento:fechaQuema 1, 130 0.21    .648
+          Effect     df    F p.value
+1          fecha 1, 130 0.28    .598
+2       estacion  1, 10 0.46    .512
+3 fecha:estacion 1, 130 0.21    .648
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre><code>Fitting one lmer() model. [DONE]
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: fe_percent ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: fe_percent ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-                   num Df den Df      F Pr(&gt;F)
-momento                 1    130 0.2796 0.5979
-fechaQuema              1     10 0.4631 0.5116
-momento:fechaQuema      1    130 0.2093 0.6481</code></pre>
+               num Df den Df      F Pr(&gt;F)
+fecha               1    130 0.2796 0.5979
+estacion            1     10 0.4631 0.5116
+fecha:estacion      1    130 0.2093 0.6481</code></pre>
 </div>
 <div id="post-hoc-3" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of momento`
- momento     emmean    SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha`
+ fecha       emmean    SE  df asymp.LCL asymp.UCL
  0 preQuema   0.545 0.036 Inf     0.475     0.616
  1 postQuema  0.554 0.036 Inf     0.484     0.625
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento`
+$`pairwise differences of fecha`
  1                        estimate     SE  df z.ratio p.value
  0 preQuema - 1 postQuema -0.00898 0.0167 Inf -0.539  0.5898 
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of fechaQuema`
- fechaQuema emmean     SE  df asymp.LCL asymp.UCL
- Ot          0.568 0.0398 Inf     0.490     0.646
- Pr          0.532 0.0573 Inf     0.419     0.644
+<pre><code>$`emmeans of estacion`
+ estacion emmean     SE  df asymp.LCL asymp.UCL
+ Ot        0.568 0.0398 Inf     0.490     0.646
+ Pr        0.532 0.0573 Inf     0.419     0.644
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of fechaQuema`
+$`pairwise differences of estacion`
  1       estimate     SE  df z.ratio p.value
  Ot - Pr   0.0364 0.0695 Inf 0.524   0.6006 
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of momento | fechaQuema`
-fechaQuema = Ot:
- momento     emmean     SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha | estacion`
+estacion = Ot:
+ fecha       emmean     SE  df asymp.LCL asymp.UCL
  0 preQuema   0.559 0.0410 Inf     0.479     0.640
  1 postQuema  0.576 0.0411 Inf     0.496     0.657
 
-fechaQuema = Pr:
- momento     emmean     SE  df asymp.LCL asymp.UCL
+estacion = Pr:
+ fecha       emmean     SE  df asymp.LCL asymp.UCL
  0 preQuema   0.531 0.0588 Inf     0.416     0.646
  1 postQuema  0.532 0.0588 Inf     0.417     0.647
 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento | fechaQuema`
-fechaQuema = Ot:
+$`pairwise differences of fecha | estacion`
+estacion = Ot:
  2                        estimate     SE  df z.ratio p.value
  0 preQuema - 1 postQuema -0.01688 0.0200 Inf -0.843  0.3991 
 
-fechaQuema = Pr:
+estacion = Pr:
  2                        estimate     SE  df z.ratio p.value
  0 preQuema - 1 postQuema -0.00109 0.0266 Inf -0.041  0.9675 
 
@@ -942,79 +978,79 @@ Note: contrasts are still on the inverse scale </code></pre>
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: mo ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: mo ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-              Effect     df         F p.value
-1            momento 1, 130      0.60    .439
-2         fechaQuema  1, 10 35.18 ***   &lt;.001
-3 momento:fechaQuema 1, 130      0.91    .341
+          Effect     df         F p.value
+1          fecha 1, 130      0.60    .439
+2       estacion  1, 10 35.18 ***   &lt;.001
+3 fecha:estacion 1, 130      0.91    .341
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre><code>Fitting one lmer() model. [DONE]
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: mo ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: mo ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-                   num Df den Df       F    Pr(&gt;F)    
-momento                 1    130  0.6020 0.4392419    
-fechaQuema              1     10 35.1850 0.0001448 ***
-momento:fechaQuema      1    130  0.9143 0.3407472    
+               num Df den Df       F    Pr(&gt;F)    
+fecha               1    130  0.6020 0.4392419    
+estacion            1     10 35.1850 0.0001448 ***
+fecha:estacion      1    130  0.9143 0.3407472    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 <div id="post-hoc-4" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of momento`
- momento     emmean     SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha`
+ fecha       emmean     SE  df asymp.LCL asymp.UCL
  0 preQuema   0.271 0.0190 Inf     0.233     0.308
  1 postQuema  0.265 0.0191 Inf     0.228     0.302
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento`
+$`pairwise differences of fecha`
  1                        estimate     SE  df z.ratio p.value
  0 preQuema - 1 postQuema  0.00557 0.0229 Inf 0.243   0.8082 
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of fechaQuema`
- fechaQuema emmean     SE  df asymp.LCL asymp.UCL
- Ot          0.181 0.0143 Inf     0.153     0.209
- Pr          0.355 0.0265 Inf     0.303     0.407
+<pre><code>$`emmeans of estacion`
+ estacion emmean     SE  df asymp.LCL asymp.UCL
+ Ot        0.181 0.0143 Inf     0.153     0.209
+ Pr        0.355 0.0265 Inf     0.303     0.407
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of fechaQuema`
+$`pairwise differences of estacion`
  1       estimate     SE  df z.ratio p.value
  Ot - Pr   -0.175 0.0298 Inf -5.859  &lt;.0001 
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of momento | fechaQuema`
-fechaQuema = Ot:
- momento     emmean     SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha | estacion`
+estacion = Ot:
+ fecha       emmean     SE  df asymp.LCL asymp.UCL
  0 preQuema   0.190 0.0166 Inf     0.158     0.223
  1 postQuema  0.171 0.0158 Inf     0.140     0.202
 
-fechaQuema = Pr:
- momento     emmean     SE  df asymp.LCL asymp.UCL
+estacion = Pr:
+ fecha       emmean     SE  df asymp.LCL asymp.UCL
  0 preQuema   0.351 0.0339 Inf     0.285     0.417
  1 postQuema  0.359 0.0345 Inf     0.292     0.427
 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento | fechaQuema`
-fechaQuema = Ot:
+$`pairwise differences of fecha | estacion`
+estacion = Ot:
  2                        estimate     SE  df z.ratio p.value
  0 preQuema - 1 postQuema  0.01929 0.0152 Inf  1.269  0.2044 
 
-fechaQuema = Pr:
+estacion = Pr:
  2                        estimate     SE  df z.ratio p.value
  0 preQuema - 1 postQuema -0.00815 0.0433 Inf -0.188  0.8507 
 
@@ -1029,79 +1065,79 @@ Note: contrasts are still on the inverse scale </code></pre>
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: k_percent ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: k_percent ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-              Effect     df      F p.value
-1            momento 1, 130   1.92    .168
-2         fechaQuema  1, 10 8.33 *    .016
-3 momento:fechaQuema 1, 130   0.00    .976
+          Effect     df      F p.value
+1          fecha 1, 130   1.92    .168
+2       estacion  1, 10 8.33 *    .016
+3 fecha:estacion 1, 130   0.00    .976
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre><code>Fitting one lmer() model. [DONE]
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: k_percent ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: k_percent ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-                   num Df den Df      F  Pr(&gt;F)  
-momento                 1    130 1.9189 0.16835  
-fechaQuema              1     10 8.3254 0.01624 *
-momento:fechaQuema      1    130 0.0009 0.97555  
+               num Df den Df      F  Pr(&gt;F)  
+fecha               1    130 1.9189 0.16835  
+estacion            1     10 8.3254 0.01624 *
+fecha:estacion      1    130 0.0009 0.97555  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 <div id="post-hoc-5" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of momento`
- momento     emmean    SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha`
+ fecha       emmean    SE  df asymp.LCL asymp.UCL
  0 preQuema    2.06 0.286 Inf      1.50      2.62
  1 postQuema   2.18 0.287 Inf      1.62      2.74
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento`
+$`pairwise differences of fecha`
  1                        estimate     SE  df z.ratio p.value
  0 preQuema - 1 postQuema   -0.119 0.0844 Inf -1.414  0.1574 
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of fechaQuema`
- fechaQuema emmean    SE  df asymp.LCL asymp.UCL
- Ot           2.73 0.287 Inf     2.167      3.29
- Pr           1.51 0.487 Inf     0.554      2.46
+<pre><code>$`emmeans of estacion`
+ estacion emmean    SE  df asymp.LCL asymp.UCL
+ Ot         2.73 0.287 Inf     2.167      3.29
+ Pr         1.51 0.487 Inf     0.554      2.46
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of fechaQuema`
+$`pairwise differences of estacion`
  1       estimate    SE  df z.ratio p.value
  Ot - Pr     1.22 0.565 Inf 2.161   0.0307 
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of momento | fechaQuema`
-fechaQuema = Ot:
- momento     emmean    SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha | estacion`
+estacion = Ot:
+ fecha       emmean    SE  df asymp.LCL asymp.UCL
  0 preQuema    2.64 0.294 Inf     2.063      3.21
  1 postQuema   2.82 0.296 Inf     2.242      3.40
 
-fechaQuema = Pr:
- momento     emmean    SE  df asymp.LCL asymp.UCL
+estacion = Pr:
+ fecha       emmean    SE  df asymp.LCL asymp.UCL
  0 preQuema    1.48 0.490 Inf     0.522      2.44
  1 postQuema   1.54 0.490 Inf     0.576      2.50
 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento | fechaQuema`
-fechaQuema = Ot:
+$`pairwise differences of fecha | estacion`
+estacion = Ot:
  2                        estimate    SE  df z.ratio p.value
  0 preQuema - 1 postQuema  -0.1833 0.132 Inf -1.386  0.1657 
 
-fechaQuema = Pr:
+estacion = Pr:
  2                        estimate    SE  df z.ratio p.value
  0 preQuema - 1 postQuema  -0.0554 0.105 Inf -0.528  0.5975 
 
@@ -1116,79 +1152,79 @@ Note: contrasts are still on the inverse scale </code></pre>
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: mg_percent ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: mg_percent ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-              Effect     df      F p.value
-1            momento 1, 130   0.96    .329
-2         fechaQuema  1, 10 4.01 +    .073
-3 momento:fechaQuema 1, 130   0.13    .719
+          Effect     df      F p.value
+1          fecha 1, 130   0.96    .329
+2       estacion  1, 10 4.01 +    .073
+3 fecha:estacion 1, 130   0.13    .719
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre><code>Fitting one lmer() model. [DONE]
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: mg_percent ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: mg_percent ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-                   num Df den Df      F  Pr(&gt;F)  
-momento                 1    130 0.9587 0.32933  
-fechaQuema              1     10 4.0114 0.07304 .
-momento:fechaQuema      1    130 0.1300 0.71903  
+               num Df den Df      F  Pr(&gt;F)  
+fecha               1    130 0.9587 0.32933  
+estacion            1     10 4.0114 0.07304 .
+fecha:estacion      1    130 0.1300 0.71903  
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 <div id="post-hoc-6" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of momento`
- momento     emmean     SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha`
+ fecha       emmean     SE  df asymp.LCL asymp.UCL
  0 preQuema   0.738 0.0953 Inf     0.551     0.925
  1 postQuema  0.699 0.0950 Inf     0.513     0.885
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento`
+$`pairwise differences of fecha`
  1                        estimate     SE  df z.ratio p.value
  0 preQuema - 1 postQuema   0.0394 0.0329 Inf 1.197   0.2313 
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of fechaQuema`
- fechaQuema emmean    SE  df asymp.LCL asymp.UCL
- Ot          0.888 0.100 Inf     0.691     1.084
- Pr          0.549 0.158 Inf     0.240     0.858
+<pre><code>$`emmeans of estacion`
+ estacion emmean    SE  df asymp.LCL asymp.UCL
+ Ot        0.888 0.100 Inf     0.691     1.084
+ Pr        0.549 0.158 Inf     0.240     0.858
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of fechaQuema`
+$`pairwise differences of estacion`
  1       estimate    SE  df z.ratio p.value
  Ot - Pr    0.338 0.186 Inf 1.816   0.0693 
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of momento | fechaQuema`
-fechaQuema = Ot:
- momento     emmean    SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha | estacion`
+estacion = Ot:
+ fecha       emmean    SE  df asymp.LCL asymp.UCL
  0 preQuema   0.920 0.103 Inf     0.717     1.122
  1 postQuema  0.856 0.102 Inf     0.655     1.056
 
-fechaQuema = Pr:
- momento     emmean    SE  df asymp.LCL asymp.UCL
+estacion = Pr:
+ fecha       emmean    SE  df asymp.LCL asymp.UCL
  0 preQuema   0.557 0.159 Inf     0.244     0.869
  1 postQuema  0.542 0.159 Inf     0.230     0.854
 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento | fechaQuema`
-fechaQuema = Ot:
+$`pairwise differences of fecha | estacion`
+estacion = Ot:
  2                        estimate     SE  df z.ratio p.value
  0 preQuema - 1 postQuema   0.0643 0.0469 Inf 1.371   0.1702 
 
-fechaQuema = Pr:
+estacion = Pr:
  2                        estimate     SE  df z.ratio p.value
  0 preQuema - 1 postQuema   0.0146 0.0463 Inf 0.315   0.7530 
 
@@ -1203,77 +1239,77 @@ Note: contrasts are still on the inverse scale </code></pre>
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: c_n ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: c_n ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-              Effect     df    F p.value
-1            momento 1, 130 0.05    .815
-2         fechaQuema  1, 10 0.56    .471
-3 momento:fechaQuema 1, 130 0.80    .372
+          Effect     df    F p.value
+1          fecha 1, 130 0.05    .815
+2       estacion  1, 10 0.56    .471
+3 fecha:estacion 1, 130 0.80    .372
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre><code>Fitting one lmer() model. [DONE]
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: c_n ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: c_n ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-                   num Df den Df      F Pr(&gt;F)
-momento                 1    130 0.0550 0.8150
-fechaQuema              1     10 0.5601 0.4715
-momento:fechaQuema      1    130 0.8031 0.3718</code></pre>
+               num Df den Df      F Pr(&gt;F)
+fecha               1    130 0.0550 0.8150
+estacion            1     10 0.5601 0.4715
+fecha:estacion      1    130 0.8031 0.3718</code></pre>
 </div>
 <div id="post-hoc-7" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of momento`
- momento     emmean      SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha`
+ fecha       emmean      SE  df asymp.LCL asymp.UCL
  0 preQuema  0.0266 0.00265 Inf    0.0214    0.0318
  1 postQuema 0.0272 0.00265 Inf    0.0220    0.0324
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento`
+$`pairwise differences of fecha`
  1                         estimate      SE  df z.ratio p.value
  0 preQuema - 1 postQuema -0.000626 0.00163 Inf -0.385  0.7000 
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of fechaQuema`
- fechaQuema emmean      SE  df asymp.LCL asymp.UCL
- Ot         0.0288 0.00291 Inf    0.0231    0.0345
- Pr         0.0250 0.00408 Inf    0.0170    0.0330
+<pre><code>$`emmeans of estacion`
+ estacion emmean      SE  df asymp.LCL asymp.UCL
+ Ot       0.0288 0.00291 Inf    0.0231    0.0345
+ Pr       0.0250 0.00408 Inf    0.0170    0.0330
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of fechaQuema`
+$`pairwise differences of estacion`
  1       estimate      SE  df z.ratio p.value
  Ot - Pr  0.00388 0.00496 Inf 0.781   0.4346 
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of momento | fechaQuema`
-fechaQuema = Ot:
- momento     emmean      SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha | estacion`
+estacion = Ot:
+ fecha       emmean      SE  df asymp.LCL asymp.UCL
  0 preQuema  0.0277 0.00305 Inf    0.0217    0.0336
  1 postQuema 0.0300 0.00311 Inf    0.0239    0.0361
 
-fechaQuema = Pr:
- momento     emmean      SE  df asymp.LCL asymp.UCL
+estacion = Pr:
+ fecha       emmean      SE  df asymp.LCL asymp.UCL
  0 preQuema  0.0255 0.00429 Inf    0.0171    0.0339
  1 postQuema 0.0244 0.00425 Inf    0.0161    0.0327
 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento | fechaQuema`
-fechaQuema = Ot:
+$`pairwise differences of fecha | estacion`
+estacion = Ot:
  2                        estimate      SE  df z.ratio p.value
  0 preQuema - 1 postQuema -0.00236 0.00202 Inf -1.171  0.2415 
 
-fechaQuema = Pr:
+estacion = Pr:
  2                        estimate      SE  df z.ratio p.value
  0 preQuema - 1 postQuema  0.00111 0.00255 Inf  0.435  0.6636 
 
@@ -1288,79 +1324,79 @@ Note: contrasts are still on the inverse scale </code></pre>
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: p ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: p ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-              Effect     df       F p.value
-1            momento 1, 130    0.45    .502
-2         fechaQuema  1, 10  8.17 *    .017
-3 momento:fechaQuema 1, 130 9.31 **    .003
+          Effect     df       F p.value
+1          fecha 1, 130    0.45    .502
+2       estacion  1, 10  8.17 *    .017
+3 fecha:estacion 1, 130 9.31 **    .003
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre><code>Fitting one lmer() model. [DONE]
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: p ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: p ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-                   num Df den Df      F   Pr(&gt;F)   
-momento                 1    130 0.4536 0.501823   
-fechaQuema              1     10 8.1689 0.017011 * 
-momento:fechaQuema      1    130 9.3060 0.002769 **
+               num Df den Df      F   Pr(&gt;F)   
+fecha               1    130 0.4536 0.501823   
+estacion            1     10 8.1689 0.017011 * 
+fecha:estacion      1    130 9.3060 0.002769 **
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 <div id="post-hoc-8" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of momento`
- momento     emmean     SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha`
+ fecha       emmean     SE  df asymp.LCL asymp.UCL
  0 preQuema    1.62 0.0628 Inf      1.50      1.74
  1 postQuema   1.70 0.0619 Inf      1.58      1.82
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Results are given on the log (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento`
+$`pairwise differences of fecha`
  1                        estimate     SE  df z.ratio p.value
  0 preQuema - 1 postQuema  -0.0834 0.0746 Inf -1.118  0.2635 
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Results are given on the log (not the response) scale. </code></pre>
-<pre><code>$`emmeans of fechaQuema`
- fechaQuema emmean     SE  df asymp.LCL asymp.UCL
- Ot           1.49 0.0614 Inf      1.37      1.61
- Pr           1.83 0.0788 Inf      1.68      1.99
+<pre><code>$`emmeans of estacion`
+ estacion emmean     SE  df asymp.LCL asymp.UCL
+ Ot         1.49 0.0614 Inf      1.37      1.61
+ Pr         1.83 0.0788 Inf      1.68      1.99
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Results are given on the log (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of fechaQuema`
+$`pairwise differences of estacion`
  1       estimate  SE  df z.ratio p.value
  Ot - Pr   -0.338 0.1 Inf -3.379  0.0007 
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Results are given on the log (not the response) scale. </code></pre>
-<pre><code>$`emmeans of momento | fechaQuema`
-fechaQuema = Ot:
- momento     emmean     SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha | estacion`
+estacion = Ot:
+ fecha       emmean     SE  df asymp.LCL asymp.UCL
  0 preQuema    1.34 0.0819 Inf      1.18      1.50
  1 postQuema   1.65 0.0730 Inf      1.50      1.79
 
-fechaQuema = Pr:
- momento     emmean     SE  df asymp.LCL asymp.UCL
+estacion = Pr:
+ fecha       emmean     SE  df asymp.LCL asymp.UCL
  0 preQuema    1.90 0.0951 Inf      1.71      2.09
  1 postQuema   1.76 0.0994 Inf      1.57      1.96
 
 Results are given on the log (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento | fechaQuema`
-fechaQuema = Ot:
+$`pairwise differences of fecha | estacion`
+estacion = Ot:
  2                        estimate     SE  df z.ratio p.value
  0 preQuema - 1 postQuema   -0.306 0.0947 Inf -3.227  0.0012 
 
-fechaQuema = Pr:
+estacion = Pr:
  2                        estimate     SE  df z.ratio p.value
  0 preQuema - 1 postQuema    0.139 0.1140 Inf  1.217  0.2235 
 
@@ -1374,56 +1410,56 @@ Results are given on the log (not the response) scale. </code></pre>
 </div>
 <div id="post-hoc-9" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of momento`
- momento     emmean     SE  df lower.CL upper.CL
+<pre><code>$`emmeans of fecha`
+ fecha       emmean     SE  df lower.CL upper.CL
  0 preQuema   -1.33 0.0758 138    -1.48    -1.18
  1 postQuema  -1.18 0.0742 138    -1.32    -1.03
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Results are given on the logit (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento`
+$`pairwise differences of fecha`
  1                        estimate    SE  df t.ratio p.value
  0 preQuema - 1 postQuema   -0.153 0.105 138 -1.461  0.1463 
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Results are given on the log odds ratio (not the response) scale. </code></pre>
-<pre><code>$`emmeans of fechaQuema`
- fechaQuema emmean     SE  df lower.CL upper.CL
- Ot          -1.11 0.0590 138    -1.23   -0.997
- Pr          -1.39 0.0883 138    -1.57   -1.219
+<pre><code>$`emmeans of estacion`
+ estacion emmean     SE  df lower.CL upper.CL
+ Ot        -1.11 0.0590 138    -1.23   -0.997
+ Pr        -1.39 0.0883 138    -1.57   -1.219
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Results are given on the logit (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of fechaQuema`
+$`pairwise differences of estacion`
  1       estimate    SE  df t.ratio p.value
  Ot - Pr     0.28 0.105 138 2.673   0.0084 
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Results are given on the log odds ratio (not the response) scale. </code></pre>
-<pre><code>$`emmeans of momento | fechaQuema`
-fechaQuema = Ot:
- momento     emmean     SE  df lower.CL upper.CL
+<pre><code>$`emmeans of fecha | estacion`
+estacion = Ot:
+ fecha       emmean     SE  df lower.CL upper.CL
  0 preQuema  -1.276 0.0857 138    -1.45   -1.106
  1 postQuema -0.952 0.0798 138    -1.11   -0.794
 
-fechaQuema = Pr:
- momento     emmean     SE  df lower.CL upper.CL
+estacion = Pr:
+ fecha       emmean     SE  df lower.CL upper.CL
  0 preQuema  -1.384 0.1237 138    -1.63   -1.140
  1 postQuema -1.403 0.1243 138    -1.65   -1.157
 
 Results are given on the logit (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento | fechaQuema`
-fechaQuema = Ot:
+$`pairwise differences of fecha | estacion`
+estacion = Ot:
  2                        estimate    SE  df t.ratio p.value
  0 preQuema - 1 postQuema  -0.3240 0.116 138 -2.789  0.0060 
 
-fechaQuema = Pr:
+estacion = Pr:
  2                        estimate    SE  df t.ratio p.value
  0 preQuema - 1 postQuema   0.0182 0.174 138  0.104  0.9171 
 
@@ -1437,56 +1473,56 @@ Results are given on the log odds ratio (not the response) scale. </code></pre>
 </div>
 <div id="post-hoc-10" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of momento`
- momento     emmean    SE  df lower.CL upper.CL
+<pre><code>$`emmeans of fecha`
+ fecha       emmean    SE  df lower.CL upper.CL
  0 preQuema   -2.95 0.116 138    -3.18    -2.72
  1 postQuema  -3.02 0.117 138    -3.25    -2.78
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Results are given on the logit (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento`
+$`pairwise differences of fecha`
  1                        estimate     SE  df t.ratio p.value
  0 preQuema - 1 postQuema   0.0699 0.0893 138 0.784   0.4346 
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Results are given on the log odds ratio (not the response) scale. </code></pre>
-<pre><code>$`emmeans of fechaQuema`
- fechaQuema emmean    SE  df lower.CL upper.CL
- Ot          -3.15 0.126 138    -3.40    -2.90
- Pr          -2.81 0.172 138    -3.15    -2.47
+<pre><code>$`emmeans of estacion`
+ estacion emmean    SE  df lower.CL upper.CL
+ Ot        -3.15 0.126 138    -3.40    -2.90
+ Pr        -2.81 0.172 138    -3.15    -2.47
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Results are given on the logit (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of fechaQuema`
+$`pairwise differences of estacion`
  1       estimate    SE  df t.ratio p.value
  Ot - Pr   -0.341 0.212 138 -1.606  0.1106 
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Results are given on the log odds ratio (not the response) scale. </code></pre>
-<pre><code>$`emmeans of momento | fechaQuema`
-fechaQuema = Ot:
- momento     emmean    SE  df lower.CL upper.CL
+<pre><code>$`emmeans of fecha | estacion`
+estacion = Ot:
+ fecha       emmean    SE  df lower.CL upper.CL
  0 preQuema   -3.10 0.137 138    -3.38    -2.83
  1 postQuema  -3.20 0.139 138    -3.47    -2.92
 
-fechaQuema = Pr:
- momento     emmean    SE  df lower.CL upper.CL
+estacion = Pr:
+ fecha       emmean    SE  df lower.CL upper.CL
  0 preQuema   -2.79 0.186 138    -3.15    -2.42
  1 postQuema  -2.83 0.186 138    -3.20    -2.47
 
 Results are given on the logit (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento | fechaQuema`
-fechaQuema = Ot:
+$`pairwise differences of fecha | estacion`
+estacion = Ot:
  2                        estimate    SE  df t.ratio p.value
  0 preQuema - 1 postQuema   0.0936 0.112 138 0.833   0.4065 
 
-fechaQuema = Pr:
+estacion = Pr:
  2                        estimate    SE  df t.ratio p.value
  0 preQuema - 1 postQuema   0.0463 0.139 138 0.334   0.7389 
 
@@ -1501,79 +1537,79 @@ Results are given on the log odds ratio (not the response) scale. </code></pre>
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: p_h_agua_eez ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: p_h_agua_eez ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-              Effect     df        F p.value
-1            momento 1, 130     0.99    .322
-2         fechaQuema  1, 10   9.29 *    .012
-3 momento:fechaQuema 1, 130 10.51 **    .002
+          Effect     df        F p.value
+1          fecha 1, 130     0.99    .322
+2       estacion  1, 10   9.29 *    .012
+3 fecha:estacion 1, 130 10.51 **    .002
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre><code>Fitting one lmer() model. [DONE]
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: p_h_agua_eez ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: p_h_agua_eez ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-                   num Df den Df       F   Pr(&gt;F)   
-momento                 1    130  0.9889 0.321856   
-fechaQuema              1     10  9.2903 0.012294 * 
-momento:fechaQuema      1    130 10.5108 0.001508 **
+               num Df den Df       F   Pr(&gt;F)   
+fecha               1    130  0.9889 0.321856   
+estacion            1     10  9.2903 0.012294 * 
+fecha:estacion      1    130 10.5108 0.001508 **
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 <div id="post-hoc-11" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of momento`
- momento     emmean        SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha`
+ fecha       emmean        SE  df asymp.LCL asymp.UCL
  0 preQuema  0.1255 0.0003116 Inf    0.1249    0.1261
  1 postQuema 0.1251 0.0003101 Inf    0.1245    0.1257
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento`
+$`pairwise differences of fecha`
  1                        estimate       SE  df z.ratio p.value
  0 preQuema - 1 postQuema  0.00039 0.000397 Inf 0.982   0.3261 
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of fechaQuema`
- fechaQuema emmean        SE  df asymp.LCL asymp.UCL
- Ot         0.1259 0.0002773 Inf    0.1254    0.1265
- Pr         0.1247 0.0003898 Inf    0.1239    0.1255
+<pre><code>$`emmeans of estacion`
+ estacion emmean        SE  df asymp.LCL asymp.UCL
+ Ot       0.1259 0.0002773 Inf    0.1254    0.1265
+ Pr       0.1247 0.0003898 Inf    0.1239    0.1255
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of fechaQuema`
+$`pairwise differences of estacion`
  1       estimate       SE  df z.ratio p.value
  Ot - Pr  0.00123 0.000478 Inf 2.570   0.0102 
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of momento | fechaQuema`
-fechaQuema = Ot:
- momento     emmean       SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha | estacion`
+estacion = Ot:
+ fecha       emmean       SE  df asymp.LCL asymp.UCL
  0 preQuema   0.125 0.000359 Inf     0.125     0.126
  1 postQuema  0.126 0.000362 Inf     0.126     0.127
 
-fechaQuema = Pr:
- momento     emmean       SE  df asymp.LCL asymp.UCL
+estacion = Pr:
+ fecha       emmean       SE  df asymp.LCL asymp.UCL
  0 preQuema   0.126 0.000509 Inf     0.125     0.127
  1 postQuema  0.124 0.000503 Inf     0.123     0.125
 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento | fechaQuema`
-fechaQuema = Ot:
+$`pairwise differences of fecha | estacion`
+estacion = Ot:
  2                         estimate       SE  df z.ratio p.value
  0 preQuema - 1 postQuema -0.000918 0.000460 Inf -1.994  0.0461 
 
-fechaQuema = Pr:
+estacion = Pr:
  2                         estimate       SE  df z.ratio p.value
  0 preQuema - 1 postQuema  0.001697 0.000646 Inf  2.628  0.0086 
 
@@ -1588,79 +1624,79 @@ Note: contrasts are still on the inverse scale </code></pre>
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: p_h_k_cl ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: p_h_k_cl ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-              Effect     df         F p.value
-1            momento 1, 130 45.36 ***   &lt;.001
-2         fechaQuema  1, 10    5.70 *    .038
-3 momento:fechaQuema 1, 130   9.39 **    .003
+          Effect     df         F p.value
+1          fecha 1, 130 45.36 ***   &lt;.001
+2       estacion  1, 10    5.70 *    .038
+3 fecha:estacion 1, 130   9.39 **    .003
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre><code>Fitting one lmer() model. [DONE]
 Calculating p-values. [DONE]</code></pre>
 <pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
 
-Model: p_h_k_cl ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Model: p_h_k_cl ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-                   num Df den Df       F    Pr(&gt;F)    
-momento                 1    130 45.3634 4.776e-10 ***
-fechaQuema              1     10  5.7006  0.038115 *  
-momento:fechaQuema      1    130  9.3932  0.002649 ** 
+               num Df den Df       F    Pr(&gt;F)    
+fecha               1    130 45.3634 4.776e-10 ***
+estacion            1     10  5.7006  0.038115 *  
+fecha:estacion      1    130  9.3932  0.002649 ** 
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 <div id="post-hoc-12" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of momento`
- momento     emmean       SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha`
+ fecha       emmean       SE  df asymp.LCL asymp.UCL
  0 preQuema   0.134 0.000631 Inf     0.132     0.135
  1 postQuema  0.131 0.000628 Inf     0.130     0.132
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento`
+$`pairwise differences of fecha`
  1                        estimate       SE  df z.ratio p.value
  0 preQuema - 1 postQuema  0.00263 0.000383 Inf 6.876   &lt;.0001 
 
-Results are averaged over the levels of: fechaQuema 
+Results are averaged over the levels of: estacion 
 Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of fechaQuema`
- fechaQuema emmean       SE  df asymp.LCL asymp.UCL
- Ot          0.133 0.000689 Inf     0.132     0.135
- Pr          0.131 0.000981 Inf     0.129     0.133
+<pre><code>$`emmeans of estacion`
+ estacion emmean       SE  df asymp.LCL asymp.UCL
+ Ot        0.133 0.000689 Inf     0.132     0.135
+ Pr        0.131 0.000981 Inf     0.129     0.133
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of fechaQuema`
+$`pairwise differences of estacion`
  1       estimate     SE  df z.ratio p.value
  Ot - Pr  0.00216 0.0012 Inf 1.806   0.0710 
 
-Results are averaged over the levels of: momento 
+Results are averaged over the levels of: fecha 
 Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of momento | fechaQuema`
-fechaQuema = Ot:
- momento     emmean       SE  df asymp.LCL asymp.UCL
+<pre><code>$`emmeans of fecha | estacion`
+estacion = Ot:
+ fecha       emmean       SE  df asymp.LCL asymp.UCL
  0 preQuema   0.134 0.000725 Inf     0.133     0.135
  1 postQuema  0.133 0.000724 Inf     0.131     0.134
 
-fechaQuema = Pr:
- momento     emmean       SE  df asymp.LCL asymp.UCL
+estacion = Pr:
+ fecha       emmean       SE  df asymp.LCL asymp.UCL
  0 preQuema   0.133 0.001032 Inf     0.131     0.135
  1 postQuema  0.129 0.001026 Inf     0.127     0.131
 
 Results are given on the inverse (not the response) scale. 
 Confidence level used: 0.95 
 
-$`pairwise differences of momento | fechaQuema`
-fechaQuema = Ot:
+$`pairwise differences of fecha | estacion`
+estacion = Ot:
  2                        estimate       SE  df z.ratio p.value
  0 preQuema - 1 postQuema  0.00147 0.000446 Inf 3.291   0.0010 
 
-fechaQuema = Pr:
+estacion = Pr:
  2                        estimate       SE  df z.ratio p.value
  0 preQuema - 1 postQuema  0.00379 0.000621 Inf 6.105   &lt;.0001 
 
@@ -1674,9 +1710,9 @@ Note: contrasts are still on the inverse scale </code></pre>
 <li>We have only data for Autumn fire</li>
 <li>The approach will be the following: Apply non-parametric Wilcoxon test to compare pre and postFire</li>
 </ul>
-<pre><code>          momento
-fechaQuema 0 preQuema 1 postQuema
-        Ot         48          43</code></pre>
+<pre><code>        fecha
+estacion 0 preQuema 1 postQuema
+      Ot         48          43</code></pre>
 <div id="model-13" class="section level3">
 <h3>Model</h3>
 </div>
@@ -2597,8 +2633,119 @@ fechaQuema 0 preQuema 1 postQuema
 <div id="figures" class="section level2">
 <h2>Figures</h2>
 <p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-36-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-36-1">
+Past versions of unnamed-chunk-36-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-36-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/389b963200df0dd175c56dfbf435075dd9b8060b/docs/figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-36-1.png" target="_blank">389b963</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-37-1">
+Past versions of unnamed-chunk-37-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-37-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/389b963200df0dd175c56dfbf435075dd9b8060b/docs/figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-37-1.png" target="_blank">389b963</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-38-1">
+Past versions of unnamed-chunk-38-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-38-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/389b963200df0dd175c56dfbf435075dd9b8060b/docs/figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-38-1.png" target="_blank">389b963</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="anovas-table" class="section level2">
 <h2>Anovas table</h2>
@@ -2609,17 +2756,17 @@ fechaQuema 0 preQuema 1 postQuema
 </th>
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-fechaQuema
+estacion
 </div>
 </th>
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-momento
+fecha
 </div>
 </th>
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-fechaQuema x momento
+estacion x fecha
 </div>
 </th>
 </tr>
@@ -2977,10 +3124,195 @@ na_percent
 <div id="gráficos-feos-feísimos" class="section level1">
 <h1>Gráficos feos feísimos</h1>
 <p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-43-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-43-1">
+Past versions of unnamed-chunk-43-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-43-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/389b963200df0dd175c56dfbf435075dd9b8060b/docs/figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-43-1.png" target="_blank">389b963</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-44-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-44-1">
+Past versions of unnamed-chunk-44-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-44-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/389b963200df0dd175c56dfbf435075dd9b8060b/docs/figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-44-1.png" target="_blank">389b963</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-45-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-45-1">
+Past versions of unnamed-chunk-45-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-45-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/389b963200df0dd175c56dfbf435075dd9b8060b/docs/figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-45-1.png" target="_blank">389b963</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-46-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-46-1">
+Past versions of unnamed-chunk-46-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-46-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/389b963200df0dd175c56dfbf435075dd9b8060b/docs/figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-46-1.png" target="_blank">389b963</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-47-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-47-1">
+Past versions of unnamed-chunk-47-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-47-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/389b963200df0dd175c56dfbf435075dd9b8060b/docs/figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-47-1.png" target="_blank">389b963</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
