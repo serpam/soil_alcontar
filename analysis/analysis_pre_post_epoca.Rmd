@@ -1,0 +1,799 @@
+---
+title: "Pre- and post-fire anaylisis of soils by Fire date" 
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(rmdformats)
+
+## Global options
+options(max.print="100")
+opts_chunk$set(echo=FALSE,
+	             cache=FALSE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE,
+               autodep = TRUE)
+```
+
+```{r pkgs}
+library("tidyverse")
+library("here")
+library("janitor")
+library("ggpubr")
+library(fitdistrplus)
+library(lme4)
+library(lmerTest)
+library(emmeans)
+library(multcomp)
+library(performance)
+library(afex)
+```
+
+# Prepare data 
+```{r prepare-data, echo=TRUE}
+raw_soil <- readxl::read_excel(
+  here::here("data/Resultados_Suelos_2018_2021_v2.xlsx"),
+  sheet = "SEGUIMIENTO_SUELOS_sin_ouliers"
+) %>% 
+  janitor::clean_names() %>% 
+  mutate(
+    treatment_name =
+      case_when(
+        str_detect(geo_parcela_nombre, "NP_") ~ "Autumn Burning / No Browsing",
+        str_detect(geo_parcela_nombre, "PR_") ~ "Spring Burning / Browsing",
+        str_detect(geo_parcela_nombre, "P_") ~ "Autumn Burning / Browsing"
+      ),
+    zona =
+      case_when(
+        str_detect(geo_parcela_nombre, "NP_") ~ "QOt_NP",
+        str_detect(geo_parcela_nombre, "PR_") ~ "QPr_P",
+        str_detect(geo_parcela_nombre, "P_") ~ "QOt_P"
+      ),
+    fechaQuema =
+      case_when(
+        str_detect(geo_parcela_nombre, "NP_") ~ "Ot",
+        str_detect(geo_parcela_nombre, "PR_") ~ "Pr",
+        str_detect(geo_parcela_nombre, "P_") ~ "Ot"
+      ),
+    fecha = lubridate::ymd(fecha),
+    momento = case_when(
+      pre_post_quema == "Prequema" ~ "0 preQuema",
+      pre_post_quema == "Postquema" ~ "1 postQuema"
+    )
+  ) 
+
+```
+
+- Select data pre- and intermediately post-fire (first post-fire sampling: "2018-12-20" and "2019-05-09" for autumn and spring fires respectively)
+
+```{r, echo=TRUE}
+soil <- raw_soil %>% 
+  filter(fecha %in% lubridate::ymd(c("2018-12-11", "2018-12-20", "2019-04-24", "2019-05-09"))) %>% 
+  mutate(zona = as.factor(zona), 
+         momento = as.factor(momento)
+  )
+```
+
+- Structure of the data
+
+```{r}
+xtabs(~momento+fechaQuema, data = soil)
+```
+
+# Modelize 
+
+- For each response variable, the approach modelling is 
+
+$Y \sim fechaQuema (Ot|Pr) + momento(pre|post) + fechaQuema \times momento$ 
+
+- using the "(1|fechaQuema:geo_parcela_nombre)" as nested random effects
+
+```{r}
+# mira esto 
+# https://doi.org/10.1186/s42408-018-0022-8 
+```
+- Then explore error distribution of the variable response and model diagnostics 
+- Select the appropiate error distribution and use LMM or GLMM 
+- Explore Post-hoc  
+- Plot interactions 
+
+
+# Humedad 
+### Model 
+```{r}
+# Normal 
+yvar <- "humedad"
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"momento", "fechaQuema", "geo_parcela_nombre")))
+form <- reformulate("momento * fechaQuema + (1|fechaQuema:geo_parcela_nombre)", 
+                    response = yvar)
+
+m <- lme4::lmer(form, data = df_model)
+anova(as_lmerModLmerTest(m))
+
+tabla_anova <- as.data.frame(anova(as_lmerModLmerTest(m)))
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+tabla_anova
+
+tabla_anova %>% dplyr::select(fvalue = `F value`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+### *Post-hoc*
+```{r}
+emmeans(m, list(pairwise ~ momento), adjust = "tukey")
+emmeans(m, list(pairwise ~ fechaQuema), adjust = "tukey")
+emmeans(m, list(pairwise ~ momento | fechaQuema), adjust = "tukey")
+```
+
+
+# CIC 
+### Model 
+```{r}
+# Normal 
+yvar <- "cic"
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"momento", "fechaQuema", "geo_parcela_nombre")))
+form <- reformulate("momento * fechaQuema + (1|fechaQuema:geo_parcela_nombre)", 
+                    response = yvar)
+
+m <- lme4::lmer(form, data = df_model)
+anova(as_lmerModLmerTest(m))
+
+tabla_anova <- as.data.frame(anova(as_lmerModLmerTest(m)))
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+tabla_anova
+
+tabla_anova %>% dplyr::select(fvalue = `F value`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+### *Post-hoc*
+```{r}
+emmeans(m, list(pairwise ~ momento), adjust = "tukey")
+emmeans(m, list(pairwise ~ fechaQuema), adjust = "tukey")
+emmeans(m, list(pairwise ~ momento | fechaQuema), adjust = "tukey")
+```
+
+
+# C 
+### Model 
+```{r}
+# Normal 
+yvar <- "c_percent"
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"momento", "fechaQuema", "geo_parcela_nombre")))
+form <- reformulate("momento * fechaQuema + (1|fechaQuema:geo_parcela_nombre)", 
+                    response = yvar)
+
+m <- lme4::lmer(form, data = df_model)
+anova(as_lmerModLmerTest(m))
+
+tabla_anova <- as.data.frame(anova(as_lmerModLmerTest(m)))
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+tabla_anova
+
+tabla_anova %>% dplyr::select(fvalue = `F value`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+### *Post-hoc*
+```{r}
+emmeans(m, list(pairwise ~ momento), adjust = "tukey")
+emmeans(m, list(pairwise ~ fechaQuema), adjust = "tukey")
+emmeans(m, list(pairwise ~ momento | fechaQuema), adjust = "tukey")
+```
+
+
+# Fe
+### Model 
+```{r}
+# Gamma
+yvar <- "fe_percent"
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"momento", "fechaQuema", "geo_parcela_nombre")))
+form <- reformulate("momento * fechaQuema + (1|fechaQuema:geo_parcela_nombre)", 
+                    response = yvar)
+
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+afex::mixed(form, data=df_model)
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+### *Post-hoc*
+```{r}
+emmeans(m, list(pairwise ~ momento), adjust = "tukey")
+emmeans(m, list(pairwise ~ fechaQuema), adjust = "tukey")
+emmeans(m, list(pairwise ~ momento | fechaQuema), adjust = "tukey")
+```
+
+
+# MO
+### Model 
+```{r}
+# Gamma
+yvar <- "mo"
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"momento", "fechaQuema", "geo_parcela_nombre")))
+form <- reformulate("momento * fechaQuema + (1|fechaQuema:geo_parcela_nombre)", 
+                    response = yvar)
+
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+afex::mixed(form, data=df_model)
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+### *Post-hoc*
+```{r}
+emmeans(m, list(pairwise ~ momento), adjust = "tukey")
+emmeans(m, list(pairwise ~ fechaQuema), adjust = "tukey")
+emmeans(m, list(pairwise ~ momento | fechaQuema), adjust = "tukey")
+```
+
+
+# K
+### Model 
+```{r}
+# Gamma
+yvar <- "k_percent"
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"momento", "fechaQuema", "geo_parcela_nombre")))
+form <- reformulate("momento * fechaQuema + (1|fechaQuema:geo_parcela_nombre)", 
+                    response = yvar)
+
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+afex::mixed(form, data=df_model)
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+### *Post-hoc*
+```{r}
+emmeans(m, list(pairwise ~ momento), adjust = "tukey")
+emmeans(m, list(pairwise ~ fechaQuema), adjust = "tukey")
+emmeans(m, list(pairwise ~ momento | fechaQuema), adjust = "tukey")
+```
+
+
+
+# Mg
+### Model 
+```{r}
+# Gamma
+yvar <- "mg_percent"
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"momento", "fechaQuema", "geo_parcela_nombre")))
+form <- reformulate("momento * fechaQuema + (1|fechaQuema:geo_parcela_nombre)", 
+                    response = yvar)
+
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+afex::mixed(form, data=df_model)
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+### *Post-hoc*
+```{r}
+emmeans(m, list(pairwise ~ momento), adjust = "tukey")
+emmeans(m, list(pairwise ~ fechaQuema), adjust = "tukey")
+emmeans(m, list(pairwise ~ momento | fechaQuema), adjust = "tukey")
+```
+
+# C/N
+### Model 
+```{r}
+# Gamma
+yvar <- "c_n"
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"momento", "fechaQuema", "geo_parcela_nombre")))
+form <- reformulate("momento * fechaQuema + (1|fechaQuema:geo_parcela_nombre)", 
+                    response = yvar)
+
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+afex::mixed(form, data=df_model)
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+### *Post-hoc*
+```{r}
+emmeans(m, list(pairwise ~ momento), adjust = "tukey")
+emmeans(m, list(pairwise ~ fechaQuema), adjust = "tukey")
+emmeans(m, list(pairwise ~ momento | fechaQuema), adjust = "tukey")
+```
+
+
+# P
+### Model 
+```{r}
+# Negative Binomial 
+yvar <- "p"
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"momento", "fechaQuema", "geo_parcela_nombre")))
+form <- reformulate("momento * fechaQuema + (1|fechaQuema:geo_parcela_nombre)", 
+                    response = yvar)
+
+m <- lme4::glmer.nb(form, data = df_model, family= Gamma)
+afex::mixed(form, data=df_model)
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+### *Post-hoc*
+```{r}
+emmeans(m, list(pairwise ~ momento), adjust = "tukey")
+emmeans(m, list(pairwise ~ fechaQuema), adjust = "tukey")
+emmeans(m, list(pairwise ~ momento | fechaQuema), adjust = "tukey")
+```
+
+# N
+### Model 
+```{r}
+# Beta
+yvar <- "n_percent"
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"momento", "fechaQuema", "geo_parcela_nombre")))
+form <- reformulate("momento * fechaQuema + (1|fechaQuema:geo_parcela_nombre)", 
+                    response = yvar)
+
+library(glmmTMB)
+m <- glmmTMB::glmmTMB(formula = form,
+                         family = beta_family (link = "logit"),
+                         data = df_model)
+
+tabla_anova <- car::Anova(m)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+assign(paste0("anova_", yvar), tabla_anova)
+
+  tabla_anova %>% dplyr::select(fvalue = `Chisq`, p=`Pr(>Chisq)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+```
+
+### *Post-hoc*
+```{r}
+emmeans(m, list(pairwise ~ momento), adjust = "tukey")
+emmeans(m, list(pairwise ~ fechaQuema), adjust = "tukey")
+emmeans(m, list(pairwise ~ momento | fechaQuema), adjust = "tukey")
+```
+
+# Na
+### Model 
+```{r}
+# Beta
+yvar <- "na_percent"
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"momento", "fechaQuema", "geo_parcela_nombre")))
+form <- reformulate("momento * fechaQuema + (1|fechaQuema:geo_parcela_nombre)", 
+                    response = yvar)
+
+
+library(glmmTMB)
+m <- glmmTMB::glmmTMB(formula = form,
+                         family = beta_family (link = "logit"),
+                         data = df_model)
+
+tabla_anova <- car::Anova(m)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+assign(paste0("anova_", yvar), tabla_anova)
+
+  tabla_anova %>% dplyr::select(fvalue = `Chisq`, p=`Pr(>Chisq)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+```
+
+### *Post-hoc*
+```{r}
+emmeans(m, list(pairwise ~ momento), adjust = "tukey")
+emmeans(m, list(pairwise ~ fechaQuema), adjust = "tukey")
+emmeans(m, list(pairwise ~ momento | fechaQuema), adjust = "tukey")
+```
+
+
+# pH agua 
+### Model 
+```{r}
+# Gamma
+yvar <- "p_h_agua_eez"
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"momento", "fechaQuema", "geo_parcela_nombre")))
+form <- reformulate("momento * fechaQuema + (1|fechaQuema:geo_parcela_nombre)", 
+                    response = yvar)
+
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+afex::mixed(form, data=df_model)
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+### *Post-hoc*
+```{r}
+emmeans(m, list(pairwise ~ momento), adjust = "tukey")
+emmeans(m, list(pairwise ~ fechaQuema), adjust = "tukey")
+emmeans(m, list(pairwise ~ momento | fechaQuema), adjust = "tukey")
+```
+
+
+
+# pH KCl 
+### Model 
+```{r}
+# Gamma
+yvar <- "p_h_k_cl"
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"momento", "fechaQuema", "geo_parcela_nombre")))
+form <- reformulate("momento * fechaQuema + (1|fechaQuema:geo_parcela_nombre)", 
+                    response = yvar)
+
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+afex::mixed(form, data=df_model)
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+### *Post-hoc*
+```{r}
+emmeans(m, list(pairwise ~ momento), adjust = "tukey")
+emmeans(m, list(pairwise ~ fechaQuema), adjust = "tukey")
+emmeans(m, list(pairwise ~ momento | fechaQuema), adjust = "tukey")
+```
+
+
+# NH4 
+- Prepare data
+- We have only data for Autumn fire 
+- The approach will be the following: Apply non-parametric Wilcoxon test to compare pre and postFire
+
+
+```{r}
+soilN <- raw_soil %>% 
+  dplyr::select(momento, fecha, fechaQuema, zona, geo_parcela_nombre, 
+                n_nh4,n_no3) %>% 
+  drop_na() %>% 
+  mutate(momento = as.factor(momento), 
+         fechaQuema = as.factor(fechaQuema)
+  )
+  
+xtabs(~fechaQuema+momento, data = soilN)
+
+```
+### Model 
+```{r}
+# Wilcoxon
+yvar <- "n_nh4"
+df_model <- soilN %>% 
+  dplyr::select(one_of(c(yvar, "momento", "zona", "geo_parcela_nombre")))
+form <- reformulate("momento", response = yvar)
+m <- wilcox.test(form, data=df_model)
+
+tabla_anova <- data.frame(
+  fvalue = m$statistic, 
+  p = m$p.value, 
+  variable = yvar,
+  factor = "momento"
+)
+
+tabla_anova %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+
+# NO3
+### Model 
+```{r}
+# Wilcoxon
+yvar <- "n_no3"
+df_model <- soilN %>% 
+  dplyr::select(one_of(c(yvar, "momento", "zona", "geo_parcela_nombre")))
+form <- reformulate("momento", response = yvar)
+m <- wilcox.test(form, data=df_model)
+
+tabla_anova <- data.frame(
+  fvalue = m$statistic, 
+  p = m$p.value, 
+  variable = yvar,
+  factor = "momento"
+)
+
+tabla_anova %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+
+
+
+# General Overview
+## Mean + SE table 
+```{r}
+library(plotrix)
+library(gtsummary)
+soil %>% 
+  dplyr::select(fechaQuema, momento, one_of("humedad","n_nh4","n_no3","fe_percent","k_percent","mg_percent","na_percent","n_percent","c_percent","c_n","cic","p","mo","p_h_k_cl","p_h_agua_eez")) %>% 
+  tbl_strata(
+    strata = momento, 
+    .tbl_fun = 
+      ~.x %>% 
+      tbl_summary(
+        by = fechaQuema,
+        missing = "no",
+        type = c(p) ~ "continuous",
+       # label = list(ab ~ "Juvenile abundance"),
+        statistic = all_continuous() ~ "{mean} ({std.error})",
+        digits = everything() ~ 2
+      ))
+```
+
+```{r}
+library(plotrix)
+library(gtsummary)
+soil %>% 
+  dplyr::select(fechaQuema, momento, one_of("humedad","n_nh4","n_no3","fe_percent","k_percent","mg_percent","na_percent","n_percent","c_percent","c_n","cic","p","mo","p_h_k_cl","p_h_agua_eez")) %>% 
+  tbl_strata(
+    strata = fechaQuema, 
+    .tbl_fun = 
+      ~.x %>% 
+      tbl_summary(
+        by = momento,
+        missing = "no",
+        type = c(p) ~ "continuous",
+       # label = list(ab ~ "Juvenile abundance"),
+        statistic = all_continuous() ~ "{mean} ({std.error})",
+        digits = everything() ~ 2
+      ))
+```
+
+## Figures 
+```{r}
+pos <- position_dodge(0.15)
+
+medias <- soil %>% dplyr::select(
+  momento, fechaQuema, humedad:p_h_agua_eez)%>% 
+  group_by(momento, fechaQuema) %>% 
+  summarise_at(vars(humedad:p_h_agua_eez), ~mean(., na.rm=TRUE)) %>% 
+  pivot_longer(humedad:p_h_agua_eez, names_to = "var", values_to = "mean")
+
+errores <- soil %>% dplyr::select(
+  momento, fechaQuema, humedad:p_h_agua_eez)%>% 
+  group_by(momento, fechaQuema) %>% 
+  summarise_at(vars(humedad:p_h_agua_eez), ~plotrix::std.error(., na.rm=TRUE)) %>% 
+  pivot_longer(humedad:p_h_agua_eez, names_to = "var", values_to = "se")
+
+medias <- medias %>% dplyr::inner_join(errores) %>% 
+  mutate(varname = case_when(
+    var == "n_percent" ~ "N",
+    var == "p" ~ "P",
+    var == "k_percent" ~ "K",
+    var == "mo" ~ "M.O.",
+    var == "c_percent" ~ "C",
+    var == "c_n" ~ "C/N",
+    var == "humedad" ~ "Humedad",
+    var == "n_nh4" ~ "NH4",
+    var == "fe_percent" ~ "Fe",
+    var == "mg_percent" ~ "Mg",
+    var == "na_percent" ~ "Na",
+    var == "cic" ~ "C.I.C.",
+    var == "n_no3" ~ "NO3",
+    var == "p_h_k_cl"  ~ "pH (KCl)",
+    var == "p_h_agua_eez" ~ "pH (Agua)",
+    var == "p_h_agua" ~ "pH (Agua)_old"
+  ))
+
+plotsuelos <- function(df, ncol, nrow){
+    ggplot(df, aes(x=momento, y = mean, 
+               color = fechaQuema, shape = fechaQuema, group=fechaQuema)) + 
+    geom_point(position = pos, size = 2) + 
+    geom_errorbar(aes(ymin=mean-se, ymax=mean+se), 
+                  position = pos, width = .01) +
+    geom_line(position = pos) +
+    theme_bw() +
+    theme(strip.background = element_rect(fill="white")) + 
+    ylab("") + xlab("") +
+  facet_wrap(~varname, scales = "free_y", ncol=ncol)
+}
+```
+
+
+```{r}
+medias %>% 
+  filter(var %in% c("n_percent", "p", "k_percent",
+                    "mo", "c_percent", "c_n")) %>% 
+  plotsuelos(ncol=2) 
+```
+
+```{r}
+medias %>% 
+  filter(var %in% c("cic", "mg_percent", 
+                    "na_percent", "humedad")) %>% 
+  plotsuelos(ncol=2)
+```
+
+```{r}
+medias %>% 
+  filter(var %in% c("n_nh4","n_no3",
+                    "p_h_k_cl", "p_h_agua_eez")) %>% 
+  plotsuelos(ncol=2) 
+```
+
+## Anovas table
+```{r}
+
+anovas <- bind_rows(anova_c_n, 
+                    anova_cic,
+                    anova_k_percent,
+                    anova_mg_percent,
+                    anova_mo,
+                    anova_n_nh4,
+                    anova_n_no3, 
+                    anova_p, 
+                    anova_p_h_agua_eez, 
+                    anova_p_h_k_cl, 
+                    anova_humedad, 
+                    anova_n_percent, 
+                    anova_c_percent, 
+                    anova_na_percent) %>% 
+  relocate(variable, factor)
+rownames(anovas) <- NULL
+```
+
+```{r}
+library(kableExtra)
+
+anovas %>% 
+  mutate(across(where(is.numeric), round, 3)) %>% 
+  pivot_wider(names_from = factor, values_from = c(fvalue, p)) %>% 
+  relocate(variable,
+           fvalue_fechaQuema, p_fechaQuema, 
+           fvalue_momento, p_momento, 
+           `fvalue_momento:fechaQuema`, `p_momento:fechaQuema`
+           ) %>% 
+  kbl(col.names = 
+        c("Variables", rep(c("F", "p"),3))) %>% 
+  add_header_above(c("", "fechaQuema" = 2, "momento" = 2, "fechaQuema x momento" = 2)) %>% 
+  kable_styling() 
+
+```
+
+```{r}
+anovas %>% 
+  mutate(across(where(is.numeric), round, 3)) %>% 
+  pivot_wider(names_from = factor, values_from = c(fvalue, p)) %>% 
+  relocate(variable,
+           fvalue_fechaQuema, p_fechaQuema, 
+           fvalue_momento, p_momento, 
+           `fvalue_momento:fechaQuema`, `p_momento:fechaQuema`
+           ) %>% 
+  write_csv(here::here("output/anovas_pre_post_epoca.csv"))
+```
+
+# Gráficos feos feísimos
+```{r}
+mediasFeas <- medias %>% 
+  unite("fac", fechaQuema:momento, remove = FALSE)
+
+plotfeos <- function(df){
+  coloritos_feos <- c("darkgreen","darkred")
+  
+  ggplot(df, aes(x=momento, y = mean, 
+               color = momento, fill= momento, group=momento)) + 
+    geom_bar(stat="identity", width = .5) + 
+    geom_errorbar(aes(ymin=mean-se, ymax=mean+se), 
+                  position = pos, width = .3) +
+    theme_bw() + 
+  scale_fill_manual(values=coloritos_feos) + 
+  scale_color_manual(values=coloritos_feos) +
+  facet_grid(var~fechaQuema, 
+             switch = "y", scales = "free_y") + 
+  theme(strip.background = element_rect(fill="white"), 
+        legend.position = "none",
+        strip.placement = "outside") + 
+    ylab("") + xlab("")}
+
+```
+
+```{r}
+mediasFeas %>% 
+  filter(var %in% c("n_percent", "p", "k_percent")) %>% 
+  plotfeos()
+```
+
+
+
+```{r}
+mediasFeas %>% 
+  filter(var %in% c("mo", "c_percent", "c_n")) %>% 
+  plotfeos()
+```
+
+
+```{r}
+mediasFeas %>% 
+  filter(var %in% c("cic", "mg_percent", 
+                    "na_percent")) %>% 
+ plotfeos()
+```
+
+```{r}
+mediasFeas %>% 
+  filter(var %in% c(
+                    "p_h_k_cl", "p_h_agua_eez", "humedad")) %>% 
+  plotfeos()
+```
+
+
+```{r}
+mediasFeas %>% 
+  filter(var %in% c("n_nh4","n_no3")) %>% 
+  plotfeos()
+```
