@@ -1,0 +1,2714 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="ajpelu" />
+
+<meta name="date" content="2021-09-08" />
+
+<title>Browsings effects on Soil propierties after fire (no control)</title>
+
+<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Soil Data analysis of Andalusia EP (Alcontar)</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="study_area.html">Study Area</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Browsings effects on Soil propierties after fire (no control)</h1>
+<h4 class="author">ajpelu</h4>
+<h4 class="date">2021-09-08</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2021-09-14
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>soil_alcontar/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20210907code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20210907)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20210907code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20210907)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartreeb2f355b7f78851612d9027206e53eb01fcc48468targetblankb2f355ba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/serpam/soil_alcontar/tree/b2f355b7f78851612d9027206e53eb01fcc48468" target="_blank">b2f355b</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartreeb2f355b7f78851612d9027206e53eb01fcc48468targetblankb2f355ba" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/serpam/soil_alcontar/tree/b2f355b7f78851612d9027206e53eb01fcc48468" target="_blank">b2f355b</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .RData
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/C369E4F4/
+    Ignored:    .Rproj.user/shared/notebooks/0EF54E14-NOBORRAR/
+    Ignored:    .Rproj.user/shared/notebooks/27FF967E-analysis_pre_post_epoca/
+    Ignored:    .Rproj.user/shared/notebooks/33E25F73-analysis_resilience/
+    Ignored:    .Rproj.user/shared/notebooks/3F603CAC-map/
+    Ignored:    .Rproj.user/shared/notebooks/4672E36C-study_area/
+    Ignored:    .Rproj.user/shared/notebooks/4A68381F-general_overview_soils/
+    Ignored:    .Rproj.user/shared/notebooks/4E13660A-temporal_comparison/
+    Ignored:    .Rproj.user/shared/notebooks/5D919DFD-analysis_zona_time_postFire/
+    Ignored:    .Rproj.user/shared/notebooks/827D0727-analysis_pre_post/
+    Ignored:    .Rproj.user/shared/notebooks/A3F813C2-index/
+    Ignored:    .Rproj.user/shared/notebooks/D4E3AA10-analysis_zona_time/
+
+Untracked files:
+    Untracked:  analysis/NOBORRAR.Rmd
+    Untracked:  analysis/analysis_pre_post_cache/
+    Untracked:  analysis/test.Rmd
+    Untracked:  data/spatial/01_EP_ANDALUCIA/EP_Andalucía.shp.DESKTOP-CKNNEUJ.5492.5304.sr.lock
+    Untracked:  data/spatial/lucdeme/
+    Untracked:  data/spatial/parcelas/GEO_PARCELAS.shp.DESKTOP-CKNNEUJ.5492.5304.sr.lock
+    Untracked:  data/spatial/test/
+    Untracked:  map.Rmd
+    Untracked:  output/anovas_pre_post_epoca.csv
+    Untracked:  output/anovas_zona_time.csv
+    Untracked:  output/anovas_zona_time_postFire.csv
+    Untracked:  scripts/generate_3dview.R
+
+Unstaged changes:
+    Modified:   analysis/_site.yml
+    Modified:   data/spatial/.DS_Store
+    Modified:   data/spatial/01_EP_ANDALUCIA/EP_Andalucía.dbf
+    Deleted:    index.Rmd
+    Modified:   scripts/00_prepare_data.R
+    Modified:   temporal_comparison.Rmd
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/analysis_zona_time_postFire.Rmd</code>) and HTML (<code>docs/analysis_zona_time_postFire.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/b2f355b7f78851612d9027206e53eb01fcc48468/analysis/analysis_zona_time_postFire.Rmd" target="_blank">b2f355b</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+<td>
+add analysis
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<ul>
+<li><p>Analysis of temporal evolution of soil parameters along time.</p></li>
+<li><p>Only for Autumn treatment (<em>i.e.</em> zona == “P”; zona == “NP”)</p></li>
+<li><p>Interpret zona as “grazing effect”:</p>
+<ul>
+<li>zona == “P” corresponds to <em>Browsing</em></li>
+<li>zona == “NP” corresponds to <em>No Browsing</em></li>
+</ul></li>
+</ul>
+</div>
+<div id="prepare-data" class="section level1">
+<h1>Prepare data</h1>
+<pre class="r"><code>raw_soil &lt;- readxl::read_excel(here::here(&quot;data/Resultados_Suelos_2018_2021_v2.xlsx&quot;), 
+    sheet = &quot;SEGUIMIENTO_SUELOS_sin_ouliers&quot;) %&gt;% janitor::clean_names() %&gt;% mutate(treatment_name = case_when(str_detect(geo_parcela_nombre, 
+    &quot;NP_&quot;) ~ &quot;Autumn Burning / No Browsing&quot;, str_detect(geo_parcela_nombre, &quot;PR_&quot;) ~ 
+    &quot;Spring Burning / Browsing&quot;, str_detect(geo_parcela_nombre, &quot;P_&quot;) ~ &quot;Autumn Burning / Browsing&quot;), 
+    zona = case_when(str_detect(geo_parcela_nombre, &quot;NP_&quot;) ~ &quot;QOt_NP&quot;, str_detect(geo_parcela_nombre, 
+        &quot;PR_&quot;) ~ &quot;QPr_P&quot;, str_detect(geo_parcela_nombre, &quot;P_&quot;) ~ &quot;QOt_P&quot;), fecha = lubridate::ymd(fecha), 
+    pre_post_quema = case_when(pre_post_quema == &quot;Prequema&quot; ~ &quot;0 preQuema&quot;, pre_post_quema == 
+        &quot;Postquema&quot; ~ &quot;1 postQuema&quot;))</code></pre>
+<ul>
+<li>Compute date as months after fire</li>
+</ul>
+<pre class="r"><code>autumn_fire &lt;- lubridate::ymd(&quot;2018-12-18&quot;)
+
+soil &lt;- raw_soil %&gt;% filter(zona != &quot;QPr_P&quot;) %&gt;% filter(fecha != &quot;2018-12-11&quot;) %&gt;% 
+    mutate(zona = as.factor(zona)) %&gt;% mutate(meses = as.factor(as.character(lubridate::interval(autumn_fire, 
+    lubridate::ymd(fecha))%/%months(1)))) %&gt;% mutate(pastoreo = as.factor(case_when(zona == 
+    &quot;QOt_P&quot; ~ &quot;Browsing&quot;, zona == &quot;QOt_NP&quot; ~ &quot;No Browsing&quot;))) %&gt;% relocate(pastoreo, 
+    fecha, meses) %&gt;% dplyr::select(-pre_post_quema, -tratamiento)
+
+xtabs(~meses + pastoreo, data = soil)</code></pre>
+<pre><code>     pastoreo
+meses Browsing No Browsing
+   0        24          24
+   22       25          25
+   29       24          24</code></pre>
+<pre class="r"><code># sss &lt;- soil %&gt;% dplyr::select(meses, pastoreo, ca_percent)</code></pre>
+</div>
+<div id="modelize" class="section level1">
+<h1>Modelize</h1>
+<ul>
+<li>For each response variable, the approach modelling is</li>
+</ul>
+<p><span class="math inline">\(Y \sim pastoreo (Browsing|NoBrowsing)+ Fecha(0|22|29) + zona \times Fecha\)</span></p>
+<ul>
+<li>using the “(1|pastoreo:geo_parcela_nombre)” as nested random effects</li>
+</ul>
+</div>
+<div id="humedad" class="section level1">
+<h1>Humedad</h1>
+<pre><code>humedad ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)</code></pre>
+<pre><code>Type III Analysis of Variance Table with Satterthwaite&#39;s method
+               Sum Sq Mean Sq NumDF   DenDF F value    Pr(&gt;F)    
+pastoreo         4.60   4.597     1   6.005  0.6233 0.4598622    
+meses          362.22 181.110     2 133.044 24.5534 8.395e-10 ***
+pastoreo:meses 132.90  66.452     2 133.044  9.0090 0.0002141 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="post-hoc" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of pastoreo`
+ pastoreo    emmean    SE   df lower.CL upper.CL
+ Browsing      11.1 0.883 6.01     8.96     13.3
+ No Browsing   10.1 0.882 5.99     7.98     12.3
+
+Results are averaged over the levels of: meses 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of pastoreo`
+ 1                      estimate   SE df t.ratio p.value
+ Browsing - No Browsing    0.985 1.25  6 0.789   0.4599 
+
+Results are averaged over the levels of: meses 
+Degrees-of-freedom method: kenward-roger </code></pre>
+<pre><code>$`emmeans of meses`
+ meses emmean    SE   df lower.CL upper.CL
+ 0      12.13 0.702 9.55    10.55     13.7
+ 22      8.47 0.697 9.33     6.90     10.0
+ 29     11.30 0.704 9.69     9.72     12.9
+
+Results are averaged over the levels of: pastoreo 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses`
+ 1       estimate    SE  df t.ratio p.value
+ 0 - 22     3.661 0.549 133  6.668  &lt;.0001 
+ 0 - 29     0.827 0.558 133  1.483  0.3023 
+ 22 - 29   -2.834 0.552 133 -5.131  &lt;.0001 
+
+Results are averaged over the levels of: pastoreo 
+Degrees-of-freedom method: kenward-roger 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of meses | pastoreo`
+pastoreo = Browsing:
+ meses emmean    SE   df lower.CL upper.CL
+ 0      11.39 0.992 9.55     9.17     13.6
+ 22     10.05 0.986 9.33     7.83     12.3
+ 29     11.93 0.999 9.82     9.69     14.2
+
+pastoreo = No Browsing:
+ meses emmean    SE   df lower.CL upper.CL
+ 0      12.86 0.992 9.55    10.64     15.1
+ 22      6.88 0.986 9.33     4.66      9.1
+ 29     10.67 0.992 9.55     8.45     12.9
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses | pastoreo`
+pastoreo = Browsing:
+ 2       estimate    SE  df t.ratio p.value
+ 0 - 22     1.339 0.776 133  1.725  0.1996 
+ 0 - 29    -0.533 0.793 133 -0.673  0.7798 
+ 22 - 29   -1.873 0.786 133 -2.383  0.0485 
+
+pastoreo = No Browsing:
+ 2       estimate    SE  df t.ratio p.value
+ 0 - 22     5.983 0.776 133  7.705  &lt;.0001 
+ 0 - 29     2.187 0.784 133  2.789  0.0166 
+ 22 - 29   -3.796 0.776 133 -4.889  &lt;.0001 
+
+Degrees-of-freedom method: kenward-roger 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+<div id="cic" class="section level1">
+<h1>CIC</h1>
+<pre><code>cic ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)</code></pre>
+<pre><code>Type III Analysis of Variance Table with Satterthwaite&#39;s method
+               Sum Sq Mean Sq NumDF   DenDF F value Pr(&gt;F)    
+pastoreo         4.21   4.210     1   5.979  1.3273 0.2933    
+meses          435.43 217.716     2 133.999 68.6311 &lt;2e-16 ***
+pastoreo:meses   2.97   1.485     2 133.999  0.4682 0.6271    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="post-hoc-1" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of pastoreo`
+ pastoreo    emmean    SE df lower.CL upper.CL
+ Browsing      16.8 0.555  6     15.5     18.2
+ No Browsing   15.9 0.555  6     14.6     17.3
+
+Results are averaged over the levels of: meses 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of pastoreo`
+ 1                      estimate    SE df t.ratio p.value
+ Browsing - No Browsing    0.904 0.784  6 1.152   0.2931 
+
+Results are averaged over the levels of: meses 
+Degrees-of-freedom method: kenward-roger </code></pre>
+<pre><code>$`emmeans of meses`
+ meses emmean    SE   df lower.CL upper.CL
+ 0       15.3 0.445 9.92     14.3     16.3
+ 22      15.0 0.442 9.67     14.0     16.0
+ 29      18.8 0.445 9.92     17.8     19.8
+
+Results are averaged over the levels of: pastoreo 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses`
+ 1       estimate    SE  df t.ratio p.value
+ 0 - 22     0.325 0.360 134   0.903 0.6395 
+ 0 - 29    -3.500 0.364 134  -9.627 &lt;.0001 
+ 22 - 29   -3.825 0.360 134 -10.624 &lt;.0001 
+
+Results are averaged over the levels of: pastoreo 
+Degrees-of-freedom method: kenward-roger 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of meses | pastoreo`
+pastoreo = Browsing:
+ meses emmean    SE   df lower.CL upper.CL
+ 0       15.6 0.630 9.92     14.2     17.0
+ 22      15.6 0.626 9.67     14.2     17.0
+ 29      19.4 0.630 9.92     18.0     20.8
+
+pastoreo = No Browsing:
+ meses emmean    SE   df lower.CL upper.CL
+ 0       15.1 0.630 9.92     13.7     16.5
+ 22      14.4 0.626 9.67     13.0     15.8
+ 29      18.3 0.630 9.92     16.9     19.7
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses | pastoreo`
+pastoreo = Browsing:
+ 2       estimate    SE  df t.ratio p.value
+ 0 - 22    0.0111 0.509 134  0.022  0.9997 
+ 0 - 29   -3.7917 0.514 134 -7.375  &lt;.0001 
+ 22 - 29  -3.8027 0.509 134 -7.468  &lt;.0001 
+
+pastoreo = No Browsing:
+ 2       estimate    SE  df t.ratio p.value
+ 0 - 22    0.6390 0.509 134  1.255  0.4231 
+ 0 - 29   -3.2083 0.514 134 -6.240  &lt;.0001 
+ 22 - 29  -3.8474 0.509 134 -7.556  &lt;.0001 
+
+Degrees-of-freedom method: kenward-roger 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+<div id="c" class="section level1">
+<h1>C</h1>
+<pre><code>c_percent ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)</code></pre>
+<pre><code>Type III Analysis of Variance Table with Satterthwaite&#39;s method
+                Sum Sq Mean Sq NumDF   DenDF F value    Pr(&gt;F)    
+pastoreo        2.9927  2.9927     1   5.995  1.5033 0.2661352    
+meses          30.1228 15.0614     2 134.001  7.5658 0.0007706 ***
+pastoreo:meses  0.5280  0.2640     2 134.001  0.1326 0.8759091    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="post-hoc-2" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of pastoreo`
+ pastoreo    emmean    SE df lower.CL upper.CL
+ Browsing      8.06 0.768  6     6.18     9.94
+ No Browsing   6.73 0.768  6     4.85     8.61
+
+Results are averaged over the levels of: meses 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of pastoreo`
+ 1                      estimate   SE df t.ratio p.value
+ Browsing - No Browsing     1.33 1.09  6 1.226   0.2661 
+
+Results are averaged over the levels of: meses 
+Degrees-of-freedom method: kenward-roger </code></pre>
+<pre><code>$`emmeans of meses`
+ meses emmean    SE   df lower.CL upper.CL
+ 0       8.00 0.568 7.18     6.66     9.33
+ 22      6.91 0.567 7.11     5.57     8.24
+ 29      7.27 0.568 7.18     5.94     8.61
+
+Results are averaged over the levels of: pastoreo 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses`
+ 1       estimate    SE  df t.ratio p.value
+ 0 - 22     1.092 0.285 134  3.830  0.0006 
+ 0 - 29     0.726 0.288 134  2.519  0.0343 
+ 22 - 29   -0.367 0.285 134 -1.286  0.4053 
+
+Results are averaged over the levels of: pastoreo 
+Degrees-of-freedom method: kenward-roger 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of meses | pastoreo`
+pastoreo = Browsing:
+ meses emmean    SE   df lower.CL upper.CL
+ 0       8.73 0.804 7.18     6.84    10.62
+ 22      7.49 0.802 7.11     5.60     9.38
+ 29      7.96 0.804 7.18     6.07     9.85
+
+pastoreo = No Browsing:
+ meses emmean    SE   df lower.CL upper.CL
+ 0       7.27 0.804 7.18     5.38     9.16
+ 22      6.32 0.802 7.11     4.43     8.21
+ 29      6.59 0.804 7.18     4.70     8.48
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses | pastoreo`
+pastoreo = Browsing:
+ 2       estimate    SE  df t.ratio p.value
+ 0 - 22     1.236 0.403 134  3.064  0.0074 
+ 0 - 29     0.772 0.407 134  1.895  0.1442 
+ 22 - 29   -0.464 0.403 134 -1.151  0.4844 
+
+pastoreo = No Browsing:
+ 2       estimate    SE  df t.ratio p.value
+ 0 - 22     0.949 0.403 134  2.353  0.0522 
+ 0 - 29     0.680 0.407 134  1.668  0.2212 
+ 22 - 29   -0.269 0.403 134 -0.668  0.7825 
+
+Degrees-of-freedom method: kenward-roger 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+<div id="fe" class="section level1">
+<h1>Fe</h1>
+<pre><code>fe_percent ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: fe_percent ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)
+Data: df_model
+               num Df den Df        F  Pr(&gt;F)    
+pastoreo            1      6   0.3182 0.59314    
+meses               2    134 195.2049 &lt; 2e-16 ***
+pastoreo:meses      2    134   3.3444 0.03825 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="post-hoc-3" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of pastoreo`
+ pastoreo    emmean     SE  df asymp.LCL asymp.UCL
+ Browsing     0.550 0.0555 Inf     0.442     0.659
+ No Browsing  0.467 0.0604 Inf     0.349     0.586
+
+Results are averaged over the levels of: meses 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pastoreo`
+ 1                      estimate    SE  df z.ratio p.value
+ Browsing - No Browsing    0.083 0.082 Inf 1.013   0.3110 
+
+Results are averaged over the levels of: meses 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of meses`
+ meses emmean     SE  df asymp.LCL asymp.UCL
+ 0      0.586 0.0416 Inf     0.504     0.667
+ 22     0.541 0.0414 Inf     0.459     0.622
+ 29     0.400 0.0412 Inf     0.319     0.481
+
+Results are averaged over the levels of: pastoreo 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses`
+ 1       estimate      SE  df z.ratio p.value
+ 0 - 22    0.0451 0.01029 Inf  4.386  &lt;.0001 
+ 0 - 29    0.1858 0.00917 Inf 20.265  &lt;.0001 
+ 22 - 29   0.1406 0.00849 Inf 16.570  &lt;.0001 
+
+Results are averaged over the levels of: pastoreo 
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of meses | pastoreo`
+pastoreo = Browsing:
+ meses emmean     SE  df asymp.LCL asymp.UCL
+ 0      0.636 0.0563 Inf     0.525     0.746
+ 22     0.568 0.0560 Inf     0.458     0.678
+ 29     0.447 0.0557 Inf     0.338     0.556
+
+pastoreo = No Browsing:
+ meses emmean     SE  df asymp.LCL asymp.UCL
+ 0      0.536 0.0611 Inf     0.416     0.656
+ 22     0.513 0.0610 Inf     0.393     0.633
+ 29     0.353 0.0606 Inf     0.234     0.472
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses | pastoreo`
+pastoreo = Browsing:
+ 2       estimate     SE  df z.ratio p.value
+ 0 - 22    0.0674 0.0148 Inf  4.558  &lt;.0001 
+ 0 - 29    0.1886 0.0135 Inf 14.020  &lt;.0001 
+ 22 - 29   0.1212 0.0121 Inf 10.041  &lt;.0001 
+
+pastoreo = No Browsing:
+ 2       estimate     SE  df z.ratio p.value
+ 0 - 22    0.0228 0.0143 Inf  1.596  0.2474 
+ 0 - 29    0.1829 0.0125 Inf 14.686  &lt;.0001 
+ 22 - 29   0.1601 0.0119 Inf 13.411  &lt;.0001 
+
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+<div id="k" class="section level1">
+<h1>K</h1>
+<pre><code>k_percent ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: k_percent ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)
+Data: df_model
+               num Df den Df        F    Pr(&gt;F)    
+pastoreo            1   6.00   3.5557  0.108303    
+meses               2 134.01 477.4712 &lt; 2.2e-16 ***
+pastoreo:meses      2 134.01   6.3832  0.002249 ** 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="post-hoc-4" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of pastoreo`
+ pastoreo    emmean    SE  df asymp.LCL asymp.UCL
+ Browsing      2.32 0.140 Inf      2.05      2.60
+ No Browsing   1.59 0.139 Inf      1.32      1.86
+
+Results are averaged over the levels of: meses 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pastoreo`
+ 1                      estimate    SE  df z.ratio p.value
+ Browsing - No Browsing    0.731 0.196 Inf 3.725   0.0002 
+
+Results are averaged over the levels of: meses 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of meses`
+ meses emmean     SE  df asymp.LCL asymp.UCL
+ 0      2.722 0.1273 Inf     2.473      2.97
+ 22     2.183 0.1130 Inf     1.962      2.40
+ 29     0.963 0.0962 Inf     0.775      1.15
+
+Results are averaged over the levels of: pastoreo 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses`
+ 1       estimate     SE  df z.ratio p.value
+ 0 - 22     0.539 0.1111 Inf  4.852  &lt;.0001 
+ 0 - 29     1.759 0.0935 Inf 18.813  &lt;.0001 
+ 22 - 29    1.220 0.0725 Inf 16.837  &lt;.0001 
+
+Results are averaged over the levels of: pastoreo 
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of meses | pastoreo`
+pastoreo = Browsing:
+ meses emmean    SE  df asymp.LCL asymp.UCL
+ 0      3.554 0.200 Inf     3.163      3.95
+ 22     2.372 0.160 Inf     2.058      2.69
+ 29     1.040 0.132 Inf     0.782      1.30
+
+pastoreo = No Browsing:
+ meses emmean    SE  df asymp.LCL asymp.UCL
+ 0      1.891 0.157 Inf     1.583      2.20
+ 22     1.995 0.159 Inf     1.684      2.31
+ 29     0.886 0.138 Inf     0.615      1.16
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses | pastoreo`
+pastoreo = Browsing:
+ 2       estimate     SE  df z.ratio p.value
+ 0 - 22     1.182 0.1867 Inf  6.332  &lt;.0001 
+ 0 - 29     2.514 0.1629 Inf 15.434  &lt;.0001 
+ 22 - 29    1.331 0.1096 Inf 12.141  &lt;.0001 
+
+pastoreo = No Browsing:
+ 2       estimate     SE  df z.ratio p.value
+ 0 - 22    -0.104 0.1204 Inf -0.865  0.6622 
+ 0 - 29     1.005 0.0919 Inf 10.937  &lt;.0001 
+ 22 - 29    1.109 0.0947 Inf 11.706  &lt;.0001 
+
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+<div id="mg" class="section level1">
+<h1>Mg</h1>
+<pre><code>mg_percent ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: mg_percent ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)
+Data: df_model
+               num Df den Df      F   Pr(&gt;F)   
+pastoreo            1      6 0.7514 0.419348   
+meses               2    134 3.1375 0.046594 * 
+pastoreo:meses      2    134 4.7869 0.009817 **
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="post-hoc-5" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of pastoreo`
+ pastoreo    emmean    SE  df asymp.LCL asymp.UCL
+ Browsing     0.949 0.143 Inf     0.669      1.23
+ No Browsing  0.760 0.152 Inf     0.462      1.06
+
+Results are averaged over the levels of: meses 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pastoreo`
+ 1                      estimate    SE  df z.ratio p.value
+ Browsing - No Browsing    0.189 0.209 Inf 0.907   0.3647 
+
+Results are averaged over the levels of: meses 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of meses`
+ meses emmean    SE  df asymp.LCL asymp.UCL
+ 0      0.869 0.107 Inf     0.660      1.08
+ 22     0.899 0.107 Inf     0.689      1.11
+ 29     0.795 0.106 Inf     0.587      1.00
+
+Results are averaged over the levels of: pastoreo 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses`
+ 1       estimate     SE  df z.ratio p.value
+ 0 - 22   -0.0295 0.0403 Inf -0.731  0.7451 
+ 0 - 29    0.0742 0.0376 Inf  1.974  0.1188 
+ 22 - 29   0.1037 0.0377 Inf  2.748  0.0165 
+
+Results are averaged over the levels of: pastoreo 
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of meses | pastoreo`
+pastoreo = Browsing:
+ meses emmean    SE  df asymp.LCL asymp.UCL
+ 0      1.033 0.149 Inf     0.742      1.32
+ 22     0.981 0.147 Inf     0.692      1.27
+ 29     0.833 0.145 Inf     0.548      1.12
+
+pastoreo = No Browsing:
+ meses emmean    SE  df asymp.LCL asymp.UCL
+ 0      0.706 0.154 Inf     0.404      1.01
+ 22     0.817 0.155 Inf     0.513      1.12
+ 29     0.757 0.155 Inf     0.454      1.06
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses | pastoreo`
+pastoreo = Browsing:
+ 2       estimate     SE  df z.ratio p.value
+ 0 - 22    0.0516 0.0659 Inf  0.783  0.7134 
+ 0 - 29    0.1994 0.0612 Inf  3.259  0.0032 
+ 22 - 29   0.1478 0.0576 Inf  2.563  0.0280 
+
+pastoreo = No Browsing:
+ 2       estimate     SE  df z.ratio p.value
+ 0 - 22   -0.1106 0.0465 Inf -2.380  0.0456 
+ 0 - 29   -0.0511 0.0437 Inf -1.169  0.4717 
+ 22 - 29   0.0596 0.0487 Inf  1.223  0.4393 
+
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+<div id="cn" class="section level1">
+<h1>C/N</h1>
+<pre><code>c_n ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: c_n ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)
+Data: df_model
+               num Df   den Df      F Pr(&gt;F)
+pastoreo            1   6.0002 0.4479 0.5283
+meses               2 133.0226 1.0502 0.3528
+pastoreo:meses      2 133.0226 0.3729 0.6895</code></pre>
+<div id="post-hoc-6" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of pastoreo`
+ pastoreo    emmean      SE  df asymp.LCL asymp.UCL
+ Browsing    0.0288 0.00412 Inf    0.0207    0.0368
+ No Browsing 0.0319 0.00400 Inf    0.0241    0.0397
+
+Results are averaged over the levels of: meses 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pastoreo`
+ 1                      estimate      SE  df z.ratio p.value
+ Browsing - No Browsing -0.00314 0.00571 Inf -0.550  0.5826 
+
+Results are averaged over the levels of: meses 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of meses`
+ meses emmean      SE  df asymp.LCL asymp.UCL
+ 0     0.0302 0.00308 Inf    0.0241    0.0362
+ 22    0.0289 0.00305 Inf    0.0230    0.0349
+ 29    0.0319 0.00313 Inf    0.0258    0.0380
+
+Results are averaged over the levels of: pastoreo 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses`
+ 1       estimate      SE  df z.ratio p.value
+ 0 - 22   0.00124 0.00181 Inf  0.686  0.7719 
+ 0 - 29  -0.00172 0.00195 Inf -0.885  0.6499 
+ 22 - 29 -0.00296 0.00189 Inf -1.569  0.2593 
+
+Results are averaged over the levels of: pastoreo 
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of meses | pastoreo`
+pastoreo = Browsing:
+ meses emmean      SE  df asymp.LCL asymp.UCL
+ 0     0.0290 0.00437 Inf    0.0204    0.0376
+ 22    0.0265 0.00429 Inf    0.0181    0.0350
+ 29    0.0308 0.00442 Inf    0.0221    0.0394
+
+pastoreo = No Browsing:
+ meses emmean      SE  df asymp.LCL asymp.UCL
+ 0     0.0313 0.00430 Inf    0.0229    0.0398
+ 22    0.0313 0.00429 Inf    0.0229    0.0397
+ 29    0.0330 0.00438 Inf    0.0244    0.0416
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses | pastoreo`
+pastoreo = Browsing:
+ 2        estimate      SE  df z.ratio p.value
+ 0 - 22   2.46e-03 0.00235 Inf  1.049  0.5462 
+ 0 - 29  -1.76e-03 0.00259 Inf -0.682  0.7740 
+ 22 - 29 -4.23e-03 0.00245 Inf -1.725  0.1959 
+
+pastoreo = No Browsing:
+ 2        estimate      SE  df z.ratio p.value
+ 0 - 22   1.41e-05 0.00274 Inf  0.005  1.0000 
+ 0 - 29  -1.68e-03 0.00291 Inf -0.578  0.8320 
+ 22 - 29 -1.70e-03 0.00287 Inf -0.591  0.8250 
+
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+<div id="mo" class="section level1">
+<h1>MO</h1>
+<pre><code>mo ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: mo ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)
+Data: df_model
+               num Df   den Df       F    Pr(&gt;F)    
+pastoreo            1   5.9992  0.4239    0.5391    
+meses               2 134.0502 20.5449 1.649e-08 ***
+pastoreo:meses      2 134.0502  0.0116    0.9885    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="post-hoc-7" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of pastoreo`
+ pastoreo    emmean     SE  df asymp.LCL asymp.UCL
+ Browsing     0.221 0.0221 Inf     0.177     0.264
+ No Browsing  0.246 0.0229 Inf     0.201     0.291
+
+Results are averaged over the levels of: meses 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pastoreo`
+ 1                      estimate     SE  df z.ratio p.value
+ Browsing - No Browsing  -0.0253 0.0316 Inf -0.802  0.4226 
+
+Results are averaged over the levels of: meses 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of meses`
+ meses emmean     SE  df asymp.LCL asymp.UCL
+ 0      0.173 0.0171 Inf     0.140     0.207
+ 22     0.229 0.0190 Inf     0.192     0.266
+ 29     0.297 0.0222 Inf     0.254     0.341
+
+Results are averaged over the levels of: pastoreo 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses`
+ 1       estimate     SE  df z.ratio p.value
+ 0 - 22   -0.0558 0.0162 Inf -3.437  0.0017 
+ 0 - 29   -0.1241 0.0199 Inf -6.250  &lt;.0001 
+ 22 - 29  -0.0684 0.0216 Inf -3.166  0.0044 
+
+Results are averaged over the levels of: pastoreo 
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of meses | pastoreo`
+pastoreo = Browsing:
+ meses emmean     SE  df asymp.LCL asymp.UCL
+ 0      0.166 0.0236 Inf     0.120     0.212
+ 22     0.216 0.0261 Inf     0.165     0.267
+ 29     0.280 0.0302 Inf     0.221     0.339
+
+pastoreo = No Browsing:
+ meses emmean     SE  df asymp.LCL asymp.UCL
+ 0      0.181 0.0244 Inf     0.133     0.229
+ 22     0.242 0.0274 Inf     0.189     0.296
+ 29     0.315 0.0323 Inf     0.252     0.378
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses | pastoreo`
+pastoreo = Browsing:
+ 2       estimate     SE  df z.ratio p.value
+ 0 - 22   -0.0501 0.0221 Inf -2.268  0.0603 
+ 0 - 29   -0.1141 0.0268 Inf -4.250  0.0001 
+ 22 - 29  -0.0640 0.0290 Inf -2.205  0.0703 
+
+pastoreo = No Browsing:
+ 2       estimate     SE  df z.ratio p.value
+ 0 - 22   -0.0614 0.0238 Inf -2.585  0.0264 
+ 0 - 29   -0.1342 0.0293 Inf -4.585  &lt;.0001 
+ 22 - 29  -0.0727 0.0320 Inf -2.274  0.0595 
+
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+<div id="ph-agua" class="section level1">
+<h1>pH Agua</h1>
+<pre><code>p_h_agua_eez ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: p_h_agua_eez ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)
+Data: df_model
+               num Df   den Df       F    Pr(&gt;F)    
+pastoreo            1   5.9999  0.8325   0.39674    
+meses               2 134.0153 23.1121 2.379e-09 ***
+pastoreo:meses      2 134.0153  4.7246   0.01041 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="post-hoc-8" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of pastoreo`
+ pastoreo    emmean       SE  df asymp.LCL asymp.UCL
+ Browsing     0.127 0.000757 Inf     0.126     0.129
+ No Browsing  0.127 0.000760 Inf     0.125     0.128
+
+Results are averaged over the levels of: meses 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pastoreo`
+ 1                      estimate      SE  df z.ratio p.value
+ Browsing - No Browsing 0.000823 0.00107 Inf 0.768   0.4427 
+
+Results are averaged over the levels of: meses 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of meses`
+ meses emmean       SE  df asymp.LCL asymp.UCL
+ 0      0.126 0.000573 Inf     0.125     0.128
+ 22     0.126 0.000571 Inf     0.125     0.127
+ 29     0.128 0.000574 Inf     0.127     0.129
+
+Results are averaged over the levels of: pastoreo 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses`
+ 1        estimate       SE  df z.ratio p.value
+ 0 - 22   0.000249 0.000343 Inf  0.725  0.7487 
+ 0 - 29  -0.001982 0.000350 Inf -5.667  &lt;.0001 
+ 22 - 29 -0.002230 0.000346 Inf -6.441  &lt;.0001 
+
+Results are averaged over the levels of: pastoreo 
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of meses | pastoreo`
+pastoreo = Browsing:
+ meses emmean       SE  df asymp.LCL asymp.UCL
+ 0      0.126 0.000808 Inf     0.125     0.128
+ 22     0.126 0.000806 Inf     0.125     0.128
+ 29     0.129 0.000812 Inf     0.128     0.131
+
+pastoreo = No Browsing:
+ meses emmean       SE  df asymp.LCL asymp.UCL
+ 0      0.126 0.000811 Inf     0.125     0.128
+ 22     0.126 0.000808 Inf     0.124     0.127
+ 29     0.127 0.000812 Inf     0.126     0.129
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses | pastoreo`
+pastoreo = Browsing:
+ 2        estimate       SE  df z.ratio p.value
+ 0 - 22  -6.92e-06 0.000485 Inf -0.014  0.9999 
+ 0 - 29  -3.06e-03 0.000496 Inf -6.169  &lt;.0001 
+ 22 - 29 -3.05e-03 0.000492 Inf -6.202  &lt;.0001 
+
+pastoreo = No Browsing:
+ 2        estimate       SE  df z.ratio p.value
+ 0 - 22   5.05e-04 0.000485 Inf  1.040  0.5515 
+ 0 - 29  -9.05e-04 0.000493 Inf -1.838  0.1574 
+ 22 - 29 -1.41e-03 0.000487 Inf -2.894  0.0106 
+
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+<div id="ph-kcl" class="section level1">
+<h1>pH KCl</h1>
+<pre><code>p_h_k_cl ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: p_h_k_cl ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)
+Data: df_model
+               num Df   den Df       F    Pr(&gt;F)    
+pastoreo            1   5.9999  0.0072   0.93499    
+meses               2 134.0178 17.3528 1.987e-07 ***
+pastoreo:meses      2 134.0178  3.0542   0.05046 .  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="post-hoc-9" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of pastoreo`
+ pastoreo    emmean       SE  df asymp.LCL asymp.UCL
+ Browsing     0.134 0.000849 Inf     0.132     0.135
+ No Browsing  0.133 0.000850 Inf     0.132     0.135
+
+Results are averaged over the levels of: meses 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pastoreo`
+ 1                      estimate     SE  df z.ratio p.value
+ Browsing - No Browsing 0.000109 0.0012 Inf 0.091   0.9277 
+
+Results are averaged over the levels of: meses 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of meses`
+ meses emmean       SE  df asymp.LCL asymp.UCL
+ 0      0.133 0.000647 Inf     0.131     0.134
+ 22     0.133 0.000645 Inf     0.132     0.134
+ 29     0.135 0.000650 Inf     0.134     0.136
+
+Results are averaged over the levels of: pastoreo 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses`
+ 1        estimate       SE  df z.ratio p.value
+ 0 - 22  -0.000495 0.000415 Inf -1.194  0.4569 
+ 0 - 29  -0.002431 0.000422 Inf -5.763  &lt;.0001 
+ 22 - 29 -0.001936 0.000419 Inf -4.622  &lt;.0001 
+
+Results are averaged over the levels of: pastoreo 
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of meses | pastoreo`
+pastoreo = Browsing:
+ meses emmean       SE  df asymp.LCL asymp.UCL
+ 0      0.132 0.000914 Inf     0.130     0.134
+ 22     0.133 0.000912 Inf     0.131     0.135
+ 29     0.136 0.000920 Inf     0.134     0.137
+
+pastoreo = No Browsing:
+ meses emmean       SE  df asymp.LCL asymp.UCL
+ 0      0.133 0.000916 Inf     0.131     0.135
+ 22     0.133 0.000913 Inf     0.131     0.135
+ 29     0.134 0.000918 Inf     0.133     0.136
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses | pastoreo`
+pastoreo = Browsing:
+ 2        estimate       SE  df z.ratio p.value
+ 0 - 22  -0.000888 0.000585 Inf -1.518  0.2822 
+ 0 - 29  -0.003500 0.000596 Inf -5.869  &lt;.0001 
+ 22 - 29 -0.002612 0.000593 Inf -4.402  &lt;.0001 
+
+pastoreo = No Browsing:
+ 2        estimate       SE  df z.ratio p.value
+ 0 - 22  -0.000102 0.000588 Inf -0.174  0.9835 
+ 0 - 29  -0.001362 0.000596 Inf -2.284  0.0580 
+ 22 - 29 -0.001260 0.000591 Inf -2.131  0.0836 
+
+Note: contrasts are still on the inverse scale 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+<div id="nh4" class="section level1">
+<h1>NH4</h1>
+<ul>
+<li>No data</li>
+</ul>
+<pre><code># A tibble: 1 x 3
+# Groups:   meses, fecha [1]
+  meses fecha          n
+  &lt;fct&gt; &lt;date&gt;     &lt;int&gt;
+1 0     2018-12-20    44</code></pre>
+</div>
+<div id="no3" class="section level1">
+<h1>NO3</h1>
+<ul>
+<li>No data</li>
+</ul>
+<pre><code># A tibble: 1 x 3
+# Groups:   meses, fecha [1]
+  meses fecha          n
+  &lt;fct&gt; &lt;date&gt;     &lt;int&gt;
+1 0     2018-12-20    47</code></pre>
+</div>
+<div id="p" class="section level1">
+<h1>P</h1>
+<pre><code>p ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: p ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)
+Data: df_model
+               num Df   den Df       F    Pr(&gt;F)    
+pastoreo            1   5.9996  0.0232    0.8840    
+meses               2 134.0368 12.0243 1.574e-05 ***
+pastoreo:meses      2 134.0368  1.5180    0.2229    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="post-hoc-10" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of pastoreo`
+ pastoreo    emmean     SE  df asymp.LCL asymp.UCL
+ Browsing      1.42 0.0982 Inf      1.23      1.62
+ No Browsing   1.40 0.0995 Inf      1.21      1.60
+
+Results are averaged over the levels of: meses 
+Results are given on the log (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pastoreo`
+ 1                      estimate   SE  df z.ratio p.value
+ Browsing - No Browsing   0.0211 0.14 Inf 0.151   0.8800 
+
+Results are averaged over the levels of: meses 
+Results are given on the log (not the response) scale. </code></pre>
+<pre><code>$`emmeans of meses`
+ meses emmean     SE  df asymp.LCL asymp.UCL
+ 0       1.64 0.0862 Inf     1.468      1.81
+ 22      1.50 0.0884 Inf     1.329      1.68
+ 29      1.10 0.1017 Inf     0.899      1.30
+
+Results are averaged over the levels of: pastoreo 
+Results are given on the log (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses`
+ 1       estimate     SE  df z.ratio p.value
+ 0 - 22     0.135 0.0954 Inf 1.411   0.3350 
+ 0 - 29     0.538 0.1077 Inf 4.998   &lt;.0001 
+ 22 - 29    0.404 0.1095 Inf 3.686   0.0007 
+
+Results are averaged over the levels of: pastoreo 
+Results are given on the log (not the response) scale. 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of meses | pastoreo`
+pastoreo = Browsing:
+ meses emmean    SE  df asymp.LCL asymp.UCL
+ 0      1.584 0.123 Inf     1.342      1.83
+ 22     1.450 0.127 Inf     1.201      1.70
+ 29     1.234 0.137 Inf     0.965      1.50
+
+pastoreo = No Browsing:
+ meses emmean    SE  df asymp.LCL asymp.UCL
+ 0      1.689 0.120 Inf     1.453      1.92
+ 22     1.554 0.123 Inf     1.313      1.80
+ 29     0.962 0.150 Inf     0.668      1.26
+
+Results are given on the log (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses | pastoreo`
+pastoreo = Browsing:
+ 2       estimate    SE  df z.ratio p.value
+ 0 - 22     0.135 0.138 Inf 0.973   0.5941 
+ 0 - 29     0.351 0.148 Inf 2.372   0.0465 
+ 22 - 29    0.216 0.151 Inf 1.434   0.3232 
+
+pastoreo = No Browsing:
+ 2       estimate    SE  df z.ratio p.value
+ 0 - 22     0.135 0.131 Inf 1.025   0.5610 
+ 0 - 29     0.726 0.157 Inf 4.633   &lt;.0001 
+ 22 - 29    0.591 0.159 Inf 3.719   0.0006 
+
+Results are given on the log (not the response) scale. 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+<div id="n" class="section level1">
+<h1>N</h1>
+<pre><code>n_percent ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)</code></pre>
+<pre><code>Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: n_percent
+                 Chisq Df Pr(&gt;Chisq)   
+pastoreo        0.0361  1   0.849276   
+meses          12.5842  2   0.001851 **
+pastoreo:meses  0.4221  2   0.809750   
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="post-hoc-11" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of pastoreo`
+ pastoreo    emmean     SE  df lower.CL upper.CL
+ Browsing     -1.15 0.0752 137    -1.30    -1.00
+ No Browsing  -1.17 0.0759 137    -1.32    -1.02
+
+Results are averaged over the levels of: meses 
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pastoreo`
+ 1                      estimate    SE  df t.ratio p.value
+ Browsing - No Browsing   0.0217 0.106 137 0.205   0.8379 
+
+Results are averaged over the levels of: meses 
+Results are given on the log odds ratio (not the response) scale. </code></pre>
+<pre><code>$`emmeans of meses`
+ meses emmean     SE  df lower.CL upper.CL
+ 0     -0.959 0.0810 137    -1.12   -0.798
+ 22    -1.352 0.0863 137    -1.52   -1.181
+ 29    -1.180 0.0855 137    -1.35   -1.011
+
+Results are averaged over the levels of: pastoreo 
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses`
+ 1       estimate    SE  df t.ratio p.value
+ 0 - 22     0.393 0.111 137  3.528  0.0016 
+ 0 - 29     0.222 0.111 137  1.999  0.1163 
+ 22 - 29   -0.171 0.114 137 -1.498  0.2951 
+
+Results are averaged over the levels of: pastoreo 
+Results are given on the log odds ratio (not the response) scale. 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of meses | pastoreo`
+pastoreo = Browsing:
+ meses emmean    SE  df lower.CL upper.CL
+ 0     -0.971 0.115 137    -1.20   -0.745
+ 22    -1.360 0.122 137    -1.60   -1.119
+ 29    -1.127 0.118 137    -1.36   -0.894
+
+pastoreo = No Browsing:
+ meses emmean    SE  df lower.CL upper.CL
+ 0     -0.946 0.114 137    -1.17   -0.721
+ 22    -1.344 0.121 137    -1.58   -1.104
+ 29    -1.233 0.123 137    -1.48   -0.990
+
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses | pastoreo`
+pastoreo = Browsing:
+ 2       estimate    SE  df t.ratio p.value
+ 0 - 22     0.389 0.158 137  2.463  0.0396 
+ 0 - 29     0.156 0.155 137  1.006  0.5741 
+ 22 - 29   -0.232 0.160 137 -1.452  0.3175 
+
+pastoreo = No Browsing:
+ 2       estimate    SE  df t.ratio p.value
+ 0 - 22     0.398 0.157 137  2.527  0.0336 
+ 0 - 29     0.287 0.159 137  1.812  0.1694 
+ 22 - 29   -0.110 0.163 137 -0.675  0.7785 
+
+Results are given on the log odds ratio (not the response) scale. 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+<div id="na" class="section level1">
+<h1>Na</h1>
+<pre><code>na_percent ~ pastoreo * meses + (1 | pastoreo:geo_parcela_nombre)</code></pre>
+<pre><code>Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: na_percent
+                  Chisq Df Pr(&gt;Chisq)    
+pastoreo         3.3148  1  0.0686596 .  
+meses          188.1372  2  &lt; 2.2e-16 ***
+pastoreo:meses  17.5761  2  0.0001525 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div id="post-hoc-12" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of pastoreo`
+ pastoreo    emmean     SE  df lower.CL upper.CL
+ Browsing     -3.04 0.0970 138    -3.24    -2.85
+ No Browsing  -2.73 0.0941 138    -2.92    -2.55
+
+Results are averaged over the levels of: meses 
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of pastoreo`
+ 1                      estimate    SE  df t.ratio p.value
+ Browsing - No Browsing    -0.31 0.135 138 -2.302  0.0228 
+
+Results are averaged over the levels of: meses 
+Results are given on the log odds ratio (not the response) scale. </code></pre>
+<pre><code>$`emmeans of meses`
+ meses emmean     SE  df lower.CL upper.CL
+ 0      -3.31 0.0846 138    -3.48    -3.14
+ 22     -2.97 0.0781 138    -3.12    -2.82
+ 29     -2.39 0.0725 138    -2.53    -2.24
+
+Results are averaged over the levels of: pastoreo 
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses`
+ 1       estimate     SE  df t.ratio p.value
+ 0 - 22    -0.340 0.0750 138  -4.528 &lt;.0001 
+ 0 - 29    -0.922 0.0695 138 -13.259 &lt;.0001 
+ 22 - 29   -0.582 0.0616 138  -9.458 &lt;.0001 
+
+Results are averaged over the levels of: pastoreo 
+Results are given on the log odds ratio (not the response) scale. 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<pre><code>$`emmeans of meses | pastoreo`
+pastoreo = Browsing:
+ meses emmean    SE  df lower.CL upper.CL
+ 0      -3.64 0.127 138    -3.90    -3.39
+ 22     -3.04 0.111 138    -3.26    -2.82
+ 29     -2.45 0.103 138    -2.65    -2.24
+
+pastoreo = No Browsing:
+ meses emmean    SE  df lower.CL upper.CL
+ 0      -2.97 0.111 138    -3.19    -2.75
+ 22     -2.90 0.109 138    -3.12    -2.68
+ 29     -2.33 0.102 138    -2.53    -2.13
+
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of meses | pastoreo`
+pastoreo = Browsing:
+ 2       estimate     SE  df t.ratio p.value
+ 0 - 22   -0.6061 0.1152 138  -5.259 &lt;.0001 
+ 0 - 29   -1.1978 0.1076 138 -11.131 &lt;.0001 
+ 22 - 29  -0.5918 0.0892 138  -6.637 &lt;.0001 
+
+pastoreo = No Browsing:
+ 2       estimate     SE  df t.ratio p.value
+ 0 - 22   -0.0729 0.0959 138  -0.760 0.7278 
+ 0 - 29   -0.6459 0.0878 138  -7.360 &lt;.0001 
+ 22 - 29  -0.5730 0.0849 138  -6.752 &lt;.0001 
+
+Results are given on the log odds ratio (not the response) scale. 
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+<div id="general-overview" class="section level1">
+<h1>General Overview</h1>
+<div id="mean-se-table" class="section level2">
+<h2>Mean + SE table</h2>
+<div id="cnrudaleae" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#cnrudaleae .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cnrudaleae .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cnrudaleae .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cnrudaleae .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cnrudaleae .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cnrudaleae .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cnrudaleae .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cnrudaleae .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cnrudaleae .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cnrudaleae .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cnrudaleae .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cnrudaleae .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cnrudaleae .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#cnrudaleae .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cnrudaleae .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cnrudaleae .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cnrudaleae .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#cnrudaleae .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#cnrudaleae .gt_left {
+  text-align: left;
+}
+
+#cnrudaleae .gt_center {
+  text-align: center;
+}
+
+#cnrudaleae .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cnrudaleae .gt_font_normal {
+  font-weight: normal;
+}
+
+#cnrudaleae .gt_font_bold {
+  font-weight: bold;
+}
+
+#cnrudaleae .gt_font_italic {
+  font-style: italic;
+}
+
+#cnrudaleae .gt_super {
+  font-size: 65%;
+}
+
+#cnrudaleae .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1"><strong>Characteristic</strong></th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3">
+        <span class="gt_column_spanner"><strong>Browsing</strong></span>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3">
+        <span class="gt_column_spanner"><strong>No Browsing</strong></span>
+      </th>
+    </tr>
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>0</strong>, N = 24<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>22</strong>, N = 25<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>29</strong>, N = 24<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>0</strong>, N = 24<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>22</strong>, N = 25<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>29</strong>, N = 24<sup class="gt_footnote_marks">1</sup></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">humedad</td>
+<td class="gt_row gt_center">11.39 (0.79)</td>
+<td class="gt_row gt_center">10.07 (0.54)</td>
+<td class="gt_row gt_center">11.91 (0.60)</td>
+<td class="gt_row gt_center">12.86 (0.86)</td>
+<td class="gt_row gt_center">6.94 (0.47)</td>
+<td class="gt_row gt_center">10.67 (0.39)</td></tr>
+    <tr><td class="gt_row gt_left">fe_percent</td>
+<td class="gt_row gt_center">1.72 (0.07)</td>
+<td class="gt_row gt_center">1.98 (0.09)</td>
+<td class="gt_row gt_center">2.61 (0.15)</td>
+<td class="gt_row gt_center">1.89 (0.04)</td>
+<td class="gt_row gt_center">1.97 (0.04)</td>
+<td class="gt_row gt_center">2.89 (0.08)</td></tr>
+    <tr><td class="gt_row gt_left">k_percent</td>
+<td class="gt_row gt_center">0.29 (0.02)</td>
+<td class="gt_row gt_center">0.43 (0.02)</td>
+<td class="gt_row gt_center">1.06 (0.05)</td>
+<td class="gt_row gt_center">0.54 (0.03)</td>
+<td class="gt_row gt_center">0.51 (0.03)</td>
+<td class="gt_row gt_center">1.18 (0.04)</td></tr>
+    <tr><td class="gt_row gt_left">mg_percent</td>
+<td class="gt_row gt_center">1.10 (0.07)</td>
+<td class="gt_row gt_center">1.19 (0.08)</td>
+<td class="gt_row gt_center">1.44 (0.10)</td>
+<td class="gt_row gt_center">1.74 (0.21)</td>
+<td class="gt_row gt_center">1.42 (0.12)</td>
+<td class="gt_row gt_center">1.58 (0.16)</td></tr>
+    <tr><td class="gt_row gt_left">na_percent</td>
+<td class="gt_row gt_center">0.03 (0.00)</td>
+<td class="gt_row gt_center">0.05 (0.00)</td>
+<td class="gt_row gt_center">0.08 (0.01)</td>
+<td class="gt_row gt_center">0.05 (0.00)</td>
+<td class="gt_row gt_center">0.05 (0.01)</td>
+<td class="gt_row gt_center">0.09 (0.00)</td></tr>
+    <tr><td class="gt_row gt_left">n_percent</td>
+<td class="gt_row gt_center">0.28 (0.03)</td>
+<td class="gt_row gt_center">0.19 (0.01)</td>
+<td class="gt_row gt_center">0.24 (0.02)</td>
+<td class="gt_row gt_center">0.30 (0.04)</td>
+<td class="gt_row gt_center">0.20 (0.02)</td>
+<td class="gt_row gt_center">0.22 (0.02)</td></tr>
+    <tr><td class="gt_row gt_left">c_percent</td>
+<td class="gt_row gt_center">8.73 (0.35)</td>
+<td class="gt_row gt_center">7.46 (0.38)</td>
+<td class="gt_row gt_center">7.96 (0.45)</td>
+<td class="gt_row gt_center">7.27 (0.42)</td>
+<td class="gt_row gt_center">6.31 (0.36)</td>
+<td class="gt_row gt_center">6.59 (0.38)</td></tr>
+    <tr><td class="gt_row gt_left">c_n</td>
+<td class="gt_row gt_center">37.98 (4.00)</td>
+<td class="gt_row gt_center">41.90 (3.24)</td>
+<td class="gt_row gt_center">35.46 (2.37)</td>
+<td class="gt_row gt_center">34.30 (5.37)</td>
+<td class="gt_row gt_center">34.69 (2.23)</td>
+<td class="gt_row gt_center">32.21 (2.46)</td></tr>
+    <tr><td class="gt_row gt_left">cic</td>
+<td class="gt_row gt_center">15.58 (0.47)</td>
+<td class="gt_row gt_center">15.56 (0.35)</td>
+<td class="gt_row gt_center">19.38 (0.30)</td>
+<td class="gt_row gt_center">15.08 (0.36)</td>
+<td class="gt_row gt_center">14.44 (0.42)</td>
+<td class="gt_row gt_center">18.29 (0.50)</td></tr>
+    <tr><td class="gt_row gt_left">p</td>
+<td class="gt_row gt_center">4.91 (0.35)</td>
+<td class="gt_row gt_center">4.28 (0.47)</td>
+<td class="gt_row gt_center">3.46 (0.38)</td>
+<td class="gt_row gt_center">5.50 (0.33)</td>
+<td class="gt_row gt_center">4.80 (0.80)</td>
+<td class="gt_row gt_center">2.67 (0.25)</td></tr>
+    <tr><td class="gt_row gt_left">mo</td>
+<td class="gt_row gt_center">6.15 (0.46)</td>
+<td class="gt_row gt_center">4.68 (0.28)</td>
+<td class="gt_row gt_center">3.60 (0.24)</td>
+<td class="gt_row gt_center">5.86 (0.65)</td>
+<td class="gt_row gt_center">4.24 (0.42)</td>
+<td class="gt_row gt_center">3.25 (0.32)</td></tr>
+    <tr><td class="gt_row gt_left">p_h_k_cl</td>
+<td class="gt_row gt_center">7.57 (0.03)</td>
+<td class="gt_row gt_center">7.51 (0.02)</td>
+<td class="gt_row gt_center">7.37 (0.03)</td>
+<td class="gt_row gt_center">7.52 (0.03)</td>
+<td class="gt_row gt_center">7.51 (0.03)</td>
+<td class="gt_row gt_center">7.44 (0.03)</td></tr>
+    <tr><td class="gt_row gt_left">p_h_agua_eez</td>
+<td class="gt_row gt_center">7.92 (0.03)</td>
+<td class="gt_row gt_center">7.91 (0.03)</td>
+<td class="gt_row gt_center">7.73 (0.03)</td>
+<td class="gt_row gt_center">7.91 (0.02)</td>
+<td class="gt_row gt_center">7.94 (0.02)</td>
+<td class="gt_row gt_center">7.85 (0.03)</td></tr>
+  </tbody>
+  
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="7">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          Mean (std.error)
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+<div id="figures" class="section level2">
+<h2>Figures</h2>
+<p><img src="figure/analysis_zona_time_postFire.Rmd/unnamed-chunk-45-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/analysis_zona_time_postFire.Rmd/unnamed-chunk-46-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="anovas-table" class="section level2">
+<h2>Anovas table</h2>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+zona
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+fecha
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+zona X fecha
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Variables
+</th>
+<th style="text-align:right;">
+F
+</th>
+<th style="text-align:right;">
+p
+</th>
+<th style="text-align:right;">
+F
+</th>
+<th style="text-align:right;">
+p
+</th>
+<th style="text-align:right;">
+F
+</th>
+<th style="text-align:right;">
+p
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+c_n
+</td>
+<td style="text-align:right;">
+0.448
+</td>
+<td style="text-align:right;">
+0.528
+</td>
+<td style="text-align:right;">
+1.050
+</td>
+<td style="text-align:right;">
+0.353
+</td>
+<td style="text-align:right;">
+0.373
+</td>
+<td style="text-align:right;">
+0.689
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cic
+</td>
+<td style="text-align:right;">
+1.327
+</td>
+<td style="text-align:right;">
+0.293
+</td>
+<td style="text-align:right;">
+68.631
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+0.468
+</td>
+<td style="text-align:right;">
+0.627
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+c_percent
+</td>
+<td style="text-align:right;">
+1.503
+</td>
+<td style="text-align:right;">
+0.266
+</td>
+<td style="text-align:right;">
+7.566
+</td>
+<td style="text-align:right;">
+0.001
+</td>
+<td style="text-align:right;">
+0.133
+</td>
+<td style="text-align:right;">
+0.876
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+k_percent
+</td>
+<td style="text-align:right;">
+3.556
+</td>
+<td style="text-align:right;">
+0.108
+</td>
+<td style="text-align:right;">
+477.471
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+6.383
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+humedad
+</td>
+<td style="text-align:right;">
+0.623
+</td>
+<td style="text-align:right;">
+0.460
+</td>
+<td style="text-align:right;">
+24.553
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+9.009
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+fe_percent
+</td>
+<td style="text-align:right;">
+0.318
+</td>
+<td style="text-align:right;">
+0.593
+</td>
+<td style="text-align:right;">
+195.205
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+3.344
+</td>
+<td style="text-align:right;">
+0.038
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mg_percent
+</td>
+<td style="text-align:right;">
+0.751
+</td>
+<td style="text-align:right;">
+0.419
+</td>
+<td style="text-align:right;">
+3.138
+</td>
+<td style="text-align:right;">
+0.047
+</td>
+<td style="text-align:right;">
+4.787
+</td>
+<td style="text-align:right;">
+0.010
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mo
+</td>
+<td style="text-align:right;">
+0.424
+</td>
+<td style="text-align:right;">
+0.539
+</td>
+<td style="text-align:right;">
+20.545
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+0.012
+</td>
+<td style="text-align:right;">
+0.989
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:right;">
+0.023
+</td>
+<td style="text-align:right;">
+0.884
+</td>
+<td style="text-align:right;">
+12.024
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+1.518
+</td>
+<td style="text-align:right;">
+0.223
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_h_agua_eez
+</td>
+<td style="text-align:right;">
+0.832
+</td>
+<td style="text-align:right;">
+0.397
+</td>
+<td style="text-align:right;">
+23.112
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+4.725
+</td>
+<td style="text-align:right;">
+0.010
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_h_k_cl
+</td>
+<td style="text-align:right;">
+0.007
+</td>
+<td style="text-align:right;">
+0.935
+</td>
+<td style="text-align:right;">
+17.353
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+3.054
+</td>
+<td style="text-align:right;">
+0.050
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_percent
+</td>
+<td style="text-align:right;">
+0.036
+</td>
+<td style="text-align:right;">
+0.849
+</td>
+<td style="text-align:right;">
+12.584
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+0.422
+</td>
+<td style="text-align:right;">
+0.810
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+na_percent
+</td>
+<td style="text-align:right;">
+3.315
+</td>
+<td style="text-align:right;">
+0.069
+</td>
+<td style="text-align:right;">
+188.137
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+17.576
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre><code>R version 4.0.2 (2020-06-22)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Catalina 10.15.3
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] kableExtra_1.3.1   gtsummary_1.4.2    plotrix_3.8-1      car_3.0-10        
+ [5] carData_3.0-4      glmmADMB_0.8.3.3   glmmTMB_1.0.2.1    DHARMa_0.3.3.0    
+ [9] afex_0.28-1        performance_0.7.2  multcomp_1.4-16    TH.data_1.0-10    
+[13] mvtnorm_1.1-1      emmeans_1.5.4      lmerTest_3.1-3     lme4_1.1-27.1     
+[17] Matrix_1.3-2       fitdistrplus_1.1-3 survival_3.2-7     MASS_7.3-53       
+[21] ggpubr_0.4.0       janitor_2.1.0      here_1.0.1         forcats_0.5.1     
+[25] stringr_1.4.0      dplyr_1.0.6        purrr_0.3.4        readr_1.4.0       
+[29] tidyr_1.1.3        tibble_3.1.2       ggplot2_3.3.5      tidyverse_1.3.1   
+[33] rmdformats_1.0.1   knitr_1.31         workflowr_1.6.2   
+
+loaded via a namespace (and not attached):
+  [1] minqa_1.2.4         colorspace_2.0-0    ggsignif_0.6.0     
+  [4] ellipsis_0.3.2      rio_0.5.16          rprojroot_2.0.2    
+  [7] estimability_1.3    snakecase_0.11.0    fs_1.5.0           
+ [10] rstudioapi_0.13     farver_2.0.3        fansi_0.4.2        
+ [13] lubridate_1.7.10    xml2_1.3.2          codetools_0.2-18   
+ [16] splines_4.0.2       jsonlite_1.7.2      nloptr_1.2.2.2     
+ [19] gt_0.3.0            pbkrtest_0.5-0.1    broom_0.7.9        
+ [22] dbplyr_2.1.1        compiler_4.0.2      httr_1.4.2         
+ [25] backports_1.2.1     assertthat_0.2.1    fastmap_1.1.0      
+ [28] cli_2.5.0           formatR_1.8         later_1.1.0.1      
+ [31] htmltools_0.5.2     tools_4.0.2         coda_0.19-4        
+ [34] gtable_0.3.0        glue_1.4.2          reshape2_1.4.4     
+ [37] Rcpp_1.0.7          cellranger_1.1.0    jquerylib_0.1.3    
+ [40] vctrs_0.3.8         nlme_3.1-152        broom.helpers_1.3.0
+ [43] iterators_1.0.13    insight_0.14.4      xfun_0.23          
+ [46] openxlsx_4.2.3      rvest_1.0.0         lifecycle_1.0.0    
+ [49] rstatix_0.6.0       zoo_1.8-8           scales_1.1.1       
+ [52] hms_1.0.0           promises_1.2.0.1    parallel_4.0.2     
+ [55] sandwich_3.0-0      TMB_1.7.19          yaml_2.2.1         
+ [58] curl_4.3            sass_0.3.1          stringi_1.7.4      
+ [61] highr_0.8           foreach_1.5.1       checkmate_2.0.0    
+ [64] boot_1.3-26         zip_2.1.1           R2admb_0.7.16.2    
+ [67] commonmark_1.7      rlang_0.4.10        pkgconfig_2.0.3    
+ [70] evaluate_0.14       lattice_0.20-41     labeling_0.4.2     
+ [73] tidyselect_1.1.1    plyr_1.8.6          magrittr_2.0.1     
+ [76] bookdown_0.21.6     R6_2.5.0            generics_0.1.0     
+ [79] DBI_1.1.1           pillar_1.6.1        haven_2.3.1        
+ [82] whisker_0.4         foreign_0.8-81      withr_2.4.1        
+ [85] abind_1.4-5         modelr_0.1.8        crayon_1.4.1       
+ [88] utf8_1.1.4          rmarkdown_2.8       grid_4.0.2         
+ [91] readxl_1.3.1        data.table_1.14.0   git2r_0.28.0       
+ [94] webshot_0.5.2       reprex_2.0.0        digest_0.6.27      
+ [97] xtable_1.8-4        httpuv_1.5.5        numDeriv_2016.8-1.1
+[100] munsell_0.5.0      
+ [ reached getOption(&quot;max.print&quot;) -- omitted 2 entries ]</code></pre>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
