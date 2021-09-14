@@ -17,7 +17,8 @@ editor_options:
 - [Analysis of soil variables, pre and post-burning by Fire Date](analysis_pre_post_epoca.html)
 
 ## Post-fire temporal evolution
-- [Browsings effects on Soil propierties after fire](analysis_zona_time.html)
+- [Browsings effects on Soil propierties](analysis_zona_time.html)
+- [Browsings effects on Soil propierties post Fire](analysis_zona_time_postFire.html)
 - [Resilience analysis](analysis_resilience.html)
 
 
