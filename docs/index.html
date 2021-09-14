@@ -325,16 +325,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree9ba7a9d477eccee3c93d7cb767a46ff8fc69b97ctargetblank9ba7a9da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/serpam/soil_alcontar/tree/9ba7a9d477eccee3c93d7cb767a46ff8fc69b97c" target="_blank">9ba7a9d</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree84c956419c983521e14274a5dd0d1df52eecf938targetblank84c9564a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/serpam/soil_alcontar/tree/84c956419c983521e14274a5dd0d1df52eecf938" target="_blank">84c9564</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree9ba7a9d477eccee3c93d7cb767a46ff8fc69b97ctargetblank9ba7a9da" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree84c956419c983521e14274a5dd0d1df52eecf938targetblank84c9564a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/serpam/soil_alcontar/tree/9ba7a9d477eccee3c93d7cb767a46ff8fc69b97c" target="_blank">9ba7a9d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/serpam/soil_alcontar/tree/84c956419c983521e14274a5dd0d1df52eecf938" target="_blank">84c9564</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -351,6 +351,7 @@ Ignored files:
     Ignored:    .Rproj.user/shared/notebooks/4672E36C-study_area/
     Ignored:    .Rproj.user/shared/notebooks/4A68381F-general_overview_soils/
     Ignored:    .Rproj.user/shared/notebooks/4E13660A-temporal_comparison/
+    Ignored:    .Rproj.user/shared/notebooks/5D919DFD-analysis_zona_time_postFire/
     Ignored:    .Rproj.user/shared/notebooks/827D0727-analysis_pre_post/
     Ignored:    .Rproj.user/shared/notebooks/A3F813C2-index/
     Ignored:    .Rproj.user/shared/notebooks/D4E3AA10-analysis_zona_time/
@@ -358,7 +359,6 @@ Ignored files:
 Untracked files:
     Untracked:  analysis/NOBORRAR.Rmd
     Untracked:  analysis/analysis_pre_post_cache/
-    Untracked:  analysis/study_area.Rmd
     Untracked:  analysis/test.Rmd
     Untracked:  data/spatial/01_EP_ANDALUCIA/EP_Andalucía.shp.DESKTOP-CKNNEUJ.5492.5304.sr.lock
     Untracked:  data/spatial/lucdeme/
@@ -367,10 +367,12 @@ Untracked files:
     Untracked:  map.Rmd
     Untracked:  output/anovas_pre_post_epoca.csv
     Untracked:  output/anovas_zona_time.csv
+    Untracked:  output/anovas_zona_time_postFire.csv
     Untracked:  scripts/generate_3dview.R
 
 Unstaged changes:
     Modified:   analysis/_site.yml
+    Modified:   analysis/analysis_zona_time_postFire.Rmd
     Modified:   data/spatial/.DS_Store
     Modified:   data/spatial/01_EP_ANDALUCIA/EP_Andalucía.dbf
     Deleted:    index.Rmd
@@ -414,6 +416,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/84c956419c983521e14274a5dd0d1df52eecf938/analysis/index.Rmd" target="_blank">84c9564</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+<td>
+wflow_publish(“analysis/index.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/serpam/soil_alcontar/389b963200df0dd175c56dfbf435075dd9b8060b/docs/index.html" target="_blank">389b963</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -694,7 +730,8 @@ Start workflowr project.
 <div id="post-fire-temporal-evolution" class="section level2">
 <h2>Post-fire temporal evolution</h2>
 <ul>
-<li><a href="analysis_zona_time.html">Browsings effects on Soil propierties after fire</a></li>
+<li><a href="analysis_zona_time.html">Browsings effects on Soil propierties</a></li>
+<li><a href="analysis_zona_time_postFire.html">Browsings effects on Soil propierties post Fire</a></li>
 <li><a href="analysis_resilience.html">Resilience analysis</a></li>
 </ul>
 </div>
