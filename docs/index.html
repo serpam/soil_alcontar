@@ -255,10 +255,7 @@ $(document).ready(function () {
   <a href="index.html">Home</a>
 </li>
 <li>
-  <a href="about.html">About</a>
-</li>
-<li>
-  <a href="license.html">License</a>
+  <a href="study_area.html">Study Area</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -328,16 +325,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree6a8a26cd48e939f4d159d521ba94b04c7f03183ftargetblank6a8a26ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/serpam/soil_alcontar/tree/6a8a26cd48e939f4d159d521ba94b04c7f03183f" target="_blank">6a8a26c</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree9ba7a9d477eccee3c93d7cb767a46ff8fc69b97ctargetblank9ba7a9da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/serpam/soil_alcontar/tree/9ba7a9d477eccee3c93d7cb767a46ff8fc69b97c" target="_blank">9ba7a9d</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree6a8a26cd48e939f4d159d521ba94b04c7f03183ftargetblank6a8a26ca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree9ba7a9d477eccee3c93d7cb767a46ff8fc69b97ctargetblank9ba7a9da" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/serpam/soil_alcontar/tree/6a8a26cd48e939f4d159d521ba94b04c7f03183f" target="_blank">6a8a26c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/serpam/soil_alcontar/tree/9ba7a9d477eccee3c93d7cb767a46ff8fc69b97c" target="_blank">9ba7a9d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -348,6 +345,7 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/C369E4F4/
     Ignored:    .Rproj.user/shared/notebooks/0EF54E14-NOBORRAR/
+    Ignored:    .Rproj.user/shared/notebooks/27FF967E-analysis_pre_post_epoca/
     Ignored:    .Rproj.user/shared/notebooks/33E25F73-analysis_resilience/
     Ignored:    .Rproj.user/shared/notebooks/3F603CAC-map/
     Ignored:    .Rproj.user/shared/notebooks/4672E36C-study_area/
@@ -367,6 +365,7 @@ Untracked files:
     Untracked:  data/spatial/parcelas/GEO_PARCELAS.shp.DESKTOP-CKNNEUJ.5492.5304.sr.lock
     Untracked:  data/spatial/test/
     Untracked:  map.Rmd
+    Untracked:  output/anovas_pre_post_epoca.csv
     Untracked:  output/anovas_zona_time.csv
     Untracked:  scripts/generate_3dview.R
 
@@ -415,6 +414,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/9ba7a9d477eccee3c93d7cb767a46ff8fc69b97c/analysis/index.Rmd" target="_blank">9ba7a9d</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+<td>
+add analysis by date Fire
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/serpam/soil_alcontar/773a6e2af6c27d9f299f0bd8422d1d712dfea68e/docs/index.html" target="_blank">773a6e2</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -645,12 +678,26 @@ Start workflowr project.
 </div>
 <div id="soil-data-analysis-of-andalusia-ep-alcontar" class="section level1">
 <h1>Soil Data analysis of Andalusia EP (Alcontar)</h1>
+<div id="general-overview" class="section level2">
+<h2>General overview</h2>
 <ul>
 <li><a href="general_overview_soils.html">General overview of soils</a></li>
-<li><a href="analysis_pre_post.html">Analysis of soil variables, pre and post-burning</a></li>
+</ul>
+</div>
+<div id="pre--and-postfire-analysis" class="section level2">
+<h2>Pre- and postFire analysis</h2>
+<ul>
+<li><a href="analysis_pre_post.html">Analysis of soil variables, pre and post-burning by Zone</a></li>
+<li><a href="analysis_pre_post_epoca.html">Analysis of soil variables, pre and post-burning by Fire Date</a></li>
+</ul>
+</div>
+<div id="post-fire-temporal-evolution" class="section level2">
+<h2>Post-fire temporal evolution</h2>
+<ul>
 <li><a href="analysis_zona_time.html">Browsings effects on Soil propierties after fire</a></li>
 <li><a href="analysis_resilience.html">Resilience analysis</a></li>
 </ul>
+</div>
 </div>
 
 

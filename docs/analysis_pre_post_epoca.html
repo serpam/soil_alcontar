@@ -1,0 +1,3141 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Pre- and post-fire anaylisis of soils by Fire date</title>
+
+<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Soil Data analysis of Andalusia EP (Alcontar)</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="study_area.html">Study Area</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Pre- and post-fire anaylisis of soils by Fire date</h1>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2021-09-14
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>soil_alcontar/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20210907code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20210907)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20210907code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20210907)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree9ba7a9d477eccee3c93d7cb767a46ff8fc69b97ctargetblank9ba7a9da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/serpam/soil_alcontar/tree/9ba7a9d477eccee3c93d7cb767a46ff8fc69b97c" target="_blank">9ba7a9d</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree9ba7a9d477eccee3c93d7cb767a46ff8fc69b97ctargetblank9ba7a9da" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/serpam/soil_alcontar/tree/9ba7a9d477eccee3c93d7cb767a46ff8fc69b97c" target="_blank">9ba7a9d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .RData
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/C369E4F4/
+    Ignored:    .Rproj.user/shared/notebooks/0EF54E14-NOBORRAR/
+    Ignored:    .Rproj.user/shared/notebooks/27FF967E-analysis_pre_post_epoca/
+    Ignored:    .Rproj.user/shared/notebooks/33E25F73-analysis_resilience/
+    Ignored:    .Rproj.user/shared/notebooks/3F603CAC-map/
+    Ignored:    .Rproj.user/shared/notebooks/4672E36C-study_area/
+    Ignored:    .Rproj.user/shared/notebooks/4A68381F-general_overview_soils/
+    Ignored:    .Rproj.user/shared/notebooks/4E13660A-temporal_comparison/
+    Ignored:    .Rproj.user/shared/notebooks/827D0727-analysis_pre_post/
+    Ignored:    .Rproj.user/shared/notebooks/A3F813C2-index/
+    Ignored:    .Rproj.user/shared/notebooks/D4E3AA10-analysis_zona_time/
+
+Untracked files:
+    Untracked:  analysis/NOBORRAR.Rmd
+    Untracked:  analysis/analysis_pre_post_cache/
+    Untracked:  analysis/study_area.Rmd
+    Untracked:  analysis/test.Rmd
+    Untracked:  data/spatial/01_EP_ANDALUCIA/EP_Andalucía.shp.DESKTOP-CKNNEUJ.5492.5304.sr.lock
+    Untracked:  data/spatial/lucdeme/
+    Untracked:  data/spatial/parcelas/GEO_PARCELAS.shp.DESKTOP-CKNNEUJ.5492.5304.sr.lock
+    Untracked:  data/spatial/test/
+    Untracked:  map.Rmd
+    Untracked:  output/anovas_pre_post_epoca.csv
+    Untracked:  output/anovas_zona_time.csv
+    Untracked:  scripts/generate_3dview.R
+
+Unstaged changes:
+    Modified:   analysis/_site.yml
+    Modified:   data/spatial/.DS_Store
+    Modified:   data/spatial/01_EP_ANDALUCIA/EP_Andalucía.dbf
+    Deleted:    index.Rmd
+    Modified:   scripts/00_prepare_data.R
+    Modified:   temporal_comparison.Rmd
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/analysis_pre_post_epoca.Rmd</code>) and HTML (<code>docs/analysis_pre_post_epoca.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/9ba7a9d477eccee3c93d7cb767a46ff8fc69b97c/analysis/analysis_pre_post_epoca.Rmd" target="_blank">9ba7a9d</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+<td>
+add analysis by date Fire
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="prepare-data" class="section level1">
+<h1>Prepare data</h1>
+<pre class="r"><code>raw_soil &lt;- readxl::read_excel(here::here(&quot;data/Resultados_Suelos_2018_2021_v2.xlsx&quot;), 
+    sheet = &quot;SEGUIMIENTO_SUELOS_sin_ouliers&quot;) %&gt;% janitor::clean_names() %&gt;% mutate(treatment_name = case_when(str_detect(geo_parcela_nombre, 
+    &quot;NP_&quot;) ~ &quot;Autumn Burning / No Browsing&quot;, str_detect(geo_parcela_nombre, &quot;PR_&quot;) ~ 
+    &quot;Spring Burning / Browsing&quot;, str_detect(geo_parcela_nombre, &quot;P_&quot;) ~ &quot;Autumn Burning / Browsing&quot;), 
+    zona = case_when(str_detect(geo_parcela_nombre, &quot;NP_&quot;) ~ &quot;QOt_NP&quot;, str_detect(geo_parcela_nombre, 
+        &quot;PR_&quot;) ~ &quot;QPr_P&quot;, str_detect(geo_parcela_nombre, &quot;P_&quot;) ~ &quot;QOt_P&quot;), fechaQuema = case_when(str_detect(geo_parcela_nombre, 
+        &quot;NP_&quot;) ~ &quot;Ot&quot;, str_detect(geo_parcela_nombre, &quot;PR_&quot;) ~ &quot;Pr&quot;, str_detect(geo_parcela_nombre, 
+        &quot;P_&quot;) ~ &quot;Ot&quot;), fecha = lubridate::ymd(fecha), momento = case_when(pre_post_quema == 
+        &quot;Prequema&quot; ~ &quot;0 preQuema&quot;, pre_post_quema == &quot;Postquema&quot; ~ &quot;1 postQuema&quot;))</code></pre>
+<ul>
+<li>Select data pre- and intermediately post-fire (first post-fire sampling: “2018-12-20” and “2019-05-09” for autumn and spring fires respectively)</li>
+</ul>
+<pre class="r"><code>soil &lt;- raw_soil %&gt;% filter(fecha %in% lubridate::ymd(c(&quot;2018-12-11&quot;, &quot;2018-12-20&quot;, 
+    &quot;2019-04-24&quot;, &quot;2019-05-09&quot;))) %&gt;% mutate(zona = as.factor(zona), momento = as.factor(momento))</code></pre>
+<ul>
+<li>Structure of the data</li>
+</ul>
+<pre><code>             fechaQuema
+momento       Ot Pr
+  0 preQuema  48 24
+  1 postQuema 48 24</code></pre>
+</div>
+<div id="modelize" class="section level1">
+<h1>Modelize</h1>
+<ul>
+<li>For each response variable, the approach modelling is</li>
+</ul>
+<p><span class="math inline">\(Y \sim fechaQuema (Ot|Pr) + momento(pre|post) + fechaQuema \times momento\)</span></p>
+<ul>
+<li><p>using the “(1|fechaQuema:geo_parcela_nombre)” as nested random effects</p></li>
+<li><p>Then explore error distribution of the variable response and model diagnostics</p></li>
+<li><p>Select the appropiate error distribution and use LMM or GLMM</p></li>
+<li><p>Explore Post-hoc<br />
+</p></li>
+<li><p>Plot interactions</p></li>
+</ul>
+</div>
+<div id="humedad" class="section level1">
+<h1>Humedad</h1>
+<div id="model" class="section level3">
+<h3>Model</h3>
+<pre><code>Type III Analysis of Variance Table with Satterthwaite&#39;s method
+                   Sum Sq Mean Sq NumDF DenDF F value    Pr(&gt;F)    
+momento            461.74  461.74     1   130 50.4197 7.257e-11 ***
+fechaQuema           0.53    0.53     1    10  0.0575    0.8153    
+momento:fechaQuema 439.95  439.95     1   130 48.0407 1.748e-10 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>                        Sum Sq     Mean Sq NumDF DenDF     F value       Pr(&gt;F)
+momento            461.7404592 461.7404592     1   130 50.41969020 7.256505e-11
+fechaQuema           0.5268064   0.5268064     1    10  0.05752456 8.152969e-01
+momento:fechaQuema 439.9539281 439.9539281     1   130 48.04071273 1.748462e-10
+                   variable             factor
+momento             humedad            momento
+fechaQuema          humedad         fechaQuema
+momento:fechaQuema  humedad momento:fechaQuema</code></pre>
+</div>
+<div id="post-hoc" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of momento`
+ momento     emmean    SE   df lower.CL upper.CL
+ 0 preQuema    13.9 0.689 13.8    12.44     15.4
+ 1 postQuema   10.1 0.689 13.8     8.64     11.6
+
+Results are averaged over the levels of: fechaQuema 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento`
+ 1                        estimate    SE  df t.ratio p.value
+ 0 preQuema - 1 postQuema      3.8 0.535 130 7.101   &lt;.0001 
+
+Results are averaged over the levels of: fechaQuema 
+Degrees-of-freedom method: kenward-roger </code></pre>
+<pre><code>$`emmeans of fechaQuema`
+ fechaQuema emmean    SE df lower.CL upper.CL
+ Ot           12.2 0.734 10    10.54     13.8
+ Pr           11.9 1.038 10     9.56     14.2
+
+Results are averaged over the levels of: momento 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of fechaQuema`
+ 1       estimate   SE df t.ratio p.value
+ Ot - Pr    0.305 1.27 10 0.240   0.8153 
+
+Results are averaged over the levels of: momento 
+Degrees-of-freedom method: kenward-roger </code></pre>
+<pre><code>$`emmeans of momento | fechaQuema`
+fechaQuema = Ot:
+ momento     emmean    SE   df lower.CL upper.CL
+ 0 preQuema   12.22 0.796 13.8     10.5     13.9
+ 1 postQuema  12.13 0.796 13.8     10.4     13.8
+
+fechaQuema = Pr:
+ momento     emmean    SE   df lower.CL upper.CL
+ 0 preQuema   15.62 1.126 13.8     13.2     18.0
+ 1 postQuema   8.11 1.126 13.8      5.7     10.5
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento | fechaQuema`
+fechaQuema = Ot:
+ 2                        estimate    SE  df t.ratio p.value
+ 0 preQuema - 1 postQuema   0.0907 0.618 130 0.147   0.8835 
+
+fechaQuema = Pr:
+ 2                        estimate    SE  df t.ratio p.value
+ 0 preQuema - 1 postQuema   7.5065 0.874 130 8.593   &lt;.0001 
+
+Degrees-of-freedom method: kenward-roger </code></pre>
+</div>
+</div>
+<div id="cic" class="section level1">
+<h1>CIC</h1>
+<div id="model-1" class="section level3">
+<h3>Model</h3>
+<pre><code>Type III Analysis of Variance Table with Satterthwaite&#39;s method
+                   Sum Sq Mean Sq NumDF DenDF F value  Pr(&gt;F)  
+momento            18.503  18.503     1   130  5.1118 0.02543 *
+fechaQuema         35.605  35.605     1    10  9.8361 0.01058 *
+momento:fechaQuema  8.337   8.337     1   130  2.3031 0.13154  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>                      Sum Sq   Mean Sq NumDF      DenDF  F value     Pr(&gt;F)
+momento            18.503472 18.503472     1 130.000001 5.111751 0.02542616
+fechaQuema         35.604511 35.604511     1   9.999998 9.836067 0.01057742
+momento:fechaQuema  8.336806  8.336806     1 130.000001 2.303118 0.13154272
+                   variable             factor
+momento                 cic            momento
+fechaQuema              cic         fechaQuema
+momento:fechaQuema      cic momento:fechaQuema</code></pre>
+</div>
+<div id="post-hoc-1" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of momento`
+ momento     emmean    SE   df lower.CL upper.CL
+ 0 preQuema    14.9 0.496 12.8     13.8     16.0
+ 1 postQuema   14.1 0.496 12.8     13.1     15.2
+
+Results are averaged over the levels of: fechaQuema 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento`
+ 1                        estimate    SE  df t.ratio p.value
+ 0 preQuema - 1 postQuema     0.76 0.336 130 2.261   0.0254 
+
+Results are averaged over the levels of: fechaQuema 
+Degrees-of-freedom method: kenward-roger </code></pre>
+<pre><code>$`emmeans of fechaQuema`
+ fechaQuema emmean    SE df lower.CL upper.CL
+ Ot             16 0.539 10     14.8     17.2
+ Pr             13 0.762 10     11.3     14.7
+
+Results are averaged over the levels of: momento 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of fechaQuema`
+ 1       estimate    SE df t.ratio p.value
+ Ot - Pr     2.93 0.933 10 3.136   0.0106 
+
+Results are averaged over the levels of: momento 
+Degrees-of-freedom method: kenward-roger </code></pre>
+<pre><code>$`emmeans of momento | fechaQuema`
+fechaQuema = Ot:
+ momento     emmean    SE   df lower.CL upper.CL
+ 0 preQuema    16.6 0.573 12.8     15.4     17.8
+ 1 postQuema   15.3 0.573 12.8     14.1     16.6
+
+fechaQuema = Pr:
+ momento     emmean    SE   df lower.CL upper.CL
+ 0 preQuema    13.2 0.810 12.8     11.4     14.9
+ 1 postQuema   12.9 0.810 12.8     11.2     14.7
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento | fechaQuema`
+fechaQuema = Ot:
+ 2                        estimate    SE  df t.ratio p.value
+ 0 preQuema - 1 postQuema     1.27 0.388 130 3.272   0.0014 
+
+fechaQuema = Pr:
+ 2                        estimate    SE  df t.ratio p.value
+ 0 preQuema - 1 postQuema     0.25 0.549 130 0.455   0.6497 
+
+Degrees-of-freedom method: kenward-roger </code></pre>
+</div>
+</div>
+<div id="c" class="section level1">
+<h1>C</h1>
+<div id="model-2" class="section level3">
+<h3>Model</h3>
+<pre><code>Type III Analysis of Variance Table with Satterthwaite&#39;s method
+                    Sum Sq Mean Sq NumDF DenDF F value  Pr(&gt;F)  
+momento            13.3214 13.3214     1   130  6.1796 0.01419 *
+fechaQuema          0.2542  0.2542     1    10  0.1179 0.73843  
+momento:fechaQuema  0.5636  0.5636     1   130  0.2614 0.61001  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>                       Sum Sq    Mean Sq NumDF      DenDF   F value     Pr(&gt;F)
+momento            13.3214014 13.3214014     1 130.000000 6.1795805 0.01419189
+fechaQuema          0.2541669  0.2541669     1   9.999999 0.1179039 0.73842869
+momento:fechaQuema  0.5635681  0.5635681     1 130.000000 0.2614300 0.61000674
+                    variable             factor
+momento            c_percent            momento
+fechaQuema         c_percent         fechaQuema
+momento:fechaQuema c_percent momento:fechaQuema</code></pre>
+</div>
+<div id="post-hoc-2" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of momento`
+ momento     emmean    SE   df lower.CL upper.CL
+ 0 preQuema    7.14 0.455 11.8     6.14     8.13
+ 1 postQuema   7.78 0.455 11.8     6.79     8.77
+
+Results are averaged over the levels of: fechaQuema 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento`
+ 1                        estimate   SE  df t.ratio p.value
+ 0 preQuema - 1 postQuema   -0.645 0.26 130 -2.486  0.0142 
+
+Results are averaged over the levels of: fechaQuema 
+Degrees-of-freedom method: kenward-roger </code></pre>
+<pre><code>$`emmeans of fechaQuema`
+ fechaQuema emmean    SE df lower.CL upper.CL
+ Ot           7.61 0.503 10     6.49     8.73
+ Pr           7.31 0.712 10     5.72     8.90
+
+Results are averaged over the levels of: momento 
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of fechaQuema`
+ 1       estimate    SE df t.ratio p.value
+ Ot - Pr    0.299 0.872 10 0.343   0.7384 
+
+Results are averaged over the levels of: momento 
+Degrees-of-freedom method: kenward-roger </code></pre>
+<pre><code>$`emmeans of momento | fechaQuema`
+fechaQuema = Ot:
+ momento     emmean    SE   df lower.CL upper.CL
+ 0 preQuema    7.22 0.525 11.8     6.07     8.37
+ 1 postQuema   8.00 0.525 11.8     6.85     9.14
+
+fechaQuema = Pr:
+ momento     emmean    SE   df lower.CL upper.CL
+ 0 preQuema    7.05 0.743 11.8     5.43     8.67
+ 1 postQuema   7.57 0.743 11.8     5.95     9.19
+
+Degrees-of-freedom method: kenward-roger 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento | fechaQuema`
+fechaQuema = Ot:
+ 2                        estimate    SE  df t.ratio p.value
+ 0 preQuema - 1 postQuema   -0.778 0.300 130 -2.596  0.0105 
+
+fechaQuema = Pr:
+ 2                        estimate    SE  df t.ratio p.value
+ 0 preQuema - 1 postQuema   -0.512 0.424 130 -1.209  0.2288 
+
+Degrees-of-freedom method: kenward-roger </code></pre>
+</div>
+</div>
+<div id="fe" class="section level1">
+<h1>Fe</h1>
+<div id="model-3" class="section level3">
+<h3>Model</h3>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: fe_percent ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+              Effect     df    F p.value
+1            momento 1, 130 0.28    .598
+2         fechaQuema  1, 10 0.46    .512
+3 momento:fechaQuema 1, 130 0.21    .648
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: fe_percent ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+                   num Df den Df      F Pr(&gt;F)
+momento                 1    130 0.2796 0.5979
+fechaQuema              1     10 0.4631 0.5116
+momento:fechaQuema      1    130 0.2093 0.6481</code></pre>
+</div>
+<div id="post-hoc-3" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of momento`
+ momento     emmean    SE  df asymp.LCL asymp.UCL
+ 0 preQuema   0.545 0.036 Inf     0.475     0.616
+ 1 postQuema  0.554 0.036 Inf     0.484     0.625
+
+Results are averaged over the levels of: fechaQuema 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento`
+ 1                        estimate     SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema -0.00898 0.0167 Inf -0.539  0.5898 
+
+Results are averaged over the levels of: fechaQuema 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of fechaQuema`
+ fechaQuema emmean     SE  df asymp.LCL asymp.UCL
+ Ot          0.568 0.0398 Inf     0.490     0.646
+ Pr          0.532 0.0573 Inf     0.419     0.644
+
+Results are averaged over the levels of: momento 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of fechaQuema`
+ 1       estimate     SE  df z.ratio p.value
+ Ot - Pr   0.0364 0.0695 Inf 0.524   0.6006 
+
+Results are averaged over the levels of: momento 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of momento | fechaQuema`
+fechaQuema = Ot:
+ momento     emmean     SE  df asymp.LCL asymp.UCL
+ 0 preQuema   0.559 0.0410 Inf     0.479     0.640
+ 1 postQuema  0.576 0.0411 Inf     0.496     0.657
+
+fechaQuema = Pr:
+ momento     emmean     SE  df asymp.LCL asymp.UCL
+ 0 preQuema   0.531 0.0588 Inf     0.416     0.646
+ 1 postQuema  0.532 0.0588 Inf     0.417     0.647
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento | fechaQuema`
+fechaQuema = Ot:
+ 2                        estimate     SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema -0.01688 0.0200 Inf -0.843  0.3991 
+
+fechaQuema = Pr:
+ 2                        estimate     SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema -0.00109 0.0266 Inf -0.041  0.9675 
+
+Note: contrasts are still on the inverse scale </code></pre>
+</div>
+</div>
+<div id="mo" class="section level1">
+<h1>MO</h1>
+<div id="model-4" class="section level3">
+<h3>Model</h3>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: mo ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+              Effect     df         F p.value
+1            momento 1, 130      0.60    .439
+2         fechaQuema  1, 10 35.18 ***   &lt;.001
+3 momento:fechaQuema 1, 130      0.91    .341
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: mo ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+                   num Df den Df       F    Pr(&gt;F)    
+momento                 1    130  0.6020 0.4392419    
+fechaQuema              1     10 35.1850 0.0001448 ***
+momento:fechaQuema      1    130  0.9143 0.3407472    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hoc-4" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of momento`
+ momento     emmean     SE  df asymp.LCL asymp.UCL
+ 0 preQuema   0.271 0.0190 Inf     0.233     0.308
+ 1 postQuema  0.265 0.0191 Inf     0.228     0.302
+
+Results are averaged over the levels of: fechaQuema 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento`
+ 1                        estimate     SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema  0.00557 0.0229 Inf 0.243   0.8082 
+
+Results are averaged over the levels of: fechaQuema 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of fechaQuema`
+ fechaQuema emmean     SE  df asymp.LCL asymp.UCL
+ Ot          0.181 0.0143 Inf     0.153     0.209
+ Pr          0.355 0.0265 Inf     0.303     0.407
+
+Results are averaged over the levels of: momento 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of fechaQuema`
+ 1       estimate     SE  df z.ratio p.value
+ Ot - Pr   -0.175 0.0298 Inf -5.859  &lt;.0001 
+
+Results are averaged over the levels of: momento 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of momento | fechaQuema`
+fechaQuema = Ot:
+ momento     emmean     SE  df asymp.LCL asymp.UCL
+ 0 preQuema   0.190 0.0166 Inf     0.158     0.223
+ 1 postQuema  0.171 0.0158 Inf     0.140     0.202
+
+fechaQuema = Pr:
+ momento     emmean     SE  df asymp.LCL asymp.UCL
+ 0 preQuema   0.351 0.0339 Inf     0.285     0.417
+ 1 postQuema  0.359 0.0345 Inf     0.292     0.427
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento | fechaQuema`
+fechaQuema = Ot:
+ 2                        estimate     SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema  0.01929 0.0152 Inf  1.269  0.2044 
+
+fechaQuema = Pr:
+ 2                        estimate     SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema -0.00815 0.0433 Inf -0.188  0.8507 
+
+Note: contrasts are still on the inverse scale </code></pre>
+</div>
+</div>
+<div id="k" class="section level1">
+<h1>K</h1>
+<div id="model-5" class="section level3">
+<h3>Model</h3>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: k_percent ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+              Effect     df      F p.value
+1            momento 1, 130   1.92    .168
+2         fechaQuema  1, 10 8.33 *    .016
+3 momento:fechaQuema 1, 130   0.00    .976
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: k_percent ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+                   num Df den Df      F  Pr(&gt;F)  
+momento                 1    130 1.9189 0.16835  
+fechaQuema              1     10 8.3254 0.01624 *
+momento:fechaQuema      1    130 0.0009 0.97555  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hoc-5" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of momento`
+ momento     emmean    SE  df asymp.LCL asymp.UCL
+ 0 preQuema    2.06 0.286 Inf      1.50      2.62
+ 1 postQuema   2.18 0.287 Inf      1.62      2.74
+
+Results are averaged over the levels of: fechaQuema 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento`
+ 1                        estimate     SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema   -0.119 0.0844 Inf -1.414  0.1574 
+
+Results are averaged over the levels of: fechaQuema 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of fechaQuema`
+ fechaQuema emmean    SE  df asymp.LCL asymp.UCL
+ Ot           2.73 0.287 Inf     2.167      3.29
+ Pr           1.51 0.487 Inf     0.554      2.46
+
+Results are averaged over the levels of: momento 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of fechaQuema`
+ 1       estimate    SE  df z.ratio p.value
+ Ot - Pr     1.22 0.565 Inf 2.161   0.0307 
+
+Results are averaged over the levels of: momento 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of momento | fechaQuema`
+fechaQuema = Ot:
+ momento     emmean    SE  df asymp.LCL asymp.UCL
+ 0 preQuema    2.64 0.294 Inf     2.063      3.21
+ 1 postQuema   2.82 0.296 Inf     2.242      3.40
+
+fechaQuema = Pr:
+ momento     emmean    SE  df asymp.LCL asymp.UCL
+ 0 preQuema    1.48 0.490 Inf     0.522      2.44
+ 1 postQuema   1.54 0.490 Inf     0.576      2.50
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento | fechaQuema`
+fechaQuema = Ot:
+ 2                        estimate    SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema  -0.1833 0.132 Inf -1.386  0.1657 
+
+fechaQuema = Pr:
+ 2                        estimate    SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema  -0.0554 0.105 Inf -0.528  0.5975 
+
+Note: contrasts are still on the inverse scale </code></pre>
+</div>
+</div>
+<div id="mg" class="section level1">
+<h1>Mg</h1>
+<div id="model-6" class="section level3">
+<h3>Model</h3>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: mg_percent ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+              Effect     df      F p.value
+1            momento 1, 130   0.96    .329
+2         fechaQuema  1, 10 4.01 +    .073
+3 momento:fechaQuema 1, 130   0.13    .719
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: mg_percent ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+                   num Df den Df      F  Pr(&gt;F)  
+momento                 1    130 0.9587 0.32933  
+fechaQuema              1     10 4.0114 0.07304 .
+momento:fechaQuema      1    130 0.1300 0.71903  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hoc-6" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of momento`
+ momento     emmean     SE  df asymp.LCL asymp.UCL
+ 0 preQuema   0.738 0.0953 Inf     0.551     0.925
+ 1 postQuema  0.699 0.0950 Inf     0.513     0.885
+
+Results are averaged over the levels of: fechaQuema 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento`
+ 1                        estimate     SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema   0.0394 0.0329 Inf 1.197   0.2313 
+
+Results are averaged over the levels of: fechaQuema 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of fechaQuema`
+ fechaQuema emmean    SE  df asymp.LCL asymp.UCL
+ Ot          0.888 0.100 Inf     0.691     1.084
+ Pr          0.549 0.158 Inf     0.240     0.858
+
+Results are averaged over the levels of: momento 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of fechaQuema`
+ 1       estimate    SE  df z.ratio p.value
+ Ot - Pr    0.338 0.186 Inf 1.816   0.0693 
+
+Results are averaged over the levels of: momento 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of momento | fechaQuema`
+fechaQuema = Ot:
+ momento     emmean    SE  df asymp.LCL asymp.UCL
+ 0 preQuema   0.920 0.103 Inf     0.717     1.122
+ 1 postQuema  0.856 0.102 Inf     0.655     1.056
+
+fechaQuema = Pr:
+ momento     emmean    SE  df asymp.LCL asymp.UCL
+ 0 preQuema   0.557 0.159 Inf     0.244     0.869
+ 1 postQuema  0.542 0.159 Inf     0.230     0.854
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento | fechaQuema`
+fechaQuema = Ot:
+ 2                        estimate     SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema   0.0643 0.0469 Inf 1.371   0.1702 
+
+fechaQuema = Pr:
+ 2                        estimate     SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema   0.0146 0.0463 Inf 0.315   0.7530 
+
+Note: contrasts are still on the inverse scale </code></pre>
+</div>
+</div>
+<div id="cn" class="section level1">
+<h1>C/N</h1>
+<div id="model-7" class="section level3">
+<h3>Model</h3>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: c_n ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+              Effect     df    F p.value
+1            momento 1, 130 0.05    .815
+2         fechaQuema  1, 10 0.56    .471
+3 momento:fechaQuema 1, 130 0.80    .372
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: c_n ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+                   num Df den Df      F Pr(&gt;F)
+momento                 1    130 0.0550 0.8150
+fechaQuema              1     10 0.5601 0.4715
+momento:fechaQuema      1    130 0.8031 0.3718</code></pre>
+</div>
+<div id="post-hoc-7" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of momento`
+ momento     emmean      SE  df asymp.LCL asymp.UCL
+ 0 preQuema  0.0266 0.00265 Inf    0.0214    0.0318
+ 1 postQuema 0.0272 0.00265 Inf    0.0220    0.0324
+
+Results are averaged over the levels of: fechaQuema 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento`
+ 1                         estimate      SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema -0.000626 0.00163 Inf -0.385  0.7000 
+
+Results are averaged over the levels of: fechaQuema 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of fechaQuema`
+ fechaQuema emmean      SE  df asymp.LCL asymp.UCL
+ Ot         0.0288 0.00291 Inf    0.0231    0.0345
+ Pr         0.0250 0.00408 Inf    0.0170    0.0330
+
+Results are averaged over the levels of: momento 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of fechaQuema`
+ 1       estimate      SE  df z.ratio p.value
+ Ot - Pr  0.00388 0.00496 Inf 0.781   0.4346 
+
+Results are averaged over the levels of: momento 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of momento | fechaQuema`
+fechaQuema = Ot:
+ momento     emmean      SE  df asymp.LCL asymp.UCL
+ 0 preQuema  0.0277 0.00305 Inf    0.0217    0.0336
+ 1 postQuema 0.0300 0.00311 Inf    0.0239    0.0361
+
+fechaQuema = Pr:
+ momento     emmean      SE  df asymp.LCL asymp.UCL
+ 0 preQuema  0.0255 0.00429 Inf    0.0171    0.0339
+ 1 postQuema 0.0244 0.00425 Inf    0.0161    0.0327
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento | fechaQuema`
+fechaQuema = Ot:
+ 2                        estimate      SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema -0.00236 0.00202 Inf -1.171  0.2415 
+
+fechaQuema = Pr:
+ 2                        estimate      SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema  0.00111 0.00255 Inf  0.435  0.6636 
+
+Note: contrasts are still on the inverse scale </code></pre>
+</div>
+</div>
+<div id="p" class="section level1">
+<h1>P</h1>
+<div id="model-8" class="section level3">
+<h3>Model</h3>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: p ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+              Effect     df       F p.value
+1            momento 1, 130    0.45    .502
+2         fechaQuema  1, 10  8.17 *    .017
+3 momento:fechaQuema 1, 130 9.31 **    .003
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: p ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+                   num Df den Df      F   Pr(&gt;F)   
+momento                 1    130 0.4536 0.501823   
+fechaQuema              1     10 8.1689 0.017011 * 
+momento:fechaQuema      1    130 9.3060 0.002769 **
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hoc-8" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of momento`
+ momento     emmean     SE  df asymp.LCL asymp.UCL
+ 0 preQuema    1.62 0.0628 Inf      1.50      1.74
+ 1 postQuema   1.70 0.0619 Inf      1.58      1.82
+
+Results are averaged over the levels of: fechaQuema 
+Results are given on the log (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento`
+ 1                        estimate     SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema  -0.0834 0.0746 Inf -1.118  0.2635 
+
+Results are averaged over the levels of: fechaQuema 
+Results are given on the log (not the response) scale. </code></pre>
+<pre><code>$`emmeans of fechaQuema`
+ fechaQuema emmean     SE  df asymp.LCL asymp.UCL
+ Ot           1.49 0.0614 Inf      1.37      1.61
+ Pr           1.83 0.0788 Inf      1.68      1.99
+
+Results are averaged over the levels of: momento 
+Results are given on the log (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of fechaQuema`
+ 1       estimate  SE  df z.ratio p.value
+ Ot - Pr   -0.338 0.1 Inf -3.379  0.0007 
+
+Results are averaged over the levels of: momento 
+Results are given on the log (not the response) scale. </code></pre>
+<pre><code>$`emmeans of momento | fechaQuema`
+fechaQuema = Ot:
+ momento     emmean     SE  df asymp.LCL asymp.UCL
+ 0 preQuema    1.34 0.0819 Inf      1.18      1.50
+ 1 postQuema   1.65 0.0730 Inf      1.50      1.79
+
+fechaQuema = Pr:
+ momento     emmean     SE  df asymp.LCL asymp.UCL
+ 0 preQuema    1.90 0.0951 Inf      1.71      2.09
+ 1 postQuema   1.76 0.0994 Inf      1.57      1.96
+
+Results are given on the log (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento | fechaQuema`
+fechaQuema = Ot:
+ 2                        estimate     SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema   -0.306 0.0947 Inf -3.227  0.0012 
+
+fechaQuema = Pr:
+ 2                        estimate     SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema    0.139 0.1140 Inf  1.217  0.2235 
+
+Results are given on the log (not the response) scale. </code></pre>
+</div>
+</div>
+<div id="n" class="section level1">
+<h1>N</h1>
+<div id="model-9" class="section level3">
+<h3>Model</h3>
+</div>
+<div id="post-hoc-9" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of momento`
+ momento     emmean     SE  df lower.CL upper.CL
+ 0 preQuema   -1.33 0.0758 138    -1.48    -1.18
+ 1 postQuema  -1.18 0.0742 138    -1.32    -1.03
+
+Results are averaged over the levels of: fechaQuema 
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento`
+ 1                        estimate    SE  df t.ratio p.value
+ 0 preQuema - 1 postQuema   -0.153 0.105 138 -1.461  0.1463 
+
+Results are averaged over the levels of: fechaQuema 
+Results are given on the log odds ratio (not the response) scale. </code></pre>
+<pre><code>$`emmeans of fechaQuema`
+ fechaQuema emmean     SE  df lower.CL upper.CL
+ Ot          -1.11 0.0590 138    -1.23   -0.997
+ Pr          -1.39 0.0883 138    -1.57   -1.219
+
+Results are averaged over the levels of: momento 
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of fechaQuema`
+ 1       estimate    SE  df t.ratio p.value
+ Ot - Pr     0.28 0.105 138 2.673   0.0084 
+
+Results are averaged over the levels of: momento 
+Results are given on the log odds ratio (not the response) scale. </code></pre>
+<pre><code>$`emmeans of momento | fechaQuema`
+fechaQuema = Ot:
+ momento     emmean     SE  df lower.CL upper.CL
+ 0 preQuema  -1.276 0.0857 138    -1.45   -1.106
+ 1 postQuema -0.952 0.0798 138    -1.11   -0.794
+
+fechaQuema = Pr:
+ momento     emmean     SE  df lower.CL upper.CL
+ 0 preQuema  -1.384 0.1237 138    -1.63   -1.140
+ 1 postQuema -1.403 0.1243 138    -1.65   -1.157
+
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento | fechaQuema`
+fechaQuema = Ot:
+ 2                        estimate    SE  df t.ratio p.value
+ 0 preQuema - 1 postQuema  -0.3240 0.116 138 -2.789  0.0060 
+
+fechaQuema = Pr:
+ 2                        estimate    SE  df t.ratio p.value
+ 0 preQuema - 1 postQuema   0.0182 0.174 138  0.104  0.9171 
+
+Results are given on the log odds ratio (not the response) scale. </code></pre>
+</div>
+</div>
+<div id="na" class="section level1">
+<h1>Na</h1>
+<div id="model-10" class="section level3">
+<h3>Model</h3>
+</div>
+<div id="post-hoc-10" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of momento`
+ momento     emmean    SE  df lower.CL upper.CL
+ 0 preQuema   -2.95 0.116 138    -3.18    -2.72
+ 1 postQuema  -3.02 0.117 138    -3.25    -2.78
+
+Results are averaged over the levels of: fechaQuema 
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento`
+ 1                        estimate     SE  df t.ratio p.value
+ 0 preQuema - 1 postQuema   0.0699 0.0893 138 0.784   0.4346 
+
+Results are averaged over the levels of: fechaQuema 
+Results are given on the log odds ratio (not the response) scale. </code></pre>
+<pre><code>$`emmeans of fechaQuema`
+ fechaQuema emmean    SE  df lower.CL upper.CL
+ Ot          -3.15 0.126 138    -3.40    -2.90
+ Pr          -2.81 0.172 138    -3.15    -2.47
+
+Results are averaged over the levels of: momento 
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of fechaQuema`
+ 1       estimate    SE  df t.ratio p.value
+ Ot - Pr   -0.341 0.212 138 -1.606  0.1106 
+
+Results are averaged over the levels of: momento 
+Results are given on the log odds ratio (not the response) scale. </code></pre>
+<pre><code>$`emmeans of momento | fechaQuema`
+fechaQuema = Ot:
+ momento     emmean    SE  df lower.CL upper.CL
+ 0 preQuema   -3.10 0.137 138    -3.38    -2.83
+ 1 postQuema  -3.20 0.139 138    -3.47    -2.92
+
+fechaQuema = Pr:
+ momento     emmean    SE  df lower.CL upper.CL
+ 0 preQuema   -2.79 0.186 138    -3.15    -2.42
+ 1 postQuema  -2.83 0.186 138    -3.20    -2.47
+
+Results are given on the logit (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento | fechaQuema`
+fechaQuema = Ot:
+ 2                        estimate    SE  df t.ratio p.value
+ 0 preQuema - 1 postQuema   0.0936 0.112 138 0.833   0.4065 
+
+fechaQuema = Pr:
+ 2                        estimate    SE  df t.ratio p.value
+ 0 preQuema - 1 postQuema   0.0463 0.139 138 0.334   0.7389 
+
+Results are given on the log odds ratio (not the response) scale. </code></pre>
+</div>
+</div>
+<div id="ph-agua" class="section level1">
+<h1>pH agua</h1>
+<div id="model-11" class="section level3">
+<h3>Model</h3>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: p_h_agua_eez ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+              Effect     df        F p.value
+1            momento 1, 130     0.99    .322
+2         fechaQuema  1, 10   9.29 *    .012
+3 momento:fechaQuema 1, 130 10.51 **    .002
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: p_h_agua_eez ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+                   num Df den Df       F   Pr(&gt;F)   
+momento                 1    130  0.9889 0.321856   
+fechaQuema              1     10  9.2903 0.012294 * 
+momento:fechaQuema      1    130 10.5108 0.001508 **
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hoc-11" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of momento`
+ momento     emmean        SE  df asymp.LCL asymp.UCL
+ 0 preQuema  0.1255 0.0003116 Inf    0.1249    0.1261
+ 1 postQuema 0.1251 0.0003101 Inf    0.1245    0.1257
+
+Results are averaged over the levels of: fechaQuema 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento`
+ 1                        estimate       SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema  0.00039 0.000397 Inf 0.982   0.3261 
+
+Results are averaged over the levels of: fechaQuema 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of fechaQuema`
+ fechaQuema emmean        SE  df asymp.LCL asymp.UCL
+ Ot         0.1259 0.0002773 Inf    0.1254    0.1265
+ Pr         0.1247 0.0003898 Inf    0.1239    0.1255
+
+Results are averaged over the levels of: momento 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of fechaQuema`
+ 1       estimate       SE  df z.ratio p.value
+ Ot - Pr  0.00123 0.000478 Inf 2.570   0.0102 
+
+Results are averaged over the levels of: momento 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of momento | fechaQuema`
+fechaQuema = Ot:
+ momento     emmean       SE  df asymp.LCL asymp.UCL
+ 0 preQuema   0.125 0.000359 Inf     0.125     0.126
+ 1 postQuema  0.126 0.000362 Inf     0.126     0.127
+
+fechaQuema = Pr:
+ momento     emmean       SE  df asymp.LCL asymp.UCL
+ 0 preQuema   0.126 0.000509 Inf     0.125     0.127
+ 1 postQuema  0.124 0.000503 Inf     0.123     0.125
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento | fechaQuema`
+fechaQuema = Ot:
+ 2                         estimate       SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema -0.000918 0.000460 Inf -1.994  0.0461 
+
+fechaQuema = Pr:
+ 2                         estimate       SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema  0.001697 0.000646 Inf  2.628  0.0086 
+
+Note: contrasts are still on the inverse scale </code></pre>
+</div>
+</div>
+<div id="ph-kcl" class="section level1">
+<h1>pH KCl</h1>
+<div id="model-12" class="section level3">
+<h3>Model</h3>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: p_h_k_cl ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+              Effect     df         F p.value
+1            momento 1, 130 45.36 ***   &lt;.001
+2         fechaQuema  1, 10    5.70 *    .038
+3 momento:fechaQuema 1, 130   9.39 **    .003
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>Fitting one lmer() model. [DONE]
+Calculating p-values. [DONE]</code></pre>
+<pre><code>Mixed Model Anova Table (Type 3 tests, KR-method)
+
+Model: p_h_k_cl ~ momento * fechaQuema + (1 | fechaQuema:geo_parcela_nombre)
+Data: df_model
+                   num Df den Df       F    Pr(&gt;F)    
+momento                 1    130 45.3634 4.776e-10 ***
+fechaQuema              1     10  5.7006  0.038115 *  
+momento:fechaQuema      1    130  9.3932  0.002649 ** 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="post-hoc-12" class="section level3">
+<h3><em>Post-hoc</em></h3>
+<pre><code>$`emmeans of momento`
+ momento     emmean       SE  df asymp.LCL asymp.UCL
+ 0 preQuema   0.134 0.000631 Inf     0.132     0.135
+ 1 postQuema  0.131 0.000628 Inf     0.130     0.132
+
+Results are averaged over the levels of: fechaQuema 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento`
+ 1                        estimate       SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema  0.00263 0.000383 Inf 6.876   &lt;.0001 
+
+Results are averaged over the levels of: fechaQuema 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of fechaQuema`
+ fechaQuema emmean       SE  df asymp.LCL asymp.UCL
+ Ot          0.133 0.000689 Inf     0.132     0.135
+ Pr          0.131 0.000981 Inf     0.129     0.133
+
+Results are averaged over the levels of: momento 
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of fechaQuema`
+ 1       estimate     SE  df z.ratio p.value
+ Ot - Pr  0.00216 0.0012 Inf 1.806   0.0710 
+
+Results are averaged over the levels of: momento 
+Note: contrasts are still on the inverse scale </code></pre>
+<pre><code>$`emmeans of momento | fechaQuema`
+fechaQuema = Ot:
+ momento     emmean       SE  df asymp.LCL asymp.UCL
+ 0 preQuema   0.134 0.000725 Inf     0.133     0.135
+ 1 postQuema  0.133 0.000724 Inf     0.131     0.134
+
+fechaQuema = Pr:
+ momento     emmean       SE  df asymp.LCL asymp.UCL
+ 0 preQuema   0.133 0.001032 Inf     0.131     0.135
+ 1 postQuema  0.129 0.001026 Inf     0.127     0.131
+
+Results are given on the inverse (not the response) scale. 
+Confidence level used: 0.95 
+
+$`pairwise differences of momento | fechaQuema`
+fechaQuema = Ot:
+ 2                        estimate       SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema  0.00147 0.000446 Inf 3.291   0.0010 
+
+fechaQuema = Pr:
+ 2                        estimate       SE  df z.ratio p.value
+ 0 preQuema - 1 postQuema  0.00379 0.000621 Inf 6.105   &lt;.0001 
+
+Note: contrasts are still on the inverse scale </code></pre>
+</div>
+</div>
+<div id="nh4" class="section level1">
+<h1>NH4</h1>
+<ul>
+<li>Prepare data</li>
+<li>We have only data for Autumn fire</li>
+<li>The approach will be the following: Apply non-parametric Wilcoxon test to compare pre and postFire</li>
+</ul>
+<pre><code>          momento
+fechaQuema 0 preQuema 1 postQuema
+        Ot         48          43</code></pre>
+<div id="model-13" class="section level3">
+<h3>Model</h3>
+</div>
+</div>
+<div id="no3" class="section level1">
+<h1>NO3</h1>
+<div id="model-14" class="section level3">
+<h3>Model</h3>
+</div>
+</div>
+<div id="general-overview" class="section level1">
+<h1>General Overview</h1>
+<div id="mean-se-table" class="section level2">
+<h2>Mean + SE table</h2>
+<div id="cnrudaleae" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#cnrudaleae .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cnrudaleae .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cnrudaleae .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cnrudaleae .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cnrudaleae .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cnrudaleae .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cnrudaleae .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cnrudaleae .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cnrudaleae .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cnrudaleae .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cnrudaleae .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cnrudaleae .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cnrudaleae .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#cnrudaleae .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cnrudaleae .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cnrudaleae .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cnrudaleae .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#cnrudaleae .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cnrudaleae .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#cnrudaleae .gt_left {
+  text-align: left;
+}
+
+#cnrudaleae .gt_center {
+  text-align: center;
+}
+
+#cnrudaleae .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cnrudaleae .gt_font_normal {
+  font-weight: normal;
+}
+
+#cnrudaleae .gt_font_bold {
+  font-weight: bold;
+}
+
+#cnrudaleae .gt_font_italic {
+  font-style: italic;
+}
+
+#cnrudaleae .gt_super {
+  font-size: 65%;
+}
+
+#cnrudaleae .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1"><strong>Characteristic</strong></th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2">
+        <span class="gt_column_spanner"><strong>0 preQuema</strong></span>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2">
+        <span class="gt_column_spanner"><strong>1 postQuema</strong></span>
+      </th>
+    </tr>
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Ot</strong>, N = 48<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Pr</strong>, N = 24<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Ot</strong>, N = 48<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Pr</strong>, N = 24<sup class="gt_footnote_marks">1</sup></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">humedad</td>
+<td class="gt_row gt_center">12.22 (0.50)</td>
+<td class="gt_row gt_center">15.62 (0.63)</td>
+<td class="gt_row gt_center">12.13 (0.59)</td>
+<td class="gt_row gt_center">8.11 (0.53)</td></tr>
+    <tr><td class="gt_row gt_left">n_nh4</td>
+<td class="gt_row gt_center">0.62 (0.03)</td>
+<td class="gt_row gt_center">NA (NA)</td>
+<td class="gt_row gt_center">2.91 (0.36)</td>
+<td class="gt_row gt_center">NA (NA)</td></tr>
+    <tr><td class="gt_row gt_left">n_no3</td>
+<td class="gt_row gt_center">0.92 (0.07)</td>
+<td class="gt_row gt_center">NA (NA)</td>
+<td class="gt_row gt_center">0.81 (0.07)</td>
+<td class="gt_row gt_center">NA (NA)</td></tr>
+    <tr><td class="gt_row gt_left">fe_percent</td>
+<td class="gt_row gt_center">1.86 (0.07)</td>
+<td class="gt_row gt_center">1.95 (0.08)</td>
+<td class="gt_row gt_center">1.80 (0.04)</td>
+<td class="gt_row gt_center">1.95 (0.09)</td></tr>
+    <tr><td class="gt_row gt_left">k_percent</td>
+<td class="gt_row gt_center">0.45 (0.03)</td>
+<td class="gt_row gt_center">0.79 (0.06)</td>
+<td class="gt_row gt_center">0.41 (0.03)</td>
+<td class="gt_row gt_center">0.75 (0.06)</td></tr>
+    <tr><td class="gt_row gt_left">mg_percent</td>
+<td class="gt_row gt_center">1.29 (0.09)</td>
+<td class="gt_row gt_center">2.00 (0.14)</td>
+<td class="gt_row gt_center">1.42 (0.12)</td>
+<td class="gt_row gt_center">2.06 (0.18)</td></tr>
+    <tr><td class="gt_row gt_left">na_percent</td>
+<td class="gt_row gt_center">0.04 (0.00)</td>
+<td class="gt_row gt_center">0.06 (0.01)</td>
+<td class="gt_row gt_center">0.04 (0.00)</td>
+<td class="gt_row gt_center">0.06 (0.01)</td></tr>
+    <tr><td class="gt_row gt_left">n_percent</td>
+<td class="gt_row gt_center">0.22 (0.01)</td>
+<td class="gt_row gt_center">0.19 (0.02)</td>
+<td class="gt_row gt_center">0.29 (0.02)</td>
+<td class="gt_row gt_center">0.18 (0.01)</td></tr>
+    <tr><td class="gt_row gt_left">c_percent</td>
+<td class="gt_row gt_center">7.22 (0.30)</td>
+<td class="gt_row gt_center">7.05 (0.31)</td>
+<td class="gt_row gt_center">8.00 (0.29)</td>
+<td class="gt_row gt_center">7.57 (0.38)</td></tr>
+    <tr><td class="gt_row gt_left">c_n</td>
+<td class="gt_row gt_center">39.72 (2.77)</td>
+<td class="gt_row gt_center">41.62 (3.62)</td>
+<td class="gt_row gt_center">36.14 (3.32)</td>
+<td class="gt_row gt_center">43.72 (3.06)</td></tr>
+    <tr><td class="gt_row gt_left">cic</td>
+<td class="gt_row gt_center">16.60 (0.34)</td>
+<td class="gt_row gt_center">13.17 (0.49)</td>
+<td class="gt_row gt_center">15.33 (0.29)</td>
+<td class="gt_row gt_center">12.92 (0.55)</td></tr>
+    <tr><td class="gt_row gt_left">p</td>
+<td class="gt_row gt_center">3.83 (0.17)</td>
+<td class="gt_row gt_center">6.75 (0.92)</td>
+<td class="gt_row gt_center">5.20 (0.24)</td>
+<td class="gt_row gt_center">5.88 (0.25)</td></tr>
+    <tr><td class="gt_row gt_left">mo</td>
+<td class="gt_row gt_center">5.37 (0.30)</td>
+<td class="gt_row gt_center">2.87 (0.32)</td>
+<td class="gt_row gt_center">6.00 (0.39)</td>
+<td class="gt_row gt_center">2.80 (0.16)</td></tr>
+    <tr><td class="gt_row gt_left">p_h_k_cl</td>
+<td class="gt_row gt_center">7.46 (0.02)</td>
+<td class="gt_row gt_center">7.52 (0.04)</td>
+<td class="gt_row gt_center">7.54 (0.02)</td>
+<td class="gt_row gt_center">7.74 (0.03)</td></tr>
+    <tr><td class="gt_row gt_left">p_h_agua_eez</td>
+<td class="gt_row gt_center">7.97 (0.02)</td>
+<td class="gt_row gt_center">7.97 (0.04)</td>
+<td class="gt_row gt_center">7.91 (0.02)</td>
+<td class="gt_row gt_center">8.07 (0.02)</td></tr>
+  </tbody>
+  
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="5">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          Mean (std.error)
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+<div id="tfxibsfpsi" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#tfxibsfpsi .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#tfxibsfpsi .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tfxibsfpsi .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tfxibsfpsi .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tfxibsfpsi .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tfxibsfpsi .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tfxibsfpsi .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tfxibsfpsi .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#tfxibsfpsi .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#tfxibsfpsi .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#tfxibsfpsi .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#tfxibsfpsi .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tfxibsfpsi .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tfxibsfpsi .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tfxibsfpsi .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tfxibsfpsi .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tfxibsfpsi .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#tfxibsfpsi .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tfxibsfpsi .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#tfxibsfpsi .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tfxibsfpsi .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tfxibsfpsi .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tfxibsfpsi .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tfxibsfpsi .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tfxibsfpsi .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tfxibsfpsi .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tfxibsfpsi .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tfxibsfpsi .gt_left {
+  text-align: left;
+}
+
+#tfxibsfpsi .gt_center {
+  text-align: center;
+}
+
+#tfxibsfpsi .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tfxibsfpsi .gt_font_normal {
+  font-weight: normal;
+}
+
+#tfxibsfpsi .gt_font_bold {
+  font-weight: bold;
+}
+
+#tfxibsfpsi .gt_font_italic {
+  font-style: italic;
+}
+
+#tfxibsfpsi .gt_super {
+  font-size: 65%;
+}
+
+#tfxibsfpsi .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1"><strong>Characteristic</strong></th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2">
+        <span class="gt_column_spanner"><strong>Ot</strong></span>
+      </th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2">
+        <span class="gt_column_spanner"><strong>Pr</strong></span>
+      </th>
+    </tr>
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>0 preQuema</strong>, N = 48<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>1 postQuema</strong>, N = 48<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>0 preQuema</strong>, N = 24<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>1 postQuema</strong>, N = 24<sup class="gt_footnote_marks">1</sup></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">humedad</td>
+<td class="gt_row gt_center">12.22 (0.50)</td>
+<td class="gt_row gt_center">12.13 (0.59)</td>
+<td class="gt_row gt_center">15.62 (0.63)</td>
+<td class="gt_row gt_center">8.11 (0.53)</td></tr>
+    <tr><td class="gt_row gt_left">n_nh4</td>
+<td class="gt_row gt_center">0.62 (0.03)</td>
+<td class="gt_row gt_center">2.91 (0.36)</td>
+<td class="gt_row gt_center">NA (NA)</td>
+<td class="gt_row gt_center">NA (NA)</td></tr>
+    <tr><td class="gt_row gt_left">n_no3</td>
+<td class="gt_row gt_center">0.92 (0.07)</td>
+<td class="gt_row gt_center">0.81 (0.07)</td>
+<td class="gt_row gt_center">NA (NA)</td>
+<td class="gt_row gt_center">NA (NA)</td></tr>
+    <tr><td class="gt_row gt_left">fe_percent</td>
+<td class="gt_row gt_center">1.86 (0.07)</td>
+<td class="gt_row gt_center">1.80 (0.04)</td>
+<td class="gt_row gt_center">1.95 (0.08)</td>
+<td class="gt_row gt_center">1.95 (0.09)</td></tr>
+    <tr><td class="gt_row gt_left">k_percent</td>
+<td class="gt_row gt_center">0.45 (0.03)</td>
+<td class="gt_row gt_center">0.41 (0.03)</td>
+<td class="gt_row gt_center">0.79 (0.06)</td>
+<td class="gt_row gt_center">0.75 (0.06)</td></tr>
+    <tr><td class="gt_row gt_left">mg_percent</td>
+<td class="gt_row gt_center">1.29 (0.09)</td>
+<td class="gt_row gt_center">1.42 (0.12)</td>
+<td class="gt_row gt_center">2.00 (0.14)</td>
+<td class="gt_row gt_center">2.06 (0.18)</td></tr>
+    <tr><td class="gt_row gt_left">na_percent</td>
+<td class="gt_row gt_center">0.04 (0.00)</td>
+<td class="gt_row gt_center">0.04 (0.00)</td>
+<td class="gt_row gt_center">0.06 (0.01)</td>
+<td class="gt_row gt_center">0.06 (0.01)</td></tr>
+    <tr><td class="gt_row gt_left">n_percent</td>
+<td class="gt_row gt_center">0.22 (0.01)</td>
+<td class="gt_row gt_center">0.29 (0.02)</td>
+<td class="gt_row gt_center">0.19 (0.02)</td>
+<td class="gt_row gt_center">0.18 (0.01)</td></tr>
+    <tr><td class="gt_row gt_left">c_percent</td>
+<td class="gt_row gt_center">7.22 (0.30)</td>
+<td class="gt_row gt_center">8.00 (0.29)</td>
+<td class="gt_row gt_center">7.05 (0.31)</td>
+<td class="gt_row gt_center">7.57 (0.38)</td></tr>
+    <tr><td class="gt_row gt_left">c_n</td>
+<td class="gt_row gt_center">39.72 (2.77)</td>
+<td class="gt_row gt_center">36.14 (3.32)</td>
+<td class="gt_row gt_center">41.62 (3.62)</td>
+<td class="gt_row gt_center">43.72 (3.06)</td></tr>
+    <tr><td class="gt_row gt_left">cic</td>
+<td class="gt_row gt_center">16.60 (0.34)</td>
+<td class="gt_row gt_center">15.33 (0.29)</td>
+<td class="gt_row gt_center">13.17 (0.49)</td>
+<td class="gt_row gt_center">12.92 (0.55)</td></tr>
+    <tr><td class="gt_row gt_left">p</td>
+<td class="gt_row gt_center">3.83 (0.17)</td>
+<td class="gt_row gt_center">5.20 (0.24)</td>
+<td class="gt_row gt_center">6.75 (0.92)</td>
+<td class="gt_row gt_center">5.88 (0.25)</td></tr>
+    <tr><td class="gt_row gt_left">mo</td>
+<td class="gt_row gt_center">5.37 (0.30)</td>
+<td class="gt_row gt_center">6.00 (0.39)</td>
+<td class="gt_row gt_center">2.87 (0.32)</td>
+<td class="gt_row gt_center">2.80 (0.16)</td></tr>
+    <tr><td class="gt_row gt_left">p_h_k_cl</td>
+<td class="gt_row gt_center">7.46 (0.02)</td>
+<td class="gt_row gt_center">7.54 (0.02)</td>
+<td class="gt_row gt_center">7.52 (0.04)</td>
+<td class="gt_row gt_center">7.74 (0.03)</td></tr>
+    <tr><td class="gt_row gt_left">p_h_agua_eez</td>
+<td class="gt_row gt_center">7.97 (0.02)</td>
+<td class="gt_row gt_center">7.91 (0.02)</td>
+<td class="gt_row gt_center">7.97 (0.04)</td>
+<td class="gt_row gt_center">8.07 (0.02)</td></tr>
+  </tbody>
+  
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="5">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          Mean (std.error)
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+<div id="figures" class="section level2">
+<h2>Figures</h2>
+<p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-36-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="anovas-table" class="section level2">
+<h2>Anovas table</h2>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+fechaQuema
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+momento
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+fechaQuema x momento
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Variables
+</th>
+<th style="text-align:right;">
+F
+</th>
+<th style="text-align:right;">
+p
+</th>
+<th style="text-align:right;">
+F
+</th>
+<th style="text-align:right;">
+p
+</th>
+<th style="text-align:right;">
+F
+</th>
+<th style="text-align:right;">
+p
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+c_n
+</td>
+<td style="text-align:right;">
+0.560
+</td>
+<td style="text-align:right;">
+0.471
+</td>
+<td style="text-align:right;">
+0.055
+</td>
+<td style="text-align:right;">
+0.815
+</td>
+<td style="text-align:right;">
+0.803
+</td>
+<td style="text-align:right;">
+0.372
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cic
+</td>
+<td style="text-align:right;">
+9.836
+</td>
+<td style="text-align:right;">
+0.011
+</td>
+<td style="text-align:right;">
+5.112
+</td>
+<td style="text-align:right;">
+0.025
+</td>
+<td style="text-align:right;">
+2.303
+</td>
+<td style="text-align:right;">
+0.132
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+k_percent
+</td>
+<td style="text-align:right;">
+8.325
+</td>
+<td style="text-align:right;">
+0.016
+</td>
+<td style="text-align:right;">
+1.919
+</td>
+<td style="text-align:right;">
+0.168
+</td>
+<td style="text-align:right;">
+0.001
+</td>
+<td style="text-align:right;">
+0.976
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mg_percent
+</td>
+<td style="text-align:right;">
+4.011
+</td>
+<td style="text-align:right;">
+0.073
+</td>
+<td style="text-align:right;">
+0.959
+</td>
+<td style="text-align:right;">
+0.329
+</td>
+<td style="text-align:right;">
+0.130
+</td>
+<td style="text-align:right;">
+0.719
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mo
+</td>
+<td style="text-align:right;">
+35.185
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+0.602
+</td>
+<td style="text-align:right;">
+0.439
+</td>
+<td style="text-align:right;">
+0.914
+</td>
+<td style="text-align:right;">
+0.341
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_nh4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+403.000
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_no3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1198.500
+</td>
+<td style="text-align:right;">
+0.187
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p
+</td>
+<td style="text-align:right;">
+8.169
+</td>
+<td style="text-align:right;">
+0.017
+</td>
+<td style="text-align:right;">
+0.454
+</td>
+<td style="text-align:right;">
+0.502
+</td>
+<td style="text-align:right;">
+9.306
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_h_agua_eez
+</td>
+<td style="text-align:right;">
+9.290
+</td>
+<td style="text-align:right;">
+0.012
+</td>
+<td style="text-align:right;">
+0.989
+</td>
+<td style="text-align:right;">
+0.322
+</td>
+<td style="text-align:right;">
+10.511
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_h_k_cl
+</td>
+<td style="text-align:right;">
+5.701
+</td>
+<td style="text-align:right;">
+0.038
+</td>
+<td style="text-align:right;">
+45.363
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+9.393
+</td>
+<td style="text-align:right;">
+0.003
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+humedad
+</td>
+<td style="text-align:right;">
+0.058
+</td>
+<td style="text-align:right;">
+0.815
+</td>
+<td style="text-align:right;">
+50.420
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+<td style="text-align:right;">
+48.041
+</td>
+<td style="text-align:right;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_percent
+</td>
+<td style="text-align:right;">
+7.294
+</td>
+<td style="text-align:right;">
+0.007
+</td>
+<td style="text-align:right;">
+5.121
+</td>
+<td style="text-align:right;">
+0.024
+</td>
+<td style="text-align:right;">
+2.671
+</td>
+<td style="text-align:right;">
+0.102
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+c_percent
+</td>
+<td style="text-align:right;">
+0.118
+</td>
+<td style="text-align:right;">
+0.738
+</td>
+<td style="text-align:right;">
+6.180
+</td>
+<td style="text-align:right;">
+0.014
+</td>
+<td style="text-align:right;">
+0.261
+</td>
+<td style="text-align:right;">
+0.610
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+na_percent
+</td>
+<td style="text-align:right;">
+2.571
+</td>
+<td style="text-align:right;">
+0.109
+</td>
+<td style="text-align:right;">
+0.735
+</td>
+<td style="text-align:right;">
+0.391
+</td>
+<td style="text-align:right;">
+0.070
+</td>
+<td style="text-align:right;">
+0.791
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="gráficos-feos-feísimos" class="section level1">
+<h1>Gráficos feos feísimos</h1>
+<p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-43-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-44-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-45-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-46-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-47-1.png" width="672" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre><code>R version 4.0.2 (2020-06-22)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Catalina 10.15.3
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] kableExtra_1.3.1   gtsummary_1.4.2    plotrix_3.8-1      glmmTMB_1.0.2.1   
+ [5] afex_0.28-1        performance_0.7.2  multcomp_1.4-16    TH.data_1.0-10    
+ [9] mvtnorm_1.1-1      emmeans_1.5.4      lmerTest_3.1-3     lme4_1.1-27.1     
+[13] Matrix_1.3-2       fitdistrplus_1.1-3 survival_3.2-7     MASS_7.3-53       
+[17] ggpubr_0.4.0       janitor_2.1.0      here_1.0.1         forcats_0.5.1     
+[21] stringr_1.4.0      dplyr_1.0.6        purrr_0.3.4        readr_1.4.0       
+[25] tidyr_1.1.3        tibble_3.1.2       ggplot2_3.3.5      tidyverse_1.3.1   
+[29] rmdformats_1.0.1   knitr_1.31         workflowr_1.6.2   
+
+loaded via a namespace (and not attached):
+  [1] minqa_1.2.4         colorspace_2.0-0    ggsignif_0.6.0     
+  [4] ellipsis_0.3.2      rio_0.5.16          rprojroot_2.0.2    
+  [7] estimability_1.3    snakecase_0.11.0    fs_1.5.0           
+ [10] rstudioapi_0.13     farver_2.0.3        fansi_0.4.2        
+ [13] lubridate_1.7.10    xml2_1.3.2          codetools_0.2-18   
+ [16] splines_4.0.2       jsonlite_1.7.2      nloptr_1.2.2.2     
+ [19] gt_0.3.0            pbkrtest_0.5-0.1    broom_0.7.9        
+ [22] dbplyr_2.1.1        compiler_4.0.2      httr_1.4.2         
+ [25] backports_1.2.1     assertthat_0.2.1    fastmap_1.1.0      
+ [28] cli_2.5.0           formatR_1.8         later_1.1.0.1      
+ [31] htmltools_0.5.2     tools_4.0.2         coda_0.19-4        
+ [34] gtable_0.3.0        glue_1.4.2          reshape2_1.4.4     
+ [37] Rcpp_1.0.7          carData_3.0-4       cellranger_1.1.0   
+ [40] jquerylib_0.1.3     vctrs_0.3.8         nlme_3.1-152       
+ [43] broom.helpers_1.3.0 insight_0.14.4      xfun_0.23          
+ [46] openxlsx_4.2.3      rvest_1.0.0         lifecycle_1.0.0    
+ [49] rstatix_0.6.0       zoo_1.8-8           scales_1.1.1       
+ [52] hms_1.0.0           promises_1.2.0.1    parallel_4.0.2     
+ [55] sandwich_3.0-0      TMB_1.7.19          yaml_2.2.1         
+ [58] curl_4.3            sass_0.3.1          stringi_1.7.4      
+ [61] highr_0.8           checkmate_2.0.0     boot_1.3-26        
+ [64] zip_2.1.1           commonmark_1.7      rlang_0.4.10       
+ [67] pkgconfig_2.0.3     evaluate_0.14       lattice_0.20-41    
+ [70] labeling_0.4.2      tidyselect_1.1.1    plyr_1.8.6         
+ [73] magrittr_2.0.1      bookdown_0.21.6     R6_2.5.0           
+ [76] generics_0.1.0      DBI_1.1.1           pillar_1.6.1       
+ [79] haven_2.3.1         whisker_0.4         foreign_0.8-81     
+ [82] withr_2.4.1         abind_1.4-5         modelr_0.1.8       
+ [85] crayon_1.4.1        car_3.0-10          utf8_1.1.4         
+ [88] rmarkdown_2.8       grid_4.0.2          readxl_1.3.1       
+ [91] data.table_1.14.0   git2r_0.28.0        webshot_0.5.2      
+ [94] reprex_2.0.0        digest_0.6.27       xtable_1.8-4       
+ [97] httpuv_1.5.5        numDeriv_2016.8-1.1 munsell_0.5.0      
+[100] viridisLite_0.3.0   bslib_0.2.4        </code></pre>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
