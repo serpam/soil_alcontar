@@ -47,6 +47,7 @@ library("DHARMa")
 library("glmmTMB")
 library("glmmADMB")
 library("car")
+library("kableExtra")
 ```
 
 # Prepare data 
@@ -149,7 +150,28 @@ posthoc.meses <- function(modelo){
     emmeans(modelo, list(pairwise ~ meses), adjust = "tukey")} 
 posthoc.int <- function(modelo){
     emmeans(modelo, list(pairwise ~ meses | pastoreo), adjust = "tukey")} 
+
+
+
+# custom posthocs
+tabla_postHoc_meses <- function(modelo){
+  posthoc <- emmeans(modelo, list(pairwise ~ meses), adjust = "tukey")
+  as.data.frame(posthoc$`pairwise differences of meses`) %>% 
+    rename(meses = 1) %>% 
+    kbl(digits = 4) %>% 
+    kable_paper("hover", full_width = F)
+}
+
+tabla_postHoc <- function(modelo){
+  posthoc <- emmeans(modelo, ~ pastoreo * meses)
+  contrast(posthoc, "consec", simple = "each", combine = TRUE,
+           adjust = "tukey") %>% 
+  kbl(digits = 4) %>% 
+    kable_paper("hover", full_width = F)
+}
+
 ```
+
 
 # Humedad 
 ```{r}
@@ -169,9 +191,8 @@ plot(simulateResiduals(m))
 
 ### *Post-hoc*
 ```{r}
-posthoc.pastoreo(m)
-posthoc.meses(m)
-posthoc.int(m)
+tabla_postHoc_meses(m)
+tabla_postHoc(m)
 ```
 
 
@@ -193,9 +214,8 @@ plot(simulateResiduals(m))
 
 ### *Post-hoc*
 ```{r}
-posthoc.pastoreo(m)
-posthoc.meses(m)
-posthoc.int(m)
+tabla_postHoc_meses(m)
+tabla_postHoc(m)
 ```
 
 # C 
@@ -216,9 +236,8 @@ plot(simulateResiduals(m))
 
 ### *Post-hoc*
 ```{r}
-posthoc.pastoreo(m)
-posthoc.meses(m)
-posthoc.int(m)
+tabla_postHoc_meses(m)
+tabla_postHoc(m)
 ```
 
 
@@ -245,9 +264,8 @@ plot(simulateResiduals(model))
 
 ### *Post-hoc*
 ```{r}
-posthoc.pastoreo(m)
-posthoc.meses(m)
-posthoc.int(m)
+tabla_postHoc_meses(m)
+tabla_postHoc(m)
 ```
 
 
@@ -276,9 +294,8 @@ plot(simulateResiduals(model))
 
 ### *Post-hoc*
 ```{r}
-posthoc.pastoreo(m)
-posthoc.meses(m)
-posthoc.int(m)
+tabla_postHoc_meses(m)
+tabla_postHoc(m)
 ```
 
 
@@ -307,9 +324,8 @@ plot(simulateResiduals(model))
 
 ### *Post-hoc*
 ```{r}
-posthoc.pastoreo(m)
-posthoc.meses(m)
-posthoc.int(m)
+tabla_postHoc_meses(m)
+tabla_postHoc(m)
 ```
 
 
@@ -338,9 +354,8 @@ plot(simulateResiduals(model))
 
 ### *Post-hoc*
 ```{r}
-posthoc.pastoreo(m)
-posthoc.meses(m)
-posthoc.int(m)
+tabla_postHoc_meses(m)
+tabla_postHoc(m)
 ```
 
 
@@ -369,9 +384,8 @@ plot(simulateResiduals(model))
 
 ### *Post-hoc*
 ```{r}
-posthoc.pastoreo(m)
-posthoc.meses(m)
-posthoc.int(m)
+tabla_postHoc_meses(m)
+tabla_postHoc(m)
 ```
 
 
@@ -401,9 +415,8 @@ plot(simulateResiduals(model))
 
 ### *Post-hoc*
 ```{r}
-posthoc.pastoreo(m)
-posthoc.meses(m)
-posthoc.int(m)
+tabla_postHoc_meses(m)
+tabla_postHoc(m)
 ```
 
 
@@ -433,9 +446,8 @@ plot(simulateResiduals(model))
 
 ### *Post-hoc*
 ```{r}
-posthoc.pastoreo(m)
-posthoc.meses(m)
-posthoc.int(m)
+tabla_postHoc_meses(m)
+tabla_postHoc(m)
 ```
 
 
@@ -480,9 +492,8 @@ plot(simulateResiduals(model))
 
 ### *Post-hoc*
 ```{r}
-posthoc.pastoreo(m)
-posthoc.meses(m)
-posthoc.int(m)
+tabla_postHoc_meses(m)
+tabla_postHoc(m)
 ```
 
 
@@ -508,9 +519,8 @@ plot(simulateResiduals(model))
 
 ### *Post-hoc*
 ```{r}
-posthoc.pastoreo(m)
-posthoc.meses(m)
-posthoc.int(m)
+tabla_postHoc_meses(m)
+tabla_postHoc(m)
 ```
 
 
@@ -536,9 +546,8 @@ plot(simulateResiduals(model))
 
 ### *Post-hoc*
 ```{r}
-posthoc.pastoreo(m)
-posthoc.meses(m)
-posthoc.int(m)
+tabla_postHoc_meses(m)
+tabla_postHoc(m)
 ```
 
 
@@ -619,7 +628,6 @@ plotpastoreo <- function(df, ncol, nrow){
   facet_wrap(~varname, scales = "free_y", ncol=ncol)
 }
 ```
-
 
 ```{r}
 medias %>% 
