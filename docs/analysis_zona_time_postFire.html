@@ -376,7 +376,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-09-14
+<strong>Last updated:</strong> 2021-09-15
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -467,16 +467,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartreeb2f355b7f78851612d9027206e53eb01fcc48468targetblankb2f355ba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/serpam/soil_alcontar/tree/b2f355b7f78851612d9027206e53eb01fcc48468" target="_blank">b2f355b</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartreef85e115b98cae7df854b1284e2ad003d79200bf7targetblankf85e115a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/serpam/soil_alcontar/tree/f85e115b98cae7df854b1284e2ad003d79200bf7" target="_blank">f85e115</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartreeb2f355b7f78851612d9027206e53eb01fcc48468targetblankb2f355ba" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartreef85e115b98cae7df854b1284e2ad003d79200bf7targetblankf85e115a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/serpam/soil_alcontar/tree/b2f355b7f78851612d9027206e53eb01fcc48468" target="_blank">b2f355b</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/serpam/soil_alcontar/tree/f85e115b98cae7df854b1284e2ad003d79200bf7" target="_blank">f85e115</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -557,6 +557,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/f85e115b98cae7df854b1284e2ad003d79200bf7/analysis/analysis_zona_time_postFire.Rmd" target="_blank">f85e115</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-15
+</td>
+<td>
+include new table visualization
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/serpam/soil_alcontar/e063cee14932c380c3aaae6febfa0d3b6bd2eb21/docs/analysis_zona_time_postFire.html" target="_blank">e063cee</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -644,71 +678,306 @@ pastoreo:meses 132.90  66.452     2 133.044  9.0090 0.0002141 ***
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div id="post-hoc" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of pastoreo`
- pastoreo    emmean    SE   df lower.CL upper.CL
- Browsing      11.1 0.883 6.01     8.96     13.3
- No Browsing   10.1 0.882 5.99     7.98     12.3
-
-Results are averaged over the levels of: meses 
-Degrees-of-freedom method: kenward-roger 
-Confidence level used: 0.95 
-
-$`pairwise differences of pastoreo`
- 1                      estimate   SE df t.ratio p.value
- Browsing - No Browsing    0.985 1.25  6 0.789   0.4599 
-
-Results are averaged over the levels of: meses 
-Degrees-of-freedom method: kenward-roger </code></pre>
-<pre><code>$`emmeans of meses`
- meses emmean    SE   df lower.CL upper.CL
- 0      12.13 0.702 9.55    10.55     13.7
- 22      8.47 0.697 9.33     6.90     10.0
- 29     11.30 0.704 9.69     9.72     12.9
-
-Results are averaged over the levels of: pastoreo 
-Degrees-of-freedom method: kenward-roger 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses`
- 1       estimate    SE  df t.ratio p.value
- 0 - 22     3.661 0.549 133  6.668  &lt;.0001 
- 0 - 29     0.827 0.558 133  1.483  0.3023 
- 22 - 29   -2.834 0.552 133 -5.131  &lt;.0001 
-
-Results are averaged over the levels of: pastoreo 
-Degrees-of-freedom method: kenward-roger 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
-<pre><code>$`emmeans of meses | pastoreo`
-pastoreo = Browsing:
- meses emmean    SE   df lower.CL upper.CL
- 0      11.39 0.992 9.55     9.17     13.6
- 22     10.05 0.986 9.33     7.83     12.3
- 29     11.93 0.999 9.82     9.69     14.2
-
-pastoreo = No Browsing:
- meses emmean    SE   df lower.CL upper.CL
- 0      12.86 0.992 9.55    10.64     15.1
- 22      6.88 0.986 9.33     4.66      9.1
- 29     10.67 0.992 9.55     8.45     12.9
-
-Degrees-of-freedom method: kenward-roger 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses | pastoreo`
-pastoreo = Browsing:
- 2       estimate    SE  df t.ratio p.value
- 0 - 22     1.339 0.776 133  1.725  0.1996 
- 0 - 29    -0.533 0.793 133 -0.673  0.7798 
- 22 - 29   -1.873 0.786 133 -2.383  0.0485 
-
-pastoreo = No Browsing:
- 2       estimate    SE  df t.ratio p.value
- 0 - 22     5.983 0.776 133  7.705  &lt;.0001 
- 0 - 29     2.187 0.784 133  2.789  0.0166 
- 22 - 29   -3.796 0.776 133 -4.889  &lt;.0001 
-
-Degrees-of-freedom method: kenward-roger 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+t.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0 - 22
+</td>
+<td style="text-align:right;">
+3.6611
+</td>
+<td style="text-align:right;">
+0.5490
+</td>
+<td style="text-align:right;">
+133.0276
+</td>
+<td style="text-align:right;">
+6.6684
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0 - 29
+</td>
+<td style="text-align:right;">
+0.8268
+</td>
+<td style="text-align:right;">
+0.5575
+</td>
+<td style="text-align:right;">
+133.0164
+</td>
+<td style="text-align:right;">
+1.4830
+</td>
+<td style="text-align:right;">
+0.3023
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22 - 29
+</td>
+<td style="text-align:right;">
+-2.8343
+</td>
+<td style="text-align:right;">
+0.5524
+</td>
+<td style="text-align:right;">
+133.0747
+</td>
+<td style="text-align:right;">
+-5.1307
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:left;">
+pastoreo
+</th>
+<th style="text-align:left;">
+contrast
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+t.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+1.4692
+</td>
+<td style="text-align:right;">
+1.4030
+</td>
+<td style="text-align:right;">
+9.5543
+</td>
+<td style="text-align:right;">
+1.0472
+</td>
+<td style="text-align:right;">
+0.9333
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-3.1741
+</td>
+<td style="text-align:right;">
+1.3946
+</td>
+<td style="text-align:right;">
+9.3270
+</td>
+<td style="text-align:right;">
+-2.2760
+</td>
+<td style="text-align:right;">
+0.2908
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-1.2509
+</td>
+<td style="text-align:right;">
+1.4080
+</td>
+<td style="text-align:right;">
+9.6864
+</td>
+<td style="text-align:right;">
+-0.8884
+</td>
+<td style="text-align:right;">
+0.9706
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-1.3395
+</td>
+<td style="text-align:right;">
+0.7764
+</td>
+<td style="text-align:right;">
+133.0287
+</td>
+<td style="text-align:right;">
+-1.7251
+</td>
+<td style="text-align:right;">
+0.4705
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+1.8727
+</td>
+<td style="text-align:right;">
+0.7860
+</td>
+<td style="text-align:right;">
+133.1214
+</td>
+<td style="text-align:right;">
+2.3826
+</td>
+<td style="text-align:right;">
+0.1232
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-5.9827
+</td>
+<td style="text-align:right;">
+0.7764
+</td>
+<td style="text-align:right;">
+133.0266
+</td>
+<td style="text-align:right;">
+-7.7054
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+3.7959
+</td>
+<td style="text-align:right;">
+0.7764
+</td>
+<td style="text-align:right;">
+133.0266
+</td>
+<td style="text-align:right;">
+4.8889
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="cic" class="section level1">
@@ -723,71 +992,306 @@ pastoreo:meses   2.97   1.485     2 133.999  0.4682 0.6271
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div id="post-hoc-1" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of pastoreo`
- pastoreo    emmean    SE df lower.CL upper.CL
- Browsing      16.8 0.555  6     15.5     18.2
- No Browsing   15.9 0.555  6     14.6     17.3
-
-Results are averaged over the levels of: meses 
-Degrees-of-freedom method: kenward-roger 
-Confidence level used: 0.95 
-
-$`pairwise differences of pastoreo`
- 1                      estimate    SE df t.ratio p.value
- Browsing - No Browsing    0.904 0.784  6 1.152   0.2931 
-
-Results are averaged over the levels of: meses 
-Degrees-of-freedom method: kenward-roger </code></pre>
-<pre><code>$`emmeans of meses`
- meses emmean    SE   df lower.CL upper.CL
- 0       15.3 0.445 9.92     14.3     16.3
- 22      15.0 0.442 9.67     14.0     16.0
- 29      18.8 0.445 9.92     17.8     19.8
-
-Results are averaged over the levels of: pastoreo 
-Degrees-of-freedom method: kenward-roger 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses`
- 1       estimate    SE  df t.ratio p.value
- 0 - 22     0.325 0.360 134   0.903 0.6395 
- 0 - 29    -3.500 0.364 134  -9.627 &lt;.0001 
- 22 - 29   -3.825 0.360 134 -10.624 &lt;.0001 
-
-Results are averaged over the levels of: pastoreo 
-Degrees-of-freedom method: kenward-roger 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
-<pre><code>$`emmeans of meses | pastoreo`
-pastoreo = Browsing:
- meses emmean    SE   df lower.CL upper.CL
- 0       15.6 0.630 9.92     14.2     17.0
- 22      15.6 0.626 9.67     14.2     17.0
- 29      19.4 0.630 9.92     18.0     20.8
-
-pastoreo = No Browsing:
- meses emmean    SE   df lower.CL upper.CL
- 0       15.1 0.630 9.92     13.7     16.5
- 22      14.4 0.626 9.67     13.0     15.8
- 29      18.3 0.630 9.92     16.9     19.7
-
-Degrees-of-freedom method: kenward-roger 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses | pastoreo`
-pastoreo = Browsing:
- 2       estimate    SE  df t.ratio p.value
- 0 - 22    0.0111 0.509 134  0.022  0.9997 
- 0 - 29   -3.7917 0.514 134 -7.375  &lt;.0001 
- 22 - 29  -3.8027 0.509 134 -7.468  &lt;.0001 
-
-pastoreo = No Browsing:
- 2       estimate    SE  df t.ratio p.value
- 0 - 22    0.6390 0.509 134  1.255  0.4231 
- 0 - 29   -3.2083 0.514 134 -6.240  &lt;.0001 
- 22 - 29  -3.8474 0.509 134 -7.556  &lt;.0001 
-
-Degrees-of-freedom method: kenward-roger 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+t.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0 - 22
+</td>
+<td style="text-align:right;">
+0.325
+</td>
+<td style="text-align:right;">
+0.3600
+</td>
+<td style="text-align:right;">
+134.0292
+</td>
+<td style="text-align:right;">
+0.9028
+</td>
+<td style="text-align:right;">
+0.6395
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0 - 29
+</td>
+<td style="text-align:right;">
+-3.500
+</td>
+<td style="text-align:right;">
+0.3636
+</td>
+<td style="text-align:right;">
+134.0000
+</td>
+<td style="text-align:right;">
+-9.6269
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22 - 29
+</td>
+<td style="text-align:right;">
+-3.825
+</td>
+<td style="text-align:right;">
+0.3600
+</td>
+<td style="text-align:right;">
+134.0292
+</td>
+<td style="text-align:right;">
+-10.6238
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:left;">
+pastoreo
+</th>
+<th style="text-align:left;">
+contrast
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+t.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-0.5000
+</td>
+<td style="text-align:right;">
+0.8904
+</td>
+<td style="text-align:right;">
+9.9201
+</td>
+<td style="text-align:right;">
+-0.5616
+</td>
+<td style="text-align:right;">
+0.9979
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-1.1280
+</td>
+<td style="text-align:right;">
+0.8846
+</td>
+<td style="text-align:right;">
+9.6682
+</td>
+<td style="text-align:right;">
+-1.2751
+</td>
+<td style="text-align:right;">
+0.8425
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-1.0833
+</td>
+<td style="text-align:right;">
+0.8904
+</td>
+<td style="text-align:right;">
+9.9201
+</td>
+<td style="text-align:right;">
+-1.2167
+</td>
+<td style="text-align:right;">
+0.8688
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-0.0111
+</td>
+<td style="text-align:right;">
+0.5092
+</td>
+<td style="text-align:right;">
+134.0292
+</td>
+<td style="text-align:right;">
+-0.0217
+</td>
+<td style="text-align:right;">
+1.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+3.8027
+</td>
+<td style="text-align:right;">
+0.5092
+</td>
+<td style="text-align:right;">
+134.0292
+</td>
+<td style="text-align:right;">
+7.4683
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-0.6390
+</td>
+<td style="text-align:right;">
+0.5092
+</td>
+<td style="text-align:right;">
+134.0292
+</td>
+<td style="text-align:right;">
+-1.2550
+</td>
+<td style="text-align:right;">
+0.8107
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+3.8474
+</td>
+<td style="text-align:right;">
+0.5092
+</td>
+<td style="text-align:right;">
+134.0292
+</td>
+<td style="text-align:right;">
+7.5560
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="c" class="section level1">
@@ -802,71 +1306,306 @@ pastoreo:meses  0.5280  0.2640     2 134.001  0.1326 0.8759091
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div id="post-hoc-2" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of pastoreo`
- pastoreo    emmean    SE df lower.CL upper.CL
- Browsing      8.06 0.768  6     6.18     9.94
- No Browsing   6.73 0.768  6     4.85     8.61
-
-Results are averaged over the levels of: meses 
-Degrees-of-freedom method: kenward-roger 
-Confidence level used: 0.95 
-
-$`pairwise differences of pastoreo`
- 1                      estimate   SE df t.ratio p.value
- Browsing - No Browsing     1.33 1.09  6 1.226   0.2661 
-
-Results are averaged over the levels of: meses 
-Degrees-of-freedom method: kenward-roger </code></pre>
-<pre><code>$`emmeans of meses`
- meses emmean    SE   df lower.CL upper.CL
- 0       8.00 0.568 7.18     6.66     9.33
- 22      6.91 0.567 7.11     5.57     8.24
- 29      7.27 0.568 7.18     5.94     8.61
-
-Results are averaged over the levels of: pastoreo 
-Degrees-of-freedom method: kenward-roger 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses`
- 1       estimate    SE  df t.ratio p.value
- 0 - 22     1.092 0.285 134  3.830  0.0006 
- 0 - 29     0.726 0.288 134  2.519  0.0343 
- 22 - 29   -0.367 0.285 134 -1.286  0.4053 
-
-Results are averaged over the levels of: pastoreo 
-Degrees-of-freedom method: kenward-roger 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
-<pre><code>$`emmeans of meses | pastoreo`
-pastoreo = Browsing:
- meses emmean    SE   df lower.CL upper.CL
- 0       8.73 0.804 7.18     6.84    10.62
- 22      7.49 0.802 7.11     5.60     9.38
- 29      7.96 0.804 7.18     6.07     9.85
-
-pastoreo = No Browsing:
- meses emmean    SE   df lower.CL upper.CL
- 0       7.27 0.804 7.18     5.38     9.16
- 22      6.32 0.802 7.11     4.43     8.21
- 29      6.59 0.804 7.18     4.70     8.48
-
-Degrees-of-freedom method: kenward-roger 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses | pastoreo`
-pastoreo = Browsing:
- 2       estimate    SE  df t.ratio p.value
- 0 - 22     1.236 0.403 134  3.064  0.0074 
- 0 - 29     0.772 0.407 134  1.895  0.1442 
- 22 - 29   -0.464 0.403 134 -1.151  0.4844 
-
-pastoreo = No Browsing:
- 2       estimate    SE  df t.ratio p.value
- 0 - 22     0.949 0.403 134  2.353  0.0522 
- 0 - 29     0.680 0.407 134  1.668  0.2212 
- 22 - 29   -0.269 0.403 134 -0.668  0.7825 
-
-Degrees-of-freedom method: kenward-roger 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+t.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0 - 22
+</td>
+<td style="text-align:right;">
+1.0925
+</td>
+<td style="text-align:right;">
+0.2852
+</td>
+<td style="text-align:right;">
+134.0095
+</td>
+<td style="text-align:right;">
+3.8303
+</td>
+<td style="text-align:right;">
+0.0006
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0 - 29
+</td>
+<td style="text-align:right;">
+0.7256
+</td>
+<td style="text-align:right;">
+0.2880
+</td>
+<td style="text-align:right;">
+134.0000
+</td>
+<td style="text-align:right;">
+2.5194
+</td>
+<td style="text-align:right;">
+0.0343
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22 - 29
+</td>
+<td style="text-align:right;">
+-0.3669
+</td>
+<td style="text-align:right;">
+0.2852
+</td>
+<td style="text-align:right;">
+134.0095
+</td>
+<td style="text-align:right;">
+-1.2863
+</td>
+<td style="text-align:right;">
+0.4053
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:left;">
+pastoreo
+</th>
+<th style="text-align:left;">
+contrast
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+t.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-1.4583
+</td>
+<td style="text-align:right;">
+1.1364
+</td>
+<td style="text-align:right;">
+7.1824
+</td>
+<td style="text-align:right;">
+-1.2833
+</td>
+<td style="text-align:right;">
+0.8525
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-1.1712
+</td>
+<td style="text-align:right;">
+1.1336
+</td>
+<td style="text-align:right;">
+7.1116
+</td>
+<td style="text-align:right;">
+-1.0332
+</td>
+<td style="text-align:right;">
+0.9427
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-1.3662
+</td>
+<td style="text-align:right;">
+1.1364
+</td>
+<td style="text-align:right;">
+7.1824
+</td>
+<td style="text-align:right;">
+-1.2022
+</td>
+<td style="text-align:right;">
+0.8868
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-1.2360
+</td>
+<td style="text-align:right;">
+0.4034
+</td>
+<td style="text-align:right;">
+134.0095
+</td>
+<td style="text-align:right;">
+-3.0643
+</td>
+<td style="text-align:right;">
+0.0183
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+0.4644
+</td>
+<td style="text-align:right;">
+0.4034
+</td>
+<td style="text-align:right;">
+134.0095
+</td>
+<td style="text-align:right;">
+1.1513
+</td>
+<td style="text-align:right;">
+0.8686
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-0.9489
+</td>
+<td style="text-align:right;">
+0.4034
+</td>
+<td style="text-align:right;">
+134.0095
+</td>
+<td style="text-align:right;">
+-2.3525
+</td>
+<td style="text-align:right;">
+0.1325
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+0.2694
+</td>
+<td style="text-align:right;">
+0.4034
+</td>
+<td style="text-align:right;">
+134.0095
+</td>
+<td style="text-align:right;">
+0.6679
+</td>
+<td style="text-align:right;">
+0.9928
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="fe" class="section level1">
@@ -886,71 +1625,306 @@ pastoreo:meses      2    134   3.3444 0.03825 *
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div id="post-hoc-3" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of pastoreo`
- pastoreo    emmean     SE  df asymp.LCL asymp.UCL
- Browsing     0.550 0.0555 Inf     0.442     0.659
- No Browsing  0.467 0.0604 Inf     0.349     0.586
-
-Results are averaged over the levels of: meses 
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of pastoreo`
- 1                      estimate    SE  df z.ratio p.value
- Browsing - No Browsing    0.083 0.082 Inf 1.013   0.3110 
-
-Results are averaged over the levels of: meses 
-Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of meses`
- meses emmean     SE  df asymp.LCL asymp.UCL
- 0      0.586 0.0416 Inf     0.504     0.667
- 22     0.541 0.0414 Inf     0.459     0.622
- 29     0.400 0.0412 Inf     0.319     0.481
-
-Results are averaged over the levels of: pastoreo 
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses`
- 1       estimate      SE  df z.ratio p.value
- 0 - 22    0.0451 0.01029 Inf  4.386  &lt;.0001 
- 0 - 29    0.1858 0.00917 Inf 20.265  &lt;.0001 
- 22 - 29   0.1406 0.00849 Inf 16.570  &lt;.0001 
-
-Results are averaged over the levels of: pastoreo 
-Note: contrasts are still on the inverse scale 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
-<pre><code>$`emmeans of meses | pastoreo`
-pastoreo = Browsing:
- meses emmean     SE  df asymp.LCL asymp.UCL
- 0      0.636 0.0563 Inf     0.525     0.746
- 22     0.568 0.0560 Inf     0.458     0.678
- 29     0.447 0.0557 Inf     0.338     0.556
-
-pastoreo = No Browsing:
- meses emmean     SE  df asymp.LCL asymp.UCL
- 0      0.536 0.0611 Inf     0.416     0.656
- 22     0.513 0.0610 Inf     0.393     0.633
- 29     0.353 0.0606 Inf     0.234     0.472
-
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses | pastoreo`
-pastoreo = Browsing:
- 2       estimate     SE  df z.ratio p.value
- 0 - 22    0.0674 0.0148 Inf  4.558  &lt;.0001 
- 0 - 29    0.1886 0.0135 Inf 14.020  &lt;.0001 
- 22 - 29   0.1212 0.0121 Inf 10.041  &lt;.0001 
-
-pastoreo = No Browsing:
- 2       estimate     SE  df z.ratio p.value
- 0 - 22    0.0228 0.0143 Inf  1.596  0.2474 
- 0 - 29    0.1829 0.0125 Inf 14.686  &lt;.0001 
- 22 - 29   0.1601 0.0119 Inf 13.411  &lt;.0001 
-
-Note: contrasts are still on the inverse scale 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0 - 22
+</td>
+<td style="text-align:right;">
+0.0451
+</td>
+<td style="text-align:right;">
+0.0103
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+4.3856
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0 - 29
+</td>
+<td style="text-align:right;">
+0.1858
+</td>
+<td style="text-align:right;">
+0.0092
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+20.2649
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22 - 29
+</td>
+<td style="text-align:right;">
+0.1406
+</td>
+<td style="text-align:right;">
+0.0085
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+16.5696
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:left;">
+pastoreo
+</th>
+<th style="text-align:left;">
+contrast
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-0.0998
+</td>
+<td style="text-align:right;">
+0.0830
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-1.2019
+</td>
+<td style="text-align:right;">
+0.8386
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-0.0552
+</td>
+<td style="text-align:right;">
+0.0828
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-0.6671
+</td>
+<td style="text-align:right;">
+0.9927
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-0.0941
+</td>
+<td style="text-align:right;">
+0.0822
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-1.1443
+</td>
+<td style="text-align:right;">
+0.8696
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-0.0674
+</td>
+<td style="text-align:right;">
+0.0148
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-4.5577
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+-0.1212
+</td>
+<td style="text-align:right;">
+0.0121
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-10.0407
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-0.0228
+</td>
+<td style="text-align:right;">
+0.0143
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-1.5959
+</td>
+<td style="text-align:right;">
+0.5594
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+-0.1601
+</td>
+<td style="text-align:right;">
+0.0119
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-13.4113
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="k" class="section level1">
@@ -970,71 +1944,306 @@ pastoreo:meses      2 134.01   6.3832  0.002249 **
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div id="post-hoc-4" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of pastoreo`
- pastoreo    emmean    SE  df asymp.LCL asymp.UCL
- Browsing      2.32 0.140 Inf      2.05      2.60
- No Browsing   1.59 0.139 Inf      1.32      1.86
-
-Results are averaged over the levels of: meses 
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of pastoreo`
- 1                      estimate    SE  df z.ratio p.value
- Browsing - No Browsing    0.731 0.196 Inf 3.725   0.0002 
-
-Results are averaged over the levels of: meses 
-Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of meses`
- meses emmean     SE  df asymp.LCL asymp.UCL
- 0      2.722 0.1273 Inf     2.473      2.97
- 22     2.183 0.1130 Inf     1.962      2.40
- 29     0.963 0.0962 Inf     0.775      1.15
-
-Results are averaged over the levels of: pastoreo 
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses`
- 1       estimate     SE  df z.ratio p.value
- 0 - 22     0.539 0.1111 Inf  4.852  &lt;.0001 
- 0 - 29     1.759 0.0935 Inf 18.813  &lt;.0001 
- 22 - 29    1.220 0.0725 Inf 16.837  &lt;.0001 
-
-Results are averaged over the levels of: pastoreo 
-Note: contrasts are still on the inverse scale 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
-<pre><code>$`emmeans of meses | pastoreo`
-pastoreo = Browsing:
- meses emmean    SE  df asymp.LCL asymp.UCL
- 0      3.554 0.200 Inf     3.163      3.95
- 22     2.372 0.160 Inf     2.058      2.69
- 29     1.040 0.132 Inf     0.782      1.30
-
-pastoreo = No Browsing:
- meses emmean    SE  df asymp.LCL asymp.UCL
- 0      1.891 0.157 Inf     1.583      2.20
- 22     1.995 0.159 Inf     1.684      2.31
- 29     0.886 0.138 Inf     0.615      1.16
-
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses | pastoreo`
-pastoreo = Browsing:
- 2       estimate     SE  df z.ratio p.value
- 0 - 22     1.182 0.1867 Inf  6.332  &lt;.0001 
- 0 - 29     2.514 0.1629 Inf 15.434  &lt;.0001 
- 22 - 29    1.331 0.1096 Inf 12.141  &lt;.0001 
-
-pastoreo = No Browsing:
- 2       estimate     SE  df z.ratio p.value
- 0 - 22    -0.104 0.1204 Inf -0.865  0.6622 
- 0 - 29     1.005 0.0919 Inf 10.937  &lt;.0001 
- 22 - 29    1.109 0.0947 Inf 11.706  &lt;.0001 
-
-Note: contrasts are still on the inverse scale 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0 - 22
+</td>
+<td style="text-align:right;">
+0.5391
+</td>
+<td style="text-align:right;">
+0.1111
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+4.8522
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0 - 29
+</td>
+<td style="text-align:right;">
+1.7591
+</td>
+<td style="text-align:right;">
+0.0935
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+18.8131
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22 - 29
+</td>
+<td style="text-align:right;">
+1.2200
+</td>
+<td style="text-align:right;">
+0.0725
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+16.8366
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:left;">
+pastoreo
+</th>
+<th style="text-align:left;">
+contrast
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-1.6632
+</td>
+<td style="text-align:right;">
+0.2534
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-6.5632
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-0.3766
+</td>
+<td style="text-align:right;">
+0.2246
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-1.6770
+</td>
+<td style="text-align:right;">
+0.4972
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-0.1544
+</td>
+<td style="text-align:right;">
+0.1900
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-0.8125
+</td>
+<td style="text-align:right;">
+0.9770
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-1.1824
+</td>
+<td style="text-align:right;">
+0.1867
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-6.3323
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+-1.3311
+</td>
+<td style="text-align:right;">
+0.1096
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-12.1412
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+0.1042
+</td>
+<td style="text-align:right;">
+0.1204
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.8654
+</td>
+<td style="text-align:right;">
+0.9674
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+-1.1089
+</td>
+<td style="text-align:right;">
+0.0947
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-11.7063
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="mg" class="section level1">
@@ -1054,71 +2263,306 @@ pastoreo:meses      2    134 4.7869 0.009817 **
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div id="post-hoc-5" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of pastoreo`
- pastoreo    emmean    SE  df asymp.LCL asymp.UCL
- Browsing     0.949 0.143 Inf     0.669      1.23
- No Browsing  0.760 0.152 Inf     0.462      1.06
-
-Results are averaged over the levels of: meses 
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of pastoreo`
- 1                      estimate    SE  df z.ratio p.value
- Browsing - No Browsing    0.189 0.209 Inf 0.907   0.3647 
-
-Results are averaged over the levels of: meses 
-Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of meses`
- meses emmean    SE  df asymp.LCL asymp.UCL
- 0      0.869 0.107 Inf     0.660      1.08
- 22     0.899 0.107 Inf     0.689      1.11
- 29     0.795 0.106 Inf     0.587      1.00
-
-Results are averaged over the levels of: pastoreo 
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses`
- 1       estimate     SE  df z.ratio p.value
- 0 - 22   -0.0295 0.0403 Inf -0.731  0.7451 
- 0 - 29    0.0742 0.0376 Inf  1.974  0.1188 
- 22 - 29   0.1037 0.0377 Inf  2.748  0.0165 
-
-Results are averaged over the levels of: pastoreo 
-Note: contrasts are still on the inverse scale 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
-<pre><code>$`emmeans of meses | pastoreo`
-pastoreo = Browsing:
- meses emmean    SE  df asymp.LCL asymp.UCL
- 0      1.033 0.149 Inf     0.742      1.32
- 22     0.981 0.147 Inf     0.692      1.27
- 29     0.833 0.145 Inf     0.548      1.12
-
-pastoreo = No Browsing:
- meses emmean    SE  df asymp.LCL asymp.UCL
- 0      0.706 0.154 Inf     0.404      1.01
- 22     0.817 0.155 Inf     0.513      1.12
- 29     0.757 0.155 Inf     0.454      1.06
-
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses | pastoreo`
-pastoreo = Browsing:
- 2       estimate     SE  df z.ratio p.value
- 0 - 22    0.0516 0.0659 Inf  0.783  0.7134 
- 0 - 29    0.1994 0.0612 Inf  3.259  0.0032 
- 22 - 29   0.1478 0.0576 Inf  2.563  0.0280 
-
-pastoreo = No Browsing:
- 2       estimate     SE  df z.ratio p.value
- 0 - 22   -0.1106 0.0465 Inf -2.380  0.0456 
- 0 - 29   -0.0511 0.0437 Inf -1.169  0.4717 
- 22 - 29   0.0596 0.0487 Inf  1.223  0.4393 
-
-Note: contrasts are still on the inverse scale 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0 - 22
+</td>
+<td style="text-align:right;">
+-0.0295
+</td>
+<td style="text-align:right;">
+0.0403
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-0.7309
+</td>
+<td style="text-align:right;">
+0.7451
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0 - 29
+</td>
+<td style="text-align:right;">
+0.0742
+</td>
+<td style="text-align:right;">
+0.0376
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+1.9735
+</td>
+<td style="text-align:right;">
+0.1188
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22 - 29
+</td>
+<td style="text-align:right;">
+0.1037
+</td>
+<td style="text-align:right;">
+0.0377
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+2.7478
+</td>
+<td style="text-align:right;">
+0.0165
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:left;">
+pastoreo
+</th>
+<th style="text-align:left;">
+contrast
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-0.3266
+</td>
+<td style="text-align:right;">
+0.2138
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-1.5275
+</td>
+<td style="text-align:right;">
+0.6124
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-0.1644
+</td>
+<td style="text-align:right;">
+0.2139
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-0.7685
+</td>
+<td style="text-align:right;">
+0.9832
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-0.0761
+</td>
+<td style="text-align:right;">
+0.2120
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-0.3591
+</td>
+<td style="text-align:right;">
+0.9999
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-0.0516
+</td>
+<td style="text-align:right;">
+0.0659
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-0.7831
+</td>
+<td style="text-align:right;">
+0.9813
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+-0.1478
+</td>
+<td style="text-align:right;">
+0.0576
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-2.5634
+</td>
+<td style="text-align:right;">
+0.0703
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+0.1106
+</td>
+<td style="text-align:right;">
+0.0465
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+2.3798
+</td>
+<td style="text-align:right;">
+0.1151
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+-0.0596
+</td>
+<td style="text-align:right;">
+0.0487
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-1.2234
+</td>
+<td style="text-align:right;">
+0.8262
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="cn" class="section level1">
@@ -1136,71 +2580,306 @@ meses               2 133.0226 1.0502 0.3528
 pastoreo:meses      2 133.0226 0.3729 0.6895</code></pre>
 <div id="post-hoc-6" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of pastoreo`
- pastoreo    emmean      SE  df asymp.LCL asymp.UCL
- Browsing    0.0288 0.00412 Inf    0.0207    0.0368
- No Browsing 0.0319 0.00400 Inf    0.0241    0.0397
-
-Results are averaged over the levels of: meses 
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of pastoreo`
- 1                      estimate      SE  df z.ratio p.value
- Browsing - No Browsing -0.00314 0.00571 Inf -0.550  0.5826 
-
-Results are averaged over the levels of: meses 
-Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of meses`
- meses emmean      SE  df asymp.LCL asymp.UCL
- 0     0.0302 0.00308 Inf    0.0241    0.0362
- 22    0.0289 0.00305 Inf    0.0230    0.0349
- 29    0.0319 0.00313 Inf    0.0258    0.0380
-
-Results are averaged over the levels of: pastoreo 
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses`
- 1       estimate      SE  df z.ratio p.value
- 0 - 22   0.00124 0.00181 Inf  0.686  0.7719 
- 0 - 29  -0.00172 0.00195 Inf -0.885  0.6499 
- 22 - 29 -0.00296 0.00189 Inf -1.569  0.2593 
-
-Results are averaged over the levels of: pastoreo 
-Note: contrasts are still on the inverse scale 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
-<pre><code>$`emmeans of meses | pastoreo`
-pastoreo = Browsing:
- meses emmean      SE  df asymp.LCL asymp.UCL
- 0     0.0290 0.00437 Inf    0.0204    0.0376
- 22    0.0265 0.00429 Inf    0.0181    0.0350
- 29    0.0308 0.00442 Inf    0.0221    0.0394
-
-pastoreo = No Browsing:
- meses emmean      SE  df asymp.LCL asymp.UCL
- 0     0.0313 0.00430 Inf    0.0229    0.0398
- 22    0.0313 0.00429 Inf    0.0229    0.0397
- 29    0.0330 0.00438 Inf    0.0244    0.0416
-
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses | pastoreo`
-pastoreo = Browsing:
- 2        estimate      SE  df z.ratio p.value
- 0 - 22   2.46e-03 0.00235 Inf  1.049  0.5462 
- 0 - 29  -1.76e-03 0.00259 Inf -0.682  0.7740 
- 22 - 29 -4.23e-03 0.00245 Inf -1.725  0.1959 
-
-pastoreo = No Browsing:
- 2        estimate      SE  df z.ratio p.value
- 0 - 22   1.41e-05 0.00274 Inf  0.005  1.0000 
- 0 - 29  -1.68e-03 0.00291 Inf -0.578  0.8320 
- 22 - 29 -1.70e-03 0.00287 Inf -0.591  0.8250 
-
-Note: contrasts are still on the inverse scale 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0 - 22
+</td>
+<td style="text-align:right;">
+0.0012
+</td>
+<td style="text-align:right;">
+0.0018
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.6856
+</td>
+<td style="text-align:right;">
+0.7719
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0 - 29
+</td>
+<td style="text-align:right;">
+-0.0017
+</td>
+<td style="text-align:right;">
+0.0019
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-0.8848
+</td>
+<td style="text-align:right;">
+0.6499
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22 - 29
+</td>
+<td style="text-align:right;">
+-0.0030
+</td>
+<td style="text-align:right;">
+0.0019
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-1.5686
+</td>
+<td style="text-align:right;">
+0.2593
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:left;">
+pastoreo
+</th>
+<th style="text-align:left;">
+contrast
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.0024
+</td>
+<td style="text-align:right;">
+0.0061
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.3851
+</td>
+<td style="text-align:right;">
+0.9998
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.0048
+</td>
+<td style="text-align:right;">
+0.0060
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.7953
+</td>
+<td style="text-align:right;">
+0.9796
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.0023
+</td>
+<td style="text-align:right;">
+0.0062
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.3664
+</td>
+<td style="text-align:right;">
+0.9998
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-0.0025
+</td>
+<td style="text-align:right;">
+0.0023
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-1.0485
+</td>
+<td style="text-align:right;">
+0.9129
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+0.0042
+</td>
+<td style="text-align:right;">
+0.0025
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+1.7248
+</td>
+<td style="text-align:right;">
+0.4612
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+<td style="text-align:right;">
+0.0027
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-0.0051
+</td>
+<td style="text-align:right;">
+1.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+0.0017
+</td>
+<td style="text-align:right;">
+0.0029
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.5909
+</td>
+<td style="text-align:right;">
+0.9965
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="mo" class="section level1">
@@ -1220,71 +2899,306 @@ pastoreo:meses      2 134.0502  0.0116    0.9885
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div id="post-hoc-7" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of pastoreo`
- pastoreo    emmean     SE  df asymp.LCL asymp.UCL
- Browsing     0.221 0.0221 Inf     0.177     0.264
- No Browsing  0.246 0.0229 Inf     0.201     0.291
-
-Results are averaged over the levels of: meses 
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of pastoreo`
- 1                      estimate     SE  df z.ratio p.value
- Browsing - No Browsing  -0.0253 0.0316 Inf -0.802  0.4226 
-
-Results are averaged over the levels of: meses 
-Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of meses`
- meses emmean     SE  df asymp.LCL asymp.UCL
- 0      0.173 0.0171 Inf     0.140     0.207
- 22     0.229 0.0190 Inf     0.192     0.266
- 29     0.297 0.0222 Inf     0.254     0.341
-
-Results are averaged over the levels of: pastoreo 
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses`
- 1       estimate     SE  df z.ratio p.value
- 0 - 22   -0.0558 0.0162 Inf -3.437  0.0017 
- 0 - 29   -0.1241 0.0199 Inf -6.250  &lt;.0001 
- 22 - 29  -0.0684 0.0216 Inf -3.166  0.0044 
-
-Results are averaged over the levels of: pastoreo 
-Note: contrasts are still on the inverse scale 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
-<pre><code>$`emmeans of meses | pastoreo`
-pastoreo = Browsing:
- meses emmean     SE  df asymp.LCL asymp.UCL
- 0      0.166 0.0236 Inf     0.120     0.212
- 22     0.216 0.0261 Inf     0.165     0.267
- 29     0.280 0.0302 Inf     0.221     0.339
-
-pastoreo = No Browsing:
- meses emmean     SE  df asymp.LCL asymp.UCL
- 0      0.181 0.0244 Inf     0.133     0.229
- 22     0.242 0.0274 Inf     0.189     0.296
- 29     0.315 0.0323 Inf     0.252     0.378
-
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses | pastoreo`
-pastoreo = Browsing:
- 2       estimate     SE  df z.ratio p.value
- 0 - 22   -0.0501 0.0221 Inf -2.268  0.0603 
- 0 - 29   -0.1141 0.0268 Inf -4.250  0.0001 
- 22 - 29  -0.0640 0.0290 Inf -2.205  0.0703 
-
-pastoreo = No Browsing:
- 2       estimate     SE  df z.ratio p.value
- 0 - 22   -0.0614 0.0238 Inf -2.585  0.0264 
- 0 - 29   -0.1342 0.0293 Inf -4.585  &lt;.0001 
- 22 - 29  -0.0727 0.0320 Inf -2.274  0.0595 
-
-Note: contrasts are still on the inverse scale 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0 - 22
+</td>
+<td style="text-align:right;">
+-0.0558
+</td>
+<td style="text-align:right;">
+0.0162
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-3.4368
+</td>
+<td style="text-align:right;">
+0.0017
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0 - 29
+</td>
+<td style="text-align:right;">
+-0.1241
+</td>
+<td style="text-align:right;">
+0.0199
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-6.2501
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22 - 29
+</td>
+<td style="text-align:right;">
+-0.0684
+</td>
+<td style="text-align:right;">
+0.0216
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-3.1659
+</td>
+<td style="text-align:right;">
+0.0044
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:left;">
+pastoreo
+</th>
+<th style="text-align:left;">
+contrast
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.0148
+</td>
+<td style="text-align:right;">
+0.0337
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.4410
+</td>
+<td style="text-align:right;">
+0.9995
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.0262
+</td>
+<td style="text-align:right;">
+0.0376
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.6964
+</td>
+<td style="text-align:right;">
+0.9905
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.0350
+</td>
+<td style="text-align:right;">
+0.0441
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.7930
+</td>
+<td style="text-align:right;">
+0.9799
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+0.0501
+</td>
+<td style="text-align:right;">
+0.0221
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+2.2684
+</td>
+<td style="text-align:right;">
+0.1522
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+0.0640
+</td>
+<td style="text-align:right;">
+0.0290
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+2.2053
+</td>
+<td style="text-align:right;">
+0.1769
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+0.0614
+</td>
+<td style="text-align:right;">
+0.0238
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+2.5847
+</td>
+<td style="text-align:right;">
+0.0663
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+0.0727
+</td>
+<td style="text-align:right;">
+0.0320
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+2.2739
+</td>
+<td style="text-align:right;">
+0.1501
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="ph-agua" class="section level1">
@@ -1304,71 +3218,306 @@ pastoreo:meses      2 134.0153  4.7246   0.01041 *
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div id="post-hoc-8" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of pastoreo`
- pastoreo    emmean       SE  df asymp.LCL asymp.UCL
- Browsing     0.127 0.000757 Inf     0.126     0.129
- No Browsing  0.127 0.000760 Inf     0.125     0.128
-
-Results are averaged over the levels of: meses 
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of pastoreo`
- 1                      estimate      SE  df z.ratio p.value
- Browsing - No Browsing 0.000823 0.00107 Inf 0.768   0.4427 
-
-Results are averaged over the levels of: meses 
-Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of meses`
- meses emmean       SE  df asymp.LCL asymp.UCL
- 0      0.126 0.000573 Inf     0.125     0.128
- 22     0.126 0.000571 Inf     0.125     0.127
- 29     0.128 0.000574 Inf     0.127     0.129
-
-Results are averaged over the levels of: pastoreo 
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses`
- 1        estimate       SE  df z.ratio p.value
- 0 - 22   0.000249 0.000343 Inf  0.725  0.7487 
- 0 - 29  -0.001982 0.000350 Inf -5.667  &lt;.0001 
- 22 - 29 -0.002230 0.000346 Inf -6.441  &lt;.0001 
-
-Results are averaged over the levels of: pastoreo 
-Note: contrasts are still on the inverse scale 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
-<pre><code>$`emmeans of meses | pastoreo`
-pastoreo = Browsing:
- meses emmean       SE  df asymp.LCL asymp.UCL
- 0      0.126 0.000808 Inf     0.125     0.128
- 22     0.126 0.000806 Inf     0.125     0.128
- 29     0.129 0.000812 Inf     0.128     0.131
-
-pastoreo = No Browsing:
- meses emmean       SE  df asymp.LCL asymp.UCL
- 0      0.126 0.000811 Inf     0.125     0.128
- 22     0.126 0.000808 Inf     0.124     0.127
- 29     0.127 0.000812 Inf     0.126     0.129
-
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses | pastoreo`
-pastoreo = Browsing:
- 2        estimate       SE  df z.ratio p.value
- 0 - 22  -6.92e-06 0.000485 Inf -0.014  0.9999 
- 0 - 29  -3.06e-03 0.000496 Inf -6.169  &lt;.0001 
- 22 - 29 -3.05e-03 0.000492 Inf -6.202  &lt;.0001 
-
-pastoreo = No Browsing:
- 2        estimate       SE  df z.ratio p.value
- 0 - 22   5.05e-04 0.000485 Inf  1.040  0.5515 
- 0 - 29  -9.05e-04 0.000493 Inf -1.838  0.1574 
- 22 - 29 -1.41e-03 0.000487 Inf -2.894  0.0106 
-
-Note: contrasts are still on the inverse scale 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0 - 22
+</td>
+<td style="text-align:right;">
+0.0002
+</td>
+<td style="text-align:right;">
+3e-04
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.7249
+</td>
+<td style="text-align:right;">
+0.7487
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0 - 29
+</td>
+<td style="text-align:right;">
+-0.0020
+</td>
+<td style="text-align:right;">
+3e-04
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-5.6670
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22 - 29
+</td>
+<td style="text-align:right;">
+-0.0022
+</td>
+<td style="text-align:right;">
+3e-04
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-6.4407
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:left;">
+pastoreo
+</th>
+<th style="text-align:left;">
+contrast
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.0001
+</td>
+<td style="text-align:right;">
+0.0011
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.0564
+</td>
+<td style="text-align:right;">
+1.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-0.0004
+</td>
+<td style="text-align:right;">
+0.0011
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-0.3918
+</td>
+<td style="text-align:right;">
+0.9998
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-0.0021
+</td>
+<td style="text-align:right;">
+0.0011
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-1.8180
+</td>
+<td style="text-align:right;">
+0.3941
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+<td style="text-align:right;">
+0.0005
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.0143
+</td>
+<td style="text-align:right;">
+1.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+0.0031
+</td>
+<td style="text-align:right;">
+0.0005
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+6.2022
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-0.0005
+</td>
+<td style="text-align:right;">
+0.0005
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-1.0401
+</td>
+<td style="text-align:right;">
+0.9162
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+0.0014
+</td>
+<td style="text-align:right;">
+0.0005
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+2.8942
+</td>
+<td style="text-align:right;">
+0.0263
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="ph-kcl" class="section level1">
@@ -1388,71 +3537,306 @@ pastoreo:meses      2 134.0178  3.0542   0.05046 .
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div id="post-hoc-9" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of pastoreo`
- pastoreo    emmean       SE  df asymp.LCL asymp.UCL
- Browsing     0.134 0.000849 Inf     0.132     0.135
- No Browsing  0.133 0.000850 Inf     0.132     0.135
-
-Results are averaged over the levels of: meses 
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of pastoreo`
- 1                      estimate     SE  df z.ratio p.value
- Browsing - No Browsing 0.000109 0.0012 Inf 0.091   0.9277 
-
-Results are averaged over the levels of: meses 
-Note: contrasts are still on the inverse scale </code></pre>
-<pre><code>$`emmeans of meses`
- meses emmean       SE  df asymp.LCL asymp.UCL
- 0      0.133 0.000647 Inf     0.131     0.134
- 22     0.133 0.000645 Inf     0.132     0.134
- 29     0.135 0.000650 Inf     0.134     0.136
-
-Results are averaged over the levels of: pastoreo 
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses`
- 1        estimate       SE  df z.ratio p.value
- 0 - 22  -0.000495 0.000415 Inf -1.194  0.4569 
- 0 - 29  -0.002431 0.000422 Inf -5.763  &lt;.0001 
- 22 - 29 -0.001936 0.000419 Inf -4.622  &lt;.0001 
-
-Results are averaged over the levels of: pastoreo 
-Note: contrasts are still on the inverse scale 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
-<pre><code>$`emmeans of meses | pastoreo`
-pastoreo = Browsing:
- meses emmean       SE  df asymp.LCL asymp.UCL
- 0      0.132 0.000914 Inf     0.130     0.134
- 22     0.133 0.000912 Inf     0.131     0.135
- 29     0.136 0.000920 Inf     0.134     0.137
-
-pastoreo = No Browsing:
- meses emmean       SE  df asymp.LCL asymp.UCL
- 0      0.133 0.000916 Inf     0.131     0.135
- 22     0.133 0.000913 Inf     0.131     0.135
- 29     0.134 0.000918 Inf     0.133     0.136
-
-Results are given on the inverse (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses | pastoreo`
-pastoreo = Browsing:
- 2        estimate       SE  df z.ratio p.value
- 0 - 22  -0.000888 0.000585 Inf -1.518  0.2822 
- 0 - 29  -0.003500 0.000596 Inf -5.869  &lt;.0001 
- 22 - 29 -0.002612 0.000593 Inf -4.402  &lt;.0001 
-
-pastoreo = No Browsing:
- 2        estimate       SE  df z.ratio p.value
- 0 - 22  -0.000102 0.000588 Inf -0.174  0.9835 
- 0 - 29  -0.001362 0.000596 Inf -2.284  0.0580 
- 22 - 29 -0.001260 0.000591 Inf -2.131  0.0836 
-
-Note: contrasts are still on the inverse scale 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0 - 22
+</td>
+<td style="text-align:right;">
+-0.0005
+</td>
+<td style="text-align:right;">
+4e-04
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-1.1937
+</td>
+<td style="text-align:right;">
+0.4569
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0 - 29
+</td>
+<td style="text-align:right;">
+-0.0024
+</td>
+<td style="text-align:right;">
+4e-04
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-5.7629
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22 - 29
+</td>
+<td style="text-align:right;">
+-0.0019
+</td>
+<td style="text-align:right;">
+4e-04
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-4.6216
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:left;">
+pastoreo
+</th>
+<th style="text-align:left;">
+contrast
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.0009
+</td>
+<td style="text-align:right;">
+0.0013
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.6690
+</td>
+<td style="text-align:right;">
+0.9926
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.0001
+</td>
+<td style="text-align:right;">
+0.0013
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.0618
+</td>
+<td style="text-align:right;">
+1.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-0.0013
+</td>
+<td style="text-align:right;">
+0.0013
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-0.9795
+</td>
+<td style="text-align:right;">
+0.9377
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+0.0009
+</td>
+<td style="text-align:right;">
+0.0006
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+1.5184
+</td>
+<td style="text-align:right;">
+0.6194
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+0.0026
+</td>
+<td style="text-align:right;">
+0.0006
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+4.4015
+</td>
+<td style="text-align:right;">
+0.0001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+0.0001
+</td>
+<td style="text-align:right;">
+0.0006
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.1738
+</td>
+<td style="text-align:right;">
+1.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+0.0013
+</td>
+<td style="text-align:right;">
+0.0006
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+2.1315
+</td>
+<td style="text-align:right;">
+0.2096
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="nh4" class="section level1">
@@ -1494,71 +3878,306 @@ pastoreo:meses      2 134.0368  1.5180    0.2229
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div id="post-hoc-10" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of pastoreo`
- pastoreo    emmean     SE  df asymp.LCL asymp.UCL
- Browsing      1.42 0.0982 Inf      1.23      1.62
- No Browsing   1.40 0.0995 Inf      1.21      1.60
-
-Results are averaged over the levels of: meses 
-Results are given on the log (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of pastoreo`
- 1                      estimate   SE  df z.ratio p.value
- Browsing - No Browsing   0.0211 0.14 Inf 0.151   0.8800 
-
-Results are averaged over the levels of: meses 
-Results are given on the log (not the response) scale. </code></pre>
-<pre><code>$`emmeans of meses`
- meses emmean     SE  df asymp.LCL asymp.UCL
- 0       1.64 0.0862 Inf     1.468      1.81
- 22      1.50 0.0884 Inf     1.329      1.68
- 29      1.10 0.1017 Inf     0.899      1.30
-
-Results are averaged over the levels of: pastoreo 
-Results are given on the log (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses`
- 1       estimate     SE  df z.ratio p.value
- 0 - 22     0.135 0.0954 Inf 1.411   0.3350 
- 0 - 29     0.538 0.1077 Inf 4.998   &lt;.0001 
- 22 - 29    0.404 0.1095 Inf 3.686   0.0007 
-
-Results are averaged over the levels of: pastoreo 
-Results are given on the log (not the response) scale. 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
-<pre><code>$`emmeans of meses | pastoreo`
-pastoreo = Browsing:
- meses emmean    SE  df asymp.LCL asymp.UCL
- 0      1.584 0.123 Inf     1.342      1.83
- 22     1.450 0.127 Inf     1.201      1.70
- 29     1.234 0.137 Inf     0.965      1.50
-
-pastoreo = No Browsing:
- meses emmean    SE  df asymp.LCL asymp.UCL
- 0      1.689 0.120 Inf     1.453      1.92
- 22     1.554 0.123 Inf     1.313      1.80
- 29     0.962 0.150 Inf     0.668      1.26
-
-Results are given on the log (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses | pastoreo`
-pastoreo = Browsing:
- 2       estimate    SE  df z.ratio p.value
- 0 - 22     0.135 0.138 Inf 0.973   0.5941 
- 0 - 29     0.351 0.148 Inf 2.372   0.0465 
- 22 - 29    0.216 0.151 Inf 1.434   0.3232 
-
-pastoreo = No Browsing:
- 2       estimate    SE  df z.ratio p.value
- 0 - 22     0.135 0.131 Inf 1.025   0.5610 
- 0 - 29     0.726 0.157 Inf 4.633   &lt;.0001 
- 22 - 29    0.591 0.159 Inf 3.719   0.0006 
-
-Results are given on the log (not the response) scale. 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0 - 22
+</td>
+<td style="text-align:right;">
+0.1346
+</td>
+<td style="text-align:right;">
+0.0954
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+1.4112
+</td>
+<td style="text-align:right;">
+0.3350
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0 - 29
+</td>
+<td style="text-align:right;">
+0.5383
+</td>
+<td style="text-align:right;">
+0.1077
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+4.9980
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22 - 29
+</td>
+<td style="text-align:right;">
+0.4038
+</td>
+<td style="text-align:right;">
+0.1095
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+3.6865
+</td>
+<td style="text-align:right;">
+0.0007
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:left;">
+pastoreo
+</th>
+<th style="text-align:left;">
+contrast
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+z.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.1041
+</td>
+<td style="text-align:right;">
+0.1722
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.6045
+</td>
+<td style="text-align:right;">
+0.9960
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.1040
+</td>
+<td style="text-align:right;">
+0.1767
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+0.5889
+</td>
+<td style="text-align:right;">
+0.9966
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-0.2714
+</td>
+<td style="text-align:right;">
+0.2032
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-1.3357
+</td>
+<td style="text-align:right;">
+0.7542
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-0.1345
+</td>
+<td style="text-align:right;">
+0.1383
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-0.9728
+</td>
+<td style="text-align:right;">
+0.9398
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+-0.2161
+</td>
+<td style="text-align:right;">
+0.1506
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-1.4343
+</td>
+<td style="text-align:right;">
+0.6834
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-0.1346
+</td>
+<td style="text-align:right;">
+0.1313
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-1.0250
+</td>
+<td style="text-align:right;">
+0.9220
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+-0.5915
+</td>
+<td style="text-align:right;">
+0.1590
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:right;">
+-3.7194
+</td>
+<td style="text-align:right;">
+0.0014
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="n" class="section level1">
@@ -1575,71 +4194,306 @@ pastoreo:meses  0.4221  2   0.809750
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div id="post-hoc-11" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of pastoreo`
- pastoreo    emmean     SE  df lower.CL upper.CL
- Browsing     -1.15 0.0752 137    -1.30    -1.00
- No Browsing  -1.17 0.0759 137    -1.32    -1.02
-
-Results are averaged over the levels of: meses 
-Results are given on the logit (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of pastoreo`
- 1                      estimate    SE  df t.ratio p.value
- Browsing - No Browsing   0.0217 0.106 137 0.205   0.8379 
-
-Results are averaged over the levels of: meses 
-Results are given on the log odds ratio (not the response) scale. </code></pre>
-<pre><code>$`emmeans of meses`
- meses emmean     SE  df lower.CL upper.CL
- 0     -0.959 0.0810 137    -1.12   -0.798
- 22    -1.352 0.0863 137    -1.52   -1.181
- 29    -1.180 0.0855 137    -1.35   -1.011
-
-Results are averaged over the levels of: pastoreo 
-Results are given on the logit (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses`
- 1       estimate    SE  df t.ratio p.value
- 0 - 22     0.393 0.111 137  3.528  0.0016 
- 0 - 29     0.222 0.111 137  1.999  0.1163 
- 22 - 29   -0.171 0.114 137 -1.498  0.2951 
-
-Results are averaged over the levels of: pastoreo 
-Results are given on the log odds ratio (not the response) scale. 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
-<pre><code>$`emmeans of meses | pastoreo`
-pastoreo = Browsing:
- meses emmean    SE  df lower.CL upper.CL
- 0     -0.971 0.115 137    -1.20   -0.745
- 22    -1.360 0.122 137    -1.60   -1.119
- 29    -1.127 0.118 137    -1.36   -0.894
-
-pastoreo = No Browsing:
- meses emmean    SE  df lower.CL upper.CL
- 0     -0.946 0.114 137    -1.17   -0.721
- 22    -1.344 0.121 137    -1.58   -1.104
- 29    -1.233 0.123 137    -1.48   -0.990
-
-Results are given on the logit (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses | pastoreo`
-pastoreo = Browsing:
- 2       estimate    SE  df t.ratio p.value
- 0 - 22     0.389 0.158 137  2.463  0.0396 
- 0 - 29     0.156 0.155 137  1.006  0.5741 
- 22 - 29   -0.232 0.160 137 -1.452  0.3175 
-
-pastoreo = No Browsing:
- 2       estimate    SE  df t.ratio p.value
- 0 - 22     0.398 0.157 137  2.527  0.0336 
- 0 - 29     0.287 0.159 137  1.812  0.1694 
- 22 - 29   -0.110 0.163 137 -0.675  0.7785 
-
-Results are given on the log odds ratio (not the response) scale. 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+t.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0 - 22
+</td>
+<td style="text-align:right;">
+0.3931
+</td>
+<td style="text-align:right;">
+0.1114
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+3.5284
+</td>
+<td style="text-align:right;">
+0.0016
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0 - 29
+</td>
+<td style="text-align:right;">
+0.2217
+</td>
+<td style="text-align:right;">
+0.1109
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+1.9989
+</td>
+<td style="text-align:right;">
+0.1163
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22 - 29
+</td>
+<td style="text-align:right;">
+-0.1714
+</td>
+<td style="text-align:right;">
+0.1144
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+-1.4980
+</td>
+<td style="text-align:right;">
+0.2951
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:left;">
+pastoreo
+</th>
+<th style="text-align:left;">
+contrast
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+t.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.0250
+</td>
+<td style="text-align:right;">
+0.1612
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+0.1551
+</td>
+<td style="text-align:right;">
+1.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.0160
+</td>
+<td style="text-align:right;">
+0.1711
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+0.0936
+</td>
+<td style="text-align:right;">
+1.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+-0.1061
+</td>
+<td style="text-align:right;">
+0.1697
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+-0.6255
+</td>
+<td style="text-align:right;">
+0.9951
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-0.3887
+</td>
+<td style="text-align:right;">
+0.1578
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+-2.4635
+</td>
+<td style="text-align:right;">
+0.1004
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+0.2325
+</td>
+<td style="text-align:right;">
+0.1601
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+1.4518
+</td>
+<td style="text-align:right;">
+0.6764
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+-0.3976
+</td>
+<td style="text-align:right;">
+0.1574
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+-2.5268
+</td>
+<td style="text-align:right;">
+0.0852
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+0.1103
+</td>
+<td style="text-align:right;">
+0.1635
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+0.6748
+</td>
+<td style="text-align:right;">
+0.9923
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="na" class="section level1">
@@ -1656,71 +4510,306 @@ pastoreo:meses  17.5761  2  0.0001525 ***
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div id="post-hoc-12" class="section level3">
 <h3><em>Post-hoc</em></h3>
-<pre><code>$`emmeans of pastoreo`
- pastoreo    emmean     SE  df lower.CL upper.CL
- Browsing     -3.04 0.0970 138    -3.24    -2.85
- No Browsing  -2.73 0.0941 138    -2.92    -2.55
-
-Results are averaged over the levels of: meses 
-Results are given on the logit (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of pastoreo`
- 1                      estimate    SE  df t.ratio p.value
- Browsing - No Browsing    -0.31 0.135 138 -2.302  0.0228 
-
-Results are averaged over the levels of: meses 
-Results are given on the log odds ratio (not the response) scale. </code></pre>
-<pre><code>$`emmeans of meses`
- meses emmean     SE  df lower.CL upper.CL
- 0      -3.31 0.0846 138    -3.48    -3.14
- 22     -2.97 0.0781 138    -3.12    -2.82
- 29     -2.39 0.0725 138    -2.53    -2.24
-
-Results are averaged over the levels of: pastoreo 
-Results are given on the logit (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses`
- 1       estimate     SE  df t.ratio p.value
- 0 - 22    -0.340 0.0750 138  -4.528 &lt;.0001 
- 0 - 29    -0.922 0.0695 138 -13.259 &lt;.0001 
- 22 - 29   -0.582 0.0616 138  -9.458 &lt;.0001 
-
-Results are averaged over the levels of: pastoreo 
-Results are given on the log odds ratio (not the response) scale. 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
-<pre><code>$`emmeans of meses | pastoreo`
-pastoreo = Browsing:
- meses emmean    SE  df lower.CL upper.CL
- 0      -3.64 0.127 138    -3.90    -3.39
- 22     -3.04 0.111 138    -3.26    -2.82
- 29     -2.45 0.103 138    -2.65    -2.24
-
-pastoreo = No Browsing:
- meses emmean    SE  df lower.CL upper.CL
- 0      -2.97 0.111 138    -3.19    -2.75
- 22     -2.90 0.109 138    -3.12    -2.68
- 29     -2.33 0.102 138    -2.53    -2.13
-
-Results are given on the logit (not the response) scale. 
-Confidence level used: 0.95 
-
-$`pairwise differences of meses | pastoreo`
-pastoreo = Browsing:
- 2       estimate     SE  df t.ratio p.value
- 0 - 22   -0.6061 0.1152 138  -5.259 &lt;.0001 
- 0 - 29   -1.1978 0.1076 138 -11.131 &lt;.0001 
- 22 - 29  -0.5918 0.0892 138  -6.637 &lt;.0001 
-
-pastoreo = No Browsing:
- 2       estimate     SE  df t.ratio p.value
- 0 - 22   -0.0729 0.0959 138  -0.760 0.7278 
- 0 - 29   -0.6459 0.0878 138  -7.360 &lt;.0001 
- 22 - 29  -0.5730 0.0849 138  -6.752 &lt;.0001 
-
-Results are given on the log odds ratio (not the response) scale. 
-P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+t.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0 - 22
+</td>
+<td style="text-align:right;">
+-0.3395
+</td>
+<td style="text-align:right;">
+0.0750
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+-4.5284
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+0 - 29
+</td>
+<td style="text-align:right;">
+-0.9219
+</td>
+<td style="text-align:right;">
+0.0695
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+-13.2591
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22 - 29
+</td>
+<td style="text-align:right;">
+-0.5824
+</td>
+<td style="text-align:right;">
+0.0616
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+-9.4576
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+meses
+</th>
+<th style="text-align:left;">
+pastoreo
+</th>
+<th style="text-align:left;">
+contrast
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+SE
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+t.ratio
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.6720
+</td>
+<td style="text-align:right;">
+0.1683
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+3.9932
+</td>
+<td style="text-align:right;">
+0.0007
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.1388
+</td>
+<td style="text-align:right;">
+0.1555
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+0.8923
+</td>
+<td style="text-align:right;">
+0.9622
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing - Browsing
+</td>
+<td style="text-align:right;">
+0.1200
+</td>
+<td style="text-align:right;">
+0.1447
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+0.8295
+</td>
+<td style="text-align:right;">
+0.9746
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+0.6061
+</td>
+<td style="text-align:right;">
+0.1152
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+5.2589
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+0.5918
+</td>
+<td style="text-align:right;">
+0.0892
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+6.6373
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+22 - 0
+</td>
+<td style="text-align:right;">
+0.0729
+</td>
+<td style="text-align:right;">
+0.0959
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+0.7605
+</td>
+<td style="text-align:right;">
+0.9844
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+.
+</td>
+<td style="text-align:left;">
+No Browsing
+</td>
+<td style="text-align:left;">
+29 - 22
+</td>
+<td style="text-align:right;">
+0.5730
+</td>
+<td style="text-align:right;">
+0.0849
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+6.7521
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="general-overview" class="section level1">
@@ -2200,7 +5289,81 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 <div id="figures" class="section level2">
 <h2>Figures</h2>
 <p><img src="figure/analysis_zona_time_postFire.Rmd/unnamed-chunk-45-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-45-1">
+Past versions of unnamed-chunk-45-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-45-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/e063cee14932c380c3aaae6febfa0d3b6bd2eb21/docs/figure/analysis_zona_time_postFire.Rmd/unnamed-chunk-45-1.png" target="_blank">e063cee</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/analysis_zona_time_postFire.Rmd/unnamed-chunk-46-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-46-1">
+Past versions of unnamed-chunk-46-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-46-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/e063cee14932c380c3aaae6febfa0d3b6bd2eb21/docs/figure/analysis_zona_time_postFire.Rmd/unnamed-chunk-46-1.png" target="_blank">e063cee</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-14
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="anovas-table" class="section level2">
 <h2>Anovas table</h2>
@@ -2573,7 +5736,7 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] kableExtra_1.3.1   gtsummary_1.4.2    plotrix_3.8-1      car_3.0-10        
+ [1] gtsummary_1.4.2    plotrix_3.8-1      kableExtra_1.3.1   car_3.0-10        
  [5] carData_3.0-4      glmmADMB_0.8.3.3   glmmTMB_1.0.2.1    DHARMa_0.3.3.0    
  [9] afex_0.28-1        performance_0.7.2  multcomp_1.4-16    TH.data_1.0-10    
 [13] mvtnorm_1.1-1      emmeans_1.5.4      lmerTest_3.1-3     lme4_1.1-27.1     
