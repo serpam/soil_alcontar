@@ -33,6 +33,8 @@ library(emmeans)
 library(multcomp)
 library(performance)
 library(afex)
+library(kableExtra)
+
 ```
 
 # Prepare data 
@@ -103,6 +105,20 @@ $Y \sim estacion (Ot|Pr) + fecha(pre|post) + estacion \times fecha$
 - Explore Post-hoc  
 - Plot interactions 
 
+```{r}
+# custom posthocs
+
+tabla_postHoc <- function(modelo){
+  posthoc <- emmeans(modelo, ~ fecha * estacion)
+  contrast(posthoc, "consec", simple = "each", combine = TRUE,
+           adjust = "tukey") %>% 
+  kbl(digits = 4) %>% 
+    kable_paper("hover", full_width = F)
+}
+
+
+```
+
 
 # Humedad 
 ### Model 
@@ -129,9 +145,7 @@ tabla_anova %>% dplyr::select(fvalue = `F value`, p=`Pr(>F)`, variable, factor) 
 
 ### *Post-hoc*
 ```{r}
-emmeans(m, list(pairwise ~ fecha), adjust = "tukey")
-emmeans(m, list(pairwise ~ estacion), adjust = "tukey")
-emmeans(m, list(pairwise ~ fecha | estacion), adjust = "tukey")
+tabla_postHoc(m)
 ```
 
 
@@ -160,9 +174,7 @@ tabla_anova %>% dplyr::select(fvalue = `F value`, p=`Pr(>F)`, variable, factor) 
 
 ### *Post-hoc*
 ```{r}
-emmeans(m, list(pairwise ~ fecha), adjust = "tukey")
-emmeans(m, list(pairwise ~ estacion), adjust = "tukey")
-emmeans(m, list(pairwise ~ fecha | estacion), adjust = "tukey")
+tabla_postHoc(m)
 ```
 
 
@@ -191,10 +203,9 @@ tabla_anova %>% dplyr::select(fvalue = `F value`, p=`Pr(>F)`, variable, factor) 
 
 ### *Post-hoc*
 ```{r}
-emmeans(m, list(pairwise ~ fecha), adjust = "tukey")
-emmeans(m, list(pairwise ~ estacion), adjust = "tukey")
-emmeans(m, list(pairwise ~ fecha | estacion), adjust = "tukey")
+tabla_postHoc(m)
 ```
+
 
 
 # Fe
@@ -222,9 +233,7 @@ tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%
 
 ### *Post-hoc*
 ```{r}
-emmeans(m, list(pairwise ~ fecha), adjust = "tukey")
-emmeans(m, list(pairwise ~ estacion), adjust = "tukey")
-emmeans(m, list(pairwise ~ fecha | estacion), adjust = "tukey")
+tabla_postHoc(m)
 ```
 
 
@@ -253,9 +262,7 @@ tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%
 
 ### *Post-hoc*
 ```{r}
-emmeans(m, list(pairwise ~ fecha), adjust = "tukey")
-emmeans(m, list(pairwise ~ estacion), adjust = "tukey")
-emmeans(m, list(pairwise ~ fecha | estacion), adjust = "tukey")
+tabla_postHoc(m)
 ```
 
 
@@ -284,9 +291,7 @@ tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%
 
 ### *Post-hoc*
 ```{r}
-emmeans(m, list(pairwise ~ fecha), adjust = "tukey")
-emmeans(m, list(pairwise ~ estacion), adjust = "tukey")
-emmeans(m, list(pairwise ~ fecha | estacion), adjust = "tukey")
+tabla_postHoc(m)
 ```
 
 
@@ -316,9 +321,7 @@ tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%
 
 ### *Post-hoc*
 ```{r}
-emmeans(m, list(pairwise ~ fecha), adjust = "tukey")
-emmeans(m, list(pairwise ~ estacion), adjust = "tukey")
-emmeans(m, list(pairwise ~ fecha | estacion), adjust = "tukey")
+tabla_postHoc(m)
 ```
 
 # C/N
@@ -346,9 +349,7 @@ tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%
 
 ### *Post-hoc*
 ```{r}
-emmeans(m, list(pairwise ~ fecha), adjust = "tukey")
-emmeans(m, list(pairwise ~ estacion), adjust = "tukey")
-emmeans(m, list(pairwise ~ fecha | estacion), adjust = "tukey")
+tabla_postHoc(m)
 ```
 
 
@@ -377,9 +378,7 @@ tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%
 
 ### *Post-hoc*
 ```{r}
-emmeans(m, list(pairwise ~ fecha), adjust = "tukey")
-emmeans(m, list(pairwise ~ estacion), adjust = "tukey")
-emmeans(m, list(pairwise ~ fecha | estacion), adjust = "tukey")
+tabla_postHoc(m)
 ```
 
 # N
@@ -404,13 +403,13 @@ assign(paste0("anova_", yvar), tabla_anova)
 
   tabla_anova %>% dplyr::select(fvalue = `Chisq`, p=`Pr(>Chisq)`, variable, factor) %>%  
   assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+car::Anova(m)
 ```
 
 ### *Post-hoc*
 ```{r}
-emmeans(m, list(pairwise ~ fecha), adjust = "tukey")
-emmeans(m, list(pairwise ~ estacion), adjust = "tukey")
-emmeans(m, list(pairwise ~ fecha | estacion), adjust = "tukey")
+tabla_postHoc(m)
 ```
 
 # Na
@@ -436,13 +435,12 @@ assign(paste0("anova_", yvar), tabla_anova)
 
   tabla_anova %>% dplyr::select(fvalue = `Chisq`, p=`Pr(>Chisq)`, variable, factor) %>%  
   assign(paste0("anova_", yvar), ., inherits = TRUE)
+car::Anova(m)
 ```
 
 ### *Post-hoc*
 ```{r}
-emmeans(m, list(pairwise ~ fecha), adjust = "tukey")
-emmeans(m, list(pairwise ~ estacion), adjust = "tukey")
-emmeans(m, list(pairwise ~ fecha | estacion), adjust = "tukey")
+tabla_postHoc(m)
 ```
 
 
@@ -471,9 +469,7 @@ tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%
 
 ### *Post-hoc*
 ```{r}
-emmeans(m, list(pairwise ~ fecha), adjust = "tukey")
-emmeans(m, list(pairwise ~ estacion), adjust = "tukey")
-emmeans(m, list(pairwise ~ fecha | estacion), adjust = "tukey")
+tabla_postHoc(m)
 ```
 
 
@@ -503,9 +499,7 @@ tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%
 
 ### *Post-hoc*
 ```{r}
-emmeans(m, list(pairwise ~ fecha), adjust = "tukey")
-emmeans(m, list(pairwise ~ estacion), adjust = "tukey")
-emmeans(m, list(pairwise ~ fecha | estacion), adjust = "tukey")
+tabla_postHoc(m)
 ```
 
 
