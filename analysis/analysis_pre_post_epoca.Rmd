@@ -791,3 +791,142 @@ mediasFeas %>%
   filter(var %in% c("n_nh4","n_no3")) %>% 
   plotfeos()
 ```
+
+# Boostrapping methods
+
+- Get mean and IC 95% by boostraping 
+
+```{r}
+b <- soil %>% 
+  dplyr::select(estacion, fecha, one_of("humedad","n_nh4","n_no3","fe_percent","k_percent","mg_percent","na_percent","n_percent","c_percent","c_n","cic","p","mo","p_h_k_cl","p_h_agua_eez")) 
+```
+
+- We generate a function to compute the mean and the ci (both by bootstrapping) for each  soil variable and groupped by estacion and fecha. 
+- Then we generated a dataframe with this info and plot 
+
+```{r}
+b <- soil %>% 
+  dplyr::select(
+    estacion, fecha,
+    one_of("humedad","n_nh4","n_no3","fe_percent","k_percent",
+           "mg_percent","na_percent","n_percent",
+           "c_percent","c_n","cic","p","mo","p_h_k_cl","p_h_agua_eez")) %>%
+  group_by(estacion, fecha) %>% tidyr::nest()
+
+# visualiza los datos
+# lapply(b$data, head)
+
+## Generate a custom function to compute bootstrap 
+bootme <- function(df, myvar){
+  require(magrittr)
+  require(purrr)
+  require(boot)
+  require(tidyverse)
+  
+  ## boot_mean
+boot_mean <- function(d, i) {
+    mean(d[i], na.rm=TRUE)
+}
+
+
+  df %<>%
+  dplyr::mutate(
+    booted =
+      purrr::map(
+        .x = data, # The list-column containing <S3: tibble>
+        ~ boot::boot(
+          data = .x[[myvar]], # The <S3 tibble> column being sampled
+          statistic = boot_mean, # The user-defined function
+          R = 1000, # The number of replicates
+          stype = "i"
+        )
+      ),
+    booted_ci = purrr::map(
+      .x = booted, 
+      ~ boot::boot.ci(.x,
+                      conf = 0.95, # Interval width
+                      type = "bca"))  # Calculate a BCa interval
+    ) 
+
+# tidy
+out <- df %>%
+    dplyr::mutate(
+      variable = myvar, 
+      statistic = purrr::map(.x = booted_ci, ~ .x$t0), # mean point estimates
+      lower_ci = purrr::map(.x = booted_ci, ~ .x$bca[[4]]), # lower 2.5% limit
+      upper_ci = purrr::map(.x = booted_ci, ~ .x$bca[[5]])) %>% # upper 97.5% limit
+    dplyr::select(-data, -booted, -booted_ci) %>%
+    tidyr::unnest(cols = c(statistic, lower_ci, upper_ci))
+
+return(out)
+} 
+
+vi <- c("humedad","fe_percent","k_percent","mg_percent","na_percent","n_percent","c_percent","c_n","cic","p","mo","p_h_k_cl","p_h_agua_eez")
+
+# "n_nh4","n_no3"
+
+bm <- c()
+for(i in 1:length(vi)){
+  aux <- bootme(b, vi[i])
+  bm <- rbind(bm, aux)
+} 
+
+# For NO3 and Nh4 select 
+bn <- soil %>% 
+  dplyr::select(fecha, n_nh4, n_no3) %>%
+  group_by(fecha) %>% tidyr::nest()
+
+
+bmm <- bind_rows(
+  bm, 
+  bootme(bn, "n_nh4") %>% mutate(estacion = "Ot"),
+  bootme(bn, "n_no3") %>% mutate(estacion = "Ot")
+) 
+
+write_csv(bmm, here::here("output/meanboot_pre_post_epoca.csv"))
+
+pos <- position_dodge(0.15)
+
+
+plotCI <- function(df, ncol, nrow) {
+  ggplot(df, aes(
+    x = fecha, y = statistic,
+    color = estacion, shape = estacion, group = estacion
+  )) +
+    geom_linerange(aes(ymin = lower_ci, ymax = upper_ci), position = pos) +
+    geom_line(position = pos) +
+    geom_point(position = pos, size = 2) +
+    theme_bw() +
+    theme(strip.background = element_rect(fill = "white")) +
+    ylab("") +
+    xlab("") +
+    facet_wrap(~variable, scales = "free_y")
+}
+```
+
+
+## Plots with CI 95 % (bootstraping bca)
+
+```{r}
+bmm %>% 
+  filter(variable %in% c("n_percent", "p", "k_percent",
+                    "mo", "c_percent", "c_n")) %>% 
+  plotCI()
+```
+
+```{r}
+bmm %>% 
+  filter(variable %in% c("cic", "mg_percent", 
+                    "na_percent", "humedad")) %>% 
+  plotCI()
+```
+
+
+```{r}
+bmm %>% 
+  filter(variable %in% c("n_nh4","n_no3",
+                    "p_h_k_cl", "p_h_agua_eez")) %>% 
+  plotCI()
+```
+
+
