@@ -38,7 +38,7 @@
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
-<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
 <style type="text/css">
 div.section {
@@ -372,7 +372,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-09-17
+<strong>Last updated:</strong> 2022-02-17
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -381,8 +381,8 @@ div.tocify {
 <strong>Knit directory:</strong> <code>soil_alcontar/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
-This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version 1.7.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -463,16 +463,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree3d973fcf1d0a6854bf1c12b37b2de99e35f919actargetblank3d973fca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/serpam/soil_alcontar/tree/3d973fcf1d0a6854bf1c12b37b2de99e35f919ac" target="_blank">3d973fc</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree5f1b03d4139979f9cd330f9b824b01512687af72targetblank5f1b03da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/serpam/soil_alcontar/tree/5f1b03d4139979f9cd330f9b824b01512687af72" target="_blank">5f1b03d</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree3d973fcf1d0a6854bf1c12b37b2de99e35f919actargetblank3d973fca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomserpamsoilalcontartree5f1b03d4139979f9cd330f9b824b01512687af72targetblank5f1b03da" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/serpam/soil_alcontar/tree/3d973fcf1d0a6854bf1c12b37b2de99e35f919ac" target="_blank">3d973fc</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/serpam/soil_alcontar/tree/5f1b03d4139979f9cd330f9b824b01512687af72" target="_blank">5f1b03d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -509,9 +509,11 @@ Untracked files:
 
 Unstaged changes:
     Modified:   analysis/_site.yml
+    Modified:   data/Resultados_Suelos_2018_2021_v2.xlsx
     Modified:   data/spatial/.DS_Store
     Modified:   data/spatial/01_EP_ANDALUCIA/EP_Andalucía.dbf
     Deleted:    index.Rmd
+    Modified:   output/anovas_pre_post.csv
     Modified:   scripts/00_prepare_data.R
     Modified:   temporal_comparison.Rmd
 
@@ -552,6 +554,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/serpam/soil_alcontar/896097542865548fc8006fb1dc66b8826bf4d149/docs/analysis_pre_post_epoca.html" target="_blank">8960975</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1881,10 +1900,10 @@ Calculating p-values. [DONE]</code></pre>
 
 Model: c_n ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-          Effect     df    F p.value
-1          fecha 1, 130 0.05    .815
-2       estacion  1, 10 0.56    .471
-3 fecha:estacion 1, 130 0.80    .372
+          Effect     df         F p.value
+1          fecha 1, 130    3.83 +    .053
+2       estacion  1, 10 21.23 ***   &lt;.001
+3 fecha:estacion 1, 130    4.23 *    .042
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;+&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre><code>Fitting one lmer() model. [DONE]
@@ -1893,10 +1912,12 @@ Calculating p-values. [DONE]</code></pre>
 
 Model: c_n ~ fecha * estacion + (1 | estacion:geo_parcela_nombre)
 Data: df_model
-               num Df den Df      F Pr(&gt;F)
-fecha               1    130 0.0550 0.8150
-estacion            1     10 0.5601 0.4715
-fecha:estacion      1    130 0.8031 0.3718</code></pre>
+               num Df den Df       F    Pr(&gt;F)    
+fecha               1    130  3.8277 0.0525545 .  
+estacion            1     10 21.2279 0.0009691 ***
+fecha:estacion      1    130  4.2258 0.0418155 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 <div id="post-hoc-7" class="section level3">
 <h3><em>Post-hoc</em></h3>
@@ -1941,19 +1962,19 @@ Ot
 1 postQuema - 0 preQuema
 </td>
 <td style="text-align:right;">
-0.0024
+0.0132
 </td>
 <td style="text-align:right;">
-0.0020
+0.0038
 </td>
 <td style="text-align:right;">
 Inf
 </td>
 <td style="text-align:right;">
-1.1713
+3.4663
 </td>
 <td style="text-align:right;">
-0.6690
+0.0021
 </td>
 </tr>
 <tr>
@@ -1967,19 +1988,19 @@ Pr
 1 postQuema - 0 preQuema
 </td>
 <td style="text-align:right;">
--0.0011
+-0.0008
 </td>
 <td style="text-align:right;">
-0.0025
+0.0085
 </td>
 <td style="text-align:right;">
 Inf
 </td>
 <td style="text-align:right;">
--0.4350
+-0.0972
 </td>
 <td style="text-align:right;">
-0.9872
+1.0000
 </td>
 </tr>
 <tr>
@@ -1993,19 +2014,19 @@ Inf
 Pr - Ot
 </td>
 <td style="text-align:right;">
--0.0021
+0.0473
 </td>
 <td style="text-align:right;">
-0.0052
+0.0099
 </td>
 <td style="text-align:right;">
 Inf
 </td>
 <td style="text-align:right;">
--0.4105
+4.7551
 </td>
 <td style="text-align:right;">
-0.9897
+0.0000
 </td>
 </tr>
 <tr>
@@ -2019,19 +2040,19 @@ Inf
 Pr - Ot
 </td>
 <td style="text-align:right;">
--0.0056
+0.0332
 </td>
 <td style="text-align:right;">
-0.0052
+0.0100
 </td>
 <td style="text-align:right;">
 Inf
 </td>
 <td style="text-align:right;">
--1.0743
+3.3065
 </td>
 <td style="text-align:right;">
-0.7353
+0.0038
 </td>
 </tr>
 </tbody>
@@ -3279,10 +3300,10 @@ estacion 0 preQuema 1 postQuema
 <td class="gt_row gt_center">8.00 (0.29)</td>
 <td class="gt_row gt_center">7.57 (0.38)</td></tr>
     <tr><td class="gt_row gt_left">c_n</td>
-<td class="gt_row gt_center">39.72 (2.77)</td>
-<td class="gt_row gt_center">41.62 (3.62)</td>
-<td class="gt_row gt_center">36.14 (3.32)</td>
-<td class="gt_row gt_center">43.72 (3.06)</td></tr>
+<td class="gt_row gt_center">15.36 (0.65)</td>
+<td class="gt_row gt_center">8.81 (1.03)</td>
+<td class="gt_row gt_center">12.74 (0.53)</td>
+<td class="gt_row gt_center">8.87 (0.22)</td></tr>
     <tr><td class="gt_row gt_left">cic</td>
 <td class="gt_row gt_center">16.60 (0.34)</td>
 <td class="gt_row gt_center">13.17 (0.49)</td>
@@ -3730,10 +3751,10 @@ estacion 0 preQuema 1 postQuema
 <td class="gt_row gt_center">7.05 (0.31)</td>
 <td class="gt_row gt_center">7.57 (0.38)</td></tr>
     <tr><td class="gt_row gt_left">c_n</td>
-<td class="gt_row gt_center">39.72 (2.77)</td>
-<td class="gt_row gt_center">36.14 (3.32)</td>
-<td class="gt_row gt_center">41.62 (3.62)</td>
-<td class="gt_row gt_center">43.72 (3.06)</td></tr>
+<td class="gt_row gt_center">15.36 (0.65)</td>
+<td class="gt_row gt_center">12.74 (0.53)</td>
+<td class="gt_row gt_center">8.81 (1.03)</td>
+<td class="gt_row gt_center">8.87 (0.22)</td></tr>
     <tr><td class="gt_row gt_left">cic</td>
 <td class="gt_row gt_center">16.60 (0.34)</td>
 <td class="gt_row gt_center">15.33 (0.29)</td>
@@ -3992,22 +4013,22 @@ p
 c_n
 </td>
 <td style="text-align:right;">
-0.560
+21.228
 </td>
 <td style="text-align:right;">
-0.471
+0.001
 </td>
 <td style="text-align:right;">
-0.055
+3.828
 </td>
 <td style="text-align:right;">
-0.815
+0.053
 </td>
 <td style="text-align:right;">
-0.803
+4.226
 </td>
 <td style="text-align:right;">
-0.372
+0.042
 </td>
 </tr>
 <tr>
@@ -4560,8 +4581,119 @@ ajpelu
 <div id="plots-with-ci-95-bootstraping-bca" class="section level2">
 <h2>Plots with CI 95 % (bootstraping bca)</h2>
 <p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-51-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-51-1">
+Past versions of unnamed-chunk-51-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-51-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/896097542865548fc8006fb1dc66b8826bf4d149/docs/figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-51-1.png" target="_blank">8960975</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-17
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-52-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-52-1">
+Past versions of unnamed-chunk-52-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-52-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/896097542865548fc8006fb1dc66b8826bf4d149/docs/figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-52-1.png" target="_blank">8960975</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-17
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><img src="figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-53-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-53-1">
+Past versions of unnamed-chunk-53-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-53-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/serpam/soil_alcontar/blob/896097542865548fc8006fb1dc66b8826bf4d149/docs/figure/analysis_pre_post_epoca.Rmd/unnamed-chunk-53-1.png" target="_blank">8960975</a>
+</td>
+<td>
+ajpelu
+</td>
+<td>
+2021-09-17
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -4585,49 +4717,51 @@ attached base packages:
 
 other attached packages:
  [1] boot_1.3-26        magrittr_2.0.1     gtsummary_1.4.2    plotrix_3.8-1     
- [5] glmmTMB_1.0.2.1    kableExtra_1.3.1   afex_0.28-1        performance_0.7.2 
+ [5] glmmTMB_1.0.2.1    kableExtra_1.3.1   afex_0.28-1        performance_0.8.0 
  [9] multcomp_1.4-16    TH.data_1.0-10     mvtnorm_1.1-1      emmeans_1.5.4     
 [13] lmerTest_3.1-3     lme4_1.1-27.1      Matrix_1.3-2       fitdistrplus_1.1-3
 [17] survival_3.2-7     MASS_7.3-53        ggpubr_0.4.0       janitor_2.1.0     
 [21] here_1.0.1         forcats_0.5.1      stringr_1.4.0      dplyr_1.0.6       
 [25] purrr_0.3.4        readr_1.4.0        tidyr_1.1.3        tibble_3.1.2      
 [29] ggplot2_3.3.5      tidyverse_1.3.1    rmdformats_1.0.1   knitr_1.31        
-[33] workflowr_1.6.2   
+[33] workflowr_1.7.0   
 
 loaded via a namespace (and not attached):
- [1] minqa_1.2.4         colorspace_2.0-0    ggsignif_0.6.0     
- [4] ellipsis_0.3.2      rio_0.5.16          rprojroot_2.0.2    
- [7] estimability_1.3    snakecase_0.11.0    fs_1.5.0           
-[10] rstudioapi_0.13     farver_2.0.3        fansi_0.4.2        
-[13] lubridate_1.7.10    xml2_1.3.2          codetools_0.2-18   
-[16] splines_4.0.2       jsonlite_1.7.2      nloptr_1.2.2.2     
-[19] gt_0.3.0            pbkrtest_0.5-0.1    broom_0.7.9        
-[22] dbplyr_2.1.1        compiler_4.0.2      httr_1.4.2         
-[25] backports_1.2.1     assertthat_0.2.1    fastmap_1.1.0      
-[28] cli_2.5.0           formatR_1.8         later_1.1.0.1      
-[31] htmltools_0.5.2     tools_4.0.2         coda_0.19-4        
-[34] gtable_0.3.0        glue_1.4.2          reshape2_1.4.4     
-[37] Rcpp_1.0.7          carData_3.0-4       cellranger_1.1.0   
-[40] jquerylib_0.1.3     vctrs_0.3.8         nlme_3.1-152       
-[43] broom.helpers_1.3.0 insight_0.14.4      xfun_0.23          
-[46] openxlsx_4.2.3      rvest_1.0.0         lifecycle_1.0.0    
-[49] rstatix_0.6.0       zoo_1.8-8           scales_1.1.1       
-[52] hms_1.0.0           promises_1.2.0.1    parallel_4.0.2     
-[55] sandwich_3.0-0      TMB_1.7.19          yaml_2.2.1         
-[58] curl_4.3            sass_0.3.1          stringi_1.7.4      
-[61] highr_0.8           checkmate_2.0.0     zip_2.1.1          
-[64] commonmark_1.7      rlang_0.4.10        pkgconfig_2.0.3    
-[67] evaluate_0.14       lattice_0.20-41     labeling_0.4.2     
-[70] tidyselect_1.1.1    plyr_1.8.6          bookdown_0.21.6    
-[73] R6_2.5.0            generics_0.1.0      DBI_1.1.1          
-[76] pillar_1.6.1        haven_2.3.1         whisker_0.4        
-[79] foreign_0.8-81      withr_2.4.1         abind_1.4-5        
-[82] modelr_0.1.8        crayon_1.4.1        car_3.0-10         
-[85] utf8_1.1.4          rmarkdown_2.8       grid_4.0.2         
-[88] readxl_1.3.1        data.table_1.14.0   git2r_0.28.0       
-[91] webshot_0.5.2       reprex_2.0.0        digest_0.6.27      
-[94] xtable_1.8-4        httpuv_1.5.5        numDeriv_2016.8-1.1
-[97] munsell_0.5.0       viridisLite_0.3.0   bslib_0.2.4        </code></pre>
+  [1] minqa_1.2.4         colorspace_2.0-2    ggsignif_0.6.0     
+  [4] ellipsis_0.3.2      rio_0.5.16          rprojroot_2.0.2    
+  [7] estimability_1.3    snakecase_0.11.0    fs_1.5.0           
+ [10] rstudioapi_0.13     farver_2.1.0        fansi_0.4.2        
+ [13] lubridate_1.7.10    xml2_1.3.2          codetools_0.2-18   
+ [16] splines_4.0.2       jsonlite_1.7.2      nloptr_1.2.2.2     
+ [19] gt_0.3.0            pbkrtest_0.5-0.1    broom_0.7.9        
+ [22] dbplyr_2.1.1        compiler_4.0.2      httr_1.4.2         
+ [25] backports_1.2.1     assertthat_0.2.1    fastmap_1.1.0      
+ [28] cli_2.5.0           formatR_1.8         later_1.1.0.1      
+ [31] htmltools_0.5.2     tools_4.0.2         coda_0.19-4        
+ [34] gtable_0.3.0        glue_1.4.2          reshape2_1.4.4     
+ [37] Rcpp_1.0.7          carData_3.0-4       cellranger_1.1.0   
+ [40] jquerylib_0.1.3     vctrs_0.3.8         nlme_3.1-152       
+ [43] broom.helpers_1.4.0 insight_0.14.4      xfun_0.23          
+ [46] ps_1.5.0            openxlsx_4.2.3      rvest_1.0.0        
+ [49] lifecycle_1.0.1     rstatix_0.6.0       zoo_1.8-8          
+ [52] getPass_0.2-2       scales_1.1.1.9000   hms_1.0.0          
+ [55] promises_1.2.0.1    parallel_4.0.2      sandwich_3.0-0     
+ [58] TMB_1.7.19          yaml_2.2.1          curl_4.3           
+ [61] sass_0.3.1          stringi_1.7.4       highr_0.8          
+ [64] checkmate_2.0.0     zip_2.1.1           commonmark_1.7     
+ [67] rlang_0.4.12        pkgconfig_2.0.3     evaluate_0.14      
+ [70] lattice_0.20-41     labeling_0.4.2      processx_3.5.1     
+ [73] tidyselect_1.1.1    plyr_1.8.6          bookdown_0.21.6    
+ [76] R6_2.5.1            generics_0.1.0      DBI_1.1.1          
+ [79] pillar_1.6.1        haven_2.3.1         whisker_0.4        
+ [82] foreign_0.8-81      withr_2.4.1         abind_1.4-5        
+ [85] modelr_0.1.8        crayon_1.4.1        car_3.0-10         
+ [88] utf8_1.1.4          rmarkdown_2.8       grid_4.0.2         
+ [91] readxl_1.3.1        data.table_1.14.0   callr_3.7.0        
+ [94] git2r_0.28.0        webshot_0.5.2       reprex_2.0.0       
+ [97] digest_0.6.27       xtable_1.8-4        httpuv_1.5.5       
+[100] numDeriv_2016.8-1.1
+ [ reached getOption(&quot;max.print&quot;) -- omitted 3 entries ]</code></pre>
 </div>
 </div>
 </div>
@@ -4635,7 +4769,7 @@ loaded via a namespace (and not attached):
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
 TeX fonts only; see
-http://docs.mathjax.org/en/latest/configuration.html.  This will make
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
 the presentation more consistent at the cost of the webpage sometimes
 taking slightly longer to load. Note that this only works because the
 footer is added to webpages before the MathJax javascript. -->
