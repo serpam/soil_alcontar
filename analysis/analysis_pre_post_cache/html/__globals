@@ -1,0 +1,79 @@
+pkgs	library
+prepare-data	::	%>%	~	case_when	fecha	mutate
+unnamed-chunk-1	::	%>%	as.factor	c	fecha	filter	mutate	pre_post_quema	raw_soil	zona
+unnamed-chunk-2	~	soil	xtabs
+unnamed-chunk-3	
+unnamed-chunk-4	::	.data	[[	%>%	aes	geom_errorbar	geom_line	geom_point	ggplot	group_by	mean	position_dodge	pre_post_quema	se	summarise	theme_pubr	UQ	xlab	ylab	zona
+unnamed-chunk-5	$	descdist	soil
+unnamed-chunk-6	::	%>%	c	one_of	plot	print	reformulate	soil
+unnamed-chunk-7	::	anova	as_lmerModLmerTest	df_model	form
+unnamed-chunk-8	
+unnamed-chunk-9	~	emmeans	list	m
+unnamed-chunk-10	plot_interaction	soil
+unnamed-chunk-11	$	descdist	soil
+unnamed-chunk-12	::	%>%	c	one_of	plot	print	reformulate	soil
+unnamed-chunk-13	::	anova	as_lmerModLmerTest	df_model	form
+unnamed-chunk-14	
+unnamed-chunk-15	~	emmeans	list	m
+unnamed-chunk-16	plot_interaction	soil
+unnamed-chunk-17	$	descdist	soil
+unnamed-chunk-18	::	%>%	c	one_of	plot	print	reformulate	soil
+unnamed-chunk-19	::	anova	as_lmerModLmerTest	df_model	form
+unnamed-chunk-20	~	emmeans	list	m
+unnamed-chunk-21	plot_interaction	soil
+unnamed-chunk-22	$	descdist	soil
+unnamed-chunk-23	::	%>%	c	one_of	plot	print	reformulate	soil
+unnamed-chunk-24	::	df_model	form	Gamma
+unnamed-chunk-25	~	emmeans	list	m
+unnamed-chunk-26	plot_interaction	soil
+unnamed-chunk-27	$	descdist	soil
+unnamed-chunk-28	::	%>%	c	one_of	plot	print	reformulate	soil
+unnamed-chunk-29	::	df_model	form	Gamma
+unnamed-chunk-30	~	emmeans	list	m
+unnamed-chunk-31	plot_interaction	soil
+unnamed-chunk-32	$	descdist	soil
+unnamed-chunk-33	::	%>%	c	one_of	plot	print	reformulate	soil
+unnamed-chunk-34	::	df_model	form	Gamma
+unnamed-chunk-35	~	emmeans	list	m
+unnamed-chunk-36	plot_interaction	soil
+unnamed-chunk-37	$	descdist	soil
+unnamed-chunk-38	::	%>%	c	one_of	plot	print	reformulate	soil
+unnamed-chunk-39	::	df_model	form	Gamma
+unnamed-chunk-40	~	emmeans	list	m
+unnamed-chunk-41	plot_interaction	soil
+unnamed-chunk-42	$	descdist	soil
+unnamed-chunk-43	::	%>%	c	one_of	plot	print	reformulate	soil
+unnamed-chunk-44	::	df_model	form
+unnamed-chunk-45	~	emmeans	list	m
+unnamed-chunk-46	plot_interaction	soil
+unnamed-chunk-47	$	descdist	soil
+unnamed-chunk-48	::	%>%	c	one_of	plot	print	reformulate	soil
+unnamed-chunk-49	::	df_model	form	Gamma
+unnamed-chunk-50	~	emmeans	list	m
+unnamed-chunk-51	plot_interaction	soil
+unnamed-chunk-52	$	descdist	soil
+unnamed-chunk-53	::	%>%	c	one_of	plot	print	reformulate	soil
+unnamed-chunk-54	::	~	$	$<-	as.factor	form	Gamma
+unnamed-chunk-55	::	beta_family	df_model	form	library
+unnamed-chunk-56	~	emmeans	list	mtbm
+unnamed-chunk-57	plot_interaction	soil
+unnamed-chunk-58	$	descdist	soil
+unnamed-chunk-59	::	%>%	c	one_of	plot	print	reformulate	soil
+unnamed-chunk-60	::	~	$	$<-	as.factor	form
+unnamed-chunk-61	::	beta_family	df_model	form	library
+unnamed-chunk-62	~	emmeans	list	mtbm
+unnamed-chunk-63	plot_interaction	soil
+unnamed-chunk-64	::	%>%	~	as.factor	drop_na	fecha	geo_parcela_nombre	group_by	length	mutate	n_nh4	n_no3	pre_post_quema	raw_soil	summarise	xtabs	zona
+unnamed-chunk-65	$	descdist	soilN
+unnamed-chunk-66	::	%>%	c	one_of	plot	print	reformulate	soilN
+unnamed-chunk-67	::	df_model	form	Gamma
+unnamed-chunk-68	~	emmeans	list	m
+unnamed-chunk-69	plot_interaction	soilN
+unnamed-chunk-70	$	descdist	soilN
+unnamed-chunk-71	::	%>%	c	one_of	plot	print	reformulate	soilN
+unnamed-chunk-72	::	df_model	form	Gamma
+unnamed-chunk-73	~	emmeans	list	m
+unnamed-chunk-74	plot_interaction	soilN
+unnamed-chunk-75	::	%>%	~	humedad	library	p_h_k_cl	pre_post_quema	soil	tbl_strata	zona
+unnamed-chunk-76	::	%>%	~	aes	facet_wrap	geom_errorbar	geom_line	geom_point	ggplot	group_by	humedad	mean	p_h_k_cl	pivot_longer	position_dodge	pre_post_quema	se	soil	summarise_at	theme_bw	vars	xlab	ylab	zona
+session-info-chunk-inserted-by-workflowr	sessionInfo

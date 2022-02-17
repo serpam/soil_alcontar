@@ -4,6 +4,8 @@ date: "`r Sys.Date()`"
 output:
   rmdformats::html_docco:
     highlight: kate
+editor_options: 
+  chunk_output_type: console
 ---
 
 
@@ -22,4 +24,72 @@ opts_chunk$set(echo=FALSE,
                warning=FALSE)
 opts_knit$set(width=75)
 ```
+
+
+```{r pkgs}
+library("tidyverse")
+library("here")
+library("janitor")
+library("ggpubr")
+```
+
+```{r prepare-data}
+soiltime <- readxl::read_excel(
+  here::here("data/Resultados_Suelos_2018_2021_v2.xlsx"),
+  sheet = 2
+) %>%
+  janitor::clean_names() %>%
+  mutate(
+    treatment_name =
+      case_when(
+        str_detect(geo_parcela_nombre, "AL_NP_") ~ "Autumn Burning / No Browsing",
+        str_detect(geo_parcela_nombre, "AL_PR_") ~ "Spring Burning / Browsing",
+        str_detect(geo_parcela_nombre, "AL_P_") ~ "Autumn Burning / Browsing"
+      ),
+    fecha = lubridate::ymd(fecha)
+  ) 
+
+
+
+# Compute ndays after fire for each event 
+autumn_fire <- lubridate::ymd("2018-12-18")
+spring_fire <- lubridate::ymd("2019-05-07")
+
+ss <- soiltime %>% rowwise() %>% 
+  mutate(ndays = case_when(
+    pre_post_quema == "Prequema" ~ -30,
+    pre_post_quema == "Postquema" & str_detect(geo_parcela_nombre, "AL_NP_|AL_P_") ~ 
+      as.numeric(fecha - autumn_fire), 
+    pre_post_quema == "Postquema" & str_detect(geo_parcela_nombre, "AL_PR_") ~ 
+      as.numeric(fecha - spring_fire)))
+    
+  
+```
+
+```{r}
+g <- ss %>% ggerrorplot(x="ndays", y="c_n", color = "treatment_name", 
+                   numeric.x.axis = TRUE, 
+                   add = "mean") 
+
+
++ geom_line()
+pd <- position_dodge(.9)
+
+ss %>% dplyr::select(ndays, treatment_name, c_n) %>% 
+  group_by(treatment_name, ndays) %>% 
+  summarise(mean = mean(c_n, na.rm=TRUE), 
+            se = plotrix::std.error(c_n, na.rm = TRUE)) %>% 
+  ggplot(aes(x=as.factor(ndays), y=mean, colour=treatment_name)) + 
+  geom_point(position = pd) + 
+  geom_errorbar(aes(ymin = mean - se, ymax = mean + se), 
+                position = pd, width = .3) + 
+  geom_line()
+
+
+
+
+
+```
+
+soiltime
 

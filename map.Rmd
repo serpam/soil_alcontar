@@ -1,0 +1,246 @@
+---
+title: "index"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    theme: yeti
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(message=FALSE, warning=FALSE)
+```
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+library('flexdashboard')
+library('rgdal')
+library("leaflet") 
+library("leaflet.extras2")
+library("sf")
+library("tidyverse")
+library("raster")
+library("sp")
+library("lubridate")
+library("leafpop")
+library("here")
+library("crosstalk")
+library("ggtern")
+library("DT")
+```
+
+```{r read.spatial, echo=FALSE}
+pastos <- st_read(dsn = here::here("data/spatial/02_PASTOS_ADYACENTES/Pastos_adyacentes.shp"),
+               quiet = TRUE)
+pastos <- st_transform(pastos, crs = 4326)
+
+# EP 
+ep <- st_read(dsn = here::here("data/spatial/01_EP_ANDALUCIA/EP_Andalucía.shp"), quiet = TRUE)
+ep <- st_transform(ep, crs = 4326)
+
+ep <- ep %>%
+  mutate(
+    name =
+      case_when(
+        ABREVIA == "NP" ~ "Autumn Burning / No Browsing",
+        ABREVIA == "P" ~ "Autumn Burning / Browsing",
+        ABREVIA == "PR" ~ "Spring Burning / Browsing"
+      ),
+    fire_date = case_when(
+      ABREVIA == "PR" ~ "2019-05-07",
+      TRUE ~"2018-12-18"
+    )
+  )
+
+# Parcelas 
+parcelas <- st_read(dsn = here::here("data/spatial/parcelas/GEO_PARCELAS.shp"),
+                    quiet = TRUE)
+parcelas <- st_transform(parcelas, crs = 4326)
+
+parcelas <- parcelas %>%
+  filter(TIPO == "QUEMA") %>%
+  mutate(
+    treatment_name =
+      case_when(
+        str_detect(NOMBRE, "AL_NP_") ~	"Autumn Burning / No Browsing",
+        str_detect(NOMBRE, "AL_PR_") ~ "Spring Burning / Browsing",
+        str_detect(NOMBRE, "AL_P_") ~ "Autumn Burning / Browsing"
+      ),
+    treatment_code =
+      case_when(
+        str_detect(NOMBRE, "AL_NP_") ~	"NP",
+        str_detect(NOMBRE, "AL_PR_") ~ "PR",
+        str_detect(NOMBRE, "AL_P_") ~ "P"
+      )
+  )
+
+
+# Area of Interest 
+aoi <- st_buffer(st_as_sfc(st_bbox(st_union(parcelas, ep))), dist = 50, endCapStyle = 'FLAT', joinStyle = 'MITRE', mitreLimit = 3) 
+```
+
+```{r}
+# Soil General Data 
+soil <- readxl::read_excel(
+  here::here("data/Resultados_Suelos_2018_2021_v2.xlsx"),
+  sheet = 1) %>% 
+  janitor::clean_names()
+
+parcelas_soil <- parcelas %>%
+  inner_join(soil, by = c("NOMBRE"="geo_parcela_nombre")) %>%
+  dplyr::select(
+    -TRATAMIENT, -TIPO, -nombre_zona
+  )
+
+
+ps <- parcelas_soil %>% 
+  tidyr::pivot_longer(
+    cols=c("fe","k","mg","na","n","c","c_n","cic","p","mo","ph_agua","ph_k_cl","caliza_activa","caliza_total","arcilla","limo","arena"),
+    
+               names_to = "variable", values_to = "value")
+
+sd <- SharedData$new(ps, key = ~NOMBRE)
+```
+
+
+```{r}
+ggplot(ps, aes(x=))
+```
+
+
+
+
+```{r baseMap}
+map_base <- leaflet(
+  options = leafletOptions(minZoom = 0, maxZoom = 24)) %>%
+  addWMSTiles(
+    baseUrl = "http://www.ideandalucia.es/wms/mdt_2005?",
+    layers = "Sombreado_10",
+    group = "Hillshade",
+    options = WMSTileOptions(
+      format = "image/png", 
+      transparent = TRUE),
+    attribution = '<a href="http://www.juntadeandalucia.es/institutodeestadisticaycartografia" target="_blank">Instituto de Estadística y Cartografía de Andalucía</a>'
+  ) %>%
+  addWMSTiles(
+    baseUrl = "http://www.ign.es/wms-inspire/ign-base?",
+    layers = "IGNBaseTodo",
+    group = "Basemap",
+    attribution = '© <a href="http://www.ign.es/ign/main/index.do" target="_blank">Instituto Geográfico Nacional de España</a>'
+  ) %>%  
+  addWMSTiles("http://www.ideandalucia.es/services/toporaster10/wms?",
+    layers = "toporaster10",
+    group = "Topographical",
+    options = WMSTileOptions(
+      format = "image/png", 
+      transparent = FALSE),
+    attribution = '<a href="http://www.juntadeandalucia.es/institutodeestadisticaycartografia" target="_blank">Instituto de Estadística y Cartografía de Andalucía</a>'
+  ) %>%
+  addWMSTiles("http://www.ideandalucia.es/wms/mta10r_2001-2013?",
+    layers = "mta10r_2001-2013",
+    group = "topo2013",
+    options = WMSTileOptions(
+      format = "image/png", 
+      transparent = FALSE),
+    attribution = '<a href="http://www.juntadeandalucia.es/institutodeestadisticaycartografia" target="_blank">Instituto de Estadística y Cartografía de Andalucía</a>'
+  ) %>% 
+  addProviderTiles("Esri.WorldImagery", group = "Satellite") %>% 
+  addWMSTiles("http://www.ign.es/wms-inspire/pnoa-ma",
+    layers = "OI.OrthoimageCoverage",
+    group = "PNOA Máxima Actualidad",
+    options = WMSTileOptions(
+      format = "image/png", 
+      transparent = FALSE),
+    attribution = 'PNOA cedido por © <a href="http://www.ign.es/ign/main/index.do" target="_blank">Instituto Geográfico Nacional de España</a>'
+  ) %>% 
+    addLayersControl(
+    position = "bottomright",
+    baseGroups = c("Basemap", "PNOA Máxima Actualidad", "Satellite", "Hillshade", "Topographical", "topo2013"),
+    overlayGroups = c("Plots", "Treatment"), 
+    options = layersControlOptions(collapsed = TRUE)
+  ) 
+```
+
+
+Inputs {.sidebar}
+-------------------------------------
+```{r filters}
+# Filter input - Zone 
+
+filter_select(id = "treatment", 
+              label = "Select Treatment",
+              sharedData = sd, 
+              group = ~treatment_name)
+
+```
+
+
+Column {data-width=600}
+--------------------------------------------------------------------
+
+### Spatial View
+
+```{r custom-popups}
+# Popups 
+# EP 
+factpal_ep <- colorFactor(c("#8dd3c7","#ff7f00","#bebada"), ep$ABREVIA)
+
+popup_ep <- paste0(
+  "<strong>Treatment:</strong> ", ep$name,
+  "<br><strong>Fire Date:</strong> ", ep$fire_date)
+
+ep$labels <- paste0("<strong>Treatment:</strong> ", ep$name) %>% 
+  lapply(htmltools::HTML)
+
+# Parcelas
+factpal_parcelas <- colorFactor(c("#8dd3c7","#ff7f00","#bebada"), parcelas_soil$treatment_code)
+
+popup_parcelas <- paste0(
+"<strong>Plot code:</strong> ", parcelas_soil$NOMBRE,
+    "<br><strong>Treatment:</strong> ", parcelas_soil$treatment_name)
+
+parcelas$labels <- paste0("<strong>Plot Code:</strong> ", parcelas_soil$NOMBRE) %>% 
+  lapply(htmltools::HTML)
+```
+
+
+```{r}
+# Set spatial extension 
+myext <- st_bbox(aoi) %>% as.vector()
+
+map_base %>%
+  fitBounds(myext[1], myext[2], myext[3], myext[4]) %>% 
+  addPolygons(
+    data = ep,
+    group = "Treatment",
+    color = ~factpal_ep(ABREVIA),
+    stroke = TRUE,
+    popup = popup_ep,
+    label = ~labels,
+        labelOptions = labelOptions(
+      noHide = FALSE,
+      offset = c(0, 0),
+      textOnly = F,
+      style = list("color" = "black")
+    )
+  ) %>% 
+  addPolygons(
+    data = sd,
+    group = "Plots",
+    color = ~factpal_parcelas(treatment_code),
+    stroke = TRUE,
+    popup = popup_parcelas,
+    # label = ~labels,
+    #     labelOptions = labelOptions(
+    #   noHide = FALSE,
+    #   offset = c(0, 0),
+    #   textOnly = F,
+    #   style = list("color" = "black")
+    # )
+  ) 
+
+```
+
+
+

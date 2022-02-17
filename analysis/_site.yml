@@ -1,14 +1,12 @@
 name: "soil_alcontar"
 output_dir: ../docs
 navbar:
-  title: "soil_alcontar"
+  title: "Soil Data analysis of Andalusia EP (Alcontar)"
   left:
   - text: Home
     href: index.html
-  - text: About
-    href: about.html
-  - text: License
-    href: license.html
+  - text: Study Area
+    href: study_area.html
 output:
   workflowr::wflow_html:
     toc: yes

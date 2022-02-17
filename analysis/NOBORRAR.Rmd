@@ -1,0 +1,1162 @@
+
+
+### Normality & Homocedasticity
+```{r}
+
+
+
+
+
+
+
+
+chequeo
+
+chequeoDist(soil, "humedad")
+
+%>% plot()
+
+yvar <- "humedad"
+
+
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"pre_post_quema", "zona", "geo_parcela_nombre")))
+form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = yvar)
+model <- lme4::lmer(form, data = df_model)
+
+p.dist <- performance::check_distribution(model)
+
+
+
+plot(performance::check_distribution(model)) 
+
+print("Variances homogeneity?")
+plot(performance::check_homogeneity(model))
+
+print("Normality?")
+performance::check_normality(model)
+
+print("Normality, Random effects")
+performance::check_normality(model, effects = "random")
+```
+
+### Model 
+```{r}
+m <- lme4::lmer(form, data = df_model)
+anova(as_lmerModLmerTest(m))
+
+tabla_anova <- as.data.frame(anova(as_lmerModLmerTest(m)))
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+tabla_anova
+
+tabla_anova %>% dplyr::select(fvalue = `F value`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+```{r}
+library(DHARMa)
+simulationOutput <- simulateResiduals(fittedModel = m, plot = F)
+plot(simulationOutput)
+```
+
+
+```{r}
+# Ojo para lo de la anova en lmer ver esto:  https://stat.ethz.ch/pipermail/r-sig-mixed-models/2018q1/026596.html
+```
+
+
+### *Post-hoc*
+
+```{r}
+emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
+emmeans(m, list(pairwise ~zona), adjust = "tukey")
+emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
+```
+
+```{r}
+plot_interaction(df=soil, yvar="humedad")
+```
+
+
+# CIC 
+### Check distribution 
+```{r}
+# Cullen & Frey plot 
+descdist(soil$cic, boot = 1000)
+```
+
+### Normality & Homocedasticity
+```{r}
+yvar <- "cic"
+
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"pre_post_quema", "zona", "geo_parcela_nombre")))
+form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = yvar)
+model <- lme4::lmer(form, data = df_model)
+
+plot(performance::check_distribution(model)) 
+
+print("Variances homogeneity?")
+performance::check_homogeneity(model)
+
+print("Normality?")
+performance::check_normality(model)
+
+print("Normality, Random effects")
+performance::check_normality(model, effects = "random")
+```
+
+### Model 
+```{r}
+m <- lme4::lmer(form, data = df_model)
+tabla_anova <- anova(as_lmerModLmerTest(m)) 
+tabla_anova <- as.data.frame(tabla_anova)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+tabla_anova %>% dplyr::select(fvalue = `F value`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+```
+
+```{r}
+# Ojo para lo de la anova en lmer ver esto:  https://stat.ethz.ch/pipermail/r-sig-mixed-models/2018q1/026596.html
+```
+
+### *Post-hoc*
+
+```{r}
+emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
+emmeans(m, list(pairwise ~zona), adjust = "tukey")
+emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
+```
+
+```{r}
+plot_interaction(df=soil, yvar="cic")
+```
+
+
+# % C 
+### Check distribution 
+```{r}
+# Cullen & Frey plot 
+descdist(soil$c_percent, boot = 1000)
+```
+
+### Normality & Homocedasticity
+```{r}
+yvar <- "c_percent"
+
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"pre_post_quema", "zona", "geo_parcela_nombre")))
+form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = yvar)
+model <- lme4::lmer(form, data = df_model)
+
+plot(performance::check_distribution(model)) 
+
+print("Variances homogeneity?")
+performance::check_homogeneity(model)
+
+print("Normality?")
+performance::check_normality(model)
+
+print("Normality, Random effects")
+performance::check_normality(model, effects = "random")
+```
+
+### Model 
+```{r}
+m <- lme4::lmer(form, data = df_model)
+anova(as_lmerModLmerTest(m))
+
+tabla_anova <- as.data.frame(anova(as_lmerModLmerTest(m)))
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+tabla_anova %>% dplyr::select(fvalue = `F value`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+
+### *Post-hoc*
+
+```{r}
+emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
+emmeans(m, list(pairwise ~zona), adjust = "tukey")
+emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
+```
+
+```{r}
+plot_interaction(df=soil, yvar="c_percent")
+```
+
+
+# % Fe 
+### Check distribution 
+```{r}
+# Cullen & Frey plot 
+descdist(soil$fe_percent, boot = 1000)
+```
+
+### Normality & Homocedasticity
+```{r}
+yvar <- "fe_percent"
+
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"pre_post_quema", "zona", "geo_parcela_nombre")))
+form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = yvar)
+model <- lme4::lmer(form, data = df_model)
+
+plot(performance::check_distribution(model)) 
+
+print("Variances homogeneity?")
+performance::check_homogeneity(model)
+
+print("Normality?")
+performance::check_normality(model)
+
+print("Normality, Random effects")
+performance::check_normality(model, effects = "random")
+```
+
+### Model 
+- Gamma 
+```{r}
+# See here https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/ 
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+afex::mixed(form, data=df_model)
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+### *Post-hoc*
+
+```{r}
+emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
+emmeans(m, list(pairwise ~zona), adjust = "tukey")
+emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
+```
+
+```{r}
+plot_interaction(df=soil, yvar="fe_percent")
+```
+
+
+# % K 
+### Check distribution 
+```{r}
+# Cullen & Frey plot 
+descdist(soil$k_percent, boot = 1000)
+```
+
+### Normality & Homocedasticity
+```{r}
+yvar <- "k_percent"
+
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"pre_post_quema", "zona", "geo_parcela_nombre")))
+form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = yvar)
+model <- lme4::lmer(form, data = df_model)
+
+plot(performance::check_distribution(model)) 
+
+print("Variances homogeneity?")
+performance::check_homogeneity(model)
+
+print("Normality?")
+performance::check_normality(model)
+
+print("Normality, Random effects")
+performance::check_normality(model, effects = "random")
+```
+
+### Model 
+- Gamma 
+```{r}
+# See here https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/ 
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+  tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+
+```
+
+### *Post-hoc*
+
+```{r}
+emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
+emmeans(m, list(pairwise ~ zona), adjust = "tukey")
+emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
+```
+
+```{r}
+plot_interaction(df=soil, yvar="k_percent")
+```
+
+
+# % Mg 
+### Check distribution 
+```{r}
+# Cullen & Frey plot 
+descdist(soil$mg_percent, boot = 1000)
+```
+
+### Normality & Homocedasticity
+```{r}
+yvar <- "mg_percent"
+
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"pre_post_quema", "zona", "geo_parcela_nombre")))
+form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = yvar)
+model <- lme4::lmer(form, data = df_model)
+
+plot(performance::check_distribution(model)) 
+
+print("Variances homogeneity?")
+performance::check_homogeneity(model)
+
+print("Normality?")
+performance::check_normality(model)
+
+print("Normality, Random effects")
+performance::check_normality(model, effects = "random")
+```
+
+### Model 
+- Gamma 
+```{r}
+# See here https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/ 
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+  tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+
+```
+
+### *Post-hoc*
+
+```{r}
+emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
+emmeans(m, list(pairwise ~ zona), adjust = "tukey")
+emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
+```
+
+```{r}
+plot_interaction(df=soil, yvar="mg_percent")
+```
+
+# C/N 
+### Check distribution 
+```{r}
+# Cullen & Frey plot 
+descdist(soil$c_n, boot = 1000)
+```
+
+### Normality & Homocedasticity
+```{r}
+yvar <- "c_n"
+
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"pre_post_quema", "zona", "geo_parcela_nombre")))
+form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = yvar)
+model <- lme4::lmer(form, data = df_model)
+
+plot(performance::check_distribution(model)) 
+
+print("Variances homogeneity?")
+performance::check_homogeneity(model)
+
+print("Normality?")
+performance::check_normality(model)
+
+print("Normality, Random effects")
+performance::check_normality(model, effects = "random")
+```
+
+### Model 
+- Gamma 
+```{r}
+# See here https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/ 
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+  tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+
+
+```
+
+### *Post-hoc*
+
+```{r}
+emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
+emmeans(m, list(pairwise ~ zona), adjust = "tukey")
+emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
+```
+
+```{r}
+plot_interaction(df=soil, yvar="c_n")
+```
+
+# P 
+### Check distribution 
+```{r}
+# Cullen & Frey plot 
+descdist(soil$p, boot = 1000)
+```
+
+### Normality & Homocedasticity
+```{r}
+yvar <- "p"
+
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"pre_post_quema", "zona", "geo_parcela_nombre")))
+form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = yvar)
+model <- lme4::lmer(form, data = df_model)
+
+plot(performance::check_distribution(model)) 
+
+print("Variances homogeneity?")
+performance::check_homogeneity(model)
+
+print("Normality?")
+performance::check_normality(model)
+
+print("Normality, Random effects")
+performance::check_normality(model, effects = "random")
+```
+
+### Model 
+- Negative Binomial 
+```{r}
+# See here https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/ 
+m <- lme4::glmer.nb(form, data = df_model)
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+  tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+### *Post-hoc*
+
+```{r}
+emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
+emmeans(m, list(pairwise ~ zona), adjust = "tukey")
+emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
+```
+
+```{r}
+plot_interaction(df=soil, yvar="p")
+```
+
+
+# MO 
+### Check distribution 
+```{r}
+# Cullen & Frey plot 
+descdist(soil$mo, boot = 1000)
+```
+
+### Normality & Homocedasticity
+```{r}
+yvar <- "mo"
+
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"pre_post_quema", "zona", "geo_parcela_nombre")))
+form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = yvar)
+model <- lme4::lmer(form, data = df_model)
+
+plot(performance::check_distribution(model)) 
+
+print("Variances homogeneity?")
+performance::check_homogeneity(model)
+
+print("Normality?")
+performance::check_normality(model)
+
+print("Normality, Random effects")
+performance::check_normality(model, effects = "random")
+```
+
+### Model 
+- Gamma 
+```{r}
+# See here https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/ 
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+  tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+
+```
+
+### *Post-hoc*
+
+```{r}
+emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
+emmeans(m, list(pairwise ~ zona), adjust = "tukey")
+emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
+```
+
+```{r}
+plot_interaction(df=soil, yvar="mo")
+```
+
+
+
+
+
+# % N 
+### Check distribution 
+```{r}
+# Cullen & Frey plot 
+descdist(soil$n_percent, boot = 1000)
+```
+
+### Normality & Homocedasticity
+```{r}
+yvar <- "n_percent"
+
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"pre_post_quema", "zona", "geo_parcela_nombre")))
+form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = yvar)
+model <- lme4::lmer(form, data = df_model)
+
+plot(performance::check_distribution(model)) 
+
+print("Variances homogeneity?")
+performance::check_homogeneity(model)
+
+print("Normality?")
+performance::check_normality(model)
+
+#print("Normality, Random effects")
+#performance::check_normality(model, effects = "random")
+```
+
+### Model 
+- Beta (glmmADBM)
+```{r, eval=FALSE}
+# See here https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/ 
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+
+df_model$geo_parcela_nombre <- as.factor(df_model$geo_parcela_nombre)
+
+m <- glmmADMB::glmmadmb(
+  n_percent ~ pre_post_quema * zona, 
+  random= ~ 1 | zona/geo_parcela_nombre,
+  data = df_model, family = "beta")
+#tabla_anova <- car::Anova(m)
+#assign(paste0("anova_", yvar), tabla_anova)
+```
+
+- Beta glmmTMB
+```{r}
+library(glmmTMB)
+mtbm <- glmmTMB::glmmTMB(formula = form,
+                         family = beta_family (link = "logit"),
+                         data = df_model)
+
+tabla_anova <- car::Anova(mtbm)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+assign(paste0("anova_", yvar), tabla_anova)
+
+  tabla_anova %>% dplyr::select(fvalue = `Chisq`, p=`Pr(>Chisq)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+
+```
+
+
+### *Post-hoc*
+
+```{r}
+# ojo 
+m <- mtbm
+emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
+emmeans(m, list(pairwise ~ zona), adjust = "tukey")
+emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
+```
+
+```{r}
+plot_interaction(df=soil, yvar="n_percent")
+```
+
+
+# % Na 
+### Check distribution 
+```{r}
+# Cullen & Frey plot 
+descdist(soil$na_percent, boot = 1000)
+```
+
+### Normality & Homocedasticity
+```{r}
+yvar <- "na_percent"
+
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"pre_post_quema", "zona", "geo_parcela_nombre")))
+form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = yvar)
+model <- lme4::lmer(form, data = df_model)
+
+plot(performance::check_distribution(model)) 
+
+print("Variances homogeneity?")
+performance::check_homogeneity(model)
+
+print("Normality?")
+performance::check_normality(model)
+
+print("Normality, Random effects")
+performance::check_normality(model, effects = "random")
+```
+
+### Model 
+- Beta (glmmADBM)
+```{r}
+# See here https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/ 
+df_model$geo_parcela_nombre <- as.factor(df_model$geo_parcela_nombre)
+
+m <- glmmADMB::glmmadmb(
+  na_percent ~ pre_post_quema * zona, 
+  random= ~ 1 | zona/geo_parcela_nombre,
+  data = df_model, family = "beta")
+car::Anova(m)
+
+
+ma <- afex::mixed(form, data=df_model)
+afex::nice(ma)
+```
+
+- Beta glmmTMB
+```{r}
+library(glmmTMB)
+mtbm <- glmmTMB::glmmTMB(formula = form,
+                         family = beta_family (link = "logit"),
+                         data = df_model)
+
+tabla_anova <- as.data.frame(car::Anova(mtbm))
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+tabla_anova %>% dplyr::select(fvalue = `Chisq`, p=`Pr(>Chisq)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+```
+
+
+### *Post-hoc*
+
+```{r}
+# ojo 
+# m <- mtbm
+emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
+emmeans(m, list(pairwise ~ zona), adjust = "tukey")
+emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
+```
+
+```{r}
+plot_interaction(df=soil, yvar="na_percent")
+```
+
+
+
+
+
+
+
+
+# % p_h_agua_eez
+### Check distribution 
+```{r}
+# Cullen & Frey plot 
+descdist(soil$p_h_agua_eez, boot = 1000)
+```
+
+### Normality & Homocedasticity
+```{r}
+yvar <- "p_h_agua_eez"
+
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"pre_post_quema", "zona", "geo_parcela_nombre")))
+form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = yvar)
+model <- lme4::lmer(form, data = df_model)
+
+plot(performance::check_distribution(model)) 
+
+print("Variances homogeneity?")
+performance::check_homogeneity(model)
+
+print("Normality?")
+performance::check_normality(model)
+
+print("Normality, Random effects")
+performance::check_normality(model, effects = "random")
+```
+
+### Model 
+- Gamma
+```{r}
+# See here https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/ 
+df_model$geo_parcela_nombre <- as.factor(df_model$geo_parcela_nombre)
+
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+  tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+```
+
+
+### *Post-hoc*
+
+```{r}
+# ojo 
+emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
+emmeans(m, list(pairwise ~ zona), adjust = "tukey")
+emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
+```
+
+```{r}
+plot_interaction(df=soil, yvar="p_h_agua_eez")
+```
+
+
+
+
+
+
+
+
+
+# % p_h_k_cl
+### Check distribution 
+```{r}
+# Cullen & Frey plot 
+descdist(soil$p_h_k_cl, boot = 1000)
+```
+
+### Normality & Homocedasticity
+```{r}
+yvar <- "p_h_k_cl"
+
+df_model <- soil %>% 
+  dplyr::select(one_of(c(yvar,"pre_post_quema", "zona", "geo_parcela_nombre")))
+form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = yvar)
+model <- lme4::lmer(form, data = df_model)
+
+plot(performance::check_distribution(model)) 
+
+print("Variances homogeneity?")
+performance::check_homogeneity(model)
+
+print("Normality?")
+performance::check_normality(model)
+
+print("Normality, Random effects")
+performance::check_normality(model, effects = "random")
+```
+
+### Model 
+- Gamma 
+```{r}
+# See here https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/ 
+df_model$geo_parcela_nombre <- as.factor(df_model$geo_parcela_nombre)
+
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+  tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+
+```
+
+
+### *Post-hoc*
+
+```{r}
+# ojo 
+emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
+emmeans(m, list(pairwise ~ zona), adjust = "tukey")
+emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
+```
+
+```{r}
+plot_interaction(df=soil, yvar="p_h_k_cl")
+```
+
+
+
+# NH4
+- prepara datos 
+
+```{r}
+soilN <- raw_soil %>% 
+  dplyr::select(zona, fecha, pre_post_quema, geo_parcela_nombre, 
+                n_nh4, n_no3) %>% 
+  drop_na() %>% 
+  mutate(zona = as.factor(zona), 
+         pre_post_quema = as.factor(pre_post_quema)
+  )
+  
+xtabs(~pre_post_quema+zona, data = soilN)
+
+
+soilN %>% 
+  group_by(zona, pre_post_quema) %>% 
+  summarise(N.nh4 = length(n_nh4),
+            N.no3 = length(n_no3))
+```
+
+### Check distribution 
+```{r}
+# Cullen & Frey plot 
+descdist(soilN$n_nh4, boot = 1000)
+```
+
+### Normality & Homocedasticity
+```{r}
+yvar <- "n_nh4"
+
+df_model <- soilN %>% 
+  dplyr::select(one_of(c(yvar,"pre_post_quema", "zona", "geo_parcela_nombre")))
+form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = yvar)
+model <- lme4::lmer(form, data = df_model)
+
+plot(performance::check_distribution(model)) 
+
+print("Variances homogeneity?")
+performance::check_homogeneity(model)
+
+print("Normality?")
+performance::check_normality(model)
+
+#print("Normality, Random effects")
+#performance::check_normality(model, effects = "random")
+```
+
+### Model 
+- Gamma 
+```{r}
+# See here https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/ 
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+  tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+```
+
+### *Post-hoc*
+
+```{r}
+emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
+emmeans(m, list(pairwise ~ zona), adjust = "tukey")
+emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
+```
+
+```{r}
+plot_interaction(df=soilN, yvar="n_nh4")
+```
+
+
+# NO3
+### Check distribution 
+```{r}
+# Cullen & Frey plot 
+descdist(soilN$n_no3, boot = 1000)
+```
+
+### Normality & Homocedasticity
+```{r}
+yvar <- "n_no3"
+
+df_model <- soilN %>% 
+  dplyr::select(one_of(c(yvar,"pre_post_quema", "zona", "geo_parcela_nombre")))
+form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = yvar)
+model <- lme4::lmer(form, data = df_model)
+
+plot(performance::check_distribution(model)) 
+
+print("Variances homogeneity?")
+performance::check_homogeneity(model)
+
+print("Normality?")
+performance::check_normality(model)
+
+#print("Normality, Random effects")
+#performance::check_normality(model, effects = "random")
+```
+
+### Model 
+- Gamma 
+```{r}
+# See here https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/ 
+m <- lme4::glmer(form, data = df_model, family= Gamma)
+tabla_anova <- afex::mixed(form, data=df_model)
+tabla_anova$anova_table
+tabla_anova <- as.data.frame(tabla_anova$anova_table)
+tabla_anova$variable <- yvar
+tabla_anova$factor <- rownames(tabla_anova)
+
+  tabla_anova %>% dplyr::select(fvalue = `F`, p=`Pr(>F)`, variable, factor) %>%  
+  assign(paste0("anova_", yvar), ., inherits = TRUE)
+```
+
+### *Post-hoc*
+
+```{r}
+emmeans(m, list(pairwise ~ pre_post_quema), adjust = "tukey")
+emmeans(m, list(pairwise ~ zona), adjust = "tukey")
+emmeans(m, list(pairwise ~ pre_post_quema | zona), adjust = "tukey")
+```
+
+```{r}
+plot_interaction(df=soilN, yvar="n_no3")
+```
+
+
+
+# Resumen general 
+```{r, eval=FALSE}
+library(plotrix)
+library(gtsummary)
+soil %>% 
+  dplyr::select(zona, pre_post_quema, humedad:p_h_k_cl) %>% 
+  tbl_strata(
+    strata = pre_post_quema, 
+    .tbl_fun = 
+      ~.x %>% 
+      tbl_summary(
+        by = zona,
+        missing = "no",
+       # label = list(ab ~ "Juvenile abundance"),
+        statistic = all_continuous() ~ "{mean} ({std.error})",
+        digits = everything() ~ 2
+      ))
+
+```
+
+
+```{r}
+pos <- position_dodge(0.15)
+
+medias <- soil %>% dplyr::select(
+  pre_post_quema, zona, humedad:p_h_agua_eez)%>% 
+  group_by(zona, pre_post_quema) %>% 
+  summarise_at(vars(humedad:p_h_agua_eez), ~mean(., na.rm=TRUE)) %>% 
+  pivot_longer(humedad:p_h_agua_eez, names_to = "var", values_to = "mean")
+
+errores <- soil %>% dplyr::select(
+  pre_post_quema, zona, humedad:p_h_agua_eez) %>% 
+  group_by(zona, pre_post_quema) %>% 
+  summarise_at(vars(humedad:p_h_agua_eez), ~plotrix::std.error(., na.rm=TRUE)) %>% 
+  pivot_longer(humedad:p_h_agua_eez, names_to = "var", values_to = "se")
+
+medias <- medias %>% dplyr::inner_join(errores) %>% 
+  mutate(varname = case_when(
+    var == "n_percent" ~ "N",
+    var == "p" ~ "P",
+    var == "k_percent" ~ "K",
+    var == "mo" ~ "M.O.",
+    var == "c_percent" ~ "C",
+    var == "c_n" ~ "C/N",
+    var == "humedad" ~ "Humedad",
+    var == "n_nh4" ~ "NH4",
+    var == "fe_percent" ~ "Fe",
+    var == "mg_percent" ~ "Mg",
+    var == "na_percent" ~ "Na",
+    var == "cic" ~ "C.I.C.",
+    var == "n_no3" ~ "NO3",
+    var == "p_h_k_cl"  ~ "pH (KCl)",
+    var == "p_h_agua_eez" ~ "pH (Agua)",
+    var == "p_h_agua" ~ "pH (Agua)_old"
+  ))
+
+plotsuelos <- function(df, ncol, nrow){
+    ggplot(df, aes(x=pre_post_quema, y = mean, 
+               color = zona, shape = zona, group=zona)) + 
+    geom_point(position = pos, size = 2) + 
+    geom_errorbar(aes(ymin=mean-se, ymax=mean+se), 
+                  position = pos, width = .01) +
+    geom_line(position = pos) +
+    theme_bw() +
+    theme(strip.background = element_rect(fill="white")) + 
+    ylab("") + xlab("") +
+  facet_wrap(~varname, scales = "free_y", ncol=ncol)
+}
+```
+
+```{r}
+medias %>% 
+  filter(var %in% c("n_percent", "p", "k_percent",
+                    "mo", "c_percent", "c_n")) %>% 
+  plotsuelos(ncol=2) 
+```
+
+```{r}
+medias %>% 
+  filter(var %in% c("cic", "mg_percent", 
+                    "na_percent", "humedad")) %>% 
+  plotsuelos(ncol=2)
+```
+
+```{r}
+medias %>% 
+  filter(var %in% c("n_nh4","n_no3",
+                    "p_h_k_cl", "p_h_agua_eez")) %>% 
+  plotsuelos(ncol=2) 
+```
+
+
+
+```{r}
+# Anovas
+
+anovas <- bind_rows(anova_c_n, 
+                    anova_cic,
+                    anova_k_percent,
+                    anova_mg_percent,
+                    anova_mo,
+                    anova_n_nh4,
+                    anova_n_no3, 
+                    anova_p, 
+                    anova_p_h_agua_eez, 
+                    anova_p_h_k_cl, 
+                    anova_humedad, 
+                    anova_n_percent, 
+                    anova_c_percent, 
+                    anova_na_percent) %>% 
+  relocate(variable, factor)
+rownames(anovas) <- NULL
+```
+
+```{r}
+anovas %>% write_csv(here::here("output/anovas_pre_post.csv"))
+```
+
+```{r}
+library(kableExtra)
+
+anovas %>% 
+  mutate(across(where(is.numeric), round, 3)) %>% 
+  pivot_wider(names_from = factor, values_from = c(fvalue, p)) %>% 
+  relocate(variable,
+           fvalue_zona, p_zona, 
+           fvalue_pre_post_quema, p_pre_post_quema, 
+           `fvalue_pre_post_quema:zona`, `p_pre_post_quema:zona`
+           ) %>% 
+  kbl(col.names = 
+        c("Variables", rep(c("F", "p"),3))) %>% 
+  add_header_above(c("", "zona" = 2, "fecha" = 2, "zona X fecha" = 2)) %>% 
+  kable_styling() 
+
+```
+
+
+
+# Explore Distribution of the models 
+```{r custom-functions}
+chequeoDist <- function(df, response){ 
+  df_model <- df %>% 
+    dplyr::select(one_of(response,"pre_post_quema", "zona", "geo_parcela_nombre"))
+  
+  form <- reformulate("pre_post_quema * zona + (1|zona:geo_parcela_nombre)", 
+                    response = response)
+  model <- lme4::lmer(form, data = df_model)
+
+  plot(performance::check_distribution(model))
+  
+  print("Variances homogeneity?")
+  performance::check_homogeneity(model)
+  print("Normality?")
+  performance::check_normality(model)
+}
+
+```
+
+
+
+# Humedad 
+### Check distribution 
+```{r}
+response <- "humedad"
+# Cullen & Frey plot 
+descdist(soil$humedad, boot = 1000)
+title(sub=response)
+chequeoDist(soil, "humedad")
+```
+
+
+
+
+
+
+
+
+
+

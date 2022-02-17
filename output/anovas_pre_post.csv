@@ -1,5 +1,5 @@
 variable,fvalue_zona,p_zona,fvalue_pre_post_quema,p_pre_post_quema,fvalue_pre_post_quema:zona,p_pre_post_quema:zona
-c_n,0.431,0.663,0.318,0.574,0.418,0.659
+c_n,15.564,0.001,7.822,0.006,2.368,0.098
 cic,5.66,0.026,8.757,0.004,2.764,0.067
 k_percent,6.733,0.016,2.188,0.141,0.43,0.651
 mg_percent,3.052,0.097,1.365,0.245,0.84,0.434

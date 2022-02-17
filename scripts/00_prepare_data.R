@@ -15,10 +15,33 @@ library(here)
 # Prepare soil data  for  plot -------------------------------------------------
 soil <- readxl::read_excel(
   here::here("data/Resultados_Suelos_2018_2021_v2.xlsx"),
-  sheet = 1)
-
-s <- soil %>%
+  sheet = 1) %>%
   janitor::clean_names()
+
+
+# soil_ternary
+soil_ternary <- soil %>%
+  dplyr::select(nombre = geo_parcela_nombre,
+                sand = arena,
+                clay = arcilla,
+                slit = limo)
+
+ggtern(soil_ternary)
+
+
+g <- ggtern(data=parcelas,
+            aes(x=arena,y=arcilla,z=limo)) +
+  geom_point(size=3) + # tamaño de los puntos / point size
+  labs(yarrow="Clay (%)", # etiqueta de las fechas / arrow label
+       zarrow="Silt (%)",
+       xarrow="Sand (%)") +
+  theme_showarrows() + # mostrar flechas / display arrows
+  scale_colour_gradient(low = "yellow",# escala de color / color scale
+                        high = "red") +
+  theme_rgbw()
+
+
+
 
 
 parcelas <- st_read(dsn = here::here("data/spatial/parcelas/GEO_PARCELAS.shp"),
